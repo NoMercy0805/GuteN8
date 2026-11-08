@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.widget.Toast;
+import java.io.InputStream;
 import android.webkit.WebResourceRequest;
 import org.json.JSONObject;
 import java.net.HttpURLConnection;
@@ -20,13 +21,14 @@ public class MainActivity extends Activity {
  WebView web;
  @Override public void onCreate(Bundle b) { super.onCreate(b);
   web=new WebView(this); web.getSettings().setJavaScriptEnabled(true); web.getSettings().setDomStorageEnabled(true);
-  web.getSettings().setAllowFileAccess(true); web.getSettings().setAllowFileAccessFromFileURLs(true); web.getSettings().setAllowUniversalAccessFromFileURLs(false); web.setWebChromeClient(new WebChromeClient());
+  web.getSettings().setAllowFileAccess(true); web.getSettings().setAllowFileAccessFromFileURLs(false); web.getSettings().setAllowUniversalAccessFromFileURLs(false); web.setWebChromeClient(new WebChromeClient());
   web.setWebViewClient(new WebViewClient(){ @Override public boolean shouldOverrideUrlLoading(WebView v,String url){ return handleUrl(url); } @Override public boolean shouldOverrideUrlLoading(WebView v, WebResourceRequest request){return handleUrl(request.getUrl().toString());} });
   web.addJavascriptInterface(new Bridge(),"Android");setContentView(web);web.loadUrl("file:///android_asset/index.html");
  }
  private boolean handleUrl(String url){ if(url.startsWith("file:///android_asset/"))return false; if(url.startsWith("https://")){startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse(url)));}return true; }
  public class Bridge {
   @JavascriptInterface public String version(){return BuildConfig.VERSION_NAME;}
+  @JavascriptInterface public String stories(){try(InputStream in=getAssets().open("stories.json")){byte[] data=new byte[in.available()];int off=0;while(off<data.length){int n=in.read(data,off,data.length-off);if(n<0)break;off+=n;}return new String(data,0,off,java.nio.charset.StandardCharsets.UTF_8);}catch(Exception e){return "[]";}}
   @JavascriptInterface public void checkUpdate(){
    new Thread(()->{try{
     HttpURLConnection c=(HttpURLConnection)new URL("https://api.github.com/repos/NoMercy0805/GuteN8/releases/latest").openConnection();
