@@ -107,7 +107,7 @@ for(let p=0;p<places.length;p++)for(let q=0;q<quests.length;q++)for(let t=0;t<tu
  "Auf dem Heimweg lauschten sie den Grillen. Bobby trug den müden Krümel ein Stück, während Hoppel den Weg zeigte. Später träumten sie in ihren Betten von ihrem gemeinsamen Abenteuer. Gute Nacht!",
  "Als der Mond über den Bäumen stand, kuschelten sich alle drei auf das große Sofa. Hoppel erzählte eine winzige Geschichte, Krümel schloss die Augen und Bobby deckte alle zu. Der Wald wurde ganz ruhig. Gute Nacht!"
  ][t];
- stories.push({id:'extra-'+String(n).padStart(4,'0'),title,category:season,emoji:motif,color,text,artTheme:p,artMotif:q});
+ stories.push({id:'extra-'+String(n).padStart(4,'0'),title,category:season,emoji:motif,color,text,artTheme:p,artMotif:q,artVariant:t});
 }
 window.guten8ExtraStories=stories;
 window.guten8SeasonNames=places.map(x=>x[1]);
@@ -123,9 +123,16 @@ const seasonalDecor=[
  '<g stroke="#ffe6a8" stroke-width="4"><path d="M120 95l0 55m-25-27h50M510 125v55m-25-27h50"/></g>',
  '<g fill="#ffd5e8"><path d="M95 270l15 22l-15 22l-15-22ZM540 285l15 22l-15 22l-15-22Z"/></g><path d="M70 115Q320 175 575 105" fill="none" stroke="#ffdc9e" stroke-width="5"/>'
 ];
+const variantDecor=[
+ '<path d="M240 390q60-32 120 0" fill="none" stroke="#f8d78a" stroke-width="8" stroke-linecap="round"/><circle cx="300" cy="380" r="10" fill="#fff4be"/>',
+ '<g fill="#fff2ae"><circle cx="255" cy="387" r="6"/><circle cx="285" cy="379" r="5"/><circle cx="315" cy="381" r="5"/><circle cx="345" cy="387" r="6"/></g>',
+ '<path d="M235 393q30-30 60 0t60 0" fill="none" stroke="#eab9a0" stroke-width="8"/><circle cx="300" cy="390" r="9" fill="#ffe9c5"/>',
+ '<path d="M230 405l45-36 35 36 35-36 45 36" fill="none" stroke="#c4e6ad" stroke-width="8" stroke-linejoin="round"/>',
+ '<g fill="#fff3c5"><circle cx="248" cy="392" r="4"/><circle cx="275" cy="380" r="5"/><circle cx="310" cy="389" r="4"/><circle cx="343" cy="378" r="5"/><circle cx="370" cy="394" r="4"/></g>'
+];
 window.guten8ExtraArt=function(s){
  const theme=places[s.artTheme]||places[0],quest=quests[s.artMotif]||quests[0];
- const bg=theme[3],icon=quest[3],season=theme[2],decor=seasonalDecor[s.artTheme]||'';
+ const bg=theme[3],icon=quest[3],season=theme[2],decor=seasonalDecor[s.artTheme]||'',variant=variantDecor[s.artVariant]||variantDecor[0];
  const svg='<svg xmlns="http://www.w3.org/2000/svg" width="640" height="440" viewBox="0 0 640 440"><defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#182d66"/><stop offset="1" stop-color="'+bg+'"/></linearGradient></defs><rect width="640" height="440" fill="url(#sky)"/><circle cx="515" cy="82" r="45" fill="#fff3c5" opacity=".92"/><path d="M0 325 Q140 245 300 320 T640 290 V440 H0Z" fill="#204d5a"/><path d="M0 390 Q170 295 320 375 T640 350 V440 H0Z" fill="#39735e"/><g fill="#153e4a"><path d="M65 340V150 M65 180L15 260H115Z M160 350V125 M160 145L105 260H215Z M565 340V155 M565 175L510 265H620Z" stroke="#153e4a" stroke-width="15"/></g>'+decor+'<g font-family="sans-serif" text-anchor="middle"><text x="310" y="170" font-size="110">'+icon+'</text><text x="105" y="90" font-size="60">'+season+'</text><text x="320" y="335" font-size="82">🐻</text><text x="425" y="355" font-size="72">🐰</text><text x="220" y="367" font-size="62">🐹</text></g><g fill="#fff6cb"><circle cx="220" cy="65" r="3"/><circle cx="355" cy="47" r="4"/><circle cx="465" cy="190" r="3"/><circle cx="120" cy="205" r="3"/></g></svg>';
  return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
 };
