@@ -17,6 +17,9 @@ Stand: 2026-11-08. **0/1.011 vollständig geprüft und neu illustriert.** Dieses
 | decke | Die verschwundene Decke | Warmes Schlafzimmer, drei Freunde und kleines Eichhörnchen unter gemeinsamer Decke | Eichhörnchen ist Gast, nicht als neue Hauptfigur gestalten |
 | sternschnuppe | Die magische Sternschnuppe | Zelt unter Sternenhimmel, Freunde mit Keksen, Sternschnuppe und Eichhörnchen mit Keksdose | Der vermeintliche Kekszauber wird durch das Eichhörnchen erklärt |
 
+## Verbindliche Vorgabe für die 1.000 Zusatzgeschichten
+Die 1.000 aktuell aus Textbausteinen zusammengesetzten Geschichten müssen durch 1.000 **individuell verfasste**, vollständige und eigenständige Erzählungen ersetzt werden. Jede hat eine eigene Handlung, einen eigenen Spannungsbogen, eine kindgerechte Auflösung und eine individuelle, zur Handlung passende hochwertige Illustration. Keine kombinatorischen Varianten, kein Austausch bloß von Orten, Gegenständen oder Namen und keine bloßen Titelvariationen. Die ersten 11 individuell geschriebenen Geschichten dienen als Qualitätsmaßstab. Die bestehenden Figurendesigns von Bobby, Hoppel und Krümel bleiben erhalten. Eine Geschichte zählt erst nach Textprüfung, Illustration, Einbau und erfolgreicher App-Prüfung als abgeschlossen.
+
 ## Abnahmekriterien
 1. Geschichte vollständig gelesen; Handlung, Verständlichkeit, Einschlaf-Eignung und Wiederholungen geprüft.
 2. Hochwertige, passende Illustration erstellt; die vorhandenen drei Hauptfiguren bleiben optisch unverändert.
