@@ -30,9 +30,17 @@ jobs:
               assert story['id'] not in ids, f"Duplicate story: {story['id']}"
               ids.add(story['id'])
           html = pathlib.Path('app/src/main/assets/index.html').read_text(encoding='utf-8')
-          assert 'onUpdateResult' in html and 'stories.json' in html
+          assert 'onUpdateResult' in html and 'Android.stories()' in html
           print(f'Validated {len(stories)} stories and application entry point')
           PY
+      - name: Check JavaScript syntax
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          html=Path('app/src/main/assets/index.html').read_text(encoding='utf-8')
+          Path('/tmp/guten8-app.js').write_text(html.split('<script>')[-1].split('</script>')[0], encoding='utf-8')
+          PY
+          node --check /tmp/guten8-app.js
       - name: Install Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
