@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.widget.Toast;
+import android.webkit.WebResourceRequest;
 import org.json.JSONObject;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -19,10 +20,11 @@ public class MainActivity extends Activity {
  WebView web;
  @Override public void onCreate(Bundle b) { super.onCreate(b);
   web=new WebView(this); web.getSettings().setJavaScriptEnabled(true); web.getSettings().setDomStorageEnabled(true);
-  web.getSettings().setAllowFileAccess(true); web.setWebChromeClient(new WebChromeClient());
-  web.setWebViewClient(new WebViewClient(){ @Override public boolean shouldOverrideUrlLoading(WebView v,String url){ if(url.startsWith("file:///android_asset/")) return false; startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse(url)));return true;} });
+  web.getSettings().setAllowFileAccess(true); web.getSettings().setAllowFileAccessFromFileURLs(false); web.getSettings().setAllowUniversalAccessFromFileURLs(false); web.setWebChromeClient(new WebChromeClient());
+  web.setWebViewClient(new WebViewClient(){ @Override public boolean shouldOverrideUrlLoading(WebView v,String url){ return handleUrl(url); } @Override public boolean shouldOverrideUrlLoading(WebView v, WebResourceRequest request){return handleUrl(request.getUrl().toString());} });
   web.addJavascriptInterface(new Bridge(),"Android");setContentView(web);web.loadUrl("file:///android_asset/index.html");
  }
+ private boolean handleUrl(String url){ if(url.startsWith("file:///android_asset/"))return false; if(url.startsWith("https://")){startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse(url)));}return true; }
  public class Bridge {
   @JavascriptInterface public String version(){return BuildConfig.VERSION_NAME;}
   @JavascriptInterface public void checkUpdate(){
