@@ -104,7 +104,7 @@ jobs:
             echo "Release v$VERSION already exists. Increase versionCode and versionName before publishing another update."
             exit 1
           fi
-          gh release create "v$VERSION" guten8-latest.apk --title "GuteN8 v$VERSION" --notes "Version $VERSION" --latest
+          gh release create "v$VERSION" guten8-latest.apk --title "GuteN8 v$VERSION" --notes "$(printf 'Version %s\nAndroid-versionCode: %s\n\nGuteN8 – Gutenachtgeschichten mit Bobby, Hoppel und Krümel.' "$VERSION" "$GITHUB_RUN_NUMBER")" --latest
       - uses: actions/upload-artifact@v4
         with:
           name: GuteN8-APK
