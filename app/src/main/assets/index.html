@@ -87,7 +87,8 @@ function storyFinished(){if(sleepAction==='none')return;if(sleepTimer)clearTimeo
 function changeFont(){setFont(font>=26?17:font+2)}
 function toggleNight(v){night=typeof v==='boolean'?v:!night;put('night',night);document.body.classList.toggle('night-reading',night);document.body.style.background=night?'#10112a':'';$('nightLabel').textContent=night?'An':'Aus';$('nightToggle').checked=night;document.querySelectorAll('.paper').forEach(e=>{e.style.background=''})}
 function speak(){
- if(!current){alert('Öffne zuerst eine Geschichte in der Bibliothek.');show('library');return}
+ if(!current){const last=get('last',null);if(last&&stories.some(s=>s.id===last)){openStory(last)}else{show('library');$('search').focus();return}}
+ if(!$('reader').classList.contains('active'))show('reader');
  if(!('speechSynthesis'in window)){alert('Vorlesen wird auf diesem Gerät nicht unterstützt.');return}
  if(speechSynthesis.speaking||speechSynthesis.pending){stopSpeech();return}
  const token=++ttsToken,storyId=current.id,spokenPage=page;
