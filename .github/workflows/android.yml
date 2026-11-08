@@ -167,7 +167,7 @@ jobs:
               'update prompt': ('id="updateInstall"', 'function installUpdate()'),
               'android back': ('window.guten8Back=', 'window.guten8Back ? window.guten8Back()'),
           }
-          assert "if(typeof stopSpeech===\\'function\\')stopSpeech()" in java, 'Android backgrounding must reset narration controls'
+          assert "if(typeof stopSpeech==='function')stopSpeech()" in java, 'Android backgrounding must reset narration controls'
           for name,(a,b) in checks.items():
               assert a in html and (b in html or b in java), f'Missing {name}'
           import re
