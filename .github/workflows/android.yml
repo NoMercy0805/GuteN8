@@ -36,6 +36,9 @@ jobs:
           assert "'<img src=\"'+storyImage(s)" in html, 'Story cards must use illustrated covers'
           assert "$('readerArt').innerHTML" in html, 'Reader illustration missing'
           assert "ttsToken++;speechSynthesis.cancel()}page=index" in html, 'Page jumps must cancel stale narration'
+          assert 'id="readingPaper"' in html and 'function readerTouchEnd(e)' in html, 'Swipe reader wiring missing'
+          assert 'readingPaper\').addEventListener(\'touchend\'' in html, 'Swipe handler must be registered'
+          assert 'class="empty-state"' in html, 'Empty library states missing'
           assert 'on:\n  workflow_dispatch:' in pathlib.Path('.github/workflows/android.yml').read_text(), 'Automatic builds must remain disabled'
           forest=pathlib.Path('app/src/main/assets/art/forest-friends.svg')
           assert forest.is_file(), 'Missing illustrated forest artwork'
