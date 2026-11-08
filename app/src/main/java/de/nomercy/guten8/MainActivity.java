@@ -32,13 +32,14 @@ public class MainActivity extends Activity {
     if(c.getResponseCode()!=200)throw new Exception("Noch kein Release verfügbar");
     BufferedReader br=new BufferedReader(new InputStreamReader(c.getInputStream()));StringBuilder sb=new StringBuilder();String line;while((line=br.readLine())!=null)sb.append(line);
     JSONObject j=new JSONObject(sb.toString());String tag=j.optString("tag_name","").replaceFirst("^v","");
-    String link=j.optString("html_url","");org.json.JSONArray assets=j.optJSONArray("assets");
+    String link="";org.json.JSONArray assets=j.optJSONArray("assets");
     if(assets!=null)for(int i=0;i<assets.length();i++){JSONObject a=assets.getJSONObject(i);if(a.optString("name").endsWith(".apk")){link=a.optString("browser_download_url",link);break;}}
+    if(link.isEmpty())throw new Exception("Release enthält keine APK");
     String finalLink=link;boolean newer=compare(tag,BuildConfig.VERSION_NAME)>0;
     web.post(()->web.evaluateJavascript("window.onUpdateResult("+JSONObject.quote(tag)+","+newer+","+JSONObject.quote(finalLink)+")",null));
    }catch(Exception e){web.post(()->web.evaluateJavascript("window.onUpdateError("+JSONObject.quote(e.getMessage())+")",null));}}).start();
   }
-  @JavascriptInterface public void openLink(String url){if(url.startsWith("https://github.com/"))runOnUiThread(()->startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse(url))));}
+  @JavascriptInterface public void openLink(String url){if(url.startsWith("https://github.com/NoMercy0805/GuteN8/releases/") || url.startsWith("https://github.com/NoMercy0805/GuteN8/releases/download/"))runOnUiThread(()->startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse(url))));}
  }
  private int compare(String a,String b){try{String[] x=a.split("\\."),y=b.split("\\.");for(int i=0;i<3;i++){int p=i<x.length?Integer.parseInt(x[i]):0,q=i<y.length?Integer.parseInt(y[i]):0;if(p!=q)return Integer.compare(p,q);}}catch(Exception e){}return 0;}
  @Override public void onBackPressed(){if(web.canGoBack())web.goBack();else super.onBackPressed();}
