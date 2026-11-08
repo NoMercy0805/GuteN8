@@ -74,7 +74,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          VERSION=$(grep -oP "versionName '\\K[^']+" app/build.gradle)
+          VERSION="1.0.${GITHUB_RUN_NUMBER}"
           test -s app/build/outputs/apk/release/app-release.apk
           cp app/build/outputs/apk/release/app-release.apk guten8-latest.apk
           if gh release view "v$VERSION" >/dev/null 2>&1; then
