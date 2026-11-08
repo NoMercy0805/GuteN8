@@ -1,6 +1,6 @@
 # GuteN8 – individuelle Prüfung und Illustration
 
-Stand: 2026-11-08. **0/1.011 vollständig geprüft und neu illustriert; 6/1.000 Zusatzgeschichten individuell neu geschrieben und in der App-Datenquelle ersetzt.** Dieses Dokument ist der tatsächliche Arbeitsbeginn, keine Fertigmeldung.
+Stand: 2026-11-08. **0/1.011 vollständig geprüft und neu illustriert; 9/1.000 Zusatzgeschichten individuell neu geschrieben und in der App-Datenquelle ersetzt.** Dieses Dokument ist der tatsächliche Arbeitsbeginn, keine Fertigmeldung.
 
 ## Bestand
 - `stories.json`: 11 individuell geschriebene Geschichten mit eigenen SVG-Dateien in `art/`.
@@ -42,3 +42,13 @@ Die vorhandenen Originalfiguren müssen als visuelle Referenz für die neuen Ill
 | extra-0006 | Die Karte mit den drei Punkten | neu geschrieben, eingebaut | offen: drei blaue Kiesel, Schatzkarte, Schildkröte am Teich |
 
 **Bildvorgabe:** Die bisherigen generischen Emoji-/SVG-Themenbilder sind keine akzeptierten Einzelillustrationen. Neue Bilder müssen an den bereits vorhandenen Originalfiguren ausgerichtet und als Bilddateien eingebaut werden; bis dahin gilt kein Eintrag als vollständig abgeschlossen.
+
+## Arbeitsstand: Ersatzgeschichten 7–9
+
+| ID | Neuer Titel | Textstatus | Individuelle Illustration |
+| --- | --- | --- | --- |
+| extra-0007 | Das Eichhörnchen und die leere Vorratskammer | neu geschrieben, eingebaut | offen: Eichhörnchen am hohlen Baumstumpf mit Nüssen; drei bestehende Freunde helfen |
+| extra-0008 | Der Regenschirm, der niemanden trocken hielt | neu geschrieben, eingebaut | offen: gelb gestreifter Schirm über Ente und Brief im Regen; drei Freunde |
+| extra-0009 | Die Glühwürmchen auf dem Heimweg | neu geschrieben, eingebaut | offen: Dämmerungswiese mit Glühwürmchen, Holzbrücke und drei Freunden |
+
+**Nachweis:** Commit `bf1963528a97251e42f4f2980649818b06651fe0`. Diese drei Geschichten zählen textlich, aber bis zur tatsächlichen Einzelillustration nicht als vollständig fertig.
