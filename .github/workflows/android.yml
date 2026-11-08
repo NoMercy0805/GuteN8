@@ -41,6 +41,7 @@ jobs:
           assert 'class="empty-state"' in html, 'Empty library states missing'
           assert 'Noch keine Favoriten' in html and 'Noch keine Lesezeichen' in html, 'Empty saved-story states missing'
           assert 'id="readerProgressTrack"' in html and 'id="readerProgressFill"' in html, 'Reader progress UI missing'
+          assert 'id="libraryProgressTrack"' in html and "$('libraryProgressTrack').setAttribute('aria-valuenow',libraryPercent)" in html, 'Accessible library progress missing'
           assert 'function readerKeydown(e)' in html, 'Keyboard navigation missing'
           assert 'function resetLibraryFilters()' in html, 'Library search reset missing'
           assert 'if(!matches.length){' in html, 'Library empty-results branch must have valid syntax'
