@@ -40,9 +40,13 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           VERSION=$(grep -oP "versionName '\\K[^']+" app/build.gradle)
+          test -s app/build/outputs/apk/release/app-release.apk
           cp app/build/outputs/apk/release/app-release.apk guten8-latest.apk
-          gh release delete v$VERSION --yes || true
-          gh release create v$VERSION guten8-latest.apk --title "GuteN8 v$VERSION" --notes "Version $VERSION" --latest
+          if gh release view "v$VERSION" >/dev/null 2>&1; then
+            echo "Release v$VERSION already exists. Increase versionCode and versionName before publishing another update."
+            exit 1
+          fi
+          gh release create "v$VERSION" guten8-latest.apk --title "GuteN8 v$VERSION" --notes "Version $VERSION" --latest
       - uses: actions/upload-artifact@v4
         with:
           name: GuteN8-APK
