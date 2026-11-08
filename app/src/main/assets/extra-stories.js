@@ -64,6 +64,8 @@ const resolutions=[
  "Die Seifenblase trug einen winzigen Marienkäfer über den Bach. Hoppel fing sie behutsam mit einem Blatt auf, bevor sie zerplatzte.",
  "Das Kissen war für ein krankes Mäusekind genäht worden. Bobby trug es vorsichtig zu seinem Bettchen und die Maus lächelte zum ersten Mal an diesem Tag."
 ];
+const seasonalScenes=["Zwischen den Blumen summten Hummeln, und Hoppel musste niesen, weil eine Blüte seine Nase kitzelte.","Die Sonne wärmte ihre Rücken. Am Bach kühlten sie ihre Pfoten und lauschten dem fröhlichen Plätschern.","Bunte Blätter segelten auf den Weg. Krümel sammelte das schönste und steckte es Bobby hinter das Ohr.","Der Schnee knirschte leise unter ihren Füßen. Bobby pustete kleine Atemwölkchen in die klare Luft.","Kürbislaternen leuchteten am Weg. Hinter einer Hecke raschelte es, doch es war nur ein Igel mit einem Blatt auf dem Kopf.","Es duftete nach Zimt und gebrannten Mandeln. In den Fenstern spiegelten sich kleine goldene Lichter.","Ein Adventskranz stand auf dem Tisch, und die erste Kerze flackerte ruhig. Alle sprachen besonders leise.","Überall lagen bunte Eier versteckt. Krümel fand eines im Moos und zeigte es stolz den anderen.","Die Sterne funkelten über den Bäumen. Die Freunde schmiedeten gute Vorsätze für das neue Jahr.","Bunte Girlanden flatterten zwischen den Bäumen. Hoppel übte heimlich ein Geburtstagslied."];
+const characterMoments=["„Wartet kurz“, sagte Krümel, „ich glaube, ich habe etwas entdeckt!“ Bobby kniete sich zu ihm hinunter.","Bobby wollte schon weitergehen, aber Hoppel hob die Ohren. „Hört ihr das auch?“","„Ein Abenteuer ist schöner, wenn wir zusammenbleiben“, meinte Bobby und reichte Krümel seine Tatze.","Hoppel machte einen besonders großen Satz und landete mitten in einem Haufen weicher Blätter.","Krümel zog eine winzige Lupe aus seiner Tasche. „Für Rätsel braucht man manchmal einen genauen Blick.“"];
 const stories=[];
 for(let p=0;p<places.length;p++)for(let q=0;q<quests.length;q++)for(let t=0;t<turns.length;t++){
  const [where,season,emoji,color,detail]=places[p], [name,object,discovery,motif]=quests[q], [challenge,lesson]=turns[t];
@@ -71,7 +73,7 @@ for(let p=0;p<places.length;p++)for(let q=0;q<quests.length;q++)for(let t=0;t<tu
  const intro=['An einem ruhigen Nachmittag','Als die Sonne langsam tiefer sank','Kurz vor dem Abendessen','Nach einem gemütlichen Frühstück','Als der erste Stern erschien'][t];
  const title=name.charAt(0).toUpperCase()+name.slice(1)+' '+where;
  const text=intro+' machten Bobby der Bär, Hoppel der Hase und Krümel das Meerschweinchen einen Ausflug '+where+'. Überall war es wunderschön: '+detail+'.\n\n'+
- '„Schaut mal!“, rief Hoppel. Direkt vor ihnen lag '+object+'. „Wem das wohl gehört?“, fragte Krümel leise. Bobby nahm sich vor, das Rätsel noch vor dem Schlafengehen zu lösen.\n\n'+
+ seasonalScenes[p]+'\n\n'+characterMoments[(q+t)%characterMoments.length]+' „Schaut mal!“, rief Hoppel. Direkt vor ihnen lag '+object+'. „Wem das wohl gehört?“, fragte Krümel leise. Bobby nahm sich vor, das Rätsel noch vor dem Schlafengehen zu lösen.\n\n'+
  challenge+' Bald erreichten sie '+discovery+'. Dort entdeckten sie einen Hinweis: Drei kleine Sterne waren in die Erde gezeichnet. „Das ist bestimmt kein Zufall“, flüsterte Hoppel.\n\n'+
  'Bobby ging vorsichtig voran. Krümel schaute unter jeden Stein, und Hoppel blickte hinter jeden Busch. '+resolutions[q]+'\n\n'+
  '„Dann haben wir ja genau das Richtige gefunden“, sagte Bobby und nahm Hoppel und Krümel in die Arme. '+lesson+'\n\n'+
