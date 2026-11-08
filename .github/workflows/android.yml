@@ -47,6 +47,8 @@ jobs:
           assert 'function stopSpeech()' in html and 'function updateSpeechButtons(active)' in html, 'Narration controls missing'
           assert 'stopSpeech();document.querySelectorAll' in html, 'Navigation speech-stop separator missing'
           assert 'if(firstTime)storyFinished()' not in html, 'Bedtime reminders must work on rereads'
+          assert 'id="recentProgressFill"' in html and 'function updateRecentProgress(s,p)' in html, 'Home reading progress missing'
+          assert "if(!$('reader').classList.contains('active'))show('reader')" in html, 'Narration must open reader'
           assert 'on:\n  workflow_dispatch:' in pathlib.Path('.github/workflows/android.yml').read_text(), 'Automatic builds must remain disabled'
           forest=pathlib.Path('app/src/main/assets/art/forest-friends.svg')
           assert forest.is_file(), 'Missing illustrated forest artwork'
