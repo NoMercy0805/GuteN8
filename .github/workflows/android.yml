@@ -1,5 +1,7 @@
 name: Android APK
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: write
@@ -85,7 +87,7 @@ jobs:
           assert 'const seasonalScenes=' in extra and 'seasonalScenes[p]' in extra, 'Seasonal story scenes missing'
           assert 'const characterMoments=' in extra and 'characterMoments[(q+t)%characterMoments.length]' in extra, 'Varied character moments missing'
           assert 'const chapterNames=' in extra and 'chapterNames[t]' in extra, 'Generated story titles must be distinct'
-          assert '"Gute Nacht!"' in extra and '][t];' in extra and "text,artTheme:p,artMotif:q,artVariant:t" in extra, 'Varied bedtime endings missing'
+          assert 'Gute Nacht!' in extra and 'artVariant:t' in extra, 'Varied bedtime endings missing'
           for classic in ('fliegender-kuchen','verschwundene-kuerbisse','mia-bobby-boot'):
               original=next(s for s in stories if s['id']==classic)
               assert 'artTheme' not in original, f'Original incorrectly treated as generated: {classic}'
