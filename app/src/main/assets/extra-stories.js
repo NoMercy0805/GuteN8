@@ -71,7 +71,8 @@ for(let p=0;p<places.length;p++)for(let q=0;q<quests.length;q++)for(let t=0;t<tu
  const [where,season,emoji,color,detail]=places[p], [name,object,discovery,motif]=quests[q], [challenge,lesson]=turns[t];
  const n=p*100+q*5+t+1;
  const intro=['An einem ruhigen Nachmittag','Als die Sonne langsam tiefer sank','Kurz vor dem Abendessen','Nach einem gemütlichen Frühstück','Als der erste Stern erschien'][t];
- const title=name.charAt(0).toUpperCase()+name.slice(1)+' '+where;
+ const chapterNames=['und die erste Spur','und der überraschende Fund','und das kleine Missgeschick','und der mutige Plan','und die leise Entdeckung'];
+ const title=name.charAt(0).toUpperCase()+name.slice(1)+' '+where+' – '+chapterNames[t];
  const text=intro+' machten Bobby der Bär, Hoppel der Hase und Krümel das Meerschweinchen einen Ausflug '+where+'. Überall war es wunderschön: '+detail+'.\n\n'+
  seasonalScenes[p]+'\n\n'+characterMoments[(q+t)%characterMoments.length]+' „Schaut mal!“, rief Hoppel. Direkt vor ihnen lag '+object+'. „Wem das wohl gehört?“, fragte Krümel leise. Bobby nahm sich vor, das Rätsel noch vor dem Schlafengehen zu lösen.\n\n'+
  challenge+' Bald erreichten sie '+discovery+'. Dort entdeckten sie einen Hinweis: Drei kleine Sterne waren in die Erde gezeichnet. „Das ist bestimmt kein Zufall“, flüsterte Hoppel.\n\n'+
