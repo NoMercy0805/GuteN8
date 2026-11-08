@@ -1,6 +1,6 @@
 # GuteN8 – individuelle Prüfung und Illustration
 
-Stand: 2026-11-08. **0/1.011 vollständig geprüft und neu illustriert; 15/1.000 Zusatzgeschichten individuell neu geschrieben und in der App-Datenquelle ersetzt.** Dieses Dokument ist der tatsächliche Arbeitsbeginn, keine Fertigmeldung.
+Stand: 2026-11-08. **0/1.011 vollständig geprüft und neu illustriert; 18/1.000 Zusatzgeschichten individuell neu geschrieben und in der App-Datenquelle ersetzt.** Dieses Dokument ist der tatsächliche Arbeitsbeginn, keine Fertigmeldung.
 
 ## Bestand
 - `stories.json`: 11 individuell geschriebene Geschichten mit eigenen SVG-Dateien in `art/`.
@@ -74,3 +74,13 @@ Die vorhandenen Originalfiguren müssen als visuelle Referenz für die neuen Ill
 **Figurentreue ist zwingend:** Ein während dieses Pakets erzeugter Bildentwurf zeigte eine falsche Tierart für Krümel (Igel statt Meerschweinchen) und abweichende Kostüme. Dieser Entwurf wurde ausdrücklich **nicht** in die App übernommen und zählt nicht als fertige Illustration. Kein Bild wird eingebaut, bevor die ursprünglichen Figuren und die Handlung korrekt dargestellt sind.
 
 **Text-Commit:** `d70159ae1d09948d606b0baa2b442b8d2f785023`.
+
+## Arbeitsstand: Ersatzgeschichten 16–18
+
+| ID | Neuer Titel | Textstatus | Individuelle Illustration |
+| --- | --- | --- | --- |
+| extra-0016 | Die Brücke aus weichen Blättern | neu geschrieben, eingebaut | offen: Rindenbrücke mit Blättern über schmalem Graben und kleiner Raupe |
+| extra-0017 | Der kleine Laden für verlorene Dinge | neu geschrieben, eingebaut | offen: Wald-Fundtisch, Maus mit runder Brille, roter Schleife und Handschuh |
+| extra-0018 | Die Wolke mit dem leisen Donner | neu geschrieben, eingebaut | offen: gemütlicher Innenraum mit Freunden am Regenfenster, Amsel unter Vordach |
+
+**Text-Commit:** `430d2b8e55f42b15b23d90b43a88abde51ab42b6`. **Bildstatus weiterhin offen:** Ein generiertes Bild mit abweichenden Figuren ist nicht akzeptabel. Erst ein originalgetreues Bild mit den bestehenden Figuren darf als App-Ressource eingebaut werden.
