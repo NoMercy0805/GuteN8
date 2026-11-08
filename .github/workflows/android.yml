@@ -8,8 +8,6 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      HAS_KEYSTORE: ${{ secrets.KEYSTORE_BASE64 != '' }}
     steps:
       - uses: actions/checkout@v4
       - name: Install and publish GuteN8 launcher icons
@@ -196,49 +194,58 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
-      - name: Decode signing keystore
-        if: env.HAS_KEYSTORE == 'true'
+      - name: Require persistent signing key
         env:
           KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
-        run: echo "$KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/release.jks"
-      - name: Verify signing configuration
-        if: env.HAS_KEYSTORE == 'true'
-        env:
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: |
+          if [ -z "$KEYSTORE_BASE64" ] || [ -z "$KEYSTORE_PASSWORD" ] || [ -z "$KEY_ALIAS" ] || [ -z "$KEY_PASSWORD" ]; then
+            echo "::error::Persistent signing secrets missing. Configure KEYSTORE_BASE64, KEYSTORE_PASSWORD, KEY_ALIAS and KEY_PASSWORD. Refusing to publish a temporary debug-signed APK."
+            exit 1
+          fi
+          printf '%s' "$KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/release.jks"
           test -s "$RUNNER_TEMP/release.jks"
-          test -n "$KEYSTORE_PASSWORD"
-          test -n "$KEY_ALIAS"
-          test -n "$KEY_PASSWORD"
-      - name: Build APK
+          keytool -list -keystore "$RUNNER_TEMP/release.jks" -storepass "$KEYSTORE_PASSWORD" -alias "$KEY_ALIAS" >/dev/null
+          keytool -list -v -keystore "$RUNNER_TEMP/release.jks" -storepass "$KEYSTORE_PASSWORD" -alias "$KEY_ALIAS" | grep 'SHA1:'
+
+      - name: Build signed release APK
         env:
-          KEYSTORE_PATH: ${{ secrets.KEYSTORE_BASE64 != '' && format('{0}/release.jks', runner.temp) || '' }}
+          KEYSTORE_PATH: ${{ runner.temp }}/release.jks
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: gradle :app:assembleRelease --no-daemon
+
+      - name: Verify APK signature matches configured keystore
+        env:
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
         run: |
-          if [ -n "$KEYSTORE_PATH" ]; then gradle :app:assembleRelease --no-daemon; else gradle :app:assembleDebug --no-daemon; fi
-      - name: Publish installable APK release
+          APK="app/build/outputs/apk/release/app-release.apk"
+          test -s "$APK"
+          APKSIGNER=$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -1)
+          test -x "$APKSIGNER"
+          "$APKSIGNER" verify --verbose --print-certs "$APK"
+          EXPECTED=$(keytool -list -v -keystore "$RUNNER_TEMP/release.jks" -storepass "$KEYSTORE_PASSWORD" -alias "$KEY_ALIAS" | sed -n 's/^[[:space:]]*SHA1: //p' | head -1 | tr -d ':' | tr '[:lower:]' '[:upper:]')
+          ACTUAL=$("$APKSIGNER" verify --print-certs "$APK" | sed -n 's/.*certificate SHA-1 digest: //p' | head -1 | tr -d ':' | tr '[:lower:]' '[:upper:]')
+          test -n "$EXPECTED" && test -n "$ACTUAL" && test "$EXPECTED" = "$ACTUAL" || { echo "::error::APK signature does not match configured signing key"; exit 1; }
+          echo "Verified stable signing certificate: $ACTUAL"
+
+      - name: Publish verified signed APK release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           VERSION="1.0.${GITHUB_RUN_NUMBER}"
-          if [ "${HAS_KEYSTORE}" = "true" ]; then
-            APK="app/build/outputs/apk/release/app-release.apk"
-            CHANNEL="Signed release"
-          else
-            APK="app/build/outputs/apk/debug/app-debug.apk"
-            CHANNEL="Temporary debug preview (signature changes between builds; updates require a persistent signing key)"
-          fi
+          APK="app/build/outputs/apk/release/app-release.apk"
           test -s "$APK"
           cp "$APK" guten8-latest.apk
           if gh release view "v$VERSION" >/dev/null 2>&1; then
             echo "Release v$VERSION already exists."
             exit 1
           fi
-          gh release create "v$VERSION" guten8-latest.apk --title "GuteN8 v$VERSION" --notes "$(printf 'Version %s\nAndroid-versionCode: %s\nChannel: %s\n\nGuteN8 – Gutenachtgeschichten mit Bobby, Hoppel und Krümel.' "$VERSION" "$GITHUB_RUN_NUMBER" "$CHANNEL")" --latest
+          gh release create "v$VERSION" guten8-latest.apk --title "GuteN8 v$VERSION" --notes "$(printf 'Version %s\nAndroid-versionCode: %s\nChannel: verified stable signed release\n\nGuteN8 – Gutenachtgeschichten mit Bobby, Hoppel und Krümel.' "$VERSION" "$GITHUB_RUN_NUMBER")" --latest
       - uses: actions/upload-artifact@v4
         with:
           name: GuteN8-APK
