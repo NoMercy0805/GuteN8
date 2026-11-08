@@ -1,6 +1,6 @@
 # GuteN8 – individuelle Prüfung und Illustration
 
-Stand: 2026-11-08. **0/1.011 vollständig geprüft und neu illustriert; 12/1.000 Zusatzgeschichten individuell neu geschrieben und in der App-Datenquelle ersetzt.** Dieses Dokument ist der tatsächliche Arbeitsbeginn, keine Fertigmeldung.
+Stand: 2026-11-08. **0/1.011 vollständig geprüft und neu illustriert; 15/1.000 Zusatzgeschichten individuell neu geschrieben und in der App-Datenquelle ersetzt.** Dieses Dokument ist der tatsächliche Arbeitsbeginn, keine Fertigmeldung.
 
 ## Bestand
 - `stories.json`: 11 individuell geschriebene Geschichten mit eigenen SVG-Dateien in `art/`.
@@ -62,3 +62,15 @@ Die vorhandenen Originalfiguren müssen als visuelle Referenz für die neuen Ill
 | extra-0012 | Das Windspiel am stillen Teich | neu geschrieben, eingebaut | offen: Muschelwindspiel am Teich, Schildkröte und drei Freunde |
 
 **Bildstatus:** Diese Motivbeschreibungen sind nur Vorlagen. Die bestehenden Figuren aus den Originalbildern sind verbindlich; noch keine hochwertigen neuen Illustrationsdateien integriert. **Text-Commit:** `1fb763f56e6a3169933648b2bb5054c98bd330fa`.
+
+## Arbeitsstand: Ersatzgeschichten 13–15
+
+| ID | Neuer Titel | Textstatus | Individuelle Illustration |
+| --- | --- | --- | --- |
+| extra-0013 | Die Feder im Kirschbaum | neu geschrieben, eingebaut | offen: Eisvogel im Kirschbaum, schimmernde Feder, Bachweg |
+| extra-0014 | Die Laterne, die nicht leuchten wollte | neu geschrieben, eingebaut | offen: leuchtende Papierlaterne mit Sternen und Schnecke auf Kiesweg |
+| extra-0015 | Das Picknick unter der Wolkenburg | neu geschrieben, eingebaut | offen: Picknickdecke unter burgförmiger Wolke, Käfer mit Apfelstück |
+
+**Figurentreue ist zwingend:** Ein während dieses Pakets erzeugter Bildentwurf zeigte eine falsche Tierart für Krümel (Igel statt Meerschweinchen) und abweichende Kostüme. Dieser Entwurf wurde ausdrücklich **nicht** in die App übernommen und zählt nicht als fertige Illustration. Kein Bild wird eingebaut, bevor die ursprünglichen Figuren und die Handlung korrekt dargestellt sind.
+
+**Text-Commit:** `d70159ae1d09948d606b0baa2b442b8d2f785023`.
