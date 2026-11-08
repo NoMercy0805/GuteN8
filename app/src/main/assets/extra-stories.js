@@ -100,7 +100,13 @@ for(let p=0;p<places.length;p++)for(let q=0;q<quests.length;q++)for(let t=0;t<tu
  challenge+' Bald erreichten sie '+discovery+'. Dort schauten sie sich aufmerksam um. '+questClues[q]+'\n\n'+
  'Bobby ging vorsichtig voran. Krümel hielt nach weiteren Hinweisen Ausschau, während Hoppel den Weg im Blick behielt. '+resolutions[q]+'\n\n'+
  '„Dann haben wir ja genau das Richtige gefunden“, sagte Bobby und nahm Hoppel und Krümel in die Arme. '+lesson+'\n\n'+
- ["Als der Himmel dunkelblau wurde, gingen die drei nach Hause. Sie tranken warmen Kakao, kuschelten sich unter ihre Decken und erzählten sich noch einmal von ihrem Abenteuer ","Als die Sterne erschienen, deckte Hoppel die Freunde mit einer weichen Decke zu. Bobby erzählte noch einmal vom schönsten Moment ihres Ausflugs ","Zu Hause wartete schon eine kleine Lampe am Bett. Krümel stellte seine Schuhe ordentlich nebeneinander, Hoppel schüttelte sein Kissen auf und Bobby löschte das große Licht. Noch lange dachten sie lächelnd an ihren Ausflug ","Auf dem Heimweg lauschten sie den Grillen. Bobby trug den müden Krümel ein Stück, während Hoppel den Weg zeigte. In ihren Betten träumten sie von den Dingen, die sie heute ","Als der Mond über den Bäumen stand, kuschelten sich alle drei auf das große Sofa. Hoppel erzählte eine winzige Geschichte, Krümel schloss die Augen und Bobby deckte alle zu. Der Wald wurde ganz ruhig. Gute Nacht!"][t]+(t===4?'':where+'. Gute Nacht!');
+ [
+ "Als der Himmel dunkelblau wurde, gingen die drei nach Hause. Sie tranken warmen Kakao, kuschelten sich unter ihre Decken und erzählten sich noch einmal von ihrem Abenteuer. Schließlich wurden ihre Augen schwer. Gute Nacht!",
+ "Als die Sterne erschienen, deckte Bobby seine Freunde mit einer weichen Decke zu. Hoppel erinnerte sich an den schönsten Moment ihres Ausflugs. Bald schliefen alle friedlich ein. Gute Nacht!",
+ "Zu Hause wartete schon eine kleine Lampe am Bett. Krümel stellte seine Schuhe ordentlich nebeneinander, Hoppel schüttelte sein Kissen auf und Bobby löschte das große Licht. Noch lange dachten sie lächelnd an ihren Ausflug. Gute Nacht!",
+ "Auf dem Heimweg lauschten sie den Grillen. Bobby trug den müden Krümel ein Stück, während Hoppel den Weg zeigte. Später träumten sie in ihren Betten von ihrem gemeinsamen Abenteuer. Gute Nacht!",
+ "Als der Mond über den Bäumen stand, kuschelten sich alle drei auf das große Sofa. Hoppel erzählte eine winzige Geschichte, Krümel schloss die Augen und Bobby deckte alle zu. Der Wald wurde ganz ruhig. Gute Nacht!"
+ ][t];
  stories.push({id:'extra-'+String(n).padStart(4,'0'),title,category:season,emoji:motif,color,text,artTheme:p,artMotif:q});
 }
 window.guten8ExtraStories=stories;
