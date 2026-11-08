@@ -62,6 +62,8 @@ jobs:
           assert 'p<places.length' in extra and 'q<quests.length' in extra and 't<turns.length' in extra, 'Story generator loops missing'
           assert 'const resolutions=' in extra and 'resolutions[q]' in extra, 'Distinct quest endings missing'
           assert 'const seasonalDecor=' in extra and 'decor=seasonalDecor[s.artTheme]' in extra, 'Seasonal cover decorations missing'
+          assert 'const seasonalScenes=' in extra and 'seasonalScenes[p]' in extra, 'Seasonal story scenes missing'
+          assert 'const characterMoments=' in extra and 'characterMoments[(q+t)%characterMoments.length]' in extra, 'Varied character moments missing'
           for classic in ('fliegender-kuchen','verschwundene-kuerbisse','mia-bobby-boot'):
               original=next(s for s in stories if s['id']==classic)
               assert 'artTheme' not in original, f'Original incorrectly treated as generated: {classic}'
