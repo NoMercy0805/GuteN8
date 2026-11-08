@@ -12,6 +12,21 @@ jobs:
       HAS_KEYSTORE: ${{ secrets.KEYSTORE_BASE64 != '' }}
     steps:
       - uses: actions/checkout@v4
+      - name: Install and publish GuteN8 launcher icons
+        run: |
+          if [ -f GuteN8-icons-res.zip ]; then
+            mkdir -p /tmp/guten8-icon-assets
+            unzip -oq GuteN8-icons-res.zip -d /tmp/guten8-icon-assets
+            test -s /tmp/guten8-icon-assets/res/mipmap-xhdpi/ic_launcher.png
+            cp -R /tmp/guten8-icon-assets/res/. app/src/main/res/
+            git add app/src/main/res/
+            if ! git diff --cached --quiet; then
+              git config user.name "github-actions[bot]"
+              git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+              git commit -m "Add Bobby Hoppel and Kruemel launcher image resources"
+              git push origin HEAD:main
+            fi
+          fi
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
