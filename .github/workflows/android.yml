@@ -46,6 +46,8 @@ jobs:
           assert 'id="readerProgressTrack"' in html and 'id="readerProgressFill"' in html, 'Reader progress UI missing'
           assert 'id="libraryProgressTrack"' in html and "$('libraryProgressTrack').setAttribute('aria-valuenow',libraryPercent)" in html, 'Accessible library progress missing'
           assert 'function readerKeydown(e)' in html, 'Keyboard navigation missing'
+          assert "updateOffer=null;$('updateInstall').hidden=true" in html, 'Update checks must clear stale download offers'
+          assert 'window.onUpdateError=e=>' in html and "$('updateInstall').hidden=true" in html, 'Update error must hide download button'
           assert 'function resetLibraryFilters()' in html, 'Library search reset missing'
           assert 'if(!matches.length){' in html, 'Library empty-results branch must have valid syntax'
           assert "'')+'<span class=\"story-duration\">" in html, 'Story card badge must be concatenated safely'
@@ -156,6 +158,7 @@ jobs:
               'update prompt': ('id="updateInstall"', 'function installUpdate()'),
               'android back': ('window.guten8Back=', 'window.guten8Back ? window.guten8Back()'),
           }
+          assert "if(typeof stopSpeech===\\'function\\')stopSpeech()" in java, 'Android backgrounding must reset narration controls'
           for name,(a,b) in checks.items():
               assert a in html and (b in html or b in java), f'Missing {name}'
           import re
