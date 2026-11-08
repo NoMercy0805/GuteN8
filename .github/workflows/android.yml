@@ -39,6 +39,9 @@ jobs:
           assert 'id="readingPaper"' in html and 'function readerTouchEnd(e)' in html, 'Swipe reader wiring missing'
           assert 'readingPaper\').addEventListener(\'touchend\'' in html, 'Swipe handler must be registered'
           assert 'class="empty-state"' in html, 'Empty library states missing'
+          assert 'id="readerProgressTrack"' in html and 'id="readerProgressFill"' in html, 'Reader progress UI missing'
+          assert 'function readerKeydown(e)' in html, 'Keyboard navigation missing'
+          assert 'function resetLibraryFilters()' in html, 'Library search reset missing'
           assert 'on:\n  workflow_dispatch:' in pathlib.Path('.github/workflows/android.yml').read_text(), 'Automatic builds must remain disabled'
           forest=pathlib.Path('app/src/main/assets/art/forest-friends.svg')
           assert forest.is_file(), 'Missing illustrated forest artwork'
