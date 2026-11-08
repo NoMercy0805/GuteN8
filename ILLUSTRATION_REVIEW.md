@@ -1,6 +1,6 @@
 # GuteN8 – individuelle Prüfung und Illustration
 
-Stand: 2026-11-08. **0/1.011 vollständig geprüft und neu illustriert; 18/1.000 Zusatzgeschichten individuell neu geschrieben und in der App-Datenquelle ersetzt.** Dieses Dokument ist der tatsächliche Arbeitsbeginn, keine Fertigmeldung.
+Stand: 2026-11-08. **0/1.011 vollständig geprüft und neu illustriert; 38/1.000 Zusatzgeschichten individuell neu geschrieben und in der App-Datenquelle ersetzt.** Dieses Dokument ist der tatsächliche Arbeitsbeginn, keine Fertigmeldung.
 
 ## Bestand
 - `stories.json`: 11 individuell geschriebene Geschichten mit eigenen SVG-Dateien in `art/`.
@@ -84,3 +84,13 @@ Die vorhandenen Originalfiguren müssen als visuelle Referenz für die neuen Ill
 | extra-0018 | Die Wolke mit dem leisen Donner | neu geschrieben, eingebaut | offen: gemütlicher Innenraum mit Freunden am Regenfenster, Amsel unter Vordach |
 
 **Text-Commit:** `430d2b8e55f42b15b23d90b43a88abde51ab42b6`. **Bildstatus weiterhin offen:** Ein generiertes Bild mit abweichenden Figuren ist nicht akzeptabel. Erst ein originalgetreues Bild mit den bestehenden Figuren darf als App-Ressource eingebaut werden.
+
+## Geschichtenpaket 19–38: nur Texte
+
+**20 eigenständige Gute-Nacht-Geschichten** ersetzen die bisherigen automatisch kombinierten Einträge `extra-0019` bis `extra-0038` unter Beibehaltung ihrer IDs. **Commit:** `39728733d734a8fac90999c8759dd025247b6392`.
+
+| IDs | Bearbeitung | Status |
+| --- | --- | --- |
+| extra-0019 bis extra-0038 | 20 individuell geschriebene vollständige Erzählungen, keine Kombinationen aus bestehenden Bausteinen | im App-Quelltext ersetzt |
+
+**Vereinbarte Reihenfolge:** Zuerst alle 1.000 Zusatzgeschichten einzeln schreiben und prüfen, danach die 1.011 Illustrationen bearbeiten. Bildstatus bleibt unverändert. Die 11 ursprünglichen Geschichten bleiben erhalten. Vollständig mit Bild abgeschlossen: 0/1.011.
