@@ -121,6 +121,7 @@ jobs:
           const expectedMotifs=['🔔','🗝️','⭐','⛵','🪁','🗺️','🐿️','☂️','✨','🍰','🧢','🎐','🪶','☁️','🎒','🏮','🎵','🧭','🫧','🛏️'];
           const expectedSeasons=['Frühling','Sommer','Herbst','Winter','Halloween','Weihnachten','Advent','Ostern','Silvester','Geburtstag'];
           let checked=0;
+          const uniqueCovers=new Set();
           for(const story of stories){
             assert(Number.isInteger(story.artTheme)&&story.artTheme>=0&&story.artTheme<10,'Invalid theme: '+story.id);
             assert(Number.isInteger(story.artMotif)&&story.artMotif>=0&&story.artMotif<20,'Invalid motif: '+story.id);
@@ -129,6 +130,8 @@ jobs:
             assert(story.text.endsWith('Gute Nacht!'),'Missing bedtime ending: '+story.id);
             const cover=context.window.guten8ExtraArt(story);
             assert(cover.startsWith('data:image/svg+xml;charset=utf-8,'),'Invalid SVG image URL: '+story.id);
+            uniqueCovers.add(cover);
+            assert(Number.isInteger(story.artVariant)&&story.artVariant>=0&&story.artVariant<5,'Invalid image variant: '+story.id);
             const svg=decodeURIComponent(cover.split(',')[1]);
             assert(svg.includes('<svg ')&&svg.includes('</svg>'),'Malformed SVG image: '+story.id);
             assert(svg.includes(expectedMotifs[story.artMotif]),'Cover does not depict story motif: '+story.id);
@@ -136,6 +139,7 @@ jobs:
             assert(svg.includes('🐻')&&svg.includes('🐰')&&svg.includes('🐹'),'Cover missing protagonists: '+story.id);
             checked++;
           }
+          assert.equal(uniqueCovers.size,1000,'Every story must have a distinct SVG variant');
           console.log('Validated '+checked+' generated stories and their SVGs for season, motif and protagonists');
           JS
       - name: Check reader, bookmarks and navigation wiring
