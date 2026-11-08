@@ -57,7 +57,12 @@ jobs:
           }
           for name,(a,b) in checks.items():
               assert a in html and (b in html or b in java), f'Missing {name}'
-          print('All reader/navigation smoke checks passed')
+          import re
+          ids=set(re.findall(r'\bid="([^"]+)"',html))
+          references=set(re.findall(r"\$\('([^']+)'\)",html.split('<script>')[-1]))
+          missing=sorted(references-ids)
+          assert not missing, f'JavaScript refers to missing HTML IDs: {missing}'
+          print(f'All reader/navigation smoke checks passed; {len(references)} DOM IDs verified')
           PY
       - name: Install Gradle
         uses: gradle/actions/setup-gradle@v4
