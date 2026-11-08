@@ -41,6 +41,24 @@ jobs:
           Path('/tmp/guten8-app.js').write_text(html.split('<script>')[-1].split('</script>')[0], encoding='utf-8')
           PY
           node --check /tmp/guten8-app.js
+      - name: Check reader, bookmarks and navigation wiring
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          html=Path('app/src/main/assets/index.html').read_text(encoding='utf-8')
+          java=Path('app/src/main/java/de/nomercy/guten8/MainActivity.java').read_text(encoding='utf-8')
+          checks = {
+              'reader heading': ('id="readerHeading"', "$('readerHeading').textContent=current.title"),
+              'reader progress': ('id="pageNum"', 'function renderPage()'),
+              'bookmarks': ('id="bookmarkCards"', 'function renderBookmarks()'),
+              'favorites': ('id="favoriteCards"', 'function toggleFavorite(id)'),
+              'update prompt': ('id="updateInstall"', 'function installUpdate()'),
+              'android back': ('window.guten8Back=', 'window.guten8Back ? window.guten8Back()'),
+          }
+          for name,(a,b) in checks.items():
+              assert a in html and (b in html or b in java), f'Missing {name}'
+          print('All reader/navigation smoke checks passed')
+          PY
       - name: Install Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
