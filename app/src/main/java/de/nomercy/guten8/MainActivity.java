@@ -46,5 +46,7 @@ public class MainActivity extends Activity {
   @JavascriptInterface public void openLink(String url){if(url.startsWith("https://github.com/NoMercy0805/GuteN8/releases/") || url.startsWith("https://github.com/NoMercy0805/GuteN8/releases/download/"))runOnUiThread(()->startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse(url))));}
  }
  private int compare(String a,String b){try{String[] x=a.split("\\."),y=b.split("\\.");for(int i=0;i<3;i++){int p=i<x.length?Integer.parseInt(x[i]):0,q=i<y.length?Integer.parseInt(y[i]):0;if(p!=q)return Integer.compare(p,q);}}catch(Exception e){}return 0;}
- @Override public void onBackPressed(){if(web.canGoBack())web.goBack();else super.onBackPressed();}
+ @Override public void onBackPressed(){web.evaluateJavascript("window.guten8Back ? window.guten8Back() : false",result->{if("false".equals(result)){runOnUiThread(()->{if(web.canGoBack())web.goBack();else MainActivity.super.onBackPressed();});}});}
+ @Override protected void onPause(){super.onPause();if(web!=null)web.evaluateJavascript("if(window.speechSynthesis)window.speechSynthesis.cancel()",null);}
+ @Override protected void onDestroy(){if(web!=null){web.removeJavascriptInterface("Android");web.destroy();web=null;}super.onDestroy();}
 }
