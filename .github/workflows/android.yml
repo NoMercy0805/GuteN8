@@ -42,6 +42,8 @@ jobs:
           assert 'id="readerProgressTrack"' in html and 'id="readerProgressFill"' in html, 'Reader progress UI missing'
           assert 'function readerKeydown(e)' in html, 'Keyboard navigation missing'
           assert 'function resetLibraryFilters()' in html, 'Library search reset missing'
+          assert 'if(!matches.length){' in html, 'Library empty-results branch must have valid syntax'
+          assert "'Originale'" in html and 'original-label' in html, 'Written stories need a dedicated filter and label'
           assert 'extra-stories.js' in html and 'function loadMoreStories()' in html, 'Extra story loading or pagination missing'
           for classic in ('fliegender-kuchen','verschwundene-kuerbisse','mia-bobby-boot'):
               assert classic in ids, f'Missing classic story: {classic}'
