@@ -45,6 +45,8 @@ jobs:
           assert 'if(!matches.length){' in html, 'Library empty-results branch must have valid syntax'
           assert "'')+'<span class=\"story-duration\">" in html, 'Story card badge must be concatenated safely'
           assert 'function sortLibraryStories(list)' in html, 'Library sorting missing'
+          assert 'id="unreadOnly"' in html and 'id="librarySort"' in html, 'Library filter controls missing'
+          assert 'function orderLibrary(list)' in html and "$('unreadOnly').checked" in html, 'Library filter logic missing'
           assert "'Originale'" in html and 'original-label' in html, 'Written stories need a dedicated filter and label'
           assert 'extra-stories.js' in html and 'function loadMoreStories()' in html, 'Extra story loading or pagination missing'
           for classic in ('fliegender-kuchen','verschwundene-kuerbisse','mia-bobby-boot'):
@@ -73,6 +75,7 @@ jobs:
           Path('/tmp/guten8-app.js').write_text(html.split('<script>')[-1].split('</script>')[0], encoding='utf-8')
           PY
           node --check /tmp/guten8-app.js
+          node --check app/src/main/assets/extra-stories.js
       - name: Check reader, bookmarks and navigation wiring
         run: |
           python3 - <<'PY'
