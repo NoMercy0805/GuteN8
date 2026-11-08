@@ -49,7 +49,7 @@ jobs:
           assert 'function orderLibrary(list)' in html and "$('unreadOnly').checked" in html, 'Library filter logic missing'
           assert 'const storyArtCache=new Map()' in html, 'Artwork caching missing'
           assert 'function scheduleLibrarySearch()' in html, 'Debounced library search missing'
-          assert 'const dotIndices=' in html and 'page-ellipsis' in html, 'Long-story page navigation missing'
+          assert 'const dotIndices=' in html and '.page-dots .page-ellipsis{display:inline-flex' in html, 'Long-story page navigation must show ellipsis'
           assert 'document.createDocumentFragment()' in html and "$('cards').appendChild(fragment)" in html, 'Incremental story pagination missing'
           assert 'const storyPageCache=new Map()' in html and 'const storyDurationCache=new Map()' in html, 'Story text caching missing'
           assert 'const seasonal=' in html and 'const themed=pool.filter' in html, 'Seasonal recommendations missing'
