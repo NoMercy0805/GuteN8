@@ -49,6 +49,7 @@ jobs:
           assert 'id="unreadOnly"' in html and 'id="librarySort"' in html, 'Library filter controls missing'
           assert 'function orderLibrary(list)' in html and "$('unreadOnly').checked" in html, 'Library filter logic missing'
           assert 'const storyArtCache=new Map()' in html, 'Artwork caching missing'
+          assert 'const storySearchCache=new Map()' in html and 'searchableStory(s).includes(q)' in html, 'Search index caching missing'
           assert 'function scheduleLibrarySearch()' in html, 'Debounced library search missing'
           assert 'const dotIndices=' in html and '.page-dots .page-ellipsis{display:inline-flex' in html, 'Long-story page navigation must show ellipsis'
           assert 'document.createDocumentFragment()' in html and "$('cards').appendChild(fragment)" in html, 'Incremental story pagination missing'
