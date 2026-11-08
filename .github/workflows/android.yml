@@ -20,7 +20,7 @@ jobs:
       - name: Validate story library
         run: |
           python3 - <<'PY'
-          import json, pathlib
+          import json, pathlib, xml.etree.ElementTree as ET
           path = pathlib.Path('app/src/main/assets/stories.json')
           stories = json.loads(path.read_text(encoding='utf-8'))
           assert stories and isinstance(stories, list)
@@ -29,10 +29,15 @@ jobs:
               assert all(story.get(k) for k in ('id','title','text','category','emoji','color'))
               assert story['id'] not in ids, f"Duplicate story: {story['id']}"
               ids.add(story['id'])
-              assert pathlib.Path('app/src/main/assets/art',story['id']+'.svg').is_file(), f"Missing story illustration: {story['id']}"
+              art=pathlib.Path('app/src/main/assets/art',story['id']+'.svg')
+              assert art.is_file(), f"Missing story illustration: {story['id']}"
+              assert ET.parse(art).getroot().tag.endswith('svg'), f"Invalid SVG: {art}"
           html = pathlib.Path('app/src/main/assets/index.html').read_text(encoding='utf-8')
           assert 'onUpdateResult' in html and 'Android.stories()' in html
-          assert pathlib.Path('app/src/main/assets/art/forest-friends.svg').is_file(), 'Missing illustrated forest artwork'
+          assert 'function readingMinutes(s)' in html and 'function chunks(s)' in html
+          forest=pathlib.Path('app/src/main/assets/art/forest-friends.svg')
+          assert forest.is_file(), 'Missing illustrated forest artwork'
+          assert ET.parse(forest).getroot().tag.endswith('svg'), 'Invalid forest SVG'
           print(f'Validated {len(stories)} stories and application entry point')
           PY
       - name: Check JavaScript syntax
