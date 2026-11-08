@@ -1,6 +1,6 @@
 # GuteN8 – individuelle Prüfung und Illustration
 
-Stand: 2026-11-08. **0/1.011 vollständig geprüft und neu illustriert.** Dieses Dokument ist der tatsächliche Arbeitsbeginn, keine Fertigmeldung.
+Stand: 2026-11-08. **0/1.011 vollständig geprüft und neu illustriert; 6/1.000 Zusatzgeschichten individuell neu geschrieben und in der App-Datenquelle ersetzt.** Dieses Dokument ist der tatsächliche Arbeitsbeginn, keine Fertigmeldung.
 
 ## Bestand
 - `stories.json`: 11 individuell geschriebene Geschichten mit eigenen SVG-Dateien in `art/`.
@@ -29,3 +29,16 @@ Die 1.000 aktuell aus Textbausteinen zusammengesetzten Geschichten müssen durch
 
 ## Offene Aufgabe
 Die vorhandenen Originalfiguren müssen als visuelle Referenz für die neuen Illustrationen verwendet werden. Bis zur tatsächlichen Erstellung und Integration sind alle fünf oben genannten Geschichten lediglich **vorbereitet**, nicht abgeschlossen.
+
+## Arbeitsstand: erste sechs Ersatzgeschichten
+
+| ID | Neuer Titel | Textstatus | Individuelle Illustration |
+| --- | --- | --- | --- |
+| extra-0001 | Das Glöckchen im Tulpenbeet | neu geschrieben, eingebaut | offen: Glöckchen, Tulpen, Mäusekorb; Originalfiguren unverändert |
+| extra-0002 | Die kleine Tür im Apfelbaum | neu geschrieben, eingebaut | offen: kleine Holztür, Igel mit Saatgut, Apfelbaum |
+| extra-0003 | Das Sternenlicht in der Pfütze | neu geschrieben, eingebaut | offen: Spiegelung eines Sterns in Pfütze, Eule auf Ast |
+| extra-0004 | Das Boot aus dem Birkenblatt | neu geschrieben, eingebaut | offen: Blattboot „Honigwind“ mit Käfer auf Bach |
+| extra-0005 | Der Drachen mit dem roten Schwanz | neu geschrieben, eingebaut | offen: roter Papierdrachen mit gelbem Sternflicken |
+| extra-0006 | Die Karte mit den drei Punkten | neu geschrieben, eingebaut | offen: drei blaue Kiesel, Schatzkarte, Schildkröte am Teich |
+
+**Bildvorgabe:** Die bisherigen generischen Emoji-/SVG-Themenbilder sind keine akzeptierten Einzelillustrationen. Neue Bilder müssen an den bereits vorhandenen Originalfiguren ausgerichtet und als Bilddateien eingebaut werden; bis dahin gilt kein Eintrag als vollständig abgeschlossen.
