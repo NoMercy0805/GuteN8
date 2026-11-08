@@ -99,7 +99,7 @@ jobs:
           assert 'if(firstTime)storyFinished()' not in html, 'Bedtime reminders must work on rereads'
           assert 'id="recentProgressFill"' in html and 'function updateRecentProgress(s,p)' in html, 'Home reading progress missing'
           assert "if(!$('reader').classList.contains('active'))show('reader')" in html, 'Narration must open reader'
-          assert 'on:\n  workflow_dispatch:' in pathlib.Path('.github/workflows/android.yml').read_text(), 'Automatic builds must remain disabled'
+          assert '  push:\n    branches: [main]' in pathlib.Path('.github/workflows/android.yml').read_text(), 'Automatic builds on main must remain enabled'
           forest=pathlib.Path('app/src/main/assets/art/forest-friends.svg')
           assert forest.is_file(), 'Missing illustrated forest artwork'
           assert ET.parse(forest).getroot().tag.endswith('svg'), 'Invalid forest SVG'
