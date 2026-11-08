@@ -21,11 +21,10 @@ Ohne Secrets erstellt die Pipeline nur eine Debug-APK zum Testen. Diese **nicht 
 
 ### Update veröffentlichen
 
-1. In `app/build.gradle` sowohl `versionCode` (z.B. 2) als auch `versionName` (z.B. '1.0.1') erhöhen.
-2. Änderungen nach `main` pushen.
-3. GitHub Actions baut die signierte Release-APK und erstellt den Release `v1.0.1` mit `guten8-latest.apk`.
-4. Die App prüft beim Start und über Einstellungen GitHub Releases auf eine höhere Version.
-5. Nach Bestätigung öffnet sie den APK-Download. Android verlangt gegebenenfalls die Berechtigung, Apps aus dieser Quelle zu installieren. Die Installation muss vom Nutzer bestätigt werden.
+1. Änderungen nach `main` pushen. GitHub Actions vergibt automatisch einen höheren `versionCode` und den Versionsnamen `1.0.<GitHub-Run-Nummer>`.
+2. GitHub Actions baut die signierte Release-APK und erstellt einen eindeutigen Release-Tag `v1.0.<GitHub-Run-Nummer>` mit `guten8-latest.apk`.
+3. Die App prüft beim Start und über Einstellungen GitHub Releases auf eine höhere Version.
+4. Nach Bestätigung öffnet sie den APK-Download. Android verlangt gegebenenfalls die Berechtigung, Apps aus dieser Quelle zu installieren. Die Installation muss vom Nutzer bestätigt werden.
 
 **Wichtig:** Die aktuelle App startet einen Download über den externen Browser. Ein vollständig integrierter Installer und eine überprüfte End-to-End-Updateinstallation sind noch nicht implementiert bzw. getestet.
 
