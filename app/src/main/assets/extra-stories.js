@@ -42,6 +42,28 @@ const turns=[
 ['Krümel hatte eine Idee, die zunächst verrückt klang. Sie bauten aus Zweigen und Blättern eine kleine Brücke.','Mit vereinten Kräften gelang ihnen etwas, das keiner allein geschafft hätte.'],
 ['Plötzlich wurde es still. Hoppel lauschte, Bobby schnupperte und Krümel betrachtete ganz genau die Umgebung.','Sie merkten, wie viele wunderbare Dinge man entdeckt, wenn man einen Moment still wird.']
 ];
+const resolutions=[
+ "Unter einem Farnblatt hörten sie ein leises Klingeln. Eine junge Eule hatte ihre Glocke verloren. Als Bobby sie zurückgab, schlug die Eule vor Freude dreimal mit den Flügeln.",
+ "Der goldene Schlüssel passte zu einer winzigen Tür im Baum. Dahinter hatte eine Hasenfamilie ihre Wintervorräte verstaut und sich schon Sorgen gemacht.",
+ "Der Stern war ein kleines Licht, das vom Weg abgekommen war. Krümel stellte eine Laterne auf, damit es den Weg zurück zum Nachthimmel fand.",
+ "Das Papierboot gehörte zwei Mäusekindern. Hoppel schob es mit einem Schilfhalm ans Ufer, und die Mäuse bedankten sich mit einer selbstgemalten Kapitänsurkunde.",
+ "Der rote Drachen hing hoch in einer Birke. Bobby hielt den Ast vorsichtig fest, während Hoppel die Schnur befreite.",
+ "Die Schatzkarte führte nicht zu Gold, sondern zu einer Kiste voller Briefe. Jeder Brief erzählte von einer guten Tat, die jemand im Wald getan hatte.",
+ "Das Eichhörnchen hatte Angst vor seiner ersten großen Klettertour. Krümel zeigte ihm, wie man kleine Schritte macht und zwischendurch Pause einlegt.",
+ "Der Regenschirm gehörte einer alten Schildkröte. Sie hatte ihn vergessen, als die Sonne herauskam, und freute sich über die unerwarteten Besucher.",
+ "Die Glühwürmchen übten für ihren ersten Lichtertanz. Die Freunde klatschten leise im Takt und wurden zu ihrem allerersten Publikum.",
+ "Der Kuchen war für ein Überraschungsfest bestimmt. Gemeinsam brachten sie ihn zur Lichtung und schmückten den Tisch mit Blüten und Blättern.",
+ "Die Mütze hatte der kleine Dachs auf dem Heimweg verloren. Bobby setzte sie ihm auf und zog sie so tief, dass nur noch seine Nasenspitze herausschaute.",
+ "Das Windspiel hatte sich in einem Zweig verfangen. Als Hoppel es löste, erklang eine sanfte Melodie, die sogar die Vögel für einen Moment verstummen ließ.",
+ "Die Feder gehörte einem jungen Vogel, der sein Nest suchte. Von einem Hügel aus entdeckten sie den Baum und begleiteten ihn nach Hause.",
+ "Das Wolkenschaf konnte nicht einschlafen. Bobby erzählte ihm von weichen Moosbetten, bis es ganz langsam über den Mond davontrieb.",
+ "Im großen Rucksack steckten nur drei winzige Kekse und eine Decke. Krümel fand, dass man für ein Abenteuer vor allem gute Freunde brauchte.",
+ "Die Laterne zeigte den Weg zu einer kleinen Hütte. Dort wartete ein Igel auf seine Familie, und die Freunde blieben bei ihm, bis alle wieder zusammen waren.",
+ "Die verlorene Melodie versteckte sich im Rauschen der Blätter. Als alle still wurden, konnten sie sie hören und gemeinsam weitersummen.",
+ "Der Kompass zeigte nicht nach Norden, sondern zu einem alten Baum mit einer Bank. Dort fanden die Freunde den schönsten Platz für eine Pause.",
+ "Die Seifenblase trug einen winzigen Marienkäfer über den Bach. Hoppel fing sie behutsam mit einem Blatt auf, bevor sie zerplatzte.",
+ "Das Kissen war für ein krankes Mäusekind genäht worden. Bobby trug es vorsichtig zu seinem Bettchen und die Maus lächelte zum ersten Mal an diesem Tag."
+];
 const stories=[];
 for(let p=0;p<places.length;p++)for(let q=0;q<quests.length;q++)for(let t=0;t<turns.length;t++){
  const [where,season,emoji,color,detail]=places[p], [name,object,discovery,motif]=quests[q], [challenge,lesson]=turns[t];
@@ -51,7 +73,7 @@ for(let p=0;p<places.length;p++)for(let q=0;q<quests.length;q++)for(let t=0;t<tu
  const text=intro+' machten Bobby der Bär, Hoppel der Hase und Krümel das Meerschweinchen einen Ausflug '+where+'. Überall war es wunderschön: '+detail+'.\n\n'+
  '„Schaut mal!“, rief Hoppel. Direkt vor ihnen lag '+object+'. „Wem das wohl gehört?“, fragte Krümel leise. Bobby nahm sich vor, das Rätsel noch vor dem Schlafengehen zu lösen.\n\n'+
  challenge+' Bald erreichten sie '+discovery+'. Dort entdeckten sie einen Hinweis: Drei kleine Sterne waren in die Erde gezeichnet. „Das ist bestimmt kein Zufall“, flüsterte Hoppel.\n\n'+
- 'Bobby ging vorsichtig voran. Krümel schaute unter jeden Stein, und Hoppel blickte hinter jeden Busch. Schließlich fanden sie eine freundliche Waldfee, die ihnen erklärte, warum '+object+' an diesem besonderen Ort aufgetaucht war. Es sollte jemanden daran erinnern, wie wichtig gute Freunde sind.\n\n'+
+ 'Bobby ging vorsichtig voran. Krümel schaute unter jeden Stein, und Hoppel blickte hinter jeden Busch. '+resolutions[q]+'\n\n'+
  '„Dann haben wir ja genau das Richtige gefunden“, sagte Bobby und nahm Hoppel und Krümel in die Arme. '+lesson+'\n\n'+
  'Als der Himmel dunkelblau wurde, gingen die drei nach Hause. Sie tranken warmen Kakao, kuschelten sich unter ihre Decken und erzählten sich noch einmal von ihrem Abenteuer '+where+'. „Morgen erleben wir wieder etwas Schönes“, murmelte Krümel. Und bald schliefen alle drei zufrieden ein. Gute Nacht!';
  stories.push({id:'extra-'+String(n).padStart(4,'0'),title,category:season,emoji:motif,color,text,artTheme:p,artMotif:q});
