@@ -17,6 +17,22 @@ jobs:
           distribution: temurin
           java-version: '17'
       - uses: android-actions/setup-android@v3
+      - name: Validate story library
+        run: |
+          python3 - <<'PY'
+          import json, pathlib
+          path = pathlib.Path('app/src/main/assets/stories.json')
+          stories = json.loads(path.read_text(encoding='utf-8'))
+          assert stories and isinstance(stories, list)
+          ids = set()
+          for story in stories:
+              assert all(story.get(k) for k in ('id','title','text','category','emoji','color'))
+              assert story['id'] not in ids, f"Duplicate story: {story['id']}"
+              ids.add(story['id'])
+          html = pathlib.Path('app/src/main/assets/index.html').read_text(encoding='utf-8')
+          assert 'onUpdateResult' in html and 'stories.json' in html
+          print(f'Validated {len(stories)} stories and application entry point')
+          PY
       - name: Install Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
