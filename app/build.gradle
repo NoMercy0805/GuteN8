@@ -4,7 +4,7 @@ android {
  namespace 'de.nomercy.guten8'
  compileSdk 35
  buildFeatures { buildConfig true }
- defaultConfig { applicationId 'de.nomercy.guten8'; minSdk 24; targetSdk 35; versionCode 1; versionName '1.0.0' }
+ defaultConfig { applicationId 'de.nomercy.guten8'; minSdk 24; targetSdk 35; versionCode (System.getenv('GITHUB_RUN_NUMBER') ? System.getenv('GITHUB_RUN_NUMBER').toInteger() : 1); versionName (System.getenv('GITHUB_RUN_NUMBER') ? '1.0.' + System.getenv('GITHUB_RUN_NUMBER') : '1.0.0') }
  signingConfigs {
    release {
      if (System.getenv('KEYSTORE_PATH')) {
