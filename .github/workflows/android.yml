@@ -47,6 +47,9 @@ jobs:
           assert 'function sortLibraryStories(list)' in html, 'Library sorting missing'
           assert 'id="unreadOnly"' in html and 'id="librarySort"' in html, 'Library filter controls missing'
           assert 'function orderLibrary(list)' in html and "$('unreadOnly').checked" in html, 'Library filter logic missing'
+          assert 'const storyArtCache=new Map()' in html, 'Artwork caching missing'
+          assert 'function scheduleLibrarySearch()' in html, 'Debounced library search missing'
+          assert 'const seasonal=' in html and 'const themed=pool.filter' in html, 'Seasonal recommendations missing'
           assert "'Originale'" in html and 'original-label' in html, 'Written stories need a dedicated filter and label'
           assert 'extra-stories.js' in html and 'function loadMoreStories()' in html, 'Extra story loading or pagination missing'
           for classic in ('fliegender-kuchen','verschwundene-kuerbisse','mia-bobby-boot'):
