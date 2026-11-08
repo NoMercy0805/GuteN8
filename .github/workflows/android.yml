@@ -29,6 +29,7 @@ jobs:
               assert all(story.get(k) for k in ('id','title','text','category','emoji','color'))
               assert story['id'] not in ids, f"Duplicate story: {story['id']}"
               ids.add(story['id'])
+              assert pathlib.Path('app/src/main/assets/art',story['id']+'.svg').is_file(), f"Missing story illustration: {story['id']}"
           html = pathlib.Path('app/src/main/assets/index.html').read_text(encoding='utf-8')
           assert 'onUpdateResult' in html and 'Android.stories()' in html
           assert pathlib.Path('app/src/main/assets/art/forest-friends.svg').is_file(), 'Missing illustrated forest artwork'
