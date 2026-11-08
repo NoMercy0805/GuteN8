@@ -35,7 +35,7 @@ jobs:
           assert 'function readingMinutes(s)' in html and 'function chunks(s)' in html
           assert "'<img src=\"'+storyImage(s)" in html, 'Story cards must use illustrated covers'
           assert "$('readerArt').innerHTML" in html, 'Reader illustration missing'
-          assert "ttsToken++;speechSynthesis.cancel()}page=index" in html, 'Page jumps must cancel stale narration'
+          assert "function jumpPage(index)" in html and "stopSpeech();page=index" in html, 'Page jumps must cancel stale narration'
           assert 'id="readingPaper"' in html and 'function readerTouchEnd(e)' in html, 'Swipe reader wiring missing'
           assert 'readingPaper\').addEventListener(\'touchend\'' in html, 'Swipe handler must be registered'
           assert 'class="empty-state"' in html, 'Empty library states missing'
@@ -43,6 +43,8 @@ jobs:
           assert 'function readerKeydown(e)' in html, 'Keyboard navigation missing'
           assert 'function resetLibraryFilters()' in html, 'Library search reset missing'
           assert 'if(!matches.length){' in html, 'Library empty-results branch must have valid syntax'
+          assert "'')+'<span class=\"story-duration\">" in html, 'Story card badge must be concatenated safely'
+          assert 'function sortLibraryStories(list)' in html, 'Library sorting missing'
           assert "'Originale'" in html and 'original-label' in html, 'Written stories need a dedicated filter and label'
           assert 'extra-stories.js' in html and 'function loadMoreStories()' in html, 'Extra story loading or pagination missing'
           for classic in ('fliegender-kuchen','verschwundene-kuerbisse','mia-bobby-boot'):
