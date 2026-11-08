@@ -43,6 +43,8 @@ jobs:
           assert 'function readerKeydown(e)' in html, 'Keyboard navigation missing'
           assert 'function resetLibraryFilters()' in html, 'Library search reset missing'
           assert 'extra-stories.js' in html and 'function loadMoreStories()' in html, 'Extra story loading or pagination missing'
+          for classic in ('fliegender-kuchen','verschwundene-kuerbisse','mia-bobby-boot'):
+              assert classic in ids, f'Missing classic story: {classic}'
           extra=pathlib.Path('app/src/main/assets/extra-stories.js').read_text(encoding='utf-8')
           assert 'window.guten8ExtraStories=stories' in extra and 'window.guten8ExtraArt=function(s)' in extra, 'Seasonal story generator missing'
           assert 'p<places.length' in extra and 'q<quests.length' in extra and 't<turns.length' in extra, 'Story generator loops missing'
