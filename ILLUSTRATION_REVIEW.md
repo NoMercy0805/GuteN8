@@ -1,6 +1,6 @@
 # GuteN8 – individuelle Prüfung und Illustration
 
-Stand: 2026-11-08. **0/1.011 vollständig geprüft und neu illustriert; 38/1.000 Zusatzgeschichten individuell neu geschrieben und in der App-Datenquelle ersetzt.** Dieses Dokument ist der tatsächliche Arbeitsbeginn, keine Fertigmeldung.
+Stand: 2026-11-08. **0/1.011 vollständig geprüft und neu illustriert; 58/1.000 Zusatzgeschichten individuell neu geschrieben und in der App-Datenquelle ersetzt.** Dieses Dokument ist der tatsächliche Arbeitsbeginn, keine Fertigmeldung.
 
 ## Bestand
 - `stories.json`: 11 individuell geschriebene Geschichten mit eigenen SVG-Dateien in `art/`.
@@ -94,3 +94,7 @@ Die vorhandenen Originalfiguren müssen als visuelle Referenz für die neuen Ill
 | extra-0019 bis extra-0038 | 20 individuell geschriebene vollständige Erzählungen, keine Kombinationen aus bestehenden Bausteinen | im App-Quelltext ersetzt |
 
 **Vereinbarte Reihenfolge:** Zuerst alle 1.000 Zusatzgeschichten einzeln schreiben und prüfen, danach die 1.011 Illustrationen bearbeiten. Bildstatus bleibt unverändert. Die 11 ursprünglichen Geschichten bleiben erhalten. Vollständig mit Bild abgeschlossen: 0/1.011.
+
+## Geschichtenpaket 39–58: nur Texte
+
+20 neue, individuell verfasste Geschichten ersetzen die bisherigen Baukasten-Einträge `extra-0039` bis `extra-0058`, ohne die IDs zu verändern. Text-Commit: `cb6e8f3bca24d1a32011d9832c4241af59bbf73d`. Gesamtstand: **58/1.000 Zusatzgeschichten individuell geschrieben**, 942 Zusatzgeschichten verbleiben. Bilder werden gemäß Nutzerentscheidung erst nach der Textphase bearbeitet.
