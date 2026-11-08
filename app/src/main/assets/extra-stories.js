@@ -64,6 +64,28 @@ const resolutions=[
  "Die Seifenblase trug einen winzigen Marienkäfer über den Bach. Hoppel fing sie behutsam mit einem Blatt auf, bevor sie zerplatzte.",
  "Das Kissen war für ein krankes Mäusekind genäht worden. Bobby trug es vorsichtig zu seinem Bettchen und die Maus lächelte zum ersten Mal an diesem Tag."
 ];
+const questClues=[
+ "Im Moos glitzerte eine winzige silberne Schleife. „Vielleicht hat jemand die Glocke damit befestigt“, überlegte Krümel.",
+ "An der Baumrinde war ein kleines Schlüsselloch eingeritzt. Hoppel legte den Kopf schief und suchte nach einer passenden Tür.",
+ "Ein feiner Lichtstreifen zog sich über den Boden. Bobby bemerkte, dass er immer heller wurde, je näher sie den hohen Bäumen kamen.",
+ "Am Ufer entdeckten sie nasse Fußspuren und eine kleine Schleife aus Schilf. „Hier hat jemand sein Boot gesucht“, sagte Hoppel.",
+ "Zwischen den Zweigen hing ein Stück roter Drachenschnur. Bobby folgte ihr mit den Augen bis in die Baumkrone.",
+ "Auf der Rückseite der Karte stand in krakeliger Schrift: „Der größte Schatz passt in jedes Herz.“ Krümel las die Worte zweimal.",
+ "An einem Stamm waren winzige Kratzspuren zu sehen. „Hier hat jemand das Klettern geübt“, vermutete Bobby.",
+ "Im Gras lagen drei Regentropfen, obwohl es längst aufgehört hatte zu regnen. Daneben führte eine langsame Spur zum Teich.",
+ "Ein Glühwürmchen blinkte dreimal, machte eine Pause und blinkte wieder. Hoppel versuchte vorsichtig, das Muster nachzuahmen.",
+ "Ein süßer Duft wehte von der Lichtung herüber. Krümels Bauch knurrte so laut, dass die anderen lachen mussten.",
+ "An einem niedrigen Ast hing ein blauer Wollfaden. „Die Mütze muss hier vorbeigekommen sein“, rief Hoppel.",
+ "Ein leises Klingeln kam vom Schilf. Bobby hielt die Luft an, damit sie die Richtung besser hören konnten.",
+ "Auf einem Stein lag ein winziges Stückchen Flaum. Krümel zeigte nach oben, wo zwischen den Blättern ein Nest schimmerte.",
+ "Über den Baumwipfeln zog eine besonders flauschige Wolke vorbei. Sie blieb immer wieder stehen, als suche sie etwas.",
+ "Im Sand sahen sie zwei tiefe Abdrücke, als hätte jemand einen schweren Rucksack abgestellt. Hoppel probierte, genauso große Schritte zu machen.",
+ "Ein warmer Lichtschein fiel zwischen die Bäume. „Dort wartet bestimmt jemand“, flüsterte Krümel.",
+ "Ein Vogel pfiff drei Töne, und aus dem Gebüsch kam eine leise Antwort. Bobby summte die Melodie nach.",
+ "Die Kompassnadel drehte sich immer wieder zum selben alten Baum. „Vielleicht zeigt sie uns etwas Wichtigeres als Norden“, sagte Krümel.",
+ "Ein schillernder Lichtpunkt tanzte über den Bach. Hoppel sah darin einen winzigen roten Käfer.",
+ "Auf dem Weg lag ein Stück weicher Stoff mit einer kleinen gestickten Maus. Bobby hob es behutsam auf."
+];
 const seasonalScenes=["Zwischen den Blumen summten Hummeln, und Hoppel musste niesen, weil eine Blüte seine Nase kitzelte.","Die Sonne wärmte ihre Rücken. Am Bach kühlten sie ihre Pfoten und lauschten dem fröhlichen Plätschern.","Bunte Blätter segelten auf den Weg. Krümel sammelte das schönste und steckte es Bobby hinter das Ohr.","Der Schnee knirschte leise unter ihren Füßen. Bobby pustete kleine Atemwölkchen in die klare Luft.","Kürbislaternen leuchteten am Weg. Hinter einer Hecke raschelte es, doch es war nur ein Igel mit einem Blatt auf dem Kopf.","Es duftete nach Zimt und gebrannten Mandeln. In den Fenstern spiegelten sich kleine goldene Lichter.","Ein Adventskranz stand auf dem Tisch, und die erste Kerze flackerte ruhig. Alle sprachen besonders leise.","Überall lagen bunte Eier versteckt. Krümel fand eines im Moos und zeigte es stolz den anderen.","Die Sterne funkelten über den Bäumen. Die Freunde schmiedeten gute Vorsätze für das neue Jahr.","Bunte Girlanden flatterten zwischen den Bäumen. Hoppel übte heimlich ein Geburtstagslied."];
 const characterMoments=["„Wartet kurz“, sagte Krümel, „ich glaube, ich habe etwas entdeckt!“ Bobby kniete sich zu ihm hinunter.","Bobby wollte schon weitergehen, aber Hoppel hob die Ohren. „Hört ihr das auch?“","„Ein Abenteuer ist schöner, wenn wir zusammenbleiben“, meinte Bobby und reichte Krümel seine Tatze.","Hoppel machte einen besonders großen Satz und landete mitten in einem Haufen weicher Blätter.","Krümel zog eine winzige Lupe aus seiner Tasche. „Für Rätsel braucht man manchmal einen genauen Blick.“"];
 const stories=[];
@@ -75,7 +97,7 @@ for(let p=0;p<places.length;p++)for(let q=0;q<quests.length;q++)for(let t=0;t<tu
  const title=name.charAt(0).toUpperCase()+name.slice(1)+' '+where+' – '+chapterNames[t];
  const text=intro+' machten Bobby der Bär, Hoppel der Hase und Krümel das Meerschweinchen einen Ausflug '+where+'. Überall war es wunderschön: '+detail+'.\n\n'+
  seasonalScenes[p]+'\n\n'+characterMoments[(q+t)%characterMoments.length]+' „Schaut mal!“, rief Hoppel. Direkt vor ihnen lag '+object+'. „Wem das wohl gehört?“, fragte Krümel leise. Bobby nahm sich vor, das Rätsel noch vor dem Schlafengehen zu lösen.\n\n'+
- challenge+' Bald erreichten sie '+discovery+'. Dort entdeckten sie einen Hinweis: Drei kleine Sterne waren in die Erde gezeichnet. „Das ist bestimmt kein Zufall“, flüsterte Hoppel.\n\n'+
+ challenge+' Bald erreichten sie '+discovery+'. Dort schauten sie sich aufmerksam um. '+questClues[q]+'\n\n'+
  'Bobby ging vorsichtig voran. Krümel schaute unter jeden Stein, und Hoppel blickte hinter jeden Busch. '+resolutions[q]+'\n\n'+
  '„Dann haben wir ja genau das Richtige gefunden“, sagte Bobby und nahm Hoppel und Krümel in die Arme. '+lesson+'\n\n'+
  ["Als der Himmel dunkelblau wurde, gingen die drei nach Hause. Sie tranken warmen Kakao, kuschelten sich unter ihre Decken und erzählten sich noch einmal von ihrem Abenteuer ","Als die Sterne erschienen, deckte Hoppel die Freunde mit einer weichen Decke zu. Bobby erzählte noch einmal vom schönsten Moment ihres Ausflugs ","Zu Hause wartete schon eine kleine Lampe am Bett. Krümel stellte seine Schuhe ordentlich nebeneinander, Hoppel schüttelte sein Kissen auf und Bobby löschte das große Licht. Noch lange dachten sie lächelnd an ihren Ausflug ","Auf dem Heimweg lauschten sie den Grillen. Bobby trug den müden Krümel ein Stück, während Hoppel den Weg zeigte. In ihren Betten träumten sie von den Dingen, die sie heute ","Als der Mond über den Bäumen stand, kuschelten sich alle drei auf das große Sofa. Hoppel erzählte eine winzige Geschichte, Krümel schloss die Augen und Bobby deckte alle zu. Der Wald wurde ganz ruhig. Gute Nacht!"][t]+(t===4?'':where+'. Gute Nacht!');
