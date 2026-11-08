@@ -33,6 +33,10 @@ jobs:
           html = pathlib.Path('app/src/main/assets/index.html').read_text(encoding='utf-8')
           assert 'onUpdateResult' in html and 'Android.stories()' in html
           assert 'function readingMinutes(s)' in html and 'function chunks(s)' in html
+          assert "'<img src=\"'+storyImage(s)" in html, 'Story cards must use illustrated covers'
+          assert "$('readerArt').innerHTML" in html, 'Reader illustration missing'
+          assert "ttsToken++;speechSynthesis.cancel()}page=index" in html, 'Page jumps must cancel stale narration'
+          assert 'on:\n  workflow_dispatch:' in pathlib.Path('.github/workflows/android.yml').read_text(), 'Automatic builds must remain disabled'
           forest=pathlib.Path('app/src/main/assets/art/forest-friends.svg')
           assert forest.is_file(), 'Missing illustrated forest artwork'
           assert ET.parse(forest).getroot().tag.endswith('svg'), 'Invalid forest SVG'
