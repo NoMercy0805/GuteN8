@@ -118,13 +118,25 @@ jobs:
           assert.equal(new Set(stories.map(s=>s.category)).size,10,'Missing seasons');
           assert.equal(new Set(stories.map(s=>s.text.match(/Dort schauten sie sich aufmerksam um\. ([^\\n]+)/)?.[1])).size,20,'Each quest needs its own clue');
           assert(stories.every(s=>s.text.length>300),'Generated story too short');
-          for(const theme of new Set(stories.map(s=>s.artTheme))){
-            const cover=context.window.guten8ExtraArt(stories.find(s=>s.artTheme===theme));
-            assert(cover.startsWith('data:image/svg+xml;charset=utf-8,'),'Invalid SVG image URL');
+          const expectedMotifs=['🔔','🗝️','⭐','⛵','🪁','🗺️','🐿️','☂️','✨','🍰','🧢','🎐','🪶','☁️','🎒','🏮','🎵','🧭','🫧','🛏️'];
+          const expectedSeasons=['Frühling','Sommer','Herbst','Winter','Halloween','Weihnachten','Advent','Ostern','Silvester','Geburtstag'];
+          let checked=0;
+          for(const story of stories){
+            assert(Number.isInteger(story.artTheme)&&story.artTheme>=0&&story.artTheme<10,'Invalid theme: '+story.id);
+            assert(Number.isInteger(story.artMotif)&&story.artMotif>=0&&story.artMotif<20,'Invalid motif: '+story.id);
+            assert.equal(story.category,expectedSeasons[story.artTheme],'Season/category mismatch: '+story.id);
+            assert(story.text.includes('Bobby')&&story.text.includes('Hoppel')&&story.text.includes('Krümel'),'Missing story characters: '+story.id);
+            assert(story.text.endsWith('Gute Nacht!'),'Missing bedtime ending: '+story.id);
+            const cover=context.window.guten8ExtraArt(story);
+            assert(cover.startsWith('data:image/svg+xml;charset=utf-8,'),'Invalid SVG image URL: '+story.id);
             const svg=decodeURIComponent(cover.split(',')[1]);
-            assert(svg.includes('<svg ')&&svg.includes('</svg>'),'Malformed SVG image');
+            assert(svg.includes('<svg ')&&svg.includes('</svg>'),'Malformed SVG image: '+story.id);
+            assert(svg.includes(expectedMotifs[story.artMotif]),'Cover does not depict story motif: '+story.id);
+            assert(svg.includes(['🌷','☀️','🍁','❄️','🎃','🎄','🕯️','🐣','🎆','🎂'][story.artTheme]),'Cover does not depict season: '+story.id);
+            assert(svg.includes('🐻')&&svg.includes('🐰')&&svg.includes('🐹'),'Cover missing protagonists: '+story.id);
+            checked++;
           }
-          console.log('Validated 1000 distinct stories and all 10 seasonal SVG cover variants');
+          console.log('Validated '+checked+' generated stories and their SVGs for season, motif and protagonists');
           JS
       - name: Check reader, bookmarks and navigation wiring
         run: |
