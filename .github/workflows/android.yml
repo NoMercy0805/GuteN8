@@ -42,6 +42,9 @@ jobs:
           assert 'id="readerProgressTrack"' in html and 'id="readerProgressFill"' in html, 'Reader progress UI missing'
           assert 'function readerKeydown(e)' in html, 'Keyboard navigation missing'
           assert 'function resetLibraryFilters()' in html, 'Library search reset missing'
+          assert 'id="speechRate"' in html and 'function setSpeechRate(v)' in html, 'Speech speed controls missing'
+          assert 'id="readerSpeak"' in html and 'id="settingsSpeak"' in html, 'Speech buttons missing'
+          assert 'function stopSpeech()' in html and 'function updateSpeechButtons(active)' in html, 'Narration controls missing'
           assert 'on:\n  workflow_dispatch:' in pathlib.Path('.github/workflows/android.yml').read_text(), 'Automatic builds must remain disabled'
           forest=pathlib.Path('app/src/main/assets/art/forest-friends.svg')
           assert forest.is_file(), 'Missing illustrated forest artwork'
