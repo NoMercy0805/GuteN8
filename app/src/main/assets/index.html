@@ -103,6 +103,7 @@ function speak(){
  };
  u.onerror=()=>{if(token===ttsToken){ttsToken++;updateSpeechButtons(false)}};
  speechSynthesis.speak(u);
+ updateSpeechButtons(true);
 }
 
 function checkUpdate(){ $('updateStatus').textContent='Suche nach Updates ...';if(window.Android)Android.checkUpdate();else $('updateStatus').textContent='Updateprüfung nur in der Android-App verfügbar.'}
