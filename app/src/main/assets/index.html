@@ -46,7 +46,9 @@ function resetLibraryFilters(){category='Alle';visibleStories=40;$('search').val
 function renderFavorites(){cardsInto($('favoriteCards'),sortLibraryStories(stories.filter(s=>favorites.includes(s.id))))}
 function renderBookmarks(){cardsInto($('bookmarkCards'),sortLibraryStories(stories.filter(s=>bookmarks.includes(s.id))))}
 function openStory(id){if('speechSynthesis'in window)stopSpeech();if(sleepTimer){clearTimeout(sleepTimer);sleepTimer=null}current=stories.find(s=>s.id===id);if(!current)return;page=completed.includes(id)?0:Math.max(0,Math.min(Number(progress[id])||0,chunks(current).length-1));put('last',id);renderPage();show('reader');updateReaderFavorite();updateReaderBookmark()}
+const storyPageCache=new Map();
 function chunks(s){
+ if(storyPageCache.has(s.id))return storyPageCache.get(s.id);
  const limit=340,out=[];let part='';
  const add=sentence=>{
   if(part&&part.length+sentence.length+1>limit){out.push(part.trim());part=''}
@@ -65,13 +67,14 @@ function chunks(s){
   }
  }
  if(part.trim())out.push(part.trim());
- return out.length?out:[''];
+ const pages=out.length?out:[''];storyPageCache.set(s.id,pages);return pages;
 }
 let touchStart=null;
 function readerKeydown(e){if(!current||!$('reader').classList.contains('active')||e.altKey||e.ctrlKey||e.metaKey)return;if(e.target.closest('button,input,select,textarea'))return;if(e.key==='ArrowRight'){e.preventDefault();pageMove(1)}else if(e.key==='ArrowLeft'){e.preventDefault();pageMove(-1)}}
 function readerTouchStart(e){if(e.touches.length!==1)return;touchStart={x:e.touches[0].clientX,y:e.touches[0].clientY}}
 function readerTouchEnd(e){if(!touchStart||!current||!e.changedTouches.length)return;const dx=e.changedTouches[0].clientX-touchStart.x,dy=e.changedTouches[0].clientY-touchStart.y;touchStart=null;if(Math.abs(dx)>75&&Math.abs(dx)>Math.abs(dy)*1.6)pageMove(dx<0?1:-1)}
-function readingMinutes(s){return Math.max(1,Math.ceil(s.text.trim().split(/\s+/).length/110))}
+const storyDurationCache=new Map();
+function readingMinutes(s){if(!storyDurationCache.has(s.id))storyDurationCache.set(s.id,Math.max(1,Math.ceil(s.text.trim().split(/\s+/).length/110)));return storyDurationCache.get(s.id)}
 
 function renderPage(){let arr=chunks(current);$('readerHeading').textContent=current.title;page=Math.max(0,Math.min(page,arr.length-1));$('readerArt').innerHTML='<img src="'+storyImage(current)+'" alt="" />';$('readerArt').setAttribute('aria-label','Illustration zu '+current.title);$('readerTitle').textContent=current.title;$('readerText').textContent=arr[page];$('pageNum').textContent='Seite '+(page+1)+' von '+arr.length;const percent=Math.round((page+1)/arr.length*100);$('readerProgressFill').style.width=percent+'%';$('readerProgressTrack').setAttribute('aria-valuenow',percent);$('remainingTime').textContent=page===arr.length-1?'Letzte Seite':'Noch ca. '+Math.max(1,Math.ceil(arr.slice(page).join(' ').split(/\s+/).length/110))+' Min.';const dotIndices=arr.length<=11?arr.map((_,i)=>i):Array.from(new Set([0,arr.length-1,...Array.from({length:7},(_,i)=>Math.max(0,Math.min(arr.length-1,page+i-3)))] )).sort((a,b)=>a-b);$('pageDots').innerHTML=dotIndices.map((i,k)=>(k&&i>dotIndices[k-1]+1?'<span class="page-ellipsis" aria-hidden="true">…</span>':'')+'<button type="button" aria-label="Seite '+(i+1)+' von '+arr.length+'" aria-current="'+(i===page?'page':'false')+'" class="'+(i===page?'active':'')+'" onclick="jumpPage('+i+')"></button>').join('');$('prevPage').disabled=page===0;$('nextPage').disabled=page===arr.length-1;$('finishStory').hidden=page!==arr.length-1||completed.includes(current.id);progress[current.id]=page;put('progress',progress);$('recent').textContent=current.title+' · Seite '+(page+1)+' von '+arr.length;updateRecentProgress(current,page)}
 function jumpPage(index){if(!current||index===page)return;if('speechSynthesis'in window)stopSpeech();page=index;renderPage();window.scrollTo(0,0)}
