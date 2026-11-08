@@ -59,6 +59,8 @@ jobs:
           extra=pathlib.Path('app/src/main/assets/extra-stories.js').read_text(encoding='utf-8')
           assert 'window.guten8ExtraStories=stories' in extra and 'window.guten8ExtraArt=function(s)' in extra, 'Seasonal story generator missing'
           assert 'p<places.length' in extra and 'q<quests.length' in extra and 't<turns.length' in extra, 'Story generator loops missing'
+          assert 'const resolutions=' in extra and 'resolutions[q]' in extra, 'Distinct quest endings missing'
+          assert extra.count('Eine junge Eule') == 1, 'Story endings may have been duplicated'
           assert 'id="speechRate"' in html and 'function setSpeechRate(v)' in html, 'Speech speed controls missing'
           assert 'id="readerSpeak"' in html and 'id="settingsSpeak"' in html, 'Speech buttons missing'
           assert 'function stopSpeech()' in html and 'function updateSpeechButtons(active)' in html, 'Narration controls missing'
