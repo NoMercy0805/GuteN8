@@ -31,6 +31,7 @@ jobs:
               ids.add(story['id'])
           html = pathlib.Path('app/src/main/assets/index.html').read_text(encoding='utf-8')
           assert 'onUpdateResult' in html and 'Android.stories()' in html
+          assert pathlib.Path('app/src/main/assets/art/forest-friends.svg').is_file(), 'Missing illustrated forest artwork'
           print(f'Validated {len(stories)} stories and application entry point')
           PY
       - name: Check JavaScript syntax
