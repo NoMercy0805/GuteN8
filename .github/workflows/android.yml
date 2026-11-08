@@ -61,7 +61,7 @@ jobs:
           assert 'window.guten8ExtraStories=stories' in extra and 'window.guten8ExtraArt=function(s)' in extra, 'Seasonal story generator missing'
           assert 'p<places.length' in extra and 'q<quests.length' in extra and 't<turns.length' in extra, 'Story generator loops missing'
           assert 'const resolutions=' in extra and 'resolutions[q]' in extra, 'Distinct quest endings missing'
-          assert 'const seasonalDecor=' in extra and 'decor=seasonalDecor[s.artTheme]' in extra, 'Seasonal cover decorations missing'
+          assert 'const seasonalDecor=' in extra and 'decor=seasonalDecor[s.artTheme]' in extra and "</g>'+decor+'<g font-family" in extra, 'Seasonal cover decorations must be rendered in SVG'
           assert 'const seasonalScenes=' in extra and 'seasonalScenes[p]' in extra, 'Seasonal story scenes missing'
           assert 'const characterMoments=' in extra and 'characterMoments[(q+t)%characterMoments.length]' in extra, 'Varied character moments missing'
           assert 'const chapterNames=' in extra and 'chapterNames[t]' in extra, 'Generated story titles must be distinct'
