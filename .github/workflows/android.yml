@@ -93,6 +93,28 @@ jobs:
           PY
           node --check /tmp/guten8-app.js
           node --check app/src/main/assets/extra-stories.js
+      - name: Test generated story catalog and artwork
+        run: |
+          node <<'JS'
+          const fs=require('node:fs');
+          const vm=require('node:vm');
+          const assert=require('node:assert/strict');
+          const context={window:{}};
+          vm.runInNewContext(fs.readFileSync('app/src/main/assets/extra-stories.js','utf8'),context);
+          const stories=context.window.guten8ExtraStories;
+          assert.equal(stories.length,1000,'Expected 1000 generated stories');
+          assert.equal(new Set(stories.map(s=>s.id)).size,1000,'Duplicate story IDs');
+          assert.equal(new Set(stories.map(s=>s.title)).size,1000,'Duplicate story titles');
+          assert.equal(new Set(stories.map(s=>s.category)).size,10,'Missing seasons');
+          assert(stories.every(s=>s.text.length>300),'Generated story too short');
+          for(const theme of new Set(stories.map(s=>s.artTheme))){
+            const cover=context.window.guten8ExtraArt(stories.find(s=>s.artTheme===theme));
+            assert(cover.startsWith('data:image/svg+xml;charset=utf-8,'),'Invalid SVG image URL');
+            const svg=decodeURIComponent(cover.split(',')[1]);
+            assert(svg.includes('<svg ')&&svg.includes('</svg>'),'Malformed SVG image');
+          }
+          console.log('Validated 1000 distinct stories and all 10 seasonal SVG cover variants');
+          JS
       - name: Check reader, bookmarks and navigation wiring
         run: |
           python3 - <<'PY'
