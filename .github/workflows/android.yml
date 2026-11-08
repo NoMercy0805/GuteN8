@@ -39,6 +39,8 @@ jobs:
           assert 'id="readingPaper"' in html and 'function readerTouchEnd(e)' in html, 'Swipe reader wiring missing'
           assert 'readingPaper\').addEventListener(\'touchend\'' in html, 'Swipe handler must be registered'
           assert "addEventListener('touchcancel',readerTouchCancel" in html and 'function readerTouchCancel()' in html, 'Cancelled swipes must reset touch state'
+          assert 'if(e.touches.length!==1){touchStart=null;return}' in html, 'Multitouch must not trigger page turns'
+          assert 'id="readerNotice"' in html and "$('readerNotice').textContent=saved?" in html, 'Bookmark confirmation must be nonblocking'
           assert 'class="empty-state"' in html, 'Empty library states missing'
           assert 'Noch keine Favoriten' in html and 'Noch keine Lesezeichen' in html, 'Empty saved-story states missing'
           assert 'id="readerProgressTrack"' in html and 'id="readerProgressFill"' in html, 'Reader progress UI missing'
