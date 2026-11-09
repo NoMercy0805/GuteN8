@@ -1,0 +1,14 @@
+{
+  "decke": {
+    "text_source": "Screenshot_20261109_003834_ChatGPT.jpg",
+    "text_sha256": "ca286540b1fd43a1c24b3ce9b9190c657ed13b8d6398d9fb9cbbbf19ea395dd6",
+    "word_for_word_reviewed": true,
+    "review_note": "Sichtabgleich mit dem vom Nutzer übermittelten Screenshot. Die Screenshot-Datei ist noch nicht im GitHub-Repository archiviert."
+  },
+  "fliegender-kuchen": {
+    "text_source": "Screenshot_20261109_003554_ChatGPT.jpg",
+    "text_sha256": "2fe7a66680667a4c9780a1491ea851c8e09ca3e9e2104a9f929f2a38d70cf5ad",
+    "word_for_word_reviewed": true,
+    "review_note": "Sichtabgleich mit dem vom Nutzer übermittelten Screenshot. Die Screenshot-Datei ist noch nicht im GitHub-Repository archiviert."
+  }
+}
