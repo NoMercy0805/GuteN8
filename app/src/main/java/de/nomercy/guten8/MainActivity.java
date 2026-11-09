@@ -25,12 +25,25 @@ public class MainActivity extends Activity {
   getWindow().setNavigationBarColor(android.graphics.Color.rgb(13,29,66));
   getWindow().getDecorView().setSystemUiVisibility(0);
   if (Build.VERSION.SDK_INT >= 30) {
-   getWindow().setDecorFitsSystemWindows(true);
+   // On Android 15+ handle the system-bar insets ourselves: the WebView scene
+   // must never occupy the region behind the status icons or gesture area.
+   getWindow().setDecorFitsSystemWindows(Build.VERSION.SDK_INT < 35);
    getWindow().getInsetsController().setSystemBarsAppearance(0,
     android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS |
     android.view.WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS);
   }
-  web=new WebView(this); web.getSettings().setJavaScriptEnabled(true); web.getSettings().setDomStorageEnabled(true);
+  web=new WebView(this);
+  web.setBackgroundColor(android.graphics.Color.rgb(13,29,66));
+  if (Build.VERSION.SDK_INT >= 35) {
+   web.setOnApplyWindowInsetsListener((view, insets) -> {
+    android.graphics.Insets system = insets.getInsets(
+      android.view.WindowInsets.Type.statusBars() |
+      android.view.WindowInsets.Type.navigationBars() |
+      android.view.WindowInsets.Type.displayCutout());
+    view.setPadding(0, system.top, 0, system.bottom);
+    return insets;
+   });
+  } web.getSettings().setJavaScriptEnabled(true); web.getSettings().setDomStorageEnabled(true);
   web.getSettings().setAllowFileAccess(true); web.getSettings().setAllowFileAccessFromFileURLs(false); web.getSettings().setAllowUniversalAccessFromFileURLs(false); web.setWebChromeClient(new WebChromeClient());
   web.setWebViewClient(new WebViewClient(){ @Override public boolean shouldOverrideUrlLoading(WebView v,String url){ return handleUrl(url); } @Override public boolean shouldOverrideUrlLoading(WebView v, WebResourceRequest request){return handleUrl(request.getUrl().toString());} });
   web.addJavascriptInterface(new Bridge(),"Android");setContentView(web);web.loadUrl("file:///android_asset/index.html");
