@@ -90,7 +90,7 @@ jobs:
           assert 'const seasonal=' in html and 'const themed=pool.filter' in html, 'Seasonal recommendations missing'
           assert "'Originale'" in html and 'original-label' in html, 'Written stories need a dedicated filter and label'
           assert 'extra-stories.js' in html and 'function loadMoreStories()' in html, 'Extra story loading or pagination missing'
-          for classic in ('fliegender-kuchen','verschwundene-kuerbisse','mia-bobby-boot'):
+          for classic in ('fliegender-kuchen','verschwundene-kuerbisse','schatztruhe'):
               assert classic in ids, f'Missing classic story: {classic}'
           extra=pathlib.Path('app/src/main/assets/extra-stories.js').read_text(encoding='utf-8')
           assert 'window.guten8ExtraStories=stories' in extra and 'window.guten8ExtraArt=function(s)' in extra, 'Seasonal story generator missing'
@@ -101,7 +101,7 @@ jobs:
           assert 'const characterMoments=' in extra and 'characterMoments[(q+t)%characterMoments.length]' in extra, 'Varied character moments missing'
           assert 'const chapterNames=' in extra and 'chapterNames[t]' in extra, 'Generated story titles must be distinct'
           assert 'Gute Nacht!' in extra and 'artVariant:t' in extra, 'Varied bedtime endings missing'
-          for classic in ('fliegender-kuchen','verschwundene-kuerbisse','mia-bobby-boot'):
+          for classic in ('fliegender-kuchen','verschwundene-kuerbisse','schatztruhe'):
               original=next(s for s in stories if s['id']==classic)
               assert 'artTheme' not in original, f'Original incorrectly treated as generated: {classic}'
           assert extra.count('Eine junge Eule') == 1, 'Story endings may have been duplicated'
