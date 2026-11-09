@@ -23,6 +23,10 @@ for(const sample of samples){
  assert.equal(normalize(pages.join(' ')),normalize(sample.text),'No story text may be lost');
  assert.deepEqual(chunks(sample),pages,'Repeated reads must be stable');
 }
-assert(source.includes("'readerText').textContent=arr[page]"),'Reader must render only selected page');
-assert(source.includes("page!==arr.length-1"),'Completion button must appear only on last page');
-console.log('GuteN8 reader pagination checks passed ('+samples.length+' samples)');
+assert(source.includes("'readerText').textContent=current.text"),'Reader must show complete original story without page splitting');
+assert(source.includes('function updateReaderScrollProgress()'),'Scroll progress function required');
+assert(source.includes("window.addEventListener('scroll',refreshReaderScroll,{passive:true})"),'Scroll progress must be wired');
+assert(source.includes("'finishStory').hidden=completed.includes(current.id)"),'Finish button must not depend on old pagination');
+assert(source.includes("requestAnimationFrame(()=>{const max="),'Saved reading position must restore after view activation');
+assert(source.includes("function bookmark()"),'Bookmarks must remain available');
+console.log('GuteN8 continuous story reader checks passed ('+samples.length+' text samples)');
