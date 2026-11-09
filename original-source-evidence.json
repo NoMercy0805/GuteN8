@@ -19,7 +19,11 @@
     "text_source": "Screenshot_20261109_003703_ChatGPT.jpg",
     "text_sha256": "92b3e1144b903bc56cab907f76eab5eb997b22148cdfe6dcc5d49d88b0e9ceb4",
     "word_for_word_reviewed": true,
-    "review_note": "Vollständiger visueller Vergleich des lesbaren Originals vom Nutzer einschließlich Schlussabschnitt; Originalbild selbst noch nicht in GitHub archiviert."
+    "review_note": "Vollständiger visueller Vergleich des lesbaren Originals vom Nutzer einschließlich Schlussabschnitt; Originalbild selbst noch nicht in GitHub archiviert.",
+    "image_source": "User-provided high-resolution original illustration corresponding to kuschelkissen",
+    "image_sha256": "d6b441690d255469936482ef2df1127e983397ee995ef662f7076d410f919eee",
+    "original_image_reviewed": false,
+    "image_import_status": "Prepared in ZIP; binary not yet committed to GitHub"
   },
   "picknick": {
     "text_source": "Screenshot_20261109_003407_ChatGPT.jpg",
@@ -36,7 +40,11 @@
     "text_sha256": "a5e699d7bdadb90fc645ef4a61d41798394722c0f6f07cc5e42fc7aefd347ae6",
     "current_text_snapshot": "2026-11-09; integrity baseline only, not proof of verbatim transcription",
     "review_provenance": "unchanged_recovered_chat_transcription",
-    "recovered_transcription_commit": "c627bc560ee8779bb8b12b26f08c4551789371ea"
+    "recovered_transcription_commit": "c627bc560ee8779bb8b12b26f08c4551789371ea",
+    "image_source": "User-provided high-resolution original illustration corresponding to zauberpilz",
+    "image_sha256": "d82e70a41364c8920cc651285106d111092555f2ef1933f7ec855d08d115711c",
+    "original_image_reviewed": false,
+    "image_import_status": "Prepared in ZIP; binary not yet committed to GitHub"
   },
   "verschwundene-kuerbisse": {
     "text_source": "Originale ChatGPT-Geschichte aus früherer Unterhaltung",
