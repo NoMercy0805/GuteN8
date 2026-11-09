@@ -73,7 +73,7 @@ jobs:
               assert art.is_file(), f"Missing story illustration: {story['id']}"
               assert ET.parse(art).getroot().tag.endswith('svg'), f"Invalid SVG: {art}"
           html = pathlib.Path('app/src/main/assets/index.html').read_text(encoding='utf-8')
-          assert 'onUpdateResult' in html and 'Android.stories()' in html
+          assert 'Android.stories()' in html and 'onUpdateResult' not in html, 'MyAppHub handles updates; no in-app polling'
           assert 'function readingMinutes(s)' in html and 'function chunks(s)' in html
           assert "'<img src=\"'+storyImage(s)" in html, 'Story cards must use illustrated covers'
           assert "$('readerArt').innerHTML" in html, 'Reader illustration missing'
@@ -89,8 +89,8 @@ jobs:
           assert 'function readerKeydown(e)' in html, 'Keyboard navigation missing'
           assert "$('readerText').textContent=current.text" in html, 'Reader must display complete story continuously'
           assert 'function pageMove(n)' in html, 'Reader navigation must exist'
-          assert "updateOffer=null;$('updateInstall').hidden=true" in html, 'Update checks must clear stale download offers'
-          assert 'window.onUpdateError=e=>' in html and "$('updateInstall').hidden=true" in html, 'Update error must hide download button'
+          assert 'id="updateInstall"' not in html and 'function checkUpdate()' not in html, 'No built-in update controls'
+          assert 'window.onUpdateError=' not in html, 'No obsolete update callbacks'
           assert 'function resetLibraryFilters()' in html, 'Library search reset missing'
           assert 'if(!matches.length){' in html, 'Library empty-results branch must have valid syntax'
           assert "'')+'<span class=\"story-duration\">" in html, 'Story card badge must be concatenated safely'
@@ -193,7 +193,7 @@ jobs:
               'reader progress': ('id="pageNum"', 'function renderPage()'),
               'favorites': ('id="favoriteCards"', 'function renderFavorites()'),
               'favorites': ('id="favoriteCards"', 'function toggleFavorite(id)'),
-              'update prompt': ('id="updateInstall"', 'function installUpdate()'),
+              'library home': ('class="hero-scene"', 'onclick="show(\'home\')"'),
               'android back': ('window.guten8Back=', 'window.guten8Back ? window.guten8Back()'),
           }
           for name,(a,b) in checks.items():
