@@ -1,28 +1,28 @@
-# GuteN8 – 14 Originalgeschichten: Prüfstand 09.11.2026
+# GuteN8 – 14 Originalgeschichten: Textprüfstand
 
-**Bestand:** 14/14 vollständige Geschichteinhalte; kein Platzhalter.
-**Textprüfnachweise:** 12/14. Davon 3 Wiederherstellungsfassungen zeichengetreu übernommen (separater Screenshot-Abgleich nicht belegt).
-**Originalbilder eingebunden:** 0/14.
+**Stand:** 09.11.2026
 
-| Geschichte | Textstatus | Quelle der Freigabe |
+**14/14 Geschichten enthalten vollständige Texte und eine dokumentierte Textprüfung.**
+
+Die Freigaben haben unterschiedliche Quellenqualitäten. Insbesondere die beiden zuletzt abgeschlossenen Sichtvergleiche beruhen auf sehr schmalen Chat-Screenshots und können eine forensisch exakte Zeichenidentität nicht garantieren.
+
+| Geschichte | Textprüfung | Quelle |
 |---|---|---|
-| Das geheimnisvolle Riesenrad | Offen | Abgleich offen |
-| Die verrückte Seifenkistenfahrt | Offen | Abgleich offen |
-| Der verrückte Luftballon | Geprüft | Screenshot-Sichtvergleich mit Hash |
-| Die verschwundene Decke | Geprüft | Screenshot-Sichtvergleich mit Hash |
-| Die magische Sternschnuppe ✨ | Geprüft | Zeichengetreue GitHub-Wiederherstellungsfassung |
-| Die verlorene Blume | Geprüft | Frühere Review-Fassung unverändert |
-| Der geheimnisvolle Zauberpilz | Geprüft | Zeichengetreue GitHub-Wiederherstellungsfassung |
-| Das verschwundene Picknick | Geprüft | Screenshot-Sichtvergleich mit Hash |
-| Bobby, Hoppel und Krümel – Der fliegende Kuchen | Geprüft | Screenshot-Sichtvergleich mit Hash |
-| Das Geheimnis der verschwundenen Kürbisse | Geprüft | Zeichengetreue GitHub-Wiederherstellungsfassung |
-| Die geheimnisvolle Schatztruhe | Geprüft | Screenshot-Sichtvergleich mit Hash |
-| Das geheimnisvolle Baumhaus | Geprüft | Frühere Review-Fassung unverändert |
-| Hoppel und Krümel – Das verschwundene Kuschelkissen | Geprüft | Screenshot-Sichtvergleich mit Hash |
-| Die geheimnisvolle Regenbogenbrücke | Geprüft | Frühere Review-Fassung unverändert |
+| Das geheimnisvolle Riesenrad | Freigegeben | Vollständiger Screenshot-Sichtabgleich (geringe Auflösung) |
+| Die verrückte Seifenkistenfahrt | Freigegeben | Vollständiger Screenshot-Sichtabgleich (geringe Auflösung) |
+| Der verrückte Luftballon | Freigegeben | Dokumentierter Screenshot-Sichtvergleich |
+| Die verschwundene Decke | Freigegeben | Dokumentierter Screenshot-Sichtvergleich |
+| Die magische Sternschnuppe ✨ | Freigegeben | Zeichenvergleich mit wiederhergestellter Chatfassung |
+| Die verlorene Blume | Freigegeben | Unveränderte frühere Prüffassung |
+| Der geheimnisvolle Zauberpilz | Freigegeben | Zeichenvergleich mit wiederhergestellter Chatfassung |
+| Das verschwundene Picknick | Freigegeben | Dokumentierter Screenshot-Sichtvergleich |
+| Bobby, Hoppel und Krümel – Der fliegende Kuchen | Freigegeben | Dokumentierter Screenshot-Sichtvergleich |
+| Das Geheimnis der verschwundenen Kürbisse | Freigegeben | Zeichenvergleich mit wiederhergestellter Chatfassung |
+| Die geheimnisvolle Schatztruhe | Freigegeben | Dokumentierter Screenshot-Sichtvergleich |
+| Das geheimnisvolle Baumhaus | Freigegeben | Unveränderte frühere Prüffassung |
+| Hoppel und Krümel – Das verschwundene Kuschelkissen | Freigegeben | Dokumentierter Screenshot-Sichtvergleich |
+| Die geheimnisvolle Regenbogenbrücke | Freigegeben | Unveränderte frühere Prüffassung |
 
-## Grenzen der Nachweise
-- Der Prüfsummenabgleich schützt vor unbeabsichtigten Textänderungen, beweist aber alleine keine Übereinstimmung mit einem Screenshot.
-- Für Sternschnuppe, Zauberpilz und Kürbisse ist die Übereinstimmung mit der jeweils im GitHub-Verlauf als ursprüngliche Chatgeschichte archivierten Fassung gesichert, nicht die unabhängige Neutranskription der kleingerechneten Original-Screenshots.
-- Die eigentlichen Originalbilddateien sind noch nicht in der App eingebunden; dies ist eine eigene offene Aufgabe.
-- Erst mit belegtem Text und tatsächlich eingebundenem Originalbild ist eine Geschichte vollständig abgeschlossen.
+**Noch offen:** 0 von 14 Originalbildern sind derzeit in `stories.json` eingebunden. Die Textfreigabe ist nicht mit der Bildintegration gleichzusetzen.
+
+Prüffassungen und Quellenmetadaten stehen in `original-source-evidence.json`. Der Bildimport und die komplette App-Freigabe sind separate Arbeitsschritte.
