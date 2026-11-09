@@ -12,10 +12,6 @@ import android.widget.Toast;
 import java.io.InputStream;
 import android.webkit.WebResourceRequest;
 import org.json.JSONObject;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 
 public class MainActivity extends Activity {
  WebView web;
@@ -79,22 +75,7 @@ public class MainActivity extends Activity {
  public class Bridge {
   @JavascriptInterface public String version(){return BuildConfig.VERSION_NAME;}
   @JavascriptInterface public String stories(){try(InputStream in=getAssets().open("stories.json")){byte[] data=new byte[in.available()];int off=0;while(off<data.length){int n=in.read(data,off,data.length-off);if(n<0)break;off+=n;}return new String(data,0,off,java.nio.charset.StandardCharsets.UTF_8);}catch(Exception e){return "[]";}}
-  @JavascriptInterface public void checkUpdate(){
-   new Thread(()->{try{
-    HttpURLConnection c=(HttpURLConnection)new URL("https://api.github.com/repos/NoMercy0805/GuteN8/releases/latest").openConnection();
-    c.setConnectTimeout(10000);c.setReadTimeout(10000);c.setRequestProperty("Accept","application/vnd.github+json");
-    if(c.getResponseCode()!=200)throw new Exception("Noch kein Release verfügbar");
-    BufferedReader br=new BufferedReader(new InputStreamReader(c.getInputStream()));StringBuilder sb=new StringBuilder();String line;while((line=br.readLine())!=null)sb.append(line);
-    JSONObject j=new JSONObject(sb.toString());String tag=j.optString("tag_name","").replaceFirst("^v","");
-    String link="";org.json.JSONArray assets=j.optJSONArray("assets");
-    if(assets!=null)for(int i=0;i<assets.length();i++){JSONObject a=assets.getJSONObject(i);if(a.optString("name").endsWith(".apk")){link=a.optString("browser_download_url",link);break;}}
-    if(link.isEmpty())throw new Exception("Release enthält keine APK");
-    String finalLink=link;boolean newer=compare(tag,BuildConfig.VERSION_NAME)>0;
-    web.post(()->web.evaluateJavascript("window.onUpdateResult("+JSONObject.quote(tag)+","+newer+","+JSONObject.quote(finalLink)+")",null));
-   }catch(Exception e){web.post(()->web.evaluateJavascript("window.onUpdateError("+JSONObject.quote(e.getMessage())+")",null));}}).start();
-  }
-  @JavascriptInterface public void openLink(String url){if(url.startsWith("https://github.com/NoMercy0805/GuteN8/releases/") || url.startsWith("https://github.com/NoMercy0805/GuteN8/releases/download/"))runOnUiThread(()->startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse(url))));}
- }
+   }
  private int compare(String a,String b){try{String[] x=a.split("\\."),y=b.split("\\.");for(int i=0;i<3;i++){int p=i<x.length?Integer.parseInt(x[i]):0,q=i<y.length?Integer.parseInt(y[i]):0;if(p!=q)return Integer.compare(p,q);}}catch(Exception e){}return 0;}
  @Override public void onBackPressed(){web.evaluateJavascript("window.guten8Back ? window.guten8Back() : false",result->{if("false".equals(result)){runOnUiThread(()->{if(web.canGoBack())web.goBack();else MainActivity.super.onBackPressed();});}});}
  @Override protected void onPause(){super.onPause();if(web!=null)web.evaluateJavascript("if(typeof stopSpeech==='function')stopSpeech()",null);}
