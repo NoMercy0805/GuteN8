@@ -240,7 +240,9 @@ body.home-screen-active{
  filter:blur(13px)!important;transform:scale(1.025)!important;
 }
 #home .hero-scene .hero-reference{
- position:relative!important;z-index:1!important;
+ position:absolute!important;left:50%!important;top:0!important;right:auto!important;
+ transform:translateX(-50%)!important;translate:none!important;
+ margin:0!important;z-index:1!important;
  display:block!important;flex:none!important;
  width:86%!important;max-width:86%!important;
  height:100%!important;max-height:100%!important;
