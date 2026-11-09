@@ -699,7 +699,7 @@ document.addEventListener('error',function(e){
  const id=img.dataset.storyId;
  if(!/^[a-z0-9_-]+$/.test(id))return;
  img.dataset.originalFallback='1';
- img.src=(id==='mondlicht-gloeckchen'||['mondboot-am-see','glitzerblume-im-wald','wolkenkeks','sternenlaterne','sternschnuppenhuegel'].includes(id))?'art/forest-friends.svg':'art/'+id+'.svg';
+ img.src=(id==='mondlicht-gloeckchen'||id.startsWith('advent-2026-')||id==='st-martin-2026'||id==='erster-advent-2026'||['mondboot-am-see','glitzerblume-im-wald','wolkenkeks','sternenlaterne','sternschnuppenhuegel'].includes(id))?'art/forest-friends.svg':'art/'+id+'.svg';
 },true);
 
 function shortStoryTitle(title){return title.replace(/^(?:Bobby,\s*Hoppel\s*und\s*Krümel|Hoppel\s*und\s*Krümel)\s*[–—-]\s*/i,'')}
