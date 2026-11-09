@@ -223,3 +223,88 @@
 @media(prefers-reduced-motion:reduce){
   #library .cards .story,#library .cards .card-heart,#library .chips button{transition:none!important;animation:none!important}
 }
+
+/* Cohesive illustrated collection/settings art.
+   Use the SAME detailed Bobby/Hoppel/Krümel artwork as Startseite, rather than
+   the unrelated flat vector figures. Source art remains untouched. */
+#favorites .section-heading h1,#bookmarks .section-heading h1,#settings .section-heading h1{
+ display:flex!important;align-items:center!important;gap:11px!important;
+ font-family:system-ui,'Segoe UI',sans-serif!important;
+ font-size:clamp(22px,6.4vw,33px)!important;
+ color:#fff!important;text-shadow:0 2px 5px #164f8c90!important;
+}
+#favorites .section-title-icon,#bookmarks .section-title-icon,#settings .section-title-icon{
+ display:block!important;flex:none!important;width:39px!important;height:39px!important;
+ color:#fff!important;filter:drop-shadow(0 2px 4px #13477180)!important;
+}
+#favorites .section-title-icon-heart{
+ color:#ffeff2!important;fill:#f45a76!important;stroke:#fff6f7!important;
+}
+#bookmarks .section-title-icon-bookmark{fill:#fff5d8!important;stroke:#184f99!important}
+#settings .section-title-icon-moon{fill:#ffe8a4!important;stroke:#fff2c6!important}
+#favorites:not(.has-stories) .collection-shell,
+#bookmarks:not(.has-stories) .collection-shell{
+ border:2px solid #f8fafc!important;border-radius:27px!important;
+ background:linear-gradient(180deg,#eff8ff,#fff8e9 54%,#fff8ef)!important;
+ box-shadow:0 10px 24px #19538a4f!important;
+ overflow:hidden!important;width:calc(100% - 28px)!important;
+ max-width:540px!important;margin:10px auto 22px!important;
+}
+#favorites:not(.has-stories) .collection-characters,
+#bookmarks:not(.has-stories) .collection-characters{
+ position:relative!important;display:block!important;
+ width:100%!important;height:clamp(205px,58vw,300px)!important;
+ margin:0!important;padding:0!important;border:0!important;
+ background-image:linear-gradient(180deg,#1d376200 0%,#335f8508 72%,#fff4dfad 100%),url('art/reference-home.svg')!important;
+ background-color:#2464a3!important;
+ background-repeat:no-repeat!important;
+ background-size:100% 100%,cover!important;
+ background-position:center center,center 63%!important;
+ border-radius:0!important;
+}
+#favorites:not(.has-stories) .collection-characters img,
+#bookmarks:not(.has-stories) .collection-characters img{
+ display:none!important;
+}
+#favorites:not(.has-stories) .collection-characters::after,
+#bookmarks:not(.has-stories) .collection-characters::after{
+ position:absolute!important;content:''!important;display:block!important;pointer-events:none!important;
+ inset:auto 0 0!important;height:45px!important;
+ background:linear-gradient(180deg,transparent,#fff5e6f2)!important;
+}
+#favorites:not(.has-stories) .collection-shell .empty-state,
+#bookmarks:not(.has-stories) .collection-shell .empty-state{
+ width:100%!important;max-width:none!important;box-shadow:none!important;
+ margin:0!important;border:0!important;border-radius:0!important;
+ background:linear-gradient(180deg,#fff7e9,#fffcf6)!important;
+ padding:9px 21px 24px!important;box-sizing:border-box!important;
+}
+#favorites:not(.has-stories) .collection-shell .empty-state strong,
+#bookmarks:not(.has-stories) .collection-shell .empty-state strong{
+ font-family:system-ui,'Segoe UI',sans-serif!important;color:#1d345a!important;
+ font-size:clamp(22px,5.4vw,27px)!important;font-weight:800!important;
+}
+#favorites:not(.has-stories) .collection-shell .empty-state p,
+#bookmarks:not(.has-stories) .collection-shell .empty-state p{
+ color:#4a617e!important;font-size:clamp(14px,3.9vw,17px)!important;
+}
+#favorites:not(.has-stories) .collection-shell .empty-state button,
+#bookmarks:not(.has-stories) .collection-shell .empty-state button{
+ max-width:390px!important;min-height:53px!important;
+ font-family:system-ui,'Segoe UI',sans-serif!important;
+}
+#settings .sleep-art{
+ position:relative!important;overflow:hidden!important;
+ background:linear-gradient(180deg,#27467800,#254d8166 70%,#163665c0),url('art/reference-home.svg') center 65%/cover no-repeat!important;
+ border:2px solid #d7eeff!important;border-radius:24px!important;
+ box-shadow:0 7px 18px #19538a5c!important;
+}
+#settings .sleep-art .sleep-scene-img{display:none!important}
+#settings .sleep-art::after{
+ content:''!important;display:block!important;position:absolute!important;
+ left:0!important;right:0!important;bottom:0!important;height:35px!important;
+ background:linear-gradient(transparent,#3368a063)!important;
+}
+#favorites .collection-shell .empty-state>span,#bookmarks .collection-shell .empty-state>span{
+ color:#1a4c9a!important;text-shadow:none!important;
+}
