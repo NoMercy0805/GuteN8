@@ -68,3 +68,11 @@ body{background-color:var(--storybook-night)!important}
 .nav button{min-width:0;padding:5px 2px 7px!important;gap:4px!important;line-height:1.15!important;font-size:clamp(10px,2.7vw,13px)!important;font-weight:700!important}
 .nav button:focus-visible{outline:3px solid #f9d991;outline-offset:2px}
 @media(max-width:360px){.nav button{font-size:10px!important}.nav button .nav-icon svg{width:23px;height:23px}}
+
+/* Shared illustrated forest, replacing the mismatched flat-tree backdrops. */
+#home.active,#library,#favorites,#bookmarks,#settings{background-image:linear-gradient(180deg,#06143536,#08193947 58%,#08152f9b),url('art/enchanted-forest.svg')!important;background-position:center top,center top!important;background-size:cover,cover!important;background-repeat:no-repeat!important;background-attachment:scroll!important}
+#library .library-intro,#bookmarks>p{position:relative;z-index:1}
+#library .cards,#favorites .cards,#bookmarks .cards{position:relative;z-index:2}
+#home .hero-scene{z-index:1}
+#home .hero-scene .art{background:none!important}
+@media(min-width:650px){#home.active,#library,#favorites,#bookmarks,#settings{background-size:cover,100% auto!important}}
