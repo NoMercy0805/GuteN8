@@ -1,0 +1,82 @@
+{
+  "description": "Checksums of user-provided source screenshots, not checksums of stories. Image bytes are still stored in conversation uploads and not committed here.",
+  "screenshots": [
+    {
+      "filename": "Screenshot_20261109_003407_ChatGPT.jpg",
+      "story_id": "picknick",
+      "sha256": "85e6e3af960e5f3d8b7a0ba70f57524a285b4e87b4349fa9fdeb2facfc920cf4",
+      "width": 216,
+      "height": 1536
+    },
+    {
+      "filename": "Screenshot_20261109_003513_ChatGPT.jpg",
+      "story_id": "verschwundene-kuerbisse",
+      "sha256": "1e60c8e01ab3c0f6a3cfd676b389dad6ea1d9e00b8ab6bbd6949c2db5df9e4fb",
+      "width": 155,
+      "height": 1536
+    },
+    {
+      "filename": "Screenshot_20261109_003554_ChatGPT.jpg",
+      "story_id": "fliegender-kuchen",
+      "sha256": "6aedbd1444c946ec0c81524005851a55e26609724002846153bc6551e8f5a841",
+      "width": 304,
+      "height": 1536
+    },
+    {
+      "filename": "Screenshot_20261109_003606_ChatGPT.jpg",
+      "story_id": "zauberpilz",
+      "sha256": "c91e1780a83f9370102893c9bf0b02ffb8c91d5b030c735fcae3b447c8ddf5e0",
+      "width": 154,
+      "height": 1536
+    },
+    {
+      "filename": "Screenshot_20261109_003634_ChatGPT.jpg",
+      "story_id": "schatztruhe",
+      "sha256": "bb6464fa67c2ee6dea08e3583fcc6fd1d80324e3291b629f95bb233e0b01b20a",
+      "width": 133,
+      "height": 1536
+    },
+    {
+      "filename": "Screenshot_20261109_003703_ChatGPT.jpg",
+      "story_id": "kuschelkissen",
+      "sha256": "da3a029437c6a42a6398c2ff111ce617425c89696b7517ed17213466abd895d7",
+      "width": 233,
+      "height": 1536
+    },
+    {
+      "filename": "Screenshot_20261109_003718_ChatGPT.jpg",
+      "story_id": "sternschnuppe",
+      "sha256": "39768d1090af6ac6917546af0300f976d136d8d5f6cfd0c72d051ad3daea7656",
+      "width": 153,
+      "height": 1536
+    },
+    {
+      "filename": "Screenshot_20261109_003743_ChatGPT.jpg",
+      "story_id": "seifenkiste",
+      "sha256": "4c776803e637cd8010b1aeed1d8de75158ad33b08cfeb43a296236c1b74a2907",
+      "width": 174,
+      "height": 1536
+    },
+    {
+      "filename": "Screenshot_20261109_003815_ChatGPT.jpg",
+      "story_id": "luftballon",
+      "sha256": "10fb40bade82e727680da9cd57a67f543468c26286b675b19bddbe395d440e35",
+      "width": 197,
+      "height": 1536
+    },
+    {
+      "filename": "Screenshot_20261109_003834_ChatGPT.jpg",
+      "story_id": "decke",
+      "sha256": "f2d980ce05fc0b677cb5d5174ea78a873c68334ab775dca5c0d011e679ecbe98",
+      "width": 356,
+      "height": 1536
+    },
+    {
+      "filename": "Screenshot_20261109_003851_ChatGPT.jpg",
+      "story_id": "riesenrad",
+      "sha256": "b658e4638be90120bf1cc3c69767e4f04523bec9fec179eff448653a5c37da8f",
+      "width": 167,
+      "height": 1536
+    }
+  ]
+}
