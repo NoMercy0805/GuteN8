@@ -27,8 +27,8 @@ jobs:
           fi
       - name: Import original story illustrations when archive is present
         run: |
-          if [ -f GuteN8_7_Originalbilder_importbereit.zip ]; then
-            python3 scripts/import_originalbilder.py GuteN8_7_Originalbilder_importbereit.zip
+          if [ -f GuteN8_9_Originalbilder_importbereit.zip ]; then
+            python3 scripts/import_originalbilder.py GuteN8_9_Originalbilder_importbereit.zip
             git add app/src/main/assets/stories.json app/src/main/assets/art/
             if ! git diff --cached --quiet; then
               git config user.name "github-actions[bot]"
