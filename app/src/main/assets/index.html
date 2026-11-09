@@ -343,6 +343,20 @@ body.night-reading #reader .paper .illustration{box-shadow:0 4px 13px #080f2c99}
 #home .hero .primary,#settings .primary,#favorites .empty-state button,#bookmarks .empty-state button{transition:filter .18s ease,transform .18s ease}
 #home .hero .primary:active,#settings .primary:active,#favorites .empty-state button:active,#bookmarks .empty-state button:active{filter:brightness(.92);transform:translateY(2px)}
 @media(prefers-reduced-motion:reduce){.nav button,#home .hero .primary,#settings .primary{transition:none}}
+
+/* Reference reading controls: gold-accented page indicators and comfortable spacing */
+#reader .reader-header{border-bottom:2px solid #7c9bd3;box-shadow:0 5px 14px #07143b70}
+#reader .reader-heading{font-weight:800;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;min-width:0}
+#reader .toolbar{flex-shrink:0}
+#reader .toolbar button{border:1px solid #a6bde6;border-radius:13px;background:#2d4988;color:#fff3cc}
+#reader .controls{background:linear-gradient(135deg,#203c80,#142657);border:2px solid #7999d1;border-radius:24px;padding:10px 12px;box-shadow:0 7px 17px #0712388c}
+#reader .controls .round{background:linear-gradient(#ffe6aa,#d8ad65);color:#4a321e;border:2px solid #fdf0c9;box-shadow:0 3px 0 #956d3e}
+#reader .controls .round:disabled{opacity:.45;box-shadow:none}
+#reader .page-indicator{color:#fff3cf}
+#reader .reader-progress-track{background:#0d1e4d;border:1px solid #7f9fd8}
+#reader #readerProgressFill{background:linear-gradient(90deg,#f7c766,#ffebad)}
+#reader .page-dots button.active{background:#ffe3a1;box-shadow:0 0 9px #ffd675}
+#reader .finish-story{border-radius:24px;border:2px solid #cce3ff}
 </style></head><body>
 <section id="home" class="screen active"><div class="hero"><div class="home-sign"><span>🐾</span><strong>Bobby, Hoppel<br>und Krümel</strong><small>Unsere Gutenachtgeschichten</small></div><div class="art"><img src="art/forest-friends.svg" alt="Bobby, Hoppel und Krümel lesen zusammen im nächtlichen Wald"></div><button class="primary" onclick="show('library')">📖 Geschichten entdecken →</button><button class="surprise-story" onclick="surpriseStory()">✨ Überrasch mich mit einer Geschichte</button></div><button class="panel recent-panel home-action" onclick="resume()">📚 Zuletzt gelesen <div class="small" id="recent">Noch keine Geschichte gelesen</div><div class="recent-progress-track" aria-hidden="true"><div id="recentProgressFill"></div></div></button><button class="panel home-night home-action" onclick="toggleNight()">🌙 Gute-Nacht-Modus <span id="nightLabel">Aus</span></button></section>
 <section id="library" class="screen"><header><h1>📖 Bibliothek</h1><button class="round" aria-label="Suche öffnen" onclick="document.getElementById('search').focus()">⌕</button></header><p class="library-intro">Entdecke Abenteuer für jede Jahreszeit, Halloween, Advent, Weihnachten und mehr.</p><input class="search" id="search" type="search" placeholder="Geschichte suchen..." aria-label="Geschichte suchen" oninput="scheduleLibrarySearch()"><div class="chips" id="chips"></div><div class="library-tools"><label class="unread-option"><input type="checkbox" id="unreadOnly" onchange="visibleStories=40;renderLibrary()"> Nur ungelesene</label><label class="sort-option">Sortieren <select id="librarySort" onchange="visibleStories=40;renderLibrary()"><option value="recommended">Empfohlen</option><option value="az">Titel A–Z</option><option value="short">Kurze Geschichten</option><option value="long">Lange Geschichten</option></select></label></div><p id="libraryCount" class="small" role="status" aria-live="polite" aria-atomic="true" style="padding:0 18px"></p><div class="library-progress" role="progressbar" aria-label="Gelesene Geschichten" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="libraryProgressTrack"><div class="library-progress-track"><div id="libraryProgressFill"></div></div><span id="libraryProgressText">0 von 0 Geschichten gelesen</span></div><div class="cards" id="cards"></div><button id="loadMore" class="load-more" hidden onclick="loadMoreStories()">Weitere Geschichten anzeigen</button></section>
