@@ -29,4 +29,9 @@ assert(source.includes("window.addEventListener('scroll',refreshReaderScroll,{pa
 assert(source.includes("'finishStory').hidden=completed.includes(current.id)"),'Finish button must not depend on old pagination');
 assert(source.includes("requestAnimationFrame(()=>{const max="),'Saved reading position must restore after view activation');
 assert(source.includes("function bookmark()"),'Bookmarks must remain available');
+
+assert(source.includes('restoringReaderScroll=true'),'Restoring a story must block premature progress writes');
+assert(source.includes('if(restoringReaderScroll||!current'),'Scroll events must not reset saved positions before restoration');
+assert(source.includes('readPercent[current.id]=pct'),'Reader must persist precise percent progress');
+assert(source.includes("'readPercent',readPercent"),'Reader progress must be saved to local storage');
 console.log('GuteN8 continuous story reader checks passed ('+samples.length+' text samples)');
