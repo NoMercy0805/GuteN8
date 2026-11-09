@@ -25,7 +25,18 @@ assert((html.match(/class="nav-icon"/g)||[]).length===4,'Reference layout uses e
 assert(css.includes("url('art/enchanted-forest.svg')"),'Screens must share the illustrated forest');
 assert(!html.includes('class="sleep-stars"'),'No extra moon or stars outside the bedtime illustration');
 assert(css.includes('#favorites .collection-shell')&&css.includes('#bookmarks .collection-shell'),'Collection layout must be shared');
-assert(css.includes('#home .hero-scene .art img'),'Illustration must integrate into hero rather than a tiled image');
+assert(html.includes('src="art/reference-home.svg"'),'Home must render the actual original reference art');
+const homeSvg=fs.readFileSync(root+'art/reference-home.svg','utf8');
+const encoded=(homeSvg.match(/data:image\/webp;base64,([^"]+)/)||[])[1];
+assert(encoded&&encoded.length>8000,'Home reference image must be embedded, not a vector imitation');
+const decoded=Buffer.from(encoded,'base64');
+assert.equal(decoded.toString('ascii',0,4),'RIFF','Embedded asset must be RIFF WebP');
+assert.equal(decoded.toString('ascii',8,12),'WEBP','Embedded asset must be WebP');
+assert(html.indexOf('href="home-focus.css"')>html.indexOf('href="storybook-theme.css"'),'Focused homepage styles must load last');
+const homeCss=fs.readFileSync(root+'home-focus.css','utf8');
+assert(homeCss.includes('transform:none!important'),'Bottom nav must override historic -50% shift');
+assert(homeCss.includes('grid-template-columns:repeat(4,minmax(0,1fr))'),'Footer must have four equal columns');
+assert(homeCss.includes('.hero-scene .hero-reference'),'Homepage must size original illustration responsively');
 
 assert(!css.includes("url('art/wooden-button.svg')"),'Avoid overlaid duplicate wood plaques');
 for(const art of ['bedtime-friends.svg','sleeping-friends.svg']){
