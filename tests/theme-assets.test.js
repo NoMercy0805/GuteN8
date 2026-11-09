@@ -21,7 +21,7 @@ assert(!html.includes('id="settingsSpeak"'),'Narration settings must stay remove
 assert(html.includes('class="hero-scene"'),'Hero must be a single illustrated scene');
 assert((html.match(/class="collection-shell"/g)||[]).length===2,'Favorites and bookmarks must use unified illustration cards');
 assert(html.includes('class="sleep-scene-img"'),'Bedtime uses one image without duplicated moon decoration');
-assert((html.match(/class="nav-icon"/g)||[]).length===5,'Every navigation tab needs the same icon style');
+assert((html.match(/class="nav-icon"/g)||[]).length===4,'Reference layout uses exactly four matching navigation tabs');
 assert(css.includes("url('art/enchanted-forest.svg')"),'Screens must share the illustrated forest');
 assert(!html.includes('class="sleep-stars"'),'No extra moon or stars outside the bedtime illustration');
 assert(css.includes('#favorites .collection-shell')&&css.includes('#bookmarks .collection-shell'),'Collection layout must be shared');
@@ -36,4 +36,6 @@ for(const art of ['bedtime-friends.svg','sleeping-friends.svg']){
 }
 assert(css.includes('background-image:linear-gradient(180deg,#5991e4'),'Selected reference uses blue story CTA');
 assert(css.includes('mask-image:none!important'),'Illustrations should not be boxed or clipped by radial masks');
+assert(html.includes('href="home-focus.css"'),'Focused home and navigation theme must be loaded');
+assert(css.includes("url('art/enchanted-forest.svg')"),'Forest background must remain integrated');
 console.log('GuteN8 scene/theme asset checks passed');
