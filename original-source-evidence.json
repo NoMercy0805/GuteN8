@@ -67,5 +67,29 @@
     "text_sha256": "87ffc9b184fbe00adc74a950fb1297d0906f0093dc4c6519df58ac72f242350a",
     "word_for_word_reviewed": true,
     "review_note": "Vollständiger Sichtvergleich des Originals in den drei lesbaren Bildabschnitten; sechs zuvor erkannte Dialog-, Erzähl- und Endkorrekturen eingearbeitet. Screenshot selbst bislang nicht im Repository archiviert."
+  },
+  "blume": {
+    "text_source": "Earlier user-supplied original screenshot reviewed in GitHub commit a2a7f2cd4",
+    "text_sha256": "c207e7c4ab889594ea7e1befe46d6df340df4f3a6260ea21ccfcb077114e18a3",
+    "word_for_word_reviewed": true,
+    "review_provenance": "historical_review_reinstated",
+    "historical_verified_commit": "a2a7f2cd4",
+    "review_note": "Earlier story text review was marked verified in this exact historical version. Current story text was compared byte-for-byte with historical review version and has not changed. Original screenshot itself is not archived in this repository; this is restoration of a historical verification, not a fresh screenshot re-review."
+  },
+  "baumhaus": {
+    "text_source": "Earlier user-supplied original screenshot reviewed in GitHub commit 2d76c4950c9e",
+    "text_sha256": "32812df7403837ac84facca23bdd4b4ae57b5461d683d9e27b21a7ea0546bf3d",
+    "word_for_word_reviewed": true,
+    "review_provenance": "historical_review_reinstated",
+    "historical_verified_commit": "2d76c4950c9e",
+    "review_note": "Earlier story text review was marked verified in this exact historical version. Current story text was compared byte-for-byte with historical review version and has not changed. Original screenshot itself is not archived in this repository; this is restoration of a historical verification, not a fresh screenshot re-review."
+  },
+  "regenbogenbruecke": {
+    "text_source": "Earlier user-supplied original screenshot reviewed in GitHub commit ff2afed19713",
+    "text_sha256": "a093fa291577d49f426dce9924fab36589f5ffcdd514961b61ceda4dc1c48c55",
+    "word_for_word_reviewed": true,
+    "review_provenance": "historical_review_reinstated",
+    "historical_verified_commit": "ff2afed19713",
+    "review_note": "Earlier story text review was marked verified in this exact historical version. Current story text was compared byte-for-byte with historical review version and has not changed. Original screenshot itself is not archived in this repository; this is restoration of a historical verification, not a fresh screenshot re-review."
   }
 }
