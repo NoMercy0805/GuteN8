@@ -57,6 +57,18 @@ body.home-screen-active{
   mask-image:linear-gradient(to bottom,#000 0%,#000 89%,transparent 100%)!important;
   -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 89%,transparent 100%)!important;
 }
+
+/* Keep the entire printed cover and its lettering visible. The SVG already
+   contains the blurred side extensions; cropping it caused the cut-off title
+   and hard vertical edge on narrow phones. */
+#home .hero-scene{
+ display:flex!important;align-items:stretch!important;justify-content:center!important;
+ background:linear-gradient(180deg,#1b3456 0%,#39516c 50%,#e9b675 100%)!important;
+}
+#home .hero-scene .hero-reference{
+ width:100%!important;height:100%!important;
+ object-fit:contain!important;object-position:center center!important;
+}
 #home .home-sign,#home .hero-scene .art{display:none!important}
 #home .hero .primary{
   box-sizing:border-box!important;
