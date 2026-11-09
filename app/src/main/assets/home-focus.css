@@ -576,3 +576,19 @@ html,body{overflow-x:hidden!important}
 .nav button .nav-label{height:auto!important;min-height:15px!important;line-height:1.25!important;overflow:visible!important}
 #home.active{padding-bottom:calc(111px + env(safe-area-inset-bottom,0px))!important}
 @media(max-width:360px){.nav button{font-size:10px!important}}
+
+/* Remove decorative lanterns from the old page behind the original artwork.
+   They currently create duplicated side columns instead of a seamless scene. */
+#home.active::before,#home.active::after{
+ content:none!important;display:none!important;
+ background:none!important;
+}
+#home.active{
+ background-image:linear-gradient(180deg,#101e42 0%,#263e65 42%,#48604f 73%,#674d44 100%)!important;
+ background-position:center!important;background-size:100% 100%!important;
+}
+#home .hero-scene{overflow:visible!important}
+#home .hero-scene .hero-reference{
+ image-rendering:auto!important;
+ background:transparent!important;
+}
