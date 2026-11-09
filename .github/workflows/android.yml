@@ -81,9 +81,9 @@ jobs:
           assert 'readingPaper\').addEventListener(\'touchend\'' in html, 'Swipe handler must be registered'
           assert "addEventListener('touchcancel',readerTouchCancel" in html and 'function readerTouchCancel()' in html, 'Cancelled swipes must reset touch state'
           assert 'if(e.touches.length!==1){touchStart=null;return}' in html, 'Multitouch must not trigger page turns'
-          assert 'id="readerNotice"' in html and "$('readerNotice').textContent=saved?" in html, 'Bookmark confirmation must be nonblocking'
+          assert 'id="readerNotice"' in html, 'Reader status region must exist'
           assert 'class="empty-state"' in html, 'Empty library states missing'
-          assert 'Noch keine Favoriten' in html and 'Noch keine Lesezeichen' in html, 'Empty saved-story states missing'
+          assert 'Noch keine Favoriten' in html and 'Noch keine Lesezeichen' not in html, 'Only favorite saved-story state should remain'
           assert 'id="readerProgressTrack"' in html and 'id="readerProgressFill"' in html, 'Reader progress UI missing'
           assert 'id="libraryProgressTrack"' in html and "$('libraryProgressTrack').setAttribute('aria-valuenow',libraryPercent)" in html, 'Accessible library progress missing'
           assert 'function readerKeydown(e)' in html, 'Keyboard navigation missing'
@@ -99,7 +99,7 @@ jobs:
           assert 'function orderLibrary(list)' in html and "$('unreadOnly').checked" in html, 'Library filter logic missing'
           assert 'const storyArtCache=new Map()' in html, 'Artwork caching missing'
           assert 'const storySearchCache=new Map()' in html and 'searchableStory(s).includes(q)' in html, 'Search index caching missing'
-          assert 'favorites=Array.isArray(favorites)?' in html and 'bookmarks=Array.isArray(bookmarks)?' in html, 'Saved story lists must be validated'
+          assert 'favorites=Array.isArray(favorites)?' in html and "bookmarks=get('bookmarks'" not in html, 'Favorites must remain while bookmark storage is removed'
           assert "progress=progress&&typeof progress==='object'&&!Array.isArray(progress)?progress:{}" in html, 'Saved reading progress must be validated'
           assert 'Number.isInteger(index)||index<0||index>=chunks(current).length' in html, 'Reader must reject invalid page requests'
           assert 'function scheduleLibrarySearch()' in html, 'Debounced library search missing'
@@ -182,7 +182,7 @@ jobs:
           assert.equal(uniqueCovers.size,1000,'Every story must have a distinct SVG variant');
           console.log('Validated '+checked+' generated stories and their SVGs for season, motif and protagonists');
           JS
-      - name: Check reader, bookmarks and navigation wiring
+      - name: Check reader, favorites and navigation wiring
         run: |
           python3 - <<'PY'
           from pathlib import Path
@@ -191,7 +191,7 @@ jobs:
           checks = {
               'reader heading': ('id="readerHeading"', "$('readerHeading').textContent=current.title"),
               'reader progress': ('id="pageNum"', 'function renderPage()'),
-              'bookmarks': ('id="bookmarkCards"', 'function renderBookmarks()'),
+              'favorites': ('id="favoriteCards"', 'function renderFavorites()'),
               'favorites': ('id="favoriteCards"', 'function toggleFavorite(id)'),
               'update prompt': ('id="updateInstall"', 'function installUpdate()'),
               'android back': ('window.guten8Back=', 'window.guten8Back ? window.guten8Back()'),
