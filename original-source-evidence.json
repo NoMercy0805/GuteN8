@@ -10,5 +10,11 @@
     "text_sha256": "2fe7a66680667a4c9780a1491ea851c8e09ca3e9e2104a9f929f2a38d70cf5ad",
     "word_for_word_reviewed": true,
     "review_note": "Sichtabgleich mit dem vom Nutzer übermittelten Screenshot. Die Screenshot-Datei ist noch nicht im GitHub-Repository archiviert."
+  },
+  "kuschelkissen": {
+    "text_source": "Screenshot_20261109_003703_ChatGPT.jpg",
+    "text_sha256": "92b3e1144b903bc56cab907f76eab5eb997b22148cdfe6dcc5d49d88b0e9ceb4",
+    "word_for_word_reviewed": true,
+    "review_note": "Vollständiger visueller Vergleich des lesbaren Originals vom Nutzer einschließlich Schlussabschnitt; Originalbild selbst noch nicht in GitHub archiviert."
   }
 }
