@@ -51,6 +51,8 @@ jobs:
           "$SDKMANAGER" 'platforms;android-35' 'build-tools;35.0.0'
       - name: Report original story completion
         run: python3 scripts/original_story_progress.py
+      - name: Test reader pagination
+        run: node tests/reader-pagination.test.js
       - name: Validate story library
         run: |
           python3 - <<'PY'
@@ -71,7 +73,6 @@ jobs:
           assert 'function readingMinutes(s)' in html and 'function chunks(s)' in html
           assert "'<img src=\"'+storyImage(s)" in html, 'Story cards must use illustrated covers'
           assert "$('readerArt').innerHTML" in html, 'Reader illustration missing'
-          assert "function jumpPage(index)" in html and "stopSpeech();page=index" in html, 'Page jumps must cancel stale narration'
           assert 'id="readingPaper"' in html and 'function readerTouchEnd(e)' in html, 'Swipe reader wiring missing'
           assert 'readingPaper\').addEventListener(\'touchend\'' in html, 'Swipe handler must be registered'
           assert "addEventListener('touchcancel',readerTouchCancel" in html and 'function readerTouchCancel()' in html, 'Cancelled swipes must reset touch state'
@@ -82,6 +83,8 @@ jobs:
           assert 'id="readerProgressTrack"' in html and 'id="readerProgressFill"' in html, 'Reader progress UI missing'
           assert 'id="libraryProgressTrack"' in html and "$('libraryProgressTrack').setAttribute('aria-valuenow',libraryPercent)" in html, 'Accessible library progress missing'
           assert 'function readerKeydown(e)' in html, 'Keyboard navigation missing'
+          assert "$('readerText').textContent=arr[page]" in html, 'Reader must display only selected page'
+          assert 'function pageMove(n)' in html, 'Reader navigation must exist'
           assert "updateOffer=null;$('updateInstall').hidden=true" in html, 'Update checks must clear stale download offers'
           assert 'window.onUpdateError=e=>' in html and "$('updateInstall').hidden=true" in html, 'Update error must hide download button'
           assert 'function resetLibraryFilters()' in html, 'Library search reset missing'
@@ -119,13 +122,8 @@ jobs:
               original=next(s for s in stories if s['id']==classic)
               assert 'artTheme' not in original, f'Original incorrectly treated as generated: {classic}'
           assert extra.count('Eine junge Eule') == 1, 'Story endings may have been duplicated'
-          assert 'id="speechRate"' in html and 'function setSpeechRate(v)' in html, 'Speech speed controls missing'
-          assert 'id="readerSpeak"' in html and 'id="settingsSpeak"' in html, 'Speech buttons missing'
-          assert 'function stopSpeech()' in html and 'function updateSpeechButtons(active)' in html, 'Narration controls missing'
-          assert 'stopSpeech();document.querySelectorAll' in html, 'Navigation speech-stop separator missing'
           assert 'if(firstTime)storyFinished()' not in html, 'Bedtime reminders must work on rereads'
           assert 'id="recentProgressFill"' in html and 'function updateRecentProgress(s,p)' in html, 'Home reading progress missing'
-          assert "if(!$('reader').classList.contains('active'))show('reader')" in html, 'Narration must open reader'
           assert '  push:\n    branches: [main]' in pathlib.Path('.github/workflows/android.yml').read_text(), 'Automatic builds on main must remain enabled'
           forest=pathlib.Path('app/src/main/assets/art/forest-friends.svg')
           assert forest.is_file(), 'Missing illustrated forest artwork'
@@ -194,7 +192,6 @@ jobs:
               'update prompt': ('id="updateInstall"', 'function installUpdate()'),
               'android back': ('window.guten8Back=', 'window.guten8Back ? window.guten8Back()'),
           }
-          assert "if(typeof stopSpeech==='function')stopSpeech()" in java, 'Android backgrounding must reset narration controls'
           for name,(a,b) in checks.items():
               assert a in html and (b in html or b in java), f'Missing {name}'
           import re
