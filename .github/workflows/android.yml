@@ -51,6 +51,8 @@ jobs:
           "$SDKMANAGER" 'platforms;android-35' 'build-tools;35.0.0'
       - name: Report original story completion
         run: python3 scripts/original_story_progress.py
+      - name: Check all scenes in three recovered originals
+        run: python3 tests/original-three-stories.py
       - name: Test reader pagination
         run: node tests/reader-pagination.test.js
       - name: Test storybook theme assets
