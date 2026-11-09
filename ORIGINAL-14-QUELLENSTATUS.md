@@ -35,3 +35,7 @@ Die folgenden **11 Screenshot-Vorlagen** wurden im Chat erneut vom Nutzer bereit
 - **zauberpilz:** **eindeutiger Fehler**: `stories.json` enthält statt des Originals nur den Platzhalter „Der Originaltext wird noch aus dem Screenshot übertragen.“. Das neu gelieferte Screenshot ist in geringer Breite und nicht hinreichend zuverlässig komplett lesbar; nicht raten.
 - **restliche 11:** vollständiger Wort-für-Wort-Abgleich offen; bestehende Texte nicht ohne eindeutige Quellbelege ändern.
 - Dieser Prüfbericht ist ein **Zwischenstand**; keine Geschichte gilt damit als abschließend wortgetreu bestätigt.
+
+## Weiterer Textabgleich (09.11.2026)
+- **picknick:** Zwei durch Screenshot belegte Abweichungen in `stories.json` korrigiert: Punkt statt Komma nach „Karotten ein“; „Krümel schaute sich um“ statt „Krümel sah sich um“. Abschließende vollständige Zeichenprüfung weiter offen.
+- **verschwundene-kuerbisse:** Klarer inhaltlicher Widerspruch: Screenshot beschreibt das Verschwinden **aller** Kürbisse und eine andere Suche; die App erzählt vom Verschwinden **zweier** Kürbisse und einem Igel mit kleiner Schwester. Aktueller Text **nicht originalgetreu**. Keine freie Rekonstruktion durchgeführt.
