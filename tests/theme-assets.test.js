@@ -32,11 +32,16 @@ assert(encoded&&encoded.length>8000,'Home reference image must be embedded, not 
 const decoded=Buffer.from(encoded,'base64');
 assert.equal(decoded.toString('ascii',0,4),'RIFF','Embedded asset must be RIFF WebP');
 assert.equal(decoded.toString('ascii',8,12),'WEBP','Embedded asset must be WebP');
+let check=2166136261;for(const ch of encoded)check=Math.imul(check^ch.charCodeAt(0),16777619)>>>0;
+assert.equal(check,0x7960723f,'Reference illustration must remain byte-for-byte unchanged');
 assert(html.indexOf('href="home-focus.css"')>html.indexOf('href="storybook-theme.css"'),'Focused homepage styles must load last');
 const homeCss=fs.readFileSync(root+'home-focus.css','utf8');
 assert(homeCss.includes('transform:none!important'),'Bottom nav must override historic -50% shift');
 assert(homeCss.includes('grid-template-columns:repeat(4,minmax(0,1fr))'),'Footer must have four equal columns');
 assert(homeCss.includes('.hero-scene .hero-reference'),'Homepage must size original illustration responsively');
+assert(html.includes('class="home-cta-text"'),'Discovery CTA must have reference two-line title');
+assert(html.includes('class="recent-heading"'),'Recent-story card needs open-book heading');
+assert(homeCss.includes('background:linear-gradient(180deg,#fffefb,#fff8ed)'),'Navigation must use ivory reference palette');
 
 assert(!css.includes("url('art/wooden-button.svg')"),'Avoid overlaid duplicate wood plaques');
 for(const art of ['bedtime-friends.svg','sleeping-friends.svg']){
