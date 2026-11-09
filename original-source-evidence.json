@@ -16,5 +16,11 @@
     "text_sha256": "92b3e1144b903bc56cab907f76eab5eb997b22148cdfe6dcc5d49d88b0e9ceb4",
     "word_for_word_reviewed": true,
     "review_note": "Vollständiger visueller Vergleich des lesbaren Originals vom Nutzer einschließlich Schlussabschnitt; Originalbild selbst noch nicht in GitHub archiviert."
+  },
+  "picknick": {
+    "text_source": "Screenshot_20261109_003407_ChatGPT.jpg",
+    "text_sha256": "179b18b2c4fc4d0ee0b043aaa360a0459ac14e489da072739466f4f547cd3470",
+    "word_for_word_reviewed": true,
+    "review_note": "Vollständiger Sichtabgleich des hochgeladenen Original-Screenshots in vier vergrößerten Abschnitten; Honig-Emoji und frühere Textkorrekturen berücksichtigt. Screenshot-Datei selbst noch nicht auf GitHub archiviert."
   }
 }
