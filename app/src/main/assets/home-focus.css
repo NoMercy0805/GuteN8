@@ -539,3 +539,18 @@
  #home .hero-scene .hero-reference{width:min(78vw,261px)!important;max-width:261px!important}
  #home .hero .primary{min-height:64px!important}
 }
+
+/* Finish the reference scene around, rather than behind, the actual artwork:
+   warm woodland ground remains visible between home controls. */
+#home.active{
+ background-image:
+   linear-gradient(180deg,#0c2346aa 0%,#132f5570 47%,#ecaa4cc9 74%,#f8ce77e8 100%),
+   url('art/enchanted-forest.svg')!important;
+ background-size:100% 100%,cover!important;
+ background-position:center top,center top!important;
+ background-repeat:no-repeat!important;
+}
+#home .hero .primary .home-cta-book svg{
+ display:block!important;width:49px!important;height:41px!important;
+ stroke:white!important;
+}
