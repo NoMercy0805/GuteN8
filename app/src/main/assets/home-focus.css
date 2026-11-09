@@ -554,3 +554,25 @@
  display:block!important;width:49px!important;height:41px!important;
  stroke:white!important;
 }
+
+/* Samsung viewport correction: labels must sit above native gesture bar. */
+html,body{overflow-x:hidden!important}
+.nav{
+ box-sizing:border-box!important;
+ bottom:0!important;height:calc(91px + env(safe-area-inset-bottom,0px))!important;
+ min-height:91px!important;
+ padding:7px 5px calc(16px + env(safe-area-inset-bottom,0px))!important;
+ overflow:visible!important;
+ align-items:start!important;justify-content:stretch!important;
+}
+.nav button{
+ height:62px!important;min-height:62px!important;max-height:62px!important;
+ padding:5px 2px 3px!important;justify-content:flex-start!important;
+ font-size:clamp(10px,2.7vw,12px)!important;
+ line-height:1.2!important;white-space:normal!important;
+ overflow:visible!important;
+}
+.nav button .nav-icon{height:30px!important;min-height:30px!important}
+.nav button .nav-label{height:auto!important;min-height:15px!important;line-height:1.25!important;overflow:visible!important}
+#home.active{padding-bottom:calc(111px + env(safe-area-inset-bottom,0px))!important}
+@media(max-width:360px){.nav button{font-size:10px!important}}
