@@ -48,7 +48,7 @@ assert(nav.includes('aria-label="Einstellungen" onclick="show(\'settings\')"'),'
 assert(css.includes("url('art/enchanted-forest.svg')"),'Screens must share the illustrated forest');
 assert(!html.includes('class="sleep-stars"'),'No extra moon or stars outside the bedtime illustration');
 assert(css.includes('#favorites .collection-shell'),'Favorites card styling must remain');
-assert(html.includes('src="art/home-edgeblend.svg"'),'Home must render the natural-proportion edge-blended art');
+assert(html.includes('src="art/reference-home.svg"'),'Home must render the complete high-resolution original cover without internal SVG masks');
 const homeSvg=fs.readFileSync(root+'art/reference-home.svg','utf8');
 const encoded=(homeSvg.match(/data:image\/webp;base64,([^"]+)/)||[])[1];
 assert(encoded&&encoded.length>35000,'Home reference image must be high-resolution, not the blurry 176px variant');
@@ -68,6 +68,9 @@ const homeCss=fs.readFileSync(root+'home-focus.css','utf8');
 assert(homeCss.includes('transform:none!important'),'Bottom nav must override historic -50% shift');
 assert(homeCss.includes('grid-template-columns:repeat(3,minmax(0,1fr))'),'Footer must have three equal columns');
 assert(homeCss.includes('.hero-scene .hero-reference'),'Homepage must size original illustration responsively');
+assert(homeCss.includes("background:url('art/reference-home.svg') center center/cover no-repeat"),'Blurred sides must reuse the same original artwork');
+assert(homeCss.includes('filter:blur(22px)'),'Only the background copy should be blurred');
+assert(homeCss.includes('aspect-ratio:384/663!important'),'Keep original cover proportions and fully visible lettering');
 assert(homeCss.includes('height:100dvh!important')&&homeCss.includes('flex:1 1 0!important'),'Home must fill a fixed viewport and flex its artwork to available room');
 assert(homeCss.includes('object-fit:cover!important'),'Full-width art must preserve character proportions');
 assert(!homeCss.includes('object-fit:fill!important'),'Never stretch illustrations to fit the viewport');
