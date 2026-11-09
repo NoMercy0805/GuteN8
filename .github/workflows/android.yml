@@ -53,6 +53,8 @@ jobs:
         run: python3 scripts/original_story_progress.py
       - name: Test reader pagination
         run: node tests/reader-pagination.test.js
+      - name: Test storybook theme assets
+        run: node tests/theme-assets.test.js
       - name: Validate story library
         run: |
           python3 - <<'PY'
