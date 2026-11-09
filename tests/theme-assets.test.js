@@ -39,7 +39,10 @@ const nav=html.slice(html.indexOf('<nav class="nav"'),html.indexOf('</nav>'));
 assert(nav.includes('aria-label="Bibliothek" onclick="show(\'home\')"'),'Bibliothek tab must open the illustrated landing screen');
 
 assert(html.includes('class="primary" onclick="show(\'library\')"'),'Discover stories button must still open all stories');
-assert(html.includes("if(active.id==='reader'){show('library');return true}show('home');return true"),'Back gesture must return to story list from reader and home from other pages');
+assert(html.includes("if(active.id==='reader'){show(readerReturnList);return true}show('home');return true"),'Back gesture must restore the reader origin list');
+assert(html.includes("storyListScroll[from]=Math.max(0,window.scrollY||0)"),'Leaving a story list must save scroll position');
+assert(html.includes("const restoreList=(from==='reader'&&(id==='library'||id==='favorites'))"),'Returning from reading must restore list scroll');
+assert(html.includes("window.scrollTo(0,Math.min(target,Math.max(0,document.documentElement.scrollHeight-innerHeight)))"),'Restored list scroll must remain within available range');
 assert(html.includes("const selected=b.getAttribute('onclick')===\"show('\"+(id==='library'?'home':id)+\"')\""),'Library list and landing page must share active footer selection');
 
 assert(!nav.includes('Lesezeichen'),'Bookmark tab must not exist');
