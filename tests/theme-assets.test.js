@@ -24,12 +24,19 @@ assert(!html.includes('function bookmark()'),'Lesezeichen action removed');
 assert(!html.includes("bookmarks=get('bookmarks'"),'Lesezeichen persistence removed');
 assert(!html.includes('id="readerSpeak"'),'Narration button must stay removed');
 assert(!html.includes('id="settingsSpeak"'),'Narration settings must stay removed');
+assert(!html.includes('class="home-night home-action"'),'Night-mode home toggle must not exist');
+assert(!html.includes('id="sleepAction"'),'After-story actions removed');
+assert(!html.includes('id="updateInstall"')&&!html.includes('function checkUpdate()'),'Updates are handled by MyAppHub');
+assert(!html.includes('window.onUpdateResult'),'Remove update callback');
+assert(html.includes('id="fontSlider"')&&html.includes('id="brightness"'),'Reading controls must be retained');
+assert(html.includes('id="version"'),'App version remains available');
+
 assert(html.includes('class="hero-scene"'),'Hero must be a single illustrated scene');
 assert((html.match(/class="collection-shell"/g)||[]).length===1,'Favorites retain their unified illustration card');
 assert(!html.includes('class="sleep-scene-img"'),'Settings hero image must be removed on request');
 assert((html.match(/class="nav-icon"/g)||[]).length===3,'Footer uses exactly three navigation tabs');
 const nav=html.slice(html.indexOf('<nav class="nav"'),html.indexOf('</nav>'));
-assert(nav.includes('aria-label="Bibliothek" onclick="show(\'library\')"'),'Bibliothek tab must open story library');
+assert(nav.includes('aria-label="Bibliothek" onclick="show(\'home\')"'),'Bibliothek tab must open the illustrated landing screen');
 assert(!nav.includes('Lesezeichen'),'Bookmark tab must not exist');
 assert(nav.includes('aria-label="Favoriten" onclick="show(\'favorites\')"'),'Favorites tab must open favorites');
 assert(nav.includes('aria-label="Einstellungen" onclick="show(\'settings\')"'),'Settings tab must open settings');
@@ -98,7 +105,7 @@ assert(html.includes('function toggleLibrarySearch(force)'),'Library search draw
 assert(libraryCss.includes('grid-template-columns:repeat(2,minmax(0,1fr))'),'Library needs two cover columns on phones');
 assert(libraryCss.includes('#library .cards .card-heart'),'Library favorite hearts must remain available');
 
-for(const type of ['heart','moon']){
+for(const type of ['heart']){
  assert(html.includes('class="section-title-icon section-title-icon-'+type+'"'),'Missing unified title icon '+type);
 }
 assert(libraryCss.includes('#favorites:not(.has-stories) .collection-characters'),'Favorites must use illustrated scene');
@@ -114,8 +121,8 @@ assert(html.indexOf('href="ui-polish.css"')>html.indexOf('href="reader-focus.css
 assert(polish.includes('#settings .sleep-art,#settings .sleep-subtitle{display:none!important}'),'Settings hero must be hidden');
 assert(polish.includes('#favorites:not(.has-stories) .collection-characters'),'Favorites duplicate poster must be hidden');
 
-assert(html.includes('id="nightToggle" type="checkbox" role="switch"'),'Night mode control needs an accessible switch');
-assert(polish.includes('#nightToggle:checked::before'),'Night mode switch needs a moving thumb');
+assert(!html.includes('id="nightToggle"'),'Night mode switch must be removed');
+assert(!html.includes('function toggleNight('),'Night mode behavior must be removed');
 assert(html.includes('class="favorite-heart-icon"'),'Story heart must use a consistent SVG icon');
 assert(polish.includes('.card-heart.is-favorite .favorite-heart-icon'),'Saved hearts should be filled');
 
