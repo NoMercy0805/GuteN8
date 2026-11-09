@@ -18,6 +18,13 @@ for(const section of ['#home','#library','#reader','#favorites','#bookmarks','#s
 }
 assert(!html.includes('id="readerSpeak"'),'Narration button must stay removed');
 assert(!html.includes('id="settingsSpeak"'),'Narration settings must stay removed');
+assert(html.includes('class="hero-scene"'),'Hero must be a single illustrated scene');
+assert((html.match(/class="collection-shell"/g)||[]).length===2,'Favorites and bookmarks must use unified illustration cards');
+assert(html.includes('class="sleep-scene-img"'),'Bedtime uses one image without duplicated moon decoration');
+assert(!html.includes('class="sleep-stars"'),'No extra moon or stars outside the bedtime illustration');
+assert(css.includes('#favorites .collection-shell')&&css.includes('#bookmarks .collection-shell'),'Collection layout must be shared');
+assert(css.includes('#home .hero-scene .art img'),'Illustration must integrate into hero rather than a tiled image');
+
 assert(!css.includes("url('art/wooden-button.svg')"),'Avoid overlaid duplicate wood plaques');
 for(const art of ['bedtime-friends.svg','sleeping-friends.svg']){
  const svg=fs.readFileSync(root+'art/'+art,'utf8');
