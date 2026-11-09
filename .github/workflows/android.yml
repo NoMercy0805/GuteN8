@@ -111,6 +111,18 @@ jobs:
               git push origin HEAD:main
             fi
           fi
+      - name: Import Advent first ten illustrations
+        run: |
+          if [ -f GuteN8_Advent_01_bis_10_Bilder.zip ]; then
+            python3 scripts/import_advent_first10.py GuteN8_Advent_01_bis_10_Bilder.zip
+            git add app/src/main/assets/art/
+            if ! git diff --cached --quiet; then
+              git config user.name "github-actions[bot]"
+              git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+              git commit -m "Import first ten GuteN8 Advent illustrations"
+              git push origin HEAD:main
+            fi
+          fi
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
