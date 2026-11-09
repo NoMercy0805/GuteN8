@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Import seven matching original illustrations from a supplied GuteN8 ZIP.
+"""Import nine matching original illustrations from a supplied GuteN8 ZIP.
 
-Run: python3 scripts/import_originalbilder.py GuteN8_7_Originalbilder_importbereit.zip
+Run: python3 scripts/import_originalbilder.py GuteN8_9_Originalbilder_importbereit.zip
 
 This intentionally does not mark illustrations verified: image assets must be
 checked visually against the original source before completing the audit.
@@ -23,6 +23,8 @@ EXPECTED_SHA256 = {
     "seifenkiste": "faca82f80cff9918db3fd784f7492ff5db78fca64998b7e504b87de9e742ecba",
     "sternschnuppe": "06c3f991bbebaa015ef6f1c830085f936d0ad8be002a817ef7bd847a54c7ac1e",
     "verschwundene-kuerbisse": "c1fdaccfb087dc92f06a0262be289413e91b7592dab701bdf5465aec43855981",
+    "zauberpilz": "d82e70a41364c8920cc651285106d111092555f2ef1933f7ec855d08d115711c",
+    "kuschelkissen": "d6b441690d255469936482ef2df1127e983397ee995ef662f7076d410f919eee",
 }
 EXPECTED = set(EXPECTED_SHA256)
 
