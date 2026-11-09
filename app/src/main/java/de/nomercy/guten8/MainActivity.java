@@ -29,39 +29,51 @@ public class MainActivity extends Activity {
   getWindow().getDecorView().setSystemUiVisibility(
    Build.VERSION.SDK_INT >= 26 ? android.view.View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR : 0);
   if (Build.VERSION.SDK_INT >= 30) {
-   // On Android 15+ handle the system-bar insets ourselves: the WebView scene
-   // must never occupy the region behind the status icons or gesture area.
+   // Android 15/16 enforce edge-to-edge for newer targets. Handle insets on
+   // the root container, never as padding inside the scrollable WebView.
    getWindow().setDecorFitsSystemWindows(Build.VERSION.SDK_INT < 35);
    getWindow().getInsetsController().setSystemBarsAppearance(
     android.view.WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS,
     android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS |
     android.view.WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS);
   }
-  web=new WebView(this);
+  web = new WebView(this);
   web.setBackgroundColor(android.graphics.Color.rgb(13,29,66));
   android.widget.FrameLayout root = new android.widget.FrameLayout(this);
-  root.setBackgroundColor(android.graphics.Color.rgb(13,29,66));
-  root.addView(web, new android.widget.FrameLayout.LayoutParams(-1,-1));
-  // Android 15+ makes the gesture navigation area transparent. Paint the
-  // actual gesture inset ivory rather than leaving a dark WebView strip.
-  android.view.View gestureBackdrop = new android.view.View(this);
-  gestureBackdrop.setBackgroundColor(android.graphics.Color.rgb(255,250,241));
-  root.addView(gestureBackdrop, new android.widget.FrameLayout.LayoutParams(-1,0,android.view.Gravity.BOTTOM));
+  // The system-gesture region stays ivory; the status region stays midnight.
+  root.setBackgroundColor(android.graphics.Color.rgb(255,250,241));
+  android.widget.FrameLayout.LayoutParams webParams =
+    new android.widget.FrameLayout.LayoutParams(-1,-1);
+  root.addView(web, webParams);
+  android.view.View statusBackdrop = new android.view.View(this);
+  statusBackdrop.setBackgroundColor(android.graphics.Color.rgb(13,29,66));
+  root.addView(statusBackdrop,
+    new android.widget.FrameLayout.LayoutParams(-1,0,android.view.Gravity.TOP));
   if (Build.VERSION.SDK_INT >= 35) {
-   web.setOnApplyWindowInsetsListener((view, insets) -> {
-    android.graphics.Insets system = insets.getInsets(
-      android.view.WindowInsets.Type.statusBars() |
-      android.view.WindowInsets.Type.navigationBars() |
-      android.view.WindowInsets.Type.displayCutout());
-    view.setPadding(0, system.top, 0, system.bottom);
-    android.view.ViewGroup.LayoutParams lp = gestureBackdrop.getLayoutParams();
-    if (lp.height != system.bottom) { lp.height = system.bottom; gestureBackdrop.setLayoutParams(lp); }
+   root.setOnApplyWindowInsetsListener((view, insets) -> {
+    android.graphics.Insets bars = insets.getInsets(
+     android.view.WindowInsets.Type.statusBars() |
+     android.view.WindowInsets.Type.navigationBars() |
+     android.view.WindowInsets.Type.displayCutout());
+    android.widget.FrameLayout.LayoutParams wlp =
+     (android.widget.FrameLayout.LayoutParams)web.getLayoutParams();
+    if (wlp.topMargin != bars.top || wlp.bottomMargin != bars.bottom) {
+     wlp.topMargin = bars.top;
+     wlp.bottomMargin = bars.bottom;
+     web.setLayoutParams(wlp);
+    }
+    android.widget.FrameLayout.LayoutParams slp =
+     (android.widget.FrameLayout.LayoutParams)statusBackdrop.getLayoutParams();
+    if (slp.height != bars.top) {
+     slp.height = bars.top;
+     statusBackdrop.setLayoutParams(slp);
+    }
     return insets;
    });
   } web.getSettings().setJavaScriptEnabled(true); web.getSettings().setDomStorageEnabled(true);
   web.getSettings().setAllowFileAccess(true); web.getSettings().setAllowFileAccessFromFileURLs(false); web.getSettings().setAllowUniversalAccessFromFileURLs(false); web.setWebChromeClient(new WebChromeClient());
   web.setWebViewClient(new WebViewClient(){ @Override public boolean shouldOverrideUrlLoading(WebView v,String url){ return handleUrl(url); } @Override public boolean shouldOverrideUrlLoading(WebView v, WebResourceRequest request){return handleUrl(request.getUrl().toString());} });
-  web.addJavascriptInterface(new Bridge(),"Android");setContentView(root);web.loadUrl("file:///android_asset/index.html");
+  web.addJavascriptInterface(new Bridge(),"Android");setContentView(root);if(Build.VERSION.SDK_INT>=35)root.requestApplyInsets();web.loadUrl("file:///android_asset/index.html");
  }
  private boolean handleUrl(String url){ if(url.startsWith("file:///android_asset/"))return false; if(url.startsWith("https://")){startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse(url)));}return true; }
  public class Bridge {
