@@ -22,13 +22,18 @@ public class MainActivity extends Activity {
  @Override public void onCreate(Bundle b) { super.onCreate(b);
   // Reserve a solid, undecorated area for Android system status/navigation bars.
   getWindow().setStatusBarColor(android.graphics.Color.rgb(13,29,66));
-  getWindow().setNavigationBarColor(android.graphics.Color.rgb(13,29,66));
-  getWindow().getDecorView().setSystemUiVisibility(0);
+  // The bottom tabs are ivory in the original design; match the Android
+  // gesture/navigation background so it no longer ends in a dark strip.
+  getWindow().setNavigationBarColor(android.graphics.Color.rgb(255,250,241));
+  if (Build.VERSION.SDK_INT >= 29) getWindow().setNavigationBarContrastEnforced(false);
+  getWindow().getDecorView().setSystemUiVisibility(
+   Build.VERSION.SDK_INT >= 26 ? android.view.View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR : 0);
   if (Build.VERSION.SDK_INT >= 30) {
    // On Android 15+ handle the system-bar insets ourselves: the WebView scene
    // must never occupy the region behind the status icons or gesture area.
    getWindow().setDecorFitsSystemWindows(Build.VERSION.SDK_INT < 35);
-   getWindow().getInsetsController().setSystemBarsAppearance(0,
+   getWindow().getInsetsController().setSystemBarsAppearance(
+    android.view.WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS,
     android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS |
     android.view.WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS);
   }
