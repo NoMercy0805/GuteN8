@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Honest audit of the fourteen original GuteN8 stories.
+"""Reproducible audit for the fourteen original GuteN8 stories.
 
-A flag in stories.json alone is NOT proof of a verbatim source comparison.
-Count an original as finished only with an archived, reproducible comparison.
+Never equate an existing story, a reviewed text, and a reviewed illustration.
+The text hash ties a review to exactly one saved story revision.
 """
 import hashlib
 import json
@@ -13,40 +13,54 @@ assets = root / "app/src/main/assets"
 stories = json.loads((assets / "stories.json").read_text(encoding="utf-8"))
 proof_file = root / "original-source-evidence.json"
 proof = json.loads(proof_file.read_text(encoding="utf-8")) if proof_file.exists() else {}
-assert isinstance(stories, list) and len(stories) == 14, "Exactly 14 original stories required"
-assert len({s["id"] for s in stories}) == 14, "Duplicate story IDs"
-assert set(proof).issubset({s["id"] for s in stories}), "Evidence for unknown story"
 
-done = 0
-print("ORIGINALGESCHICHTEN – nachweisbare Einzelprüfung")
+assert isinstance(stories, list) and len(stories) == 14, "Expected 14 original stories"
+ids = [story["id"] for story in stories]
+assert len(set(ids)) == 14, "Duplicate original story IDs"
+assert set(proof).issubset(ids), "Evidence references a missing story"
+
+present = verified_texts = linked_images = verified_images = finished = 0
+problems = []
+print("GuteN8 – überprüfbarer Stand der 14 Originalgeschichten")
 for story in stories:
     sid = story["id"]
-    text = story.get("text", "")
-    image = story.get("image", "")
+    content = story.get("text", "")
     evidence = proof.get(sid, {})
-    digest = hashlib.sha256(text.encode("utf-8")).hexdigest()
-    # Evidence must identify a source and the exact text revision reviewed.
-    text_ok = (
-        bool(text.strip()) and "Originaltext wird noch" not in text
-        and evidence.get("text_source") and evidence.get("text_sha256") == digest
+    exists = len(content.strip()) > 500 and "Originaltext wird noch" not in content
+    digest = hashlib.sha256(content.encode("utf-8")).hexdigest()
+    text_ok = bool(
+        exists
+        and evidence.get("text_source")
+        and evidence.get("text_sha256") == digest
         and evidence.get("word_for_word_reviewed") is True
     )
+    image = story.get("image") or ""
     image_path = assets / image if isinstance(image, str) and image.startswith("art/") else None
-    image_ok = (
-        image_path is not None and image_path.is_file()
+    linked = bool(image_path is not None and image_path.is_file())
+    image_ok = bool(
+        linked
         and evidence.get("image_source")
         and evidence.get("image_sha256") == hashlib.sha256(image_path.read_bytes()).hexdigest()
         and evidence.get("original_image_reviewed") is True
     )
-    if text_ok and image_ok:
-        done += 1
-    known_status = story.get("originalTextStatus")
-    text_state = ("VERIFIZIERT" if text_ok else
-                  "PLATZHALTER" if known_status == "platzhalter" or len(text.strip()) < 100 else
-                  "FALSCHER ORIGINALTEXT" if known_status == "abweichend" else
-                  "ABGLEICH OFFEN")
-    image_state = "VERIFIZIERT" if image_ok else "ORIGINAL OFFEN"
-    print(f"{sid}: Text {text_state}; Bild {image_state}")
+    if story.get("originalTextVerified") is True and not text_ok:
+        problems.append(f"{sid}: text flag true without matching proof")
+    if story.get("originalImageVerified") is True and not image_ok:
+        problems.append(f"{sid}: image flag true without matching proof")
+    present += bool(exists)
+    verified_texts += bool(text_ok)
+    linked_images += bool(linked)
+    verified_images += bool(image_ok)
+    finished += bool(text_ok and image_ok)
+    state = "OK" if text_ok else ("VORHANDEN, ABGLEICH OFFEN" if exists else "FEHLT")
+    visual = "ORIGINAL GEPRÜFT" if image_ok else ("DATEI VORHANDEN, UNGEPRÜFT" if linked else "NICHT EINGEBUNDEN")
+    print(f"{sid}: Text {state}; Bild {visual}")
 
-print(f"FERTIGE GESCHICHTEN: {done}/14 = {done / 14 * 100:.1f}%")
-print("Nur vollständig belegte Originaltext-Bild-Paare zählen als fertig.")
+print()
+print(f"Text vorhanden: {present}/14")
+print(f"Text nachweislich geprüft: {verified_texts}/14")
+print(f"Bilddatei eingebunden: {linked_images}/14")
+print(f"Originalbild nachweislich geprüft: {verified_images}/14")
+print(f"Komplett abgeschlossen: {finished}/14 = {finished / 14 * 100:.1f}%")
+if problems:
+    raise AssertionError("Inkonsistente Prüfkennzeichen:\n" + "\n".join(problems))
