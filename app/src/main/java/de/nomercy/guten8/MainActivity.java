@@ -39,6 +39,14 @@ public class MainActivity extends Activity {
   }
   web=new WebView(this);
   web.setBackgroundColor(android.graphics.Color.rgb(13,29,66));
+  android.widget.FrameLayout root = new android.widget.FrameLayout(this);
+  root.setBackgroundColor(android.graphics.Color.rgb(13,29,66));
+  root.addView(web, new android.widget.FrameLayout.LayoutParams(-1,-1));
+  // Android 15+ makes the gesture navigation area transparent. Paint the
+  // actual gesture inset ivory rather than leaving a dark WebView strip.
+  android.view.View gestureBackdrop = new android.view.View(this);
+  gestureBackdrop.setBackgroundColor(android.graphics.Color.rgb(255,250,241));
+  root.addView(gestureBackdrop, new android.widget.FrameLayout.LayoutParams(-1,0,android.view.Gravity.BOTTOM));
   if (Build.VERSION.SDK_INT >= 35) {
    web.setOnApplyWindowInsetsListener((view, insets) -> {
     android.graphics.Insets system = insets.getInsets(
@@ -46,12 +54,14 @@ public class MainActivity extends Activity {
       android.view.WindowInsets.Type.navigationBars() |
       android.view.WindowInsets.Type.displayCutout());
     view.setPadding(0, system.top, 0, system.bottom);
+    android.view.ViewGroup.LayoutParams lp = gestureBackdrop.getLayoutParams();
+    if (lp.height != system.bottom) { lp.height = system.bottom; gestureBackdrop.setLayoutParams(lp); }
     return insets;
    });
   } web.getSettings().setJavaScriptEnabled(true); web.getSettings().setDomStorageEnabled(true);
   web.getSettings().setAllowFileAccess(true); web.getSettings().setAllowFileAccessFromFileURLs(false); web.getSettings().setAllowUniversalAccessFromFileURLs(false); web.setWebChromeClient(new WebChromeClient());
   web.setWebViewClient(new WebViewClient(){ @Override public boolean shouldOverrideUrlLoading(WebView v,String url){ return handleUrl(url); } @Override public boolean shouldOverrideUrlLoading(WebView v, WebResourceRequest request){return handleUrl(request.getUrl().toString());} });
-  web.addJavascriptInterface(new Bridge(),"Android");setContentView(web);web.loadUrl("file:///android_asset/index.html");
+  web.addJavascriptInterface(new Bridge(),"Android");setContentView(root);web.loadUrl("file:///android_asset/index.html");
  }
  private boolean handleUrl(String url){ if(url.startsWith("file:///android_asset/"))return false; if(url.startsWith("https://")){startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse(url)));}return true; }
  public class Bridge {
