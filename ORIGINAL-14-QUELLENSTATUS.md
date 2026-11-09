@@ -39,3 +39,8 @@ Die folgenden **11 Screenshot-Vorlagen** wurden im Chat erneut vom Nutzer bereit
 ## Weiterer Textabgleich (09.11.2026)
 - **picknick:** Zwei durch Screenshot belegte Abweichungen in `stories.json` korrigiert: Punkt statt Komma nach „Karotten ein“; „Krümel schaute sich um“ statt „Krümel sah sich um“. Abschließende vollständige Zeichenprüfung weiter offen.
 - **verschwundene-kuerbisse:** Klarer inhaltlicher Widerspruch: Screenshot beschreibt das Verschwinden **aller** Kürbisse und eine andere Suche; die App erzählt vom Verschwinden **zweier** Kürbisse und einem Igel mit kleiner Schwester. Aktueller Text **nicht originalgetreu**. Keine freie Rekonstruktion durchgeführt.
+
+## Fortsetzung des Sichtabgleichs – 09.11.2026
+- **seifenkiste:** **wesentliche inhaltliche Abweichung**. Original-Screenshot `003743` beginnt mit „Eines sonnigen Morgens hatte Hoppel eine tolle Idee … Wir machen ein eigenes Rennauto!“ und enthält andere Ereignisse und Dialoge als die im Repository vorhandene Fassung. Text ausdrücklich **NICHT originalgetreu**; auf wortgetreue Neuübertragung angewiesen. Kein Ersetzen durch freie Paraphrase.
+- **kuschelkissen:** Screenshot `003703` über die vollständige Geschichte visuell mit dem gespeicherten Text verglichen. Handlung und gelesener Wortlaut stimmen überein; keine eindeutig belegte Textkorrektur notwendig. Eine zeichenweise unabhängige Prüfung inkl. aller Satzzeichen und Emoji-Codepoints bleibt offen.
+- **luftballon:** Screenshot `003815` mit App-Text verglichen. Handlung und lesbare Abschnitte (einschließlich „fliegender Bär“, Heuhaufen, Landung und Schluss) entsprechen einander. Keine sicher belegte Korrektur. Zeichengetreue Schlussprüfung weiterhin offen.
