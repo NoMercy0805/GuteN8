@@ -49,6 +49,8 @@ jobs:
           test -n "$SDKMANAGER" || { echo "::error::Android SDK manager not found under $SDK_ROOT"; exit 1; }
           yes | "$SDKMANAGER" --licenses >/dev/null || true
           "$SDKMANAGER" 'platforms;android-35' 'build-tools;35.0.0'
+      - name: Report original story completion
+        run: python3 scripts/original_story_progress.py
       - name: Validate story library
         run: |
           python3 - <<'PY'
