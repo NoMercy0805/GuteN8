@@ -478,3 +478,20 @@
  #home .hero-scene .hero-reference{width:min(87vw,315px)!important}
  #home .hero .primary{min-height:58px!important}
 }
+
+/* Use the actual handset height as well as width: keep the entire home action
+   stack above the fixed footer on the 384x850 CSS-pixel class of Android phones. */
+@media(max-height:900px) and (max-width:600px){
+ #home .hero-scene .hero-reference{
+   width:min(86vw,315px)!important;max-width:315px!important;
+ }
+ #home .hero .primary{min-height:58px!important;margin:0 auto 9px!important}
+ #home .home-night{min-height:54px!important;height:54px!important;margin-bottom:9px!important}
+ #home .recent-panel{min-height:77px!important;margin-bottom:8px!important}
+}
+@media(max-height:760px) and (max-width:600px){
+ #home .hero-scene .hero-reference{width:min(83vw,275px)!important;max-width:275px!important}
+ #home .hero .primary{min-height:54px!important}
+ #home .home-night{min-height:50px!important;height:50px!important}
+ #home .recent-panel{min-height:70px!important}
+}
