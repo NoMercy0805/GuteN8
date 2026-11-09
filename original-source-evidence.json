@@ -9,7 +9,11 @@
     "text_source": "Screenshot_20261109_003554_ChatGPT.jpg",
     "text_sha256": "2fe7a66680667a4c9780a1491ea851c8e09ca3e9e2104a9f929f2a38d70cf5ad",
     "word_for_word_reviewed": true,
-    "review_note": "Sichtabgleich mit dem vom Nutzer übermittelten Screenshot. Die Screenshot-Datei ist noch nicht im GitHub-Repository archiviert."
+    "review_note": "Sichtabgleich mit dem vom Nutzer übermittelten Screenshot. Die Screenshot-Datei ist noch nicht im GitHub-Repository archiviert.",
+    "image_source": "Original upload, matched to fliegender-kuchen",
+    "image_sha256": "4b6f4734c464bd84b8540b8be6530c46f0e4a4e32eb00636816fd404e60d56a8",
+    "original_image_reviewed": false,
+    "image_import_status": "File present in prepared ZIP; binary not yet in GitHub repository"
   },
   "kuschelkissen": {
     "text_source": "Screenshot_20261109_003703_ChatGPT.jpg",
@@ -43,7 +47,11 @@
     "text_sha256": "0e71e1b02349857cc5da496259041a7b9bd6b510d34a09c83ef738414ad87e34",
     "current_text_snapshot": "2026-11-09; integrity baseline only, not proof of verbatim transcription",
     "review_provenance": "unchanged_recovered_chat_transcription",
-    "recovered_transcription_commit": "8360feb575e66650685d4235eee81c1804c6073b"
+    "recovered_transcription_commit": "8360feb575e66650685d4235eee81c1804c6073b",
+    "image_source": "Original upload, matched to verschwundene-kuerbisse",
+    "image_sha256": "c1fdaccfb087dc92f06a0262be289413e91b7592dab701bdf5465aec43855981",
+    "original_image_reviewed": false,
+    "image_import_status": "File present in prepared ZIP; binary not yet in GitHub repository"
   },
   "seifenkiste": {
     "text_source": "Screenshot_20261109_003743_ChatGPT.jpg",
@@ -54,7 +62,11 @@
     "text_sha256": "4baea4ca67215bb00ea958ba11efe13b21e1c1db97a13290e8c01c2dec0de7c7",
     "current_text_snapshot": "2026-11-09 reviewed but not fully verified",
     "review_provenance": "full_visual_screenshot_comparison",
-    "review_resolution": "source_screenshot_low_resolution"
+    "review_resolution": "source_screenshot_low_resolution",
+    "image_source": "Original upload, matched to seifenkiste",
+    "image_sha256": "faca82f80cff9918db3fd784f7492ff5db78fca64998b7e504b87de9e742ecba",
+    "original_image_reviewed": false,
+    "image_import_status": "File present in prepared ZIP; binary not yet in GitHub repository"
   },
   "sternschnuppe": {
     "text_source": "Originale ChatGPT-Geschichte aus früherer Unterhaltung",
@@ -65,13 +77,21 @@
     "text_sha256": "16f880583607946527e85654c58aed182bfb3a109f55c66a61bc93cb0278a86c",
     "current_text_snapshot": "2026-11-09; integrity baseline only, not proof of verbatim transcription",
     "review_provenance": "unchanged_recovered_chat_transcription",
-    "recovered_transcription_commit": "d60b901bd4cb7ec817e273e189a0368f8ba1533a"
+    "recovered_transcription_commit": "d60b901bd4cb7ec817e273e189a0368f8ba1533a",
+    "image_source": "Original upload, matched to sternschnuppe",
+    "image_sha256": "06c3f991bbebaa015ef6f1c830085f936d0ad8be002a817ef7bd847a54c7ac1e",
+    "original_image_reviewed": false,
+    "image_import_status": "File present in prepared ZIP; binary not yet in GitHub repository"
   },
   "luftballon": {
     "text_source": "Screenshot_20261109_003815_ChatGPT.jpg",
     "text_sha256": "4d0da115958b22f8c420a28e535c671c160c086d4349c52ba0776e427d66a3a8",
     "word_for_word_reviewed": true,
-    "review_note": "Vollständiger visueller Abgleich des Original-Screenshots in vier vergrößerten Abschnitten; Windstoß-Emoji und Schlusswortlaut korrigiert; Original-Screenshot noch nicht im Repository archiviert."
+    "review_note": "Vollständiger visueller Abgleich des Original-Screenshots in vier vergrößerten Abschnitten; Windstoß-Emoji und Schlusswortlaut korrigiert; Original-Screenshot noch nicht im Repository archiviert.",
+    "image_source": "Original upload, matched to luftballon",
+    "image_sha256": "f11193be9c0d5492489f744b9f0b300b136559e5a9c118f73eef55869157c5ab",
+    "original_image_reviewed": false,
+    "image_import_status": "File present in prepared ZIP; binary not yet in GitHub repository"
   },
   "riesenrad": {
     "text_source": "Screenshot_20261109_003851_ChatGPT.jpg",
@@ -80,13 +100,21 @@
     "text_sha256": "aaa8ac43d6815695e10446c43800714a1da2dd23edb9647e9576aac9d3487185",
     "current_text_snapshot": "2026-11-09 reviewed but not fully verified",
     "review_provenance": "full_visual_screenshot_comparison",
-    "review_resolution": "source_screenshot_low_resolution"
+    "review_resolution": "source_screenshot_low_resolution",
+    "image_source": "Original upload, matched to riesenrad",
+    "image_sha256": "240f5615906b22c4e0893959a81c9115d27d1e3158fa5f4e9e75c8275b5252a4",
+    "original_image_reviewed": false,
+    "image_import_status": "File present in prepared ZIP; binary not yet in GitHub repository"
   },
   "schatztruhe": {
     "text_source": "Screenshot_20261109_003634_ChatGPT.jpg",
     "text_sha256": "87ffc9b184fbe00adc74a950fb1297d0906f0093dc4c6519df58ac72f242350a",
     "word_for_word_reviewed": true,
-    "review_note": "Vollständiger Sichtvergleich des Originals in den drei lesbaren Bildabschnitten; sechs zuvor erkannte Dialog-, Erzähl- und Endkorrekturen eingearbeitet. Screenshot selbst bislang nicht im Repository archiviert."
+    "review_note": "Vollständiger Sichtvergleich des Originals in den drei lesbaren Bildabschnitten; sechs zuvor erkannte Dialog-, Erzähl- und Endkorrekturen eingearbeitet. Screenshot selbst bislang nicht im Repository archiviert.",
+    "image_source": "Original upload, matched to schatztruhe",
+    "image_sha256": "eaa8f7c336472485a61ce9703084202ee962e0cd748f24b8756fb3bf230f5203",
+    "original_image_reviewed": false,
+    "image_import_status": "File present in prepared ZIP; binary not yet in GitHub repository"
   },
   "blume": {
     "text_source": "Earlier user-supplied original screenshot reviewed in GitHub commit a2a7f2cd4",
