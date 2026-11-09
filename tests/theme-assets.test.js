@@ -71,5 +71,22 @@ for(const art of ['bedtime-friends.svg','sleeping-friends.svg']){
 assert(css.includes('background-image:linear-gradient(180deg,#5991e4'),'Selected reference uses blue story CTA');
 assert(css.includes('mask-image:none!important'),'Illustrations should not be boxed or clipped by radial masks');
 assert(html.includes('href="home-focus.css"'),'Focused home and navigation theme must be loaded');
+
+const libraryCss=fs.readFileSync(root+'library-focus.css','utf8');
+assert(html.includes('href="library-focus.css"'),'Bright woodland library styles must be loaded');
+assert(html.indexOf('href="library-focus.css"')>html.indexOf('href="home-focus.css"'),'Library theme must load after home theme');
+for(const screen of ['#library','#favorites','#bookmarks','#settings']){
+  assert(libraryCss.includes(screen),'Shared blue woodland theme missing '+screen);
+}
+assert(libraryCss.includes("url('art/library-day-forest.svg')"),'Shared daytime forest SVG must be used');
+assert(fs.existsSync(root+'art/library-day-forest.svg'),'Daytime forest background file must exist');
+assert(html.includes('class="library-title-icon"'),'Library must have book title icon');
+assert(html.includes('class="library-search-trigger"'),'Library must have round search trigger');
+assert(html.includes('id="librarySearchOptions"'),'Advanced library filters must remain accessible');
+assert(html.includes('function toggleLibrarySearch(force)'),'Library search drawer must open and close');
+assert(libraryCss.includes('grid-template-columns:repeat(2,minmax(0,1fr))'),'Library needs two cover columns on phones');
+assert(libraryCss.includes('#library .cards .card-heart'),'Library favorite hearts must remain available');
+assert(html.includes('id="unreadOnly"')&&html.includes('id="librarySort"'),'Unread and sorting must remain functional');
+
 assert(css.includes("url('art/enchanted-forest.svg')"),'Forest background must remain integrated');
 console.log('GuteN8 scene/theme asset checks passed');
