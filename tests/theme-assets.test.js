@@ -46,7 +46,7 @@ const homeCss=fs.readFileSync(root+'home-focus.css','utf8');
 assert(homeCss.includes('transform:none!important'),'Bottom nav must override historic -50% shift');
 assert(homeCss.includes('grid-template-columns:repeat(4,minmax(0,1fr))'),'Footer must have four equal columns');
 assert(homeCss.includes('.hero-scene .hero-reference'),'Homepage must size original illustration responsively');
-assert(homeCss.includes('height:clamp(350px,calc(100dvh - 348px),590px)'),'Home must reserve vertical space for recent-story card above footer');
+assert(homeCss.includes('height:clamp(350px,calc(100dvh - 325px),610px)'),'Home must reserve vertical space for recent-story card above footer');
 assert(homeCss.includes('object-fit:fill!important'),'Full-width reference must not leave poster-like side rails');
 assert(homeCss.includes('.hero-scene::after'),'Hero-to-forest edge should have a soft finishing transition');
 assert(homeCss.includes('background:#fff9ed!important'),'Footer background should stay warm ivory');
