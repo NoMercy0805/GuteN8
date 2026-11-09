@@ -28,28 +28,36 @@
     "original_message": "2026-10-27T18:06:00Z",
     "source_recovered": true,
     "word_for_word_reviewed": false,
-    "review_note": "Vollständige Erzählung aus Original-Unterhaltung wiederhergestellt; abschließender zeichenweiser Abgleich mit dem Screenshot steht noch aus."
+    "review_note": "Vollständige Erzählung aus Original-Unterhaltung wiederhergestellt; abschließender zeichenweiser Abgleich mit dem Screenshot steht noch aus.",
+    "text_sha256": "a5e699d7bdadb90fc645ef4a61d41798394722c0f6f07cc5e42fc7aefd347ae6",
+    "current_text_snapshot": "2026-11-09; integrity baseline only, not proof of verbatim transcription"
   },
   "verschwundene-kuerbisse": {
     "text_source": "Originale ChatGPT-Geschichte aus früherer Unterhaltung",
     "original_message": "2026-10-19T17:35:21Z",
     "source_recovered": true,
     "word_for_word_reviewed": false,
-    "review_note": "Vollständige Erzählung aus Original-Unterhaltung wiederhergestellt; abschließender zeichenweiser Abgleich mit dem Screenshot steht noch aus."
+    "review_note": "Vollständige Erzählung aus Original-Unterhaltung wiederhergestellt; abschließender zeichenweiser Abgleich mit dem Screenshot steht noch aus.",
+    "text_sha256": "0e71e1b02349857cc5da496259041a7b9bd6b510d34a09c83ef738414ad87e34",
+    "current_text_snapshot": "2026-11-09; integrity baseline only, not proof of verbatim transcription"
   },
   "seifenkiste": {
     "text_source": "Originale ChatGPT-Geschichte aus früherer Unterhaltung",
     "original_message": "2026-11-04T18:41:35Z",
     "source_recovered": true,
     "word_for_word_reviewed": false,
-    "review_note": "Vollständige Erzählung aus Original-Unterhaltung wiederhergestellt; abschließender zeichenweiser Abgleich mit dem Screenshot steht noch aus."
+    "review_note": "Vollständige Erzählung aus Original-Unterhaltung wiederhergestellt; abschließender zeichenweiser Abgleich mit dem Screenshot steht noch aus.",
+    "text_sha256": "711c7aa370f56e83767d39bbf6192af8e969b37e407a80cd8236e3954450e080",
+    "current_text_snapshot": "2026-11-09; integrity baseline only, not proof of verbatim transcription"
   },
   "sternschnuppe": {
     "text_source": "Originale ChatGPT-Geschichte aus früherer Unterhaltung",
     "original_message": "2026-11-03T18:39:14Z",
     "source_recovered": true,
     "word_for_word_reviewed": false,
-    "review_note": "Vollständige Erzählung aus Original-Unterhaltung wiederhergestellt; abschließender zeichenweiser Abgleich mit dem Screenshot steht noch aus."
+    "review_note": "Vollständige Erzählung aus Original-Unterhaltung wiederhergestellt; abschließender zeichenweiser Abgleich mit dem Screenshot steht noch aus.",
+    "text_sha256": "16f880583607946527e85654c58aed182bfb3a109f55c66a61bc93cb0278a86c",
+    "current_text_snapshot": "2026-11-09; integrity baseline only, not proof of verbatim transcription"
   },
   "luftballon": {
     "text_source": "Screenshot_20261109_003815_ChatGPT.jpg",
@@ -60,7 +68,9 @@
   "riesenrad": {
     "text_source": "Screenshot_20261109_003851_ChatGPT.jpg",
     "word_for_word_reviewed": false,
-    "review_note": "Original-Screenshot an Anfang, Mittelteil und Schluss mit der App-Fassung gesichtet; vollständig unabhängige Zeichenprüfung weiter offen."
+    "review_note": "Original-Screenshot an Anfang, Mittelteil und Schluss mit der App-Fassung gesichtet; vollständig unabhängige Zeichenprüfung weiter offen.",
+    "text_sha256": "8aafcdbab7beaf2dc9468e11621a7b7df4d896b7d1a85bffb21ea4c7d37cbc12",
+    "current_text_snapshot": "2026-11-09; integrity baseline only, not proof of verbatim transcription"
   },
   "schatztruhe": {
     "text_source": "Screenshot_20261109_003634_ChatGPT.jpg",
