@@ -87,6 +87,18 @@ jobs:
               git push origin HEAD:main
             fi
           fi
+      - name: Import five genuine landscape illustrations
+        run: |
+          if [ -f GuteN8_5_Echte_Querformatbilder.zip ]; then
+            python3 scripts/import_genuine_landscape.py GuteN8_5_Echte_Querformatbilder.zip
+            git add app/src/main/assets/art/
+            if ! git diff --cached --quiet; then
+              git config user.name "github-actions[bot]"
+              git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+              git commit -m "Use genuine landscape artwork without side-blur padding"
+              git push origin HEAD:main
+            fi
+          fi
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
