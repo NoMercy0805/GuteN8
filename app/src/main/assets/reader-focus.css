@@ -96,3 +96,38 @@ body.night-reading #reader .paper{
 body.night-reading #reader #readerText{color:#f5ead8!important}
 body.night-reading #reader .paper h2{color:#ffe4b6!important}
 @media(min-width:700px){#reader #readerArt{max-height:300px!important}#reader #readerArt img{max-height:285px!important}}
+
+/* Unified landscape illustrations, with a tappable full-screen preview. */
+#reader #readerArt{
+ aspect-ratio:3/2!important;
+ max-height:none!important;
+ height:auto!important;
+ cursor:zoom-in!important;
+ touch-action:manipulation!important;
+}
+#reader #readerArt img{
+ display:block!important;width:100%!important;height:100%!important;
+ max-height:none!important;aspect-ratio:3/2!important;
+ object-fit:contain!important;object-position:center!important;
+}
+#reader #readerArt:focus-visible{outline:3px solid #438bdd!important;outline-offset:3px!important}
+.story-image-overlay[hidden]{display:none!important}
+.story-image-overlay{
+ position:fixed!important;inset:0!important;z-index:99999!important;
+ display:flex!important;align-items:center!important;justify-content:center!important;
+ padding:56px 12px 22px!important;box-sizing:border-box!important;
+ background:rgba(4,13,31,.96)!important;
+ overflow:auto!important;
+}
+.story-image-overlay img{
+ display:block!important;width:100%!important;height:auto!important;
+ max-width:min(1100px,100%)!important;max-height:calc(100dvh - 96px)!important;
+ object-fit:contain!important;border-radius:10px!important;
+}
+.story-image-close{
+ position:absolute!important;right:15px!important;top:12px!important;
+ width:46px!important;height:46px!important;border-radius:50%!important;
+ color:#fff!important;background:#334760!important;border:1px solid #b9c9da!important;
+ font:36px/40px system-ui,sans-serif!important;cursor:pointer!important;
+}
+body.story-image-open{overflow:hidden!important}
