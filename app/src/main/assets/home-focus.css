@@ -7,7 +7,7 @@ html,body{overflow-x:hidden!important}
   display:block!important;isolation:isolate!important;
   width:100%!important;max-width:none!important;
   min-height:100dvh!important;
-  padding:0 0 calc(86px + var(--home-safe-bottom))!important;
+  padding:0 0 calc(98px + var(--home-safe-bottom))!important;
   overflow-x:clip!important;
   background:#273950!important;
   background-image:linear-gradient(180deg,#162c51 0%,#24426c 45%,#e6aa5e 63%,#f6d08b 100%)!important;
@@ -27,8 +27,9 @@ html,body{overflow-x:hidden!important}
 #home .hero-scene{
   box-sizing:border-box!important;position:relative!important;
   display:block!important;isolation:auto!important;
-  width:100%!important;max-width:none!important;
-  height:clamp(415px,calc(100dvh - 300px),635px)!important;
+  width:100vw!important;max-width:none!important;
+  margin-left:calc(50% - 50vw)!important;
+  height:clamp(350px,calc(100dvh - 348px),590px)!important;
   min-height:0!important;margin:0!important;padding:0!important;
   overflow:hidden!important;border:0!important;background:transparent!important;
 }
@@ -185,12 +186,12 @@ html,body{overflow-x:hidden!important}
 .nav button.nav-active::before,.nav button.nav-active::after{display:none!important;content:none!important}
 .nav button:focus-visible{outline:2px solid #2763c2!important;outline-offset:-2px!important}
 @media(max-width:355px){
-  #home .hero-scene{height:clamp(360px,calc(100dvh - 285px),530px)!important}
+  #home .hero-scene{height:clamp(320px,calc(100dvh - 348px),500px)!important}
   #home .hero .primary{height:60px!important;min-height:60px!important}
   .nav button{font-size:10px!important}
 }
 @media(max-height:695px) and (max-width:600px){
-  #home .hero-scene{height:clamp(335px,calc(100dvh - 275px),480px)!important}
+  #home .hero-scene{height:clamp(300px,calc(100dvh - 332px),430px)!important}
   #home .recent-panel{min-height:74px!important}
 }
 @media(min-width:700px){
