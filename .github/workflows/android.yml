@@ -99,6 +99,18 @@ jobs:
               git push origin HEAD:main
             fi
           fi
+      - name: Import five newly authored story images
+        run: |
+          if [ -f GuteN8_5_Neue_Storybilder_importbereit.zip ]; then
+            python3 scripts/import_five_new_story_images.py GuteN8_5_Neue_Storybilder_importbereit.zip
+            git add app/src/main/assets/art/
+            if ! git diff --cached --quiet; then
+              git config user.name "github-actions[bot]"
+              git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+              git commit -m "Import five new GuteN8 story illustrations"
+              git push origin HEAD:main
+            fi
+          fi
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
