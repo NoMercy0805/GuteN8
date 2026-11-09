@@ -1,236 +1,210 @@
-/* GuteN8 – Startseite wie die Originalvorlage.
-   Eigenständige Regeln für #home und die gemeinsame Vier-Tab-Navigation.
-   Keine Veränderungen an Geschichten, Illustrationen anderer Seiten oder deren Daten. */
-:root{--home-safe-bottom:env(safe-area-inset-bottom,0px)}
-html,body{overflow-x:hidden!important}
+/* GuteN8 Startseite: a SINGLE fixed viewport layout.
+   Only #home and the global bottom navigation are styled here.
+   The other screens retain their own scrolling. */
+:root{--g8-footer-height:66px}
+html,body{max-width:100%;overflow-x:hidden!important}
+body.home-screen-active{
+  height:100dvh!important;min-height:0!important;
+  overflow:hidden!important;overscroll-behavior:none!important;
+}
 #home.active{
-  display:block!important;isolation:isolate!important;
-  width:100%!important;max-width:none!important;
-  min-height:100dvh!important;
-  padding:0 0 calc(98px + var(--home-safe-bottom))!important;
-  overflow-x:clip!important;
-  background:#273950!important;
-  background-image:linear-gradient(180deg,#162c51 0%,#24426c 45%,#e6aa5e 63%,#f6d08b 100%)!important;
+  box-sizing:border-box!important;
+  display:flex!important;flex-direction:column!important;
+  align-items:stretch!important;justify-content:flex-start!important;
+  width:100%!important;height:100dvh!important;min-height:0!important;
+  max-height:100dvh!important;overflow:hidden!important;
+  padding:0 0 var(--g8-footer-height)!important;margin:0!important;
+  background:#eebb73!important;
+  background-image:linear-gradient(180deg,#172950 0%,#263e60 52%,#e6b36c 73%,#f5cc85 100%)!important;
+  background-size:100% 100%!important;
 }
 #home.active::before,#home.active::after,
 #home .hero::before,#home .hero::after,
-#home .hero-scene::before,#home .hero-scene::after{
-  display:none!important;content:none!important;background:none!important;
+#home .hero-scene::before{
+  content:none!important;display:none!important;
 }
 #home .hero{
-  position:relative!important;display:flex!important;flex-direction:column!important;
+  box-sizing:border-box!important;
+  display:flex!important;flex:1 1 0!important;flex-direction:column!important;
   align-items:center!important;justify-content:flex-start!important;
   width:100%!important;max-width:none!important;
-  margin:0!important;padding:0!important;min-height:0!important;
-  gap:0!important;overflow:visible!important;background:transparent!important;
+  min-height:0!important;max-height:none!important;
+  margin:0!important;padding:0!important;gap:0!important;
+  overflow:hidden!important;background:transparent!important;
 }
 #home .hero-scene{
-  box-sizing:border-box!important;position:relative!important;
-  display:block!important;isolation:auto!important;
-  width:100vw!important;max-width:none!important;
-  margin-left:calc(50% - 50vw)!important;
-  height:clamp(350px,calc(100dvh - 325px),610px)!important;
-  min-height:0!important;margin:0!important;padding:0!important;
-  overflow:hidden!important;border:0!important;background:transparent!important;
+  box-sizing:border-box!important;display:block!important;flex:1 1 0!important;
+  position:relative!important;isolation:isolate!important;
+  width:100%!important;max-width:none!important;height:auto!important;
+  min-height:0!important;max-height:none!important;
+  margin:0!important;padding:0!important;overflow:hidden!important;
+  background:transparent!important;border:0!important;
+}
+#home .hero-scene::after{
+  content:''!important;display:block!important;pointer-events:none!important;
+  position:absolute!important;bottom:0!important;left:0!important;right:0!important;
+  height:8px!important;background:linear-gradient(transparent,#e9b76a44)!important;
 }
 #home .hero-scene .hero-reference{
-  position:relative!important;display:block!important;
+  box-sizing:border-box!important;display:block!important;
   width:100%!important;max-width:none!important;
-  height:100%!important;max-height:none!important;aspect-ratio:auto!important;
-  margin:0!important;padding:0!important;border:0!important;border-radius:0!important;
-  object-fit:fill!important;object-position:center center!important;
-  background:transparent!important;box-shadow:none!important;
-  filter:none!important;image-rendering:auto!important;
+  height:100%!important;max-height:none!important;
+  margin:0!important;padding:0!important;border:0!important;
+  aspect-ratio:auto!important;object-fit:fill!important;
+  object-position:top center!important;border-radius:0!important;
+  box-shadow:none!important;filter:none!important;
   mask-image:none!important;-webkit-mask-image:none!important;
 }
 #home .home-sign,#home .hero-scene .art{display:none!important}
 #home .hero .primary{
-  box-sizing:border-box!important;display:grid!important;
-  grid-template-columns:55px minmax(0,1fr) 25px!important;
-  align-items:center!important;justify-items:center!important;column-gap:9px!important;
-  width:calc(100% - 30px)!important;max-width:430px!important;
-  min-height:64px!important;height:64px!important;
-  margin:0 auto 9px!important;padding:6px 14px!important;
-  border:3px solid #fff6de!important;border-radius:32px!important;
+  box-sizing:border-box!important;
+  display:grid!important;grid-template-columns:54px minmax(0,1fr) 26px!important;
+  align-items:center!important;justify-items:center!important;column-gap:8px!important;
+  flex:0 0 64px!important;width:calc(100% - 28px)!important;max-width:430px!important;
+  min-height:0!important;height:64px!important;max-height:64px!important;
+  margin:0 auto 8px!important;padding:6px 13px!important;
+  border:3px solid #fff6df!important;border-radius:30px!important;
   background:linear-gradient(180deg,#29a9f7 0%,#0478d5 55%,#044a9e 100%)!important;
-  color:#fff!important;font:850 clamp(16px,4.3vw,20px)/1.08 system-ui,'Segoe UI',sans-serif!important;
-  text-shadow:0 2px 2px #083f7c!important;
-  box-shadow:0 4px 0 #9a713b,0 7px 12px #0b234d80,inset 0 2px 1px #ccf4ff88!important;
+  color:#fff!important;text-shadow:0 2px 2px #083f7c!important;
+  box-shadow:0 3px 0 #96713a,0 6px 10px #0b234d66,inset 0 2px 1px #ccf4ff88!important;
+  font:850 clamp(16px,4.3vw,20px)/1.08 system-ui,'Segoe UI',sans-serif!important;
 }
 #home .hero .primary .home-cta-book{
-  display:grid!important;place-items:center!important;
-  width:49px!important;height:43px!important;min-width:0!important;
+  display:grid!important;place-items:center!important;min-width:0!important;
+  width:47px!important;height:41px!important;line-height:1!important;
 }
 #home .hero .primary .home-cta-book svg{
-  display:block!important;width:49px!important;height:42px!important;
-  stroke:#fff!important;filter:none!important;
+  width:47px!important;height:40px!important;display:block!important;stroke:#fff!important;
 }
 #home .hero .primary .home-cta-text{
-  display:block!important;width:100%!important;min-width:0!important;
-  font:850 clamp(16px,4.4vw,21px)/1.04 system-ui,'Segoe UI',sans-serif!important;
+  width:100%!important;min-width:0!important;display:block!important;
+  font:850 clamp(16px,4.35vw,20px)/1.06 system-ui,'Segoe UI',sans-serif!important;
   text-align:left!important;white-space:normal!important;color:#fff!important;
 }
 #home .hero .primary .home-cta-chevron{
-  display:block!important;font:750 31px/1 system-ui,sans-serif!important;
-  color:#fff!important;
+  color:#fff!important;display:block!important;font:750 30px/1 system-ui,sans-serif!important;
 }
 #home .hero .surprise-story{display:none!important}
 #home .home-night{
-  box-sizing:border-box!important;display:flex!important;align-items:center!important;
-  justify-content:space-between!important;
-  width:calc(100% - 30px)!important;max-width:430px!important;
-  height:52px!important;min-height:52px!important;margin:0 auto 10px!important;
-  padding:8px 14px!important;
-  border:2px solid #e1baff!important;border-radius:22px!important;
+  box-sizing:border-box!important;flex:0 0 53px!important;
+  display:flex!important;align-items:center!important;justify-content:space-between!important;
+  width:calc(100% - 28px)!important;max-width:430px!important;
+  height:53px!important;min-height:0!important;max-height:53px!important;
+  margin:0 auto 8px!important;padding:6px 14px!important;
+  border:2px solid #e1baff!important;border-radius:21px!important;
   background:linear-gradient(180deg,#bd73ef,#8937d3 50%,#671cab)!important;
-  color:#fff!important;font:800 clamp(14px,3.7vw,18px)/1.15 system-ui,'Segoe UI',sans-serif!important;
+  color:#fff!important;
+  font:800 clamp(13px,3.7vw,17px)/1.12 system-ui,'Segoe UI',sans-serif!important;
   text-shadow:0 1px 2px #4f2389!important;
-  box-shadow:0 4px 8px #1e1a465b,inset 0 2px 2px #f7d4ff7d!important;
+  box-shadow:0 3px 6px #1e1a465b,inset 0 2px 2px #f7d4ff7d!important;
 }
 #home .home-night .home-moon{
-  display:flex!important;flex:none!important;align-items:center!important;justify-content:center!important;
-  width:36px!important;height:36px!important;margin-right:7px!important;
+  display:flex!important;flex:0 0 34px!important;align-items:center!important;
+  justify-content:center!important;width:34px!important;height:34px!important;margin-right:6px!important;
 }
-#home .home-night .home-moon svg{display:block!important;width:36px!important;height:36px!important;filter:drop-shadow(0 1px 3px #f5cf7790)!important}
-#home .home-night .home-night-title{display:inline-block!important;flex:1!important;text-align:left!important;white-space:nowrap!important}
+#home .home-night .home-moon svg{display:block!important;width:34px!important;height:34px!important}
+#home .home-night .home-night-title{
+  flex:1!important;min-width:0!important;text-align:left!important;white-space:nowrap!important;
+}
 #home .home-night #nightLabel{
-  box-sizing:border-box!important;display:flex!important;
+  box-sizing:border-box!important;display:flex!important;flex:0 0 44px!important;
   align-items:center!important;justify-content:flex-start!important;
-  width:45px!important;min-width:45px!important;height:27px!important;
-  margin-left:auto!important;padding:2px!important;overflow:hidden!important;
+  width:44px!important;height:27px!important;margin-left:7px!important;padding:2px!important;
   border-radius:99px!important;background:#9c9bb6!important;
   box-shadow:inset 0 2px 3px #41335966!important;
-  font-size:0!important;line-height:0!important;
+  overflow:hidden!important;font-size:0!important;line-height:0!important;
 }
 #home .home-night #nightLabel::after{
-  content:''!important;display:block!important;
-  width:23px!important;height:23px!important;min-width:23px!important;
-  border-radius:50%!important;background:#fff!important;
-  box-shadow:0 1px 3px #24224466!important;
+  content:''!important;display:block!important;flex:0 0 23px!important;
+  width:23px!important;height:23px!important;border-radius:50%!important;
+  background:#fff!important;box-shadow:0 1px 3px #24224466!important;
 }
-#home .home-night #nightLabel.is-on{
-  justify-content:flex-end!important;background:#2589ee!important;
-}
+#home .home-night #nightLabel.is-on{justify-content:flex-end!important;background:#2589ee!important}
 #home .recent-panel{
-  box-sizing:border-box!important;display:block!important;position:relative!important;
-  width:calc(100% - 30px)!important;max-width:430px!important;
-  min-height:78px!important;margin:0 auto 10px!important;
-  padding:12px 35px 12px 16px!important;
-  border:1px solid #fffaf3!important;border-radius:22px!important;
+  box-sizing:border-box!important;position:relative!important;
+  display:flex!important;flex:0 0 83px!important;flex-direction:column!important;
+  align-items:stretch!important;justify-content:center!important;
+  width:calc(100% - 28px)!important;max-width:430px!important;
+  height:83px!important;min-height:0!important;max-height:83px!important;
+  margin:0 auto 9px!important;padding:9px 35px 9px 15px!important;
+  border:1px solid #fffaf3!important;border-radius:21px!important;
   background:linear-gradient(180deg,#fff,#f6f5f5)!important;
-  color:#1c305e!important;
-  text-align:left!important;
-  font:700 clamp(13px,3.5vw,16px)/1.16 system-ui,'Segoe UI',sans-serif!important;
-  box-shadow:0 5px 11px #0b20394f!important;
+  color:#1c305e!important;text-align:left!important;
+  box-shadow:0 4px 8px #0b20394f!important;
+  font:700 clamp(13px,3.4vw,16px)/1.15 system-ui,'Segoe UI',sans-serif!important;
 }
 #home .recent-panel .recent-heading{
-  display:flex!important;align-items:center!important;gap:9px!important;
-  color:#192f62!important;
+  display:flex!important;align-items:center!important;gap:8px!important;
+  color:#192f62!important;line-height:1.12!important;
 }
 #home .recent-panel .recent-heading strong{font-weight:800!important}
 #home .recent-panel .recent-heading svg{
-  display:block!important;flex:none!important;width:26px!important;height:26px!important;
+  display:block!important;flex:none!important;width:25px!important;height:25px!important;
   color:#1d3476!important;
 }
 #home .recent-panel #recent{
-  display:block!important;margin:7px 0 0!important;
-  color:#2f3d60!important;font:500 clamp(11px,3.1vw,13px)/1.25 system-ui,'Segoe UI',sans-serif!important;
-  white-space:normal!important;
+  display:-webkit-box!important;-webkit-line-clamp:2!important;-webkit-box-orient:vertical!important;
+  max-width:100%!important;max-height:33px!important;overflow:hidden!important;
+  margin:5px 0 0!important;white-space:normal!important;
+  color:#2f3d60!important;font:500 clamp(11px,3.1vw,13px)/1.22 system-ui,'Segoe UI',sans-serif!important;
 }
 #home .recent-panel::after{
-  content:'›'!important;display:block!important;
-  position:absolute!important;top:50%!important;right:12px!important;
-  transform:translateY(-50%)!important;
-  color:#163977!important;font:750 26px/1 system-ui,sans-serif!important;
+  content:'›'!important;display:block!important;position:absolute!important;
+  right:12px!important;top:50%!important;transform:translateY(-50%)!important;
+  font:750 26px/1 system-ui,sans-serif!important;color:#163977!important;
 }
 #home .recent-progress-track{display:none!important}
-/* Original mockup: thin ivory navigation with four evenly spaced controls. */
+/* Fixed four-tab footer; the Android gesture bar is managed natively below the WebView. */
 .nav{
-  box-sizing:border-box!important;position:fixed!important;z-index:100!important;
-  left:0!important;right:0!important;bottom:0!important;
+  box-sizing:border-box!important;position:fixed!important;
+  z-index:100!important;left:0!important;right:0!important;bottom:0!important;
   transform:none!important;translate:none!important;
   display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;
   align-items:stretch!important;justify-items:stretch!important;gap:0!important;
   width:100%!important;max-width:none!important;min-width:0!important;
-  height:calc(73px + var(--home-safe-bottom))!important;min-height:73px!important;
-  margin:0!important;padding:5px 3px calc(5px + var(--home-safe-bottom))!important;
+  height:var(--g8-footer-height)!important;min-height:0!important;max-height:var(--g8-footer-height)!important;
+  margin:0!important;padding:2px 3px 3px!important;
   border:1px solid #f0d6aa!important;border-bottom:0!important;
-  border-radius:20px 20px 0 0!important;overflow:hidden!important;
-  background:linear-gradient(180deg,#fffdfa,#fff8ed)!important;
-  box-shadow:0 -3px 13px #0a1e3f48!important;
+  border-radius:19px 19px 0 0!important;overflow:hidden!important;
+  background:#fff9ed!important;box-shadow:0 -2px 10px #0a1e3f40!important;
 }
 .nav button{
   box-sizing:border-box!important;position:relative!important;
   display:flex!important;flex-direction:column!important;
   align-items:center!important;justify-content:center!important;
-  width:100%!important;min-width:0!important;max-width:none!important;
-  height:62px!important;min-height:62px!important;max-height:62px!important;
-  gap:3px!important;margin:0!important;padding:3px 1px 2px!important;
-  border:0!important;border-radius:12px!important;
+  width:100%!important;min-width:0!important;height:60px!important;
+  min-height:0!important;max-height:60px!important;
+  gap:2px!important;margin:0!important;padding:2px 1px 1px!important;
+  border:0!important;border-radius:11px!important;
   background:transparent!important;color:#26365f!important;
   box-shadow:none!important;text-shadow:none!important;
   transform:none!important;translate:none!important;
-  font:600 clamp(10px,2.7vw,12px)/1.12 system-ui,'Segoe UI',sans-serif!important;
-  overflow:visible!important;white-space:nowrap!important;
+  font:600 clamp(10px,2.6vw,12px)/1.1 system-ui,'Segoe UI',sans-serif!important;
+  white-space:nowrap!important;overflow:visible!important;
 }
 .nav button .nav-icon{
   display:flex!important;align-items:center!important;justify-content:center!important;
-  width:27px!important;height:27px!important;min-height:27px!important;flex:none!important;
+  width:26px!important;height:26px!important;min-height:26px!important;flex:none!important;
 }
-.nav button .nav-icon svg{
-  display:block!important;width:26px!important;height:26px!important;stroke-width:1.8!important;
-}
+.nav button .nav-icon svg{display:block!important;width:25px!important;height:25px!important;stroke-width:1.8!important}
 .nav button .nav-label{
-  display:block!important;height:auto!important;min-height:14px!important;
-  font-size:inherit!important;line-height:1.15!important;
-  overflow:visible!important;white-space:nowrap!important;
+  display:block!important;font-size:inherit!important;line-height:1.12!important;
+  height:auto!important;min-height:13px!important;white-space:nowrap!important;overflow:visible!important;
 }
-.nav button.nav-active{
-  background:transparent!important;color:#0747a9!important;box-shadow:none!important;
-}
+.nav button.nav-active{background:transparent!important;color:#0747a9!important;box-shadow:none!important}
 .nav button.nav-active .nav-icon svg{filter:none!important;stroke-width:2.1!important}
 .nav button.nav-active::before,.nav button.nav-active::after{display:none!important;content:none!important}
+.nav button.nav-active:first-child .nav-icon svg path:first-child{fill:#0e55ba!important;stroke:#0e55ba!important}
+.nav button.nav-active:first-child .nav-icon svg path:last-child{fill:#fff9ed!important;stroke:#fff9ed!important}
 .nav button:focus-visible{outline:2px solid #2763c2!important;outline-offset:-2px!important}
+@media(max-height:660px){
+  #home .hero .primary{flex-basis:57px!important;height:57px!important;max-height:57px!important}
+  #home .home-night{flex-basis:48px!important;height:48px!important;max-height:48px!important}
+  #home .recent-panel{flex-basis:72px!important;height:72px!important;max-height:72px!important}
+}
 @media(max-width:355px){
-  #home .hero-scene{height:clamp(320px,calc(100dvh - 325px),525px)!important}
-  #home .hero .primary{height:60px!important;min-height:60px!important}
   .nav button{font-size:10px!important}
+  #home .home-night{padding:6px 10px!important}
+  #home .home-night .home-moon{width:29px!important;flex-basis:29px!important;margin-right:3px!important}
 }
-@media(max-height:695px) and (max-width:600px){
-  #home .hero-scene{height:clamp(300px,calc(100dvh - 312px),455px)!important}
-  #home .recent-panel{min-height:74px!important}
-}
-@media(min-width:700px){
-  #home .hero-scene{max-height:700px!important}
-  #home .hero .primary,#home .home-night,#home .recent-panel{max-width:475px!important}
-}
-@media(prefers-reduced-motion:reduce){
-  #home *, .nav *{animation:none!important;transition:none!important}
-}
-/* Final reference alignment pass: flowing artwork edge, active blue house,
-   and controls with the same warm spacing as the source mockup. */
-#home .hero-scene{isolation:isolate!important}
-#home .hero-scene::after{
-  content:''!important;display:block!important;pointer-events:none!important;
-  position:absolute!important;left:0!important;right:0!important;bottom:0!important;
-  height:18px!important;z-index:2!important;
-  background:linear-gradient(180deg,transparent 0%,#e9b76a3d 100%)!important;
-}
-#home .hero .primary{width:calc(100% - 34px)!important}
-#home .home-night,#home .recent-panel{width:calc(100% - 34px)!important}
-#home .home-night{margin-top:1px!important}
-#home .recent-panel{margin-top:1px!important}
-.nav{background:#fff9ed!important}
-.nav button.nav-active:first-child .nav-icon svg path:first-child{
-  fill:#0e55ba!important;stroke:#0e55ba!important;
-}
-.nav button.nav-active:first-child .nav-icon svg path:last-child{
-  fill:#fff9ed!important;stroke:#fff9ed!important;
-}
-.nav button .nav-icon svg{stroke-linecap:round!important;stroke-linejoin:round!important}
-@media(max-height:720px) and (max-width:600px){
-  #home .hero-scene{height:clamp(315px,calc(100dvh - 285px),455px)!important}
-  #home .hero .primary{height:60px!important;min-height:60px!important}
-  #home .home-night{height:49px!important;min-height:49px!important}
-  #home .recent-panel{min-height:71px!important}
-}
+@media(prefers-reduced-motion:reduce){#home *, .nav *{animation:none!important;transition:none!important}}
