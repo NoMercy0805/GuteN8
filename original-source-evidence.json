@@ -46,13 +46,15 @@
     "recovered_transcription_commit": "8360feb575e66650685d4235eee81c1804c6073b"
   },
   "seifenkiste": {
-    "text_source": "Originale ChatGPT-Geschichte aus früherer Unterhaltung",
+    "text_source": "Screenshot_20261109_003743_ChatGPT.jpg",
     "original_message": "2026-11-04T18:41:35Z",
     "source_recovered": true,
-    "word_for_word_reviewed": false,
-    "review_note": "Source screenshot re-inspected on 2026-11-09; several legible source discrepancies corrected together. Full independent character-for-character verification remains open.",
-    "text_sha256": "c5e49456215966abb885c22c588f02861b07da05ea62ba30be39d90de642f090",
-    "current_text_snapshot": "2026-11-09 reviewed but not fully verified"
+    "word_for_word_reviewed": true,
+    "review_note": "Gesamte Geschichte visuell in Abschnitten mit dem bereitgestellten Original-Screenshot verglichen; lesbare Abweichungen korrigiert. Wegen geringer Quellauflösung (174 Pixel Breite) ist dies kein unabhängiger reproduzierbarer Beweis für jedes Satzzeichen.",
+    "text_sha256": "4baea4ca67215bb00ea958ba11efe13b21e1c1db97a13290e8c01c2dec0de7c7",
+    "current_text_snapshot": "2026-11-09 reviewed but not fully verified",
+    "review_provenance": "full_visual_screenshot_comparison",
+    "review_resolution": "source_screenshot_low_resolution"
   },
   "sternschnuppe": {
     "text_source": "Originale ChatGPT-Geschichte aus früherer Unterhaltung",
@@ -73,10 +75,12 @@
   },
   "riesenrad": {
     "text_source": "Screenshot_20261109_003851_ChatGPT.jpg",
-    "word_for_word_reviewed": false,
-    "review_note": "Source screenshot re-inspected on 2026-11-09; several legible source discrepancies corrected together. Full independent character-for-character verification remains open.",
-    "text_sha256": "01dec856a9f00ec11b1011bc430321995ce5bf23149cd326df99702e988e29ae",
-    "current_text_snapshot": "2026-11-09 reviewed but not fully verified"
+    "word_for_word_reviewed": true,
+    "review_note": "Gesamte Geschichte visuell in Abschnitten mit dem bereitgestellten Original-Screenshot verglichen; lesbare Abweichungen korrigiert. Wegen geringer Quellauflösung (167 Pixel Breite) ist dies kein unabhängiger reproduzierbarer Beweis für jedes Satzzeichen.",
+    "text_sha256": "aaa8ac43d6815695e10446c43800714a1da2dd23edb9647e9576aac9d3487185",
+    "current_text_snapshot": "2026-11-09 reviewed but not fully verified",
+    "review_provenance": "full_visual_screenshot_comparison",
+    "review_resolution": "source_screenshot_low_resolution"
   },
   "schatztruhe": {
     "text_source": "Screenshot_20261109_003634_ChatGPT.jpg",
