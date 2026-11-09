@@ -22,6 +22,11 @@ assert(html.includes('class="hero-scene"'),'Hero must be a single illustrated sc
 assert((html.match(/class="collection-shell"/g)||[]).length===2,'Favorites and bookmarks must use unified illustration cards');
 assert(html.includes('class="sleep-scene-img"'),'Bedtime uses one image without duplicated moon decoration');
 assert((html.match(/class="nav-icon"/g)||[]).length===4,'Reference layout uses exactly four matching navigation tabs');
+const nav=html.slice(html.indexOf('<nav class="nav"'),html.indexOf('</nav>'));
+assert(nav.includes('aria-label="Bibliothek" onclick="show(\'library\')"'),'Bibliothek tab must open story library');
+assert(nav.includes('aria-label="Lesezeichen" onclick="show(\'bookmarks\')"'),'Bookmark tab must open bookmarks');
+assert(nav.includes('aria-label="Favoriten" onclick="show(\'favorites\')"'),'Favorites tab must open favorites');
+assert(nav.includes('aria-label="Einstellungen" onclick="show(\'settings\')"'),'Settings tab must open settings');
 assert(css.includes("url('art/enchanted-forest.svg')"),'Screens must share the illustrated forest');
 assert(!html.includes('class="sleep-stars"'),'No extra moon or stars outside the bedtime illustration');
 assert(css.includes('#favorites .collection-shell')&&css.includes('#bookmarks .collection-shell'),'Collection layout must be shared');
@@ -42,6 +47,8 @@ assert(homeCss.includes('grid-template-columns:repeat(4,minmax(0,1fr))'),'Footer
 assert(homeCss.includes('.hero-scene .hero-reference'),'Homepage must size original illustration responsively');
 assert(homeCss.includes('height:clamp(415px,calc(100dvh - 300px),635px)'),'Home scene must adapt to phone height and fit controls');
 assert(homeCss.includes('object-fit:fill!important'),'Full-width reference must not leave poster-like side rails');
+assert(homeCss.includes('.hero-scene::after'),'Hero-to-forest edge should have a soft finishing transition');
+assert(homeCss.includes('background:#fff9ed!important'),'Footer background should stay warm ivory');
 assert(homeCss.includes('width:100%!important;max-width:none!important'),'Hero must extend to phone edges');
 assert(html.includes('class="home-cta-text"'),'Discovery CTA must have reference two-line title');
 assert(html.includes('class="recent-heading"'),'Recent-story card needs open-book heading');
