@@ -500,13 +500,13 @@ const storyPageCache=new Map(),storyRemainingWordsCache=new Map();
 function remainingWords(s,index){if(!storyRemainingWordsCache.has(s.id)){const pages=chunks(s),counts=pages.map(p=>p.trim().split(/\s+/).filter(Boolean).length),totals=new Array(counts.length);let sum=0;for(let i=counts.length-1;i>=0;i--){sum+=counts[i];totals[i]=sum}storyRemainingWordsCache.set(s.id,totals)}return storyRemainingWordsCache.get(s.id)[index]||0}
 function chunks(s){
  if(storyPageCache.has(s.id))return storyPageCache.get(s.id);
- const limit=1000000,out=[];let part='';
+ const limit=1150,out=[];let part='';
  const add=sentence=>{
   if(part&&part.length+sentence.length+1>limit){out.push(part.trim());part=''}
   part+=(part?' ':'')+sentence;
  };
  for(const paragraph of s.text.split(/\n\n+/)){
-  if(part){out.push(part.trim());part=''}
+  if(part&&part.length+paragraph.length+2>limit){out.push(part.trim());part=''}
   const sentences=paragraph.match(/[^.!?]+[.!?]+(?:[”"’']+)?|[^.!?]+$/g)||[paragraph];
   for(const sentence of sentences){
    const t=sentence.trim();if(!t)continue;
@@ -516,6 +516,7 @@ function chunks(s){
     part+=(part?' ':'')+word;
    }
   }
+  if(part)part+='\n\n';
  }
  if(part.trim())out.push(part.trim());
  const pages=out.length?out:[''];storyPageCache.set(s.id,pages);return pages;
