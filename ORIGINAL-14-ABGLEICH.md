@@ -1,22 +1,28 @@
-# Abgleich der 14 Original-Screenshots (09.11.2026)
+# Die 14 ausgewählten Originalgeschichten – Arbeitsstand
 
-Die 14 unterschiedlichen Geschichten aus den Nutzer-Screenshots sind:
+Stand: 09.11.2026. Maßgeblich sind die 14 vom Nutzer übermittelten Screenshots, **nicht** die frühere App-Auswahl.
 
-1. Die verlorene Blume — vorhanden, Text aus Screenshot übernommen; Bild noch nicht identisch eingebunden
-2. Das geheimnisvolle Baumhaus — vorhanden, Text aus Screenshot übernommen; Bildplatzhalter
-3. Das Geheimnis der verschwundenen Kürbisse — vorhanden; Text und Bild noch exakt abzugleichen
-4. Das verschwundene Picknick — vorhanden; Text und Bild noch exakt abzugleichen
-5. Die geheimnisvolle Regenbogenbrücke — FEHLT in stories.json
-6. Der fliegende Kuchen — vorhanden, Text aus Screenshot übernommen; Bild noch nicht identisch eingebunden
-7. Der verlorene Berg — vorhanden; Text und Bild noch exakt abzugleichen
-8. Das geheimnisvolle Schatzabenteuer / Der geheimnisvolle Schatz — FEHLT in stories.json (Titel anhand Screenshot prüfen)
-9. Die verrückte Seifenkistenfahrt — vorhanden; Text und Bild noch exakt abzugleichen
-10. Das geheimnisvolle Riesenrad — vorhanden, derzeit rekonstruierter Text, NICHT wortgleich verifiziert
-11. Die verschwundene Decke — vorhanden, Text aus Screenshot übernommen; Bild noch nicht identisch eingebunden
-12. Der verrückte Luftballon — vorhanden; Text und Bild noch exakt abzugleichen
-13. Das verschwundene Kuschelkissen — vorhanden, Text aus Screenshot übernommen; Bildplatzhalter
-14. Die magische Sternschnuppe — vorhanden; Text und Bild noch exakt abzugleichen
+| ID | Geschichte | Text | Bild |
+|---|---|---|---|
+| blume | Die verlorene Blume | aus Screenshot übertragen; Schlussabgleich offen | Original nicht eingebunden |
+| baumhaus | Das geheimnisvolle Baumhaus | aus Screenshot übertragen; Schlussabgleich offen | Platzhalter |
+| verschwundene-kuerbisse | Das Geheimnis der verschwundenen Kürbisse | exakter Abgleich offen | Original nicht eingebunden |
+| picknick | Das verschwundene Picknick | Langfassung aus Screenshot übertragen; Schlussabgleich offen | Original nicht eingebunden |
+| regenbogenbruecke | Die geheimnisvolle Regenbogenbrücke | übertragen, wortgetreuer Abgleich offen | Platzhalter |
+| fliegender-kuchen | Der fliegende Kuchen | aus Screenshot übertragen; Schlussabgleich offen | Original nicht eingebunden |
+| berg | Der verlorene Berg | alte Kurzfassung, Originalübertragung offen | Original nicht eingebunden |
+| schatztruhe | Die geheimnisvolle Schatztruhe | übertragen, wortgetreuer Abgleich offen | Platzhalter |
+| seifenkiste | Die verrückte Seifenkistenfahrt | alte Kurzfassung, Originalübertragung offen | Original nicht eingebunden |
+| riesenrad | Das geheimnisvolle Riesenrad | rekonstruiert, nicht als Original verifiziert | Original nicht eingebunden |
+| decke | Die verschwundene Decke | aus Screenshot übertragen; Schlussabgleich offen | Original nicht eingebunden |
+| luftballon | Der verrückte Luftballon | Langfassung aus Screenshot übertragen; Schlussabgleich offen | Original nicht eingebunden |
+| kuschelkissen | Das verschwundene Kuschelkissen | aus Screenshot übertragen; Schlussabgleich offen | Platzhalter |
+| sternschnuppe | Die magische Sternschnuppe | alte Kurzfassung, Originalübertragung offen | Original nicht eingebunden |
 
-Die bisherige App enthält zusätzlich „Mia, Bobby und das kleine Boot“, das nicht zu diesen 14 Screenshots gehört. Es darf nicht als Ersatz für eine der 14 gelten.
+## Originalillustrationen
 
-WICHTIG: Nur exakte Bilddateien der Originalillustrationen verwenden, keine frei erfundenen SVG-Zeichnungen als original ausgeben. Die 1000 Zusatzgeschichten bleiben bis zur Einzelprüfung ausgeblendet.
+In der laufenden Unterhaltung wurden Bilder zu mehreren Geschichten wiedergefunden (u.a. Riesenrad, Seifenkistenfahrt, Luftballon, Kuchen, Schatztruhe, Kürbisse, Sternschnuppe und Kuschelkissen). Diese liegen bislang **nicht als die Original-PNGs im GitHub-Repository**. Die dortigen SVG-Dateien sind keine bestätigten Originalbilder. Die Bildübernahme ist deshalb offen.
+
+## Sichtbarkeit
+
+Die 1.000 generierten Zusatzgeschichten sind in der App ausgeblendet. Erst nach Einzelprüfung von Text und Bild sollen sie wieder eingeblendet werden. Keine Kurzfassung oder Ersatzillustration als abgeschlossen markieren.
