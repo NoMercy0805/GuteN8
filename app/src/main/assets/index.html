@@ -544,7 +544,7 @@ function chunks(s){
     part+=(part?' ':'')+word;
    }
   }
-  if(part)part+='\n\n';
+  if(part&&!part.endsWith('\n\n'))part+='\n\n';
  }
  if(part.trim())out.push(part.trim());
  const pages=out.length?out:[''];storyPageCache.set(s.id,pages);return pages;
