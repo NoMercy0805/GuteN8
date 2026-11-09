@@ -86,6 +86,16 @@ assert(html.includes('id="librarySearchOptions"'),'Advanced library filters must
 assert(html.includes('function toggleLibrarySearch(force)'),'Library search drawer must open and close');
 assert(libraryCss.includes('grid-template-columns:repeat(2,minmax(0,1fr))'),'Library needs two cover columns on phones');
 assert(libraryCss.includes('#library .cards .card-heart'),'Library favorite hearts must remain available');
+
+for(const type of ['bookmark','heart','moon']){
+ assert(html.includes('class="section-title-icon section-title-icon-'+type+'"'),'Missing unified title icon '+type);
+}
+assert(libraryCss.includes('#favorites:not(.has-stories) .collection-characters'),'Favorites must use illustrated scene');
+assert(libraryCss.includes('#bookmarks:not(.has-stories) .collection-characters'),'Bookmarks must use illustrated scene');
+assert(libraryCss.includes('#settings .sleep-art .sleep-scene-img{display:none!important}'),'Settings must hide mismatched flat art');
+assert(libraryCss.includes("url('art/reference-home.svg')"),'Collection scenes must reuse detailed Bobby/Hoppel/Krümel reference');
+assert(libraryCss.includes('.collection-characters img{')&&libraryCss.includes('display:none!important'),'Collection scenes must hide flat vector animals');
+
 assert(html.includes('id="unreadOnly"')&&html.includes('id="librarySort"'),'Unread and sorting must remain functional');
 
 assert(css.includes("url('art/enchanted-forest.svg')"),'Forest background must remain integrated');
