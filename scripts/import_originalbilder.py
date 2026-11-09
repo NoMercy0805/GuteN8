@@ -36,6 +36,8 @@ def main():
                 raise SystemExit(f"Invalid WebP: {name}")
             (ART / f"{story_id}.webp").write_bytes(payload)
     stories = json.loads(STORIES.read_text(encoding="utf-8"))
+    if len(stories) != 14 or len({story["id"] for story in stories}) != 14:
+        raise SystemExit("Expected exactly 14 distinct original stories")
     by_id = {story["id"]: story for story in stories}
     imported = 0
     for story_id in EXPECTED:
