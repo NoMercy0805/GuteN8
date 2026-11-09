@@ -28,12 +28,13 @@ assert(css.includes('#favorites .collection-shell')&&css.includes('#bookmarks .c
 assert(html.includes('src="art/reference-home.svg"'),'Home must render the actual original reference art');
 const homeSvg=fs.readFileSync(root+'art/reference-home.svg','utf8');
 const encoded=(homeSvg.match(/data:image\/webp;base64,([^"]+)/)||[])[1];
-assert(encoded&&encoded.length>8000,'Home reference image must be embedded, not a vector imitation');
+assert(encoded&&encoded.length>35000,'Home reference image must be high-resolution, not the blurry 176px variant');
 const decoded=Buffer.from(encoded,'base64');
 assert.equal(decoded.toString('ascii',0,4),'RIFF','Embedded asset must be RIFF WebP');
 assert.equal(decoded.toString('ascii',8,12),'WEBP','Embedded asset must be WebP');
+assert(homeSvg.includes('viewBox="0 0 384 663"'),'Use 384 × 663 reference art rather than thumbnail');
 let check=2166136261;for(const ch of encoded)check=Math.imul(check^ch.charCodeAt(0),16777619)>>>0;
-assert.equal(check,0x7960723f,'Reference illustration must remain byte-for-byte unchanged');
+assert.equal(check,0xd4bc3e86,'Reference illustration must remain byte-for-byte unchanged');
 assert(html.indexOf('href="home-focus.css"')>html.indexOf('href="storybook-theme.css"'),'Focused homepage styles must load last');
 const homeCss=fs.readFileSync(root+'home-focus.css','utf8');
 assert(homeCss.includes('transform:none!important'),'Bottom nav must override historic -50% shift');
