@@ -3,8 +3,6 @@
 from pathlib import Path
 from zipfile import ZipFile
 from hashlib import sha256
-from PIL import Image
-from io import BytesIO
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -33,10 +31,7 @@ def main():
                 raise SystemExit(f"Checksum mismatch: {id}")
             if raw[:4] != b"RIFF" or raw[8:12] != b"WEBP":
                 raise SystemExit(f"Invalid WebP: {id}")
-            # Validated against a 1536 x 1024 3:2 reference canvas.
-            # Browser and Android webview do not need Pillow; check the
-            # WebP VP8 stream by opening via installed image tooling only
-            # when the local packaging pipeline is used.
+            # The supplied source ZIP was validated at 1536x1024.
             checked[id] = raw
     ART.mkdir(parents=True, exist_ok=True)
     for id, raw in checked.items():
