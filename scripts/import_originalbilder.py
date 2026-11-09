@@ -41,6 +41,8 @@ def main():
     by_id = {story["id"]: story for story in stories}
     imported = 0
     for story_id in EXPECTED:
+        if story_id == "kuschelkissen":
+            # The archive file shows a treasure chest, not the missing pillow.\n            # Keep it out of the story until the correct original illustration is available.\n            continue
         if story_id not in by_id:
             # 'berg' may not be part of the current 14-story lineup.
             if story_id == "berg":
@@ -54,6 +56,7 @@ def main():
     print(f"Imported {len(EXPECTED)} WebP files; linked {imported} to current stories.")
     if "berg" not in by_id:
         print("WARNING: berg.webp has no matching original story. Zauberpilz still needs its own illustration.")
+    print("WARNING: kuschelkissen.webp depicts a treasure chest; intentionally not assigned.")
 
 if __name__ == "__main__":
     main()
