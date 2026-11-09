@@ -87,6 +87,12 @@ html,body{overflow-x:hidden!important}
   text-shadow:0 1px 2px #4f2389!important;
   box-shadow:0 4px 8px #1e1a465b,inset 0 2px 2px #f7d4ff7d!important;
 }
+#home .home-night .home-moon{
+  display:flex!important;flex:none!important;align-items:center!important;justify-content:center!important;
+  width:36px!important;height:36px!important;margin-right:7px!important;
+}
+#home .home-night .home-moon svg{display:block!important;width:36px!important;height:36px!important;filter:drop-shadow(0 1px 3px #f5cf7790)!important}
+#home .home-night .home-night-title{display:inline-block!important;flex:1!important;text-align:left!important;white-space:nowrap!important}
 #home .home-night #nightLabel{
   box-sizing:border-box!important;display:flex!important;
   align-items:center!important;justify-content:flex-start!important;
