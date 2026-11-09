@@ -72,8 +72,9 @@ assert(homeCss.includes('transform:none!important'),'Bottom nav must override hi
 assert(homeCss.includes('grid-template-columns:repeat(3,minmax(0,1fr))'),'Footer must have three equal columns');
 assert(homeCss.includes('.hero-scene .hero-reference'),'Homepage must size original illustration responsively');
 assert(homeCss.includes("background:url('art/reference-home.svg') center center/cover no-repeat"),'Blurred sides must reuse the same original artwork');
-assert(homeCss.includes('filter:blur(22px)'),'Only the background copy should be blurred');
-assert(homeCss.includes('aspect-ratio:384/663!important'),'Keep original cover proportions and fully visible lettering');
+assert(homeCss.includes('filter:blur(13px)'),'Keep soft blur confined to the narrow background sides');
+assert(homeCss.includes('width:86%!important;max-width:86%!important'),'Sharp illustration must leave controlled side margins');
+assert(homeCss.includes('object-fit:contain!important'),'Never crop the home title lettering');
 assert(homeCss.includes('height:100dvh!important')&&homeCss.includes('flex:1 1 0!important'),'Home must fill a fixed viewport and flex its artwork to available room');
 assert(homeCss.includes('object-fit:cover!important'),'Full-width art must preserve character proportions');
 assert(!homeCss.includes('object-fit:fill!important'),'Never stretch illustrations to fit the viewport');
