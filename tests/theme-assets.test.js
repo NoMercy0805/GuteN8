@@ -46,14 +46,20 @@ const homeCss=fs.readFileSync(root+'home-focus.css','utf8');
 assert(homeCss.includes('transform:none!important'),'Bottom nav must override historic -50% shift');
 assert(homeCss.includes('grid-template-columns:repeat(4,minmax(0,1fr))'),'Footer must have four equal columns');
 assert(homeCss.includes('.hero-scene .hero-reference'),'Homepage must size original illustration responsively');
-assert(homeCss.includes('height:clamp(350px,calc(100dvh - 325px),610px)'),'Home must reserve vertical space for recent-story card above footer');
+assert(homeCss.includes('height:100dvh!important')&&homeCss.includes('flex:1 1 0!important'),'Home must fill a fixed viewport and flex its artwork to available room');
 assert(homeCss.includes('object-fit:fill!important'),'Full-width reference must not leave poster-like side rails');
 assert(homeCss.includes('.hero-scene::after'),'Hero-to-forest edge should have a soft finishing transition');
 assert(homeCss.includes('background:#fff9ed!important'),'Footer background should stay warm ivory');
 assert(homeCss.includes('width:100%!important;max-width:none!important'),'Hero must extend to phone edges');
 assert(html.includes('class="home-cta-text"'),'Discovery CTA must have reference two-line title');
 assert(html.includes('class="recent-heading"'),'Recent-story card needs open-book heading');
-assert(homeCss.includes('background:linear-gradient(180deg,#fffdfa,#fff8ed)'),'Navigation must use ivory reference palette');
+assert(html.includes('<body class="home-screen-active">'),'Startup must lock home scrolling');
+assert(html.includes("document.body.classList.toggle('home-screen-active',id==='home')"),'Scrolling must unlock on other screens');
+assert(homeCss.includes('body.home-screen-active')&&homeCss.includes('overflow:hidden!important'),'Home must not scroll');
+assert(homeCss.includes('--g8-footer-height:66px'),'Bottom tab bar must be compact');
+assert(homeCss.includes('height:var(--g8-footer-height)!important'),'Footer must use single defined height');
+
+assert(homeCss.includes('background:#fff9ed!important'),'Navigation must use ivory reference palette');
 
 assert(!css.includes("url('art/wooden-button.svg')"),'Avoid overlaid duplicate wood plaques');
 for(const art of ['bedtime-friends.svg','sleeping-friends.svg']){
