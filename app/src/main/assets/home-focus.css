@@ -162,12 +162,12 @@ body.home-screen-active{
   font:750 26px/1 system-ui,sans-serif!important;color:#163977!important;
 }
 #home .recent-progress-track{display:none!important}
-/* Fixed four-tab footer; the Android gesture bar is managed natively below the WebView. */
+/* Fixed three-tab footer; the Android gesture bar is managed natively below the WebView. */
 .nav{
   box-sizing:border-box!important;position:fixed!important;
   z-index:100!important;left:0!important;right:0!important;bottom:0!important;
   transform:none!important;translate:none!important;
-  display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
   align-items:stretch!important;justify-items:stretch!important;gap:0!important;
   width:100%!important;max-width:none!important;min-width:0!important;
   height:var(--g8-footer-height)!important;min-height:0!important;max-height:var(--g8-footer-height)!important;
