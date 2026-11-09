@@ -1,34 +1,62 @@
-/* GuteN8: cohesive visual finishing layer, independent of story assets.
-   Keep the original characters, stories and cover illustrations unchanged. */
-:root{--storybook-ink:#49331f;--storybook-gold:#ebc584;--storybook-night:#102653;--storybook-paper:#fff4df}
-body{background-color:#102653!important}
-#home .hero .art{align-self:center!important}
-#home .hero .art img{border-radius:0!important}
-#home .home-sign{transform:none!important}
-#home .home-sign strong{font-size:clamp(23px,6.2vw,34px)!important;line-height:1.05!important}
-#home .home-sign small{margin-top:6px!important;font-weight:700!important;opacity:.95}
-#home .hero .primary,.empty-state button,#bookmarks .empty-state button{background:linear-gradient(170deg,#f4d89c,#e1ba77 38%,#b47b40 100%)!important;border:3px solid #764925!important;border-radius:20px!important;box-shadow:inset 0 2px 0 #fff0c6,inset 0 -3px 0 #88562a,0 9px 16px #07142e80!important;text-shadow:0 1px 0 #ffedc7!important;color:#4c321c!important}
-#home .hero .primary:focus-visible,.empty-state button:focus-visible{outline:3px solid #ffe2a4!important;outline-offset:3px}
-#home .home-night,#home .recent-panel{margin-left:16px!important;margin-right:16px!important;border-radius:22px!important}
-#library .cards .story,#favorites .cards .story,#bookmarks .cards .story{border:3px solid #f2d5a3!important;border-radius:23px!important;background:linear-gradient(180deg,#fff9ed 0%,#f3ebdd 65%,#e3eafa 100%)!important;box-shadow:0 7px 0 #8f693b,0 12px 24px #07152d8a!important;color:#243a60!important;overflow:hidden}
-#library .cards .story .cover,#favorites .cards .story .cover,#bookmarks .cards .story .cover{height:clamp(145px,38vw,245px)!important;border-radius:18px 18px 8px 8px!important;overflow:hidden!important;background-color:#1d3463!important;box-shadow:inset 0 -9px 12px #06132b3d}
-#library .cards .story .cover img,#favorites .cards .story .cover img,#bookmarks .cards .story .cover img{width:100%!important;height:100%!important;display:block;object-fit:cover!important}
-#library .cards .story .cover:after,#favorites .cards .story .cover:after,#bookmarks .cards .story .cover:after{inset:6px!important;border:2px solid #fff3cfaa!important;border-radius:13px!important;box-shadow:inset 0 0 0 1px #7b582a77!important}
-#library .cards .story b,#favorites .cards .story b,#bookmarks .cards .story b{font-family:Georgia,'Times New Roman',serif;font-weight:700!important;line-height:1.2!important;letter-spacing:-.01em}
-#library .cards .story-duration,#favorites .cards .story-duration,#bookmarks .cards .story-duration{color:#5c5c67!important}
-#library .cards .story-progress,#favorites .cards .story-progress,#bookmarks .cards .story-progress{font-weight:700!important;color:#2e5074!important}
-#library .card-heart,#favorites .card-heart,#bookmarks .card-heart{background:linear-gradient(#fff9df,#e5c991)!important;border:2px solid #fff4d7!important;box-shadow:0 3px 8px #08163076!important;color:#314775!important}
-#favorites .collection-characters,#bookmarks .collection-characters{background:transparent!important;border:0!important;box-shadow:none!important}
-#favorites .empty-state,#bookmarks .empty-state{border:4px solid #e3c389!important;border-radius:28px!important;background:linear-gradient(160deg,#fff8eb,#f5eff0 67%,#e8eeff)!important;box-shadow:0 7px 0 #a78246,0 15px 30px #07142d7a!important}
-#favorites .empty-state strong,#bookmarks .empty-state strong{font-family:Georgia,serif;color:#314477!important}
-#reader .paper{background:#fff1d7 url('art/parchment.svg') center/100% 100% no-repeat!important;border:4px solid #d1ac73!important;border-radius:22px!important;box-shadow:0 9px 0 #835c32,0 15px 29px #07132d7b!important}
-#reader .paper h2{font-family:Georgia,'Times New Roman',serif!important;font-weight:700!important;color:#553821!important}
-#reader .paper p{color:#443322!important;line-height:1.78!important}
-#settings .panel.night{border:2px solid #8ea8d4b3!important;border-radius:28px!important;background:linear-gradient(165deg,#243f74f7,#142b58f8)!important}
-#settings .sleep-art{border-radius:28px!important}
-.nav{background:linear-gradient(180deg,#29477d 0%,#142b5e 95%)!important;border:2px solid #94aedf90!important;box-shadow:0 -5px 25px #05143188!important}
-.nav button{border-radius:15px!important}
-.nav button.nav-active{background:linear-gradient(180deg,#456da385,#274b7a80)!important;color:#ffe5ad!important}
-@media(min-width:720px){#library .cards{grid-template-columns:repeat(3,minmax(0,1fr))!important}#home .hero .art{max-width:420px!important}}
-@media(max-width:390px){#library .cards .story b{font-size:14px!important}#library .cards .story .cover{height:150px!important}#home .home-sign strong{font-size:22px!important}}
-@media(prefers-reduced-motion:reduce){.story,.card-heart,.nav button{transition:none!important;animation:none!important}}
+/* GuteN8 unified visual system
+ * One cohesive night-forest / warm parchment / carved-wood style.
+ * The character silhouettes and the story-specific illustrations are never changed here.
+ */
+:root{--storybook-night:#102653;--storybook-midnight:#0d1d42;--storybook-lantern:#ffe4a1;--storybook-wood:#dca96c;--storybook-ink:#4e3624;--storybook-paper:#fff7e8}
+body{background-color:var(--storybook-night)!important}
+.screen{isolation:isolate}
+#home .hero{position:relative;overflow:visible!important;display:flex!important;flex-direction:column!important;gap:0!important;min-height:0!important;padding:8px 15px 4px!important;background:transparent!important}
+#home .hero-scene{position:relative;isolation:isolate;display:flex;flex-direction:column;align-items:center;width:100%;max-width:540px;margin:0 auto 3px;overflow:visible}
+#home .hero-scene:before{content:'';position:absolute;z-index:-1;inset:10% 1% 2%;background:radial-gradient(ellipse at 52% 49%,#426ca75c 0%,#233f7360 45%,transparent 80%);pointer-events:none}
+#home .home-sign{position:relative!important;z-index:2!important;width:min(97%,440px)!important;margin:0 auto -25px!important;min-height:145px!important;transform:none!important;filter:drop-shadow(0 7px 9px #06122a99)!important}
+#home .home-sign strong{font-family:Georgia,'Times New Roman',serif!important;font-size:clamp(23px,6.1vw,34px)!important;line-height:1.04!important;letter-spacing:-.02em!important}
+#home .home-sign small{font-size:clamp(10px,2.7vw,13px)!important;margin-top:5px!important;color:#694326!important}
+#home .hero-scene .art{position:relative!important;width:min(100%,440px)!important;max-width:440px!important;aspect-ratio:1!important;margin:0 auto!important;padding:0!important;border:0!important;border-radius:0!important;overflow:visible!important;background:transparent!important;box-shadow:none!important;filter:drop-shadow(0 9px 12px #06142b85)!important}
+#home .hero-scene .art:before,#home .hero-scene .art:after{display:none!important;content:none!important}
+#home .hero-scene .art img{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;border:0!important;border-radius:0!important;mask-image:radial-gradient(ellipse 68% 73% at 50% 50%,black 72%,transparent 99%);-webkit-mask-image:radial-gradient(ellipse 68% 73% at 50% 50%,black 72%,transparent 99%)}
+#home .hero .primary,#favorites .empty-state button,#bookmarks .empty-state button{position:relative;z-index:2;background:linear-gradient(174deg,#f9e3ab 0%,#e6bd7a 42%,#bf8243 96%)!important;border:3px solid #694522!important;border-radius:18px!important;color:#50331e!important;font-family:Georgia,serif!important;font-size:clamp(16px,4.3vw,21px)!important;font-weight:700!important;text-shadow:0 1px #fff3d2!important;min-height:63px!important;box-shadow:inset 0 2px 0 #fff3d0,inset 0 -4px 0 #926236,0 7px 14px #06142c88!important;padding:13px 16px!important}
+#home .hero .primary{display:block;width:min(94%,420px)!important;margin:6px auto 3px!important;letter-spacing:0!important}
+#home .hero .surprise-story{width:min(94%,420px)!important;margin:9px auto 6px!important}
+#home .recent-panel,#home .home-night{margin-left:16px!important;margin-right:16px!important;border-radius:23px!important}
+#home .recent-panel{background:linear-gradient(155deg,#fff4d4,#e9d7a9)!important;box-shadow:0 9px 19px #06163477!important}
+#home .home-night{background:linear-gradient(160deg,#2c4a85dd,#192f60e8)!important;box-shadow:0 8px 16px #07152e77!important}
+/* A single card, with the character scene emerging from the top parchment edge. */
+#favorites .collection-shell,#bookmarks .collection-shell{position:relative;isolation:isolate;width:calc(100% - 32px);max-width:600px;margin:15px auto 22px;border:4px solid #deb778;border-radius:29px;background:linear-gradient(180deg,#172e5b 0%,#233f67 28%,#faf2e6 45%,#fff8ec 100%);box-shadow:0 8px 0 #9c753f,0 17px 28px #05152f9a;overflow:hidden}
+#favorites .collection-characters,#bookmarks .collection-characters{position:relative!important;z-index:1!important;width:100%!important;max-width:none!important;height:clamp(240px,67vw,330px)!important;min-height:0!important;margin:0!important;padding:0!important;overflow:hidden!important;background:radial-gradient(circle at 65% 30%,#4b639780,transparent 66%),linear-gradient(180deg,#112651,#173965)!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+#favorites .collection-characters:before,#bookmarks .collection-characters:before,#favorites .collection-characters:after,#bookmarks .collection-characters:after{content:none!important;display:none!important}
+#favorites .collection-characters img,#bookmarks .collection-characters img{width:100%!important;height:100%!important;aspect-ratio:auto!important;object-fit:contain!important;object-position:center center!important;display:block!important;filter:none!important;mask-image:linear-gradient(to bottom,#000 0%,#000 75%,transparent 100%)!important;-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 75%,transparent 100%)!important}
+#favorites .collection-shell .cards,#bookmarks .collection-shell .cards{position:relative;z-index:2;padding:0 12px 18px!important;margin:-7px 0 0!important;max-width:none!important;display:grid}
+#favorites .collection-shell .empty-state,#bookmarks .collection-shell .empty-state{width:100%;min-height:0!important;padding:10px 15px 18px!important;margin:0!important;border:0!important;border-radius:0!important;background:linear-gradient(180deg,#fff9ee,#f5f1ee)!important;box-shadow:none!important;text-align:center}
+#favorites .collection-shell .empty-state:before,#bookmarks .collection-shell .empty-state:before{content:none!important}
+#favorites .collection-shell .empty-state strong,#bookmarks .collection-shell .empty-state strong{font-family:Georgia,serif;font-size:clamp(22px,5vw,28px);line-height:1.18;color:#354570!important}
+#favorites .collection-shell .empty-state p,#bookmarks .collection-shell .empty-state p{color:#596681!important;line-height:1.4}
+#favorites .collection-shell .empty-state button,#bookmarks .collection-shell .empty-state button{width:100%!important;max-width:410px!important;margin:15px auto 0!important;min-height:59px!important}
+#favorites.has-stories .collection-shell,#bookmarks.has-stories .collection-shell{background:transparent!important;border:0!important;box-shadow:none!important;overflow:visible}
+#favorites.has-stories .collection-shell .cards,#bookmarks.has-stories .collection-shell .cards{margin:0!important;padding:0!important}
+/* Story cards match the overall book design, with the original cover art intact. */
+#library .cards .story,#favorites .cards .story,#bookmarks .cards .story{border:3px solid #efce91!important;border-radius:23px!important;background:linear-gradient(180deg,#fff9ee,#f2eff6 100%)!important;color:#2c395a!important;box-shadow:0 6px 0 #906b36,0 11px 18px #06152d85!important}
+#library .cards .story .cover,#favorites .cards .story .cover,#bookmarks .cards .story .cover{position:relative;height:clamp(150px,38vw,235px)!important;overflow:hidden!important;border-radius:18px 18px 8px 8px!important;background-color:#162d5e!important}
+#library .cards .story .cover img,#favorites .cards .story .cover img,#bookmarks .cards .story .cover img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important}
+#library .cards .story .cover:after,#favorites .cards .story .cover:after,#bookmarks .cards .story .cover:after{content:''!important;position:absolute!important;inset:6px!important;border:1px solid #fff0cfb8!important;border-radius:13px!important;pointer-events:none}
+#library .cards .story b,#favorites .cards .story b,#bookmarks .cards .story b{font-family:Georgia,'Times New Roman',serif!important;font-weight:700!important;line-height:1.2!important}
+#library .cards .story-duration,#favorites .cards .story-duration,#bookmarks .cards .story-duration{color:#5f5f6e!important}
+#library .cards .story-progress,#favorites .cards .story-progress,#bookmarks .cards .story-progress{font-weight:700!important;color:#325373!important}
+#library .card-heart,#favorites .card-heart,#bookmarks .card-heart{background:linear-gradient(#fff9e6,#e9cf98)!important;border:2px solid #fff0cd!important;box-shadow:0 3px 8px #07152975!important}
+/* One moon and one forest scene in the bedtime panel, not several overlays. */
+#settings .sleep-art{position:relative!important;width:calc(100% - 24px)!important;max-width:540px!important;height:auto!important;max-height:none!important;aspect-ratio:1.48!important;margin:12px auto 14px!important;background:#112650!important;overflow:hidden!important;border:2px solid #9db3de96!important;border-radius:28px!important;box-shadow:0 12px 24px #07152c88!important}
+#settings .sleep-art:before{content:'';position:absolute;inset:-20px;z-index:0;background:url('art/sleeping-friends.svg') center/cover no-repeat;filter:blur(20px) brightness(.55);transform:scale(1.08)}
+#settings .sleep-art:after{content:none!important}
+#settings .sleep-scene-img{position:absolute;inset:0;z-index:1;display:block;width:100%;height:100%;object-fit:contain;object-position:center}
+#settings .sleep-art .moon,#settings .sleep-art .sleep-stars,#settings .sleep-art .sleep-animals{display:none!important}
+#settings .sleep-subtitle{margin:14px auto 22px!important;line-height:1.4!important}
+#settings .panel.night{border:2px solid #839ecf99!important;border-radius:27px!important;background:linear-gradient(165deg,#284678,#172f60)!important;box-shadow:0 11px 22px #07152f66!important}
+#settings .panel.night .setting{gap:10px}
+#reader .paper{background:#fff2d8 url('art/parchment.svg') center/100% 100% no-repeat!important;border:3px solid #d9b279!important;border-radius:23px!important;box-shadow:0 8px 0 #886538,0 14px 25px #06142b80!important}
+#reader .paper h2{font-family:Georgia,serif!important;color:#583820!important}
+#reader .paper p{color:#453220!important;line-height:1.76!important}
+.nav{background:linear-gradient(180deg,#294b84,#142b5b 95%)!important;border:2px solid #8aa5d58c!important;box-shadow:0 -5px 24px #0616348a!important}
+.nav button{border-radius:17px!important}
+.nav button.nav-active{background:linear-gradient(180deg,#5278ac77,#294c7e70)!important;color:#ffe8af!important}
+@media(min-width:760px){#library .cards{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+@media(max-width:390px){#home .home-sign{min-height:129px!important}#home .hero-scene .art{width:100%!important}#library .cards .story .cover{height:148px!important}#favorites .collection-shell,#bookmarks .collection-shell{width:calc(100% - 24px)}}
+@media(prefers-reduced-motion:reduce){.story,.card-heart,.nav button{animation:none!important;transition:none!important}}
