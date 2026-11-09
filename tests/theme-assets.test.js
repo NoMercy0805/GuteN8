@@ -10,7 +10,7 @@ assert(html.indexOf('</style>')<html.indexOf('href="storybook-theme.css"'),'Them
 for(const element of ['home','library','reader','bookmarks','favorites','settings']){
  assert(html.includes('id="'+element+'"'),'Missing screen '+element);
 }
-for(const art of ['bedtime-friends.svg','sleeping-friends.svg','parchment.svg','storybook-night.svg']){
+for(const art of ['bedtime-friends.svg','sleeping-friends.svg','parchment.svg','storybook-night.svg','enchanted-forest.svg']){
  assert(fs.statSync(root+'art/'+art).size>400,'Missing illustration '+art);
 }
 for(const section of ['#home','#library','#reader','#favorites','#bookmarks','#settings','.nav']){
@@ -21,6 +21,8 @@ assert(!html.includes('id="settingsSpeak"'),'Narration settings must stay remove
 assert(html.includes('class="hero-scene"'),'Hero must be a single illustrated scene');
 assert((html.match(/class="collection-shell"/g)||[]).length===2,'Favorites and bookmarks must use unified illustration cards');
 assert(html.includes('class="sleep-scene-img"'),'Bedtime uses one image without duplicated moon decoration');
+assert((html.match(/class="nav-icon"/g)||[]).length===5,'Every navigation tab needs the same icon style');
+assert(css.includes("url('art/enchanted-forest.svg')"),'Screens must share the illustrated forest');
 assert(!html.includes('class="sleep-stars"'),'No extra moon or stars outside the bedtime illustration');
 assert(css.includes('#favorites .collection-shell')&&css.includes('#bookmarks .collection-shell'),'Collection layout must be shared');
 assert(css.includes('#home .hero-scene .art img'),'Illustration must integrate into hero rather than a tiled image');
