@@ -53,7 +53,7 @@ jobs:
         run: python3 scripts/original_story_progress.py
       - name: Check all scenes in three recovered originals
         run: python3 tests/original-three-stories.py
-      - name: Test reader pagination
+      - name: Test continuous story reader
         run: node tests/reader-pagination.test.js
       - name: Test storybook theme assets
         run: node tests/theme-assets.test.js
@@ -87,7 +87,7 @@ jobs:
           assert 'id="readerProgressTrack"' in html and 'id="readerProgressFill"' in html, 'Reader progress UI missing'
           assert 'id="libraryProgressTrack"' in html and "$('libraryProgressTrack').setAttribute('aria-valuenow',libraryPercent)" in html, 'Accessible library progress missing'
           assert 'function readerKeydown(e)' in html, 'Keyboard navigation missing'
-          assert "$('readerText').textContent=arr[page]" in html, 'Reader must display only selected page'
+          assert "$('readerText').textContent=current.text" in html, 'Reader must display complete story continuously'
           assert 'function pageMove(n)' in html, 'Reader navigation must exist'
           assert "updateOffer=null;$('updateInstall').hidden=true" in html, 'Update checks must clear stale download offers'
           assert 'window.onUpdateError=e=>' in html and "$('updateInstall').hidden=true" in html, 'Update error must hide download button'
