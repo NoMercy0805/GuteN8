@@ -661,7 +661,18 @@ const storySearchCache=new Map();
 function searchableStory(s){if(!storySearchCache.has(s.id))storySearchCache.set(s.id,(s.title+' '+s.category+' '+s.text).toLocaleLowerCase('de'));return storySearchCache.get(s.id)}
 const storyArtCache=new Map();
 function storyImage(s){if(s.image&&/^art\/[a-z0-9_-]+\.(?:png|jpg|jpeg|webp|svg)$/.test(s.image))return s.image;if(s.artTheme===undefined||!window.guten8ExtraArt)return 'art/'+s.id+'.svg';const key=s.id;if(!storyArtCache.has(key))storyArtCache.set(key,window.guten8ExtraArt(s));return storyArtCache.get(key)}
-function cardsInto(el,list){el.innerHTML=list.map(s=>'<div class="story-wrap"><button class="story" onclick="openStory(\''+s.id+'\')"><div class="cover" style="--cover:'+s.color+'">'+(s.artTheme===undefined?'<img src="'+storyImage(s)+'" alt="" loading="lazy">':'<span class="generated-cover-symbol" aria-hidden="true">🌙</span>')+'</div><b>'+s.title+'</b>'+(s.artTheme===undefined?'<span class="original-label">✦ Originalgeschichte</span>':'')+'<span class="story-duration">☾ ca. '+readingMinutes(s)+' Min. Lesezeit</span><span class="story-progress">'+(completed.includes(s.id)?'✓ Fertig gelesen':Object.prototype.hasOwnProperty.call(progress,s.id)?'Weiterlesen · '+(Number.isFinite(Number(readPercent[s.id]))?Math.round(Number(readPercent[s.id])):Math.round((progress[s.id]+1)/chunks(s).length*100))+' %':'Noch nicht gelesen')+'</span></button><button type="button" aria-pressed="'+favorites.includes(s.id)+'" class="card-heart '+(favorites.includes(s.id)?'is-favorite':'')+'" aria-label="'+(favorites.includes(s.id)?'Aus Favoriten entfernen':'Zu Favoriten hinzufügen')+'" onclick="toggleFavorite(\''+s.id+'\')">'+'<svg class="favorite-heart-icon" viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z"/></svg>'+'</button></div>').join('')||'<div class="empty-state"><span>🌙</span><strong>Noch keine Geschichten hier</strong><p>Entdecke eine Geschichte und speichere sie mit dem Herz als Favorit.</p><button onclick="show(\'library\')">Zur Bibliothek</button></div>'}
+// If an original image archive has not yet been imported, use the existing
+// per-story SVG until the actual WebP file becomes available.
+document.addEventListener('error',function(e){
+ const img=e.target;
+ if(!img||img.tagName!=='IMG'||!img.dataset.storyId||img.dataset.originalFallback)return;
+ const id=img.dataset.storyId;
+ if(!/^[a-z0-9_-]+$/.test(id))return;
+ img.dataset.originalFallback='1';
+ img.src='art/'+id+'.svg';
+},true);
+
+function cardsInto(el,list){el.innerHTML=list.map(s=>'<div class="story-wrap"><button class="story" onclick="openStory(\''+s.id+'\')"><div class="cover" style="--cover:'+s.color+'">'+(s.artTheme===undefined?'<img src="'+storyImage(s)+'" data-story-id="'+s.id+'" alt="" loading="lazy">':'<span class="generated-cover-symbol" aria-hidden="true">🌙</span>')+'</div><b>'+s.title+'</b>'+(s.artTheme===undefined?'<span class="original-label">✦ Originalgeschichte</span>':'')+'<span class="story-duration">☾ ca. '+readingMinutes(s)+' Min. Lesezeit</span><span class="story-progress">'+(completed.includes(s.id)?'✓ Fertig gelesen':Object.prototype.hasOwnProperty.call(progress,s.id)?'Weiterlesen · '+(Number.isFinite(Number(readPercent[s.id]))?Math.round(Number(readPercent[s.id])):Math.round((progress[s.id]+1)/chunks(s).length*100))+' %':'Noch nicht gelesen')+'</span></button><button type="button" aria-pressed="'+favorites.includes(s.id)+'" class="card-heart '+(favorites.includes(s.id)?'is-favorite':'')+'" aria-label="'+(favorites.includes(s.id)?'Aus Favoriten entfernen':'Zu Favoriten hinzufügen')+'" onclick="toggleFavorite(\''+s.id+'\')">'+'<svg class="favorite-heart-icon" viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z"/></svg>'+'</button></div>').join('')||'<div class="empty-state"><span>🌙</span><strong>Noch keine Geschichten hier</strong><p>Entdecke eine Geschichte und speichere sie mit dem Herz als Favorit.</p><button onclick="show(\'library\')">Zur Bibliothek</button></div>'}
 function storySortScore(s){return (s.artTheme===undefined?100:0)+(completed.includes(s.id)?-5:0)}
 function sortLibraryStories(list){return list.sort((a,b)=>storySortScore(b)-storySortScore(a)||a.title.localeCompare(b.title,'de'))}
 function toggleLibrarySearch(force){const panel=$('librarySearchOptions'),btn=document.querySelector('#library .library-search-trigger');const open=typeof force==='boolean'?force:panel.hidden;panel.hidden=!open;btn.setAttribute('aria-expanded',String(open));if(open)$('search').focus()}
@@ -708,7 +719,7 @@ function renderPage(){
  const arr=chunks(current);
  page=Math.max(0,Math.min(page,arr.length-1));
  $('readerHeading').textContent=current.title;
- $('readerArt').innerHTML='<img src="'+storyImage(current)+'" alt="Illustration zu '+current.title.replace(/"/g,'&quot;')+'" loading="eager">';
+ $('readerArt').innerHTML='<img src="'+storyImage(current)+'" data-story-id="'+current.id+'" alt="Illustration zu '+current.title.replace(/"/g,'&quot;')+'" loading="eager">';
  $('readerArt').hidden=false;
  $('readerArt').setAttribute('aria-label','Illustration zu '+current.title);
  $('readingPaper').setAttribute('aria-label','Geschichte: '+current.title+', vollständiger Text');
