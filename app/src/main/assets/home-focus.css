@@ -592,3 +592,18 @@ html,body{overflow-x:hidden!important}
  image-rendering:auto!important;
  background:transparent!important;
 }
+
+/* Home-only corrective pass: full-bleed reference art and compact reference navigation.
+   Keep card content and button handlers as authored in index.html. */
+#home.active{overflow-x:clip!important;background:#16294a!important;background-image:linear-gradient(180deg,#0e2347 0%,#19365d 55%,#345345 78%,#60513f 100%)!important}
+#home .hero{padding:0!important;margin:0!important;width:100%!important;max-width:none!important}
+#home .hero-scene{width:100vw!important;max-width:none!important;margin:0!important;padding:0!important;overflow:hidden!important}
+#home .hero-scene .hero-reference{display:block!important;width:100%!important;max-width:100%!important;aspect-ratio:384/663!important;height:auto!important;margin:0!important;object-fit:cover!important;object-position:center top!important}
+#home .hero .primary{margin:0 auto 10px!important;width:calc(100% - 32px)!important;max-width:430px!important;min-height:68px!important}
+#home .home-night,#home .recent-panel{width:calc(100% - 32px)!important;max-width:430px!important}
+.nav{box-sizing:border-box!important;height:calc(78px + env(safe-area-inset-bottom,0px))!important;min-height:78px!important;padding:5px 6px calc(8px + env(safe-area-inset-bottom,0px))!important;overflow:hidden!important;border-radius:20px 20px 0 0!important}
+.nav button{height:62px!important;min-height:62px!important;max-height:62px!important;padding:4px 1px 1px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:3px!important;overflow:visible!important;line-height:1.1!important}
+.nav button .nav-icon{height:29px!important;min-height:29px!important}
+.nav button .nav-label{height:auto!important;min-height:15px!important;line-height:1.15!important;white-space:nowrap!important;display:block!important;overflow:visible!important}
+#home.active{padding-bottom:calc(95px + env(safe-area-inset-bottom,0px))!important}
+@media(max-height:790px) and (max-width:600px){#home .hero-scene .hero-reference{height:auto!important;max-height:61vh!important;object-fit:contain!important}#home .hero .primary{min-height:59px!important}#home .home-night{height:53px!important;min-height:53px!important}}
