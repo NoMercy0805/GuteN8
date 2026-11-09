@@ -67,6 +67,10 @@ public class MainActivity extends Activity {
     return insets;
    });
   } web.getSettings().setJavaScriptEnabled(true); web.getSettings().setDomStorageEnabled(true);
+  // GuteN8 uses a fixed-scale app interface, not a zoomable web page.
+  web.getSettings().setSupportZoom(false);
+  web.getSettings().setBuiltInZoomControls(false);
+  web.getSettings().setDisplayZoomControls(false);
   web.getSettings().setAllowFileAccess(true); web.getSettings().setAllowFileAccessFromFileURLs(false); web.getSettings().setAllowUniversalAccessFromFileURLs(false); web.setWebChromeClient(new WebChromeClient());
   web.setWebViewClient(new WebViewClient(){ @Override public boolean shouldOverrideUrlLoading(WebView v,String url){ return handleUrl(url); } @Override public boolean shouldOverrideUrlLoading(WebView v, WebResourceRequest request){return handleUrl(request.getUrl().toString());} });
   web.addJavascriptInterface(new Bridge(),"Android");setContentView(root);if(Build.VERSION.SDK_INT>=35)root.requestApplyInsets();web.loadUrl("file:///android_asset/index.html");
