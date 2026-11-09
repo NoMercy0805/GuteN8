@@ -235,18 +235,18 @@ body.home-screen-active{
 #home .hero-scene::before{
  content:''!important;display:block!important;
  pointer-events:none!important;
- position:absolute!important;inset:-28px!important;z-index:0!important;
+ position:absolute!important;inset:-16px!important;z-index:0!important;
  background:url('art/reference-home.svg') center center/cover no-repeat!important;
- filter:blur(22px)!important;transform:scale(1.06)!important;
+ filter:blur(13px)!important;transform:scale(1.025)!important;
 }
 #home .hero-scene .hero-reference{
  position:relative!important;z-index:1!important;
  display:block!important;flex:none!important;
- width:auto!important;max-width:100%!important;
+ width:86%!important;max-width:86%!important;
  height:100%!important;max-height:100%!important;
- aspect-ratio:384/663!important;
+ aspect-ratio:auto!important;
  object-fit:contain!important;object-position:center center!important;
  filter:none!important;
- -webkit-mask-image:linear-gradient(to right,transparent 0%,#000 4%,#000 96%,transparent 100%)!important;
- mask-image:linear-gradient(to right,transparent 0%,#000 4%,#000 96%,transparent 100%)!important;
+ -webkit-mask-image:linear-gradient(to right,transparent 0%,#000 6%,#000 94%,transparent 100%)!important;
+ mask-image:linear-gradient(to right,transparent 0%,#000 6%,#000 94%,transparent 100%)!important;
 }
