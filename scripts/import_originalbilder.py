@@ -37,6 +37,7 @@ def main():
             (ART / f"{story_id}.webp").write_bytes(payload)
     stories = json.loads(STORIES.read_text(encoding="utf-8"))
     by_id = {story["id"]: story for story in stories}
+    imported = 0
     for story_id in EXPECTED:
         if story_id not in by_id:
             # 'berg' may not be part of the current 14-story lineup.
@@ -44,10 +45,13 @@ def main():
                 continue
             raise SystemExit(f"Missing story: {story_id}")
         by_id[story_id]["image"] = f"art/{story_id}.webp"
+        imported += 1
         # Do not mark as verified: verify exact original image visually first.
         by_id[story_id]["originalImageVerified"] = False
     STORIES.write_text(json.dumps(stories, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"Imported {len(EXPECTED)} WebP images; review image-to-story matches before verification.")
+    print(f"Imported {len(EXPECTED)} WebP files; linked {imported} to current stories.")
+    if "berg" not in by_id:
+        print("WARNING: berg.webp has no matching original story. Zauberpilz still needs its own illustration.")
 
 if __name__ == "__main__":
     main()
