@@ -60,3 +60,11 @@ body{background-color:var(--storybook-night)!important}
 @media(min-width:760px){#library .cards{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
 @media(max-width:390px){#home .home-sign{min-height:129px!important}#home .hero-scene .art{width:100%!important}#library .cards .story .cover{height:148px!important}#favorites .collection-shell,#bookmarks .collection-shell{width:calc(100% - 24px)}}
 @media(prefers-reduced-motion:reduce){.story,.card-heart,.nav button{animation:none!important;transition:none!important}}
+
+/* Shared icon language in the fixed bottom navigation */
+.nav button .nav-icon{display:flex!important;align-items:center;justify-content:center;width:30px;height:30px;font-size:0!important;color:inherit!important}
+.nav button .nav-icon svg{display:block;width:26px;height:26px;overflow:visible;stroke:currentColor;fill:none}
+.nav button.nav-active .nav-icon svg{filter:drop-shadow(0 0 5px #f9d991)}
+.nav button{min-width:0;padding:5px 2px 7px!important;gap:4px!important;line-height:1.15!important;font-size:clamp(10px,2.7vw,13px)!important;font-weight:700!important}
+.nav button:focus-visible{outline:3px solid #f9d991;outline-offset:2px}
+@media(max-width:360px){.nav button{font-size:10px!important}.nav button .nav-icon svg{width:23px;height:23px}}
