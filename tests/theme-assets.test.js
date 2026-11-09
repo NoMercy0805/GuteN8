@@ -142,3 +142,11 @@ assert(html.includes('id="unreadOnly"')&&html.includes('id="librarySort"'),'Unre
 
 assert(css.includes("url('art/enchanted-forest.svg')"),'Forest background must remain integrated');
 console.log('GuteN8 scene/theme asset checks passed');
+
+
+// Read badges reflect explicit 'Als gelesen markieren', not merely opening a story.
+assert(html.includes("completed.includes(s.id)?'<span class=\"read-badge\""),'Completed stories must show a visible Gelesen badge');
+assert(html.includes("story-wrap '+(completed.includes(s.id)?'is-read':'')"),'Completed cards must have a distinct read-state class');
+const readBadgeCss=fs.readFileSync(root+'library-focus.css','utf8');
+assert(readBadgeCss.includes('.story-wrap .read-badge'),'Read badges must be styled for the library and favorites');
+assert(readBadgeCss.includes('background:#196b3f!important'),'Read badge must be visibly colored');
