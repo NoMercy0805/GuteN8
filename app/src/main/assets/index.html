@@ -310,6 +310,20 @@ body.night-reading #reader .paper .illustration{box-shadow:0 4px 13px #080f2c99}
 #library .cards .card-heart{border:2px solid #fff4d7!important;box-shadow:0 3px 9px #0b173a88!important}
 #library .chips .selected{box-shadow:0 0 0 2px #ffe7a2,0 3px 9px #06143b77}
 #library .load-more{border:2px solid #cde2ff;border-radius:24px}
+
+/* Night-mode settings: illustrated moonlit panel with legible controls */
+#settings .sleep-art{height:270px;border:2px solid #738ed7;border-radius:30px;background:radial-gradient(ellipse at 50% 100%,#4857a8 0%,#253a79 45%,#101c4b 100%);box-shadow:inset 0 0 30px #07133e,0 10px 22px #07123899}
+#settings .sleep-art .moon{color:#ffe8a2;text-shadow:0 0 15px #f7d77c;opacity:.95}
+#settings .sleep-art .sleep-stars{color:#ffebae;text-shadow:0 0 10px #f9d56a}
+#settings .sleep-animals{height:83%;bottom:0}
+#settings .sleep-animals img{max-height:100%;object-fit:contain;filter:drop-shadow(0 9px 12px #061039a8)}
+#settings .sleep-subtitle{font-weight:650;letter-spacing:.1px}
+#settings .panel.night{border:2px solid #9bb6f080;border-radius:25px;padding:23px 19px}
+#settings .panel.night .setting{min-height:57px;border-bottom:1px solid #b8c9f52c}
+#settings .panel.night .setting:last-of-type{border-bottom:0}
+#settings .panel.night input[type=range]{accent-color:#4c9fff}
+#settings .panel.night button.primary{border-radius:24px;min-height:49px}
+@media(max-width:380px){#settings .sleep-art{height:230px}#settings .panel.night{padding:18px 13px}}
 </style></head><body>
 <section id="home" class="screen active"><div class="hero"><div class="home-sign"><span>🐾</span><strong>Bobby, Hoppel<br>und Krümel</strong><small>Unsere Gutenachtgeschichten</small></div><div class="art"><img src="art/forest-friends.svg" alt="Bobby, Hoppel und Krümel lesen zusammen im nächtlichen Wald"></div><button class="primary" onclick="show('library')">📖 Geschichten entdecken →</button><button class="surprise-story" onclick="surpriseStory()">✨ Überrasch mich mit einer Geschichte</button></div><button class="panel recent-panel home-action" onclick="resume()">📚 Zuletzt gelesen <div class="small" id="recent">Noch keine Geschichte gelesen</div><div class="recent-progress-track" aria-hidden="true"><div id="recentProgressFill"></div></div></button><button class="panel home-night home-action" onclick="toggleNight()">🌙 Gute-Nacht-Modus <span id="nightLabel">Aus</span></button></section>
 <section id="library" class="screen"><header><h1>📖 Bibliothek</h1><button class="round" aria-label="Suche öffnen" onclick="document.getElementById('search').focus()">⌕</button></header><p class="library-intro">Entdecke Abenteuer für jede Jahreszeit, Halloween, Advent, Weihnachten und mehr.</p><input class="search" id="search" type="search" placeholder="Geschichte suchen..." aria-label="Geschichte suchen" oninput="scheduleLibrarySearch()"><div class="chips" id="chips"></div><div class="library-tools"><label class="unread-option"><input type="checkbox" id="unreadOnly" onchange="visibleStories=40;renderLibrary()"> Nur ungelesene</label><label class="sort-option">Sortieren <select id="librarySort" onchange="visibleStories=40;renderLibrary()"><option value="recommended">Empfohlen</option><option value="az">Titel A–Z</option><option value="short">Kurze Geschichten</option><option value="long">Lange Geschichten</option></select></label></div><p id="libraryCount" class="small" role="status" aria-live="polite" aria-atomic="true" style="padding:0 18px"></p><div class="library-progress" role="progressbar" aria-label="Gelesene Geschichten" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="libraryProgressTrack"><div class="library-progress-track"><div id="libraryProgressFill"></div></div><span id="libraryProgressText">0 von 0 Geschichten gelesen</span></div><div class="cards" id="cards"></div><button id="loadMore" class="load-more" hidden onclick="loadMoreStories()">Weitere Geschichten anzeigen</button></section>
