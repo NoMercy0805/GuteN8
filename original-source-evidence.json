@@ -56,5 +56,15 @@
     "text_sha256": "4d0da115958b22f8c420a28e535c671c160c086d4349c52ba0776e427d66a3a8",
     "word_for_word_reviewed": true,
     "review_note": "Vollständiger visueller Abgleich des Original-Screenshots in vier vergrößerten Abschnitten; Windstoß-Emoji und Schlusswortlaut korrigiert; Original-Screenshot noch nicht im Repository archiviert."
+  },
+  "riesenrad": {
+    "text_source": "Screenshot_20261109_003851_ChatGPT.jpg",
+    "word_for_word_reviewed": false,
+    "review_note": "Original-Screenshot an Anfang, Mittelteil und Schluss mit der App-Fassung gesichtet; vollständig unabhängige Zeichenprüfung weiter offen."
+  },
+  "schatztruhe": {
+    "text_source": "Screenshot_20261109_003634_ChatGPT.jpg",
+    "word_for_word_reviewed": false,
+    "review_note": "Original-Screenshot an Anfang, Mittelteil und Schluss verglichen; originaler Honigdialog und abschließender Honigbrot-Witz in stories.json korrigiert. Restlicher Zeichennachweis offen."
   }
 }
