@@ -32,5 +32,8 @@ for(const art of ['bedtime-friends.svg','sleeping-friends.svg']){
  const svg=fs.readFileSync(root+'art/'+art,'utf8');
  assert(svg.startsWith('<svg ')&&svg.endsWith('</svg>'),'Malformed scene boundary '+art);
  assert(svg.includes('<defs>')&&svg.includes('</defs>'),'Scene gradients missing '+art);
+ assert(!svg.includes('<rect width="420" height="420" fill="url(#sky)"/>'),'Figure art must not cover shared forest with a square backdrop: '+art);
 }
+assert(css.includes('background-image:linear-gradient(180deg,#5991e4'),'Selected reference uses blue story CTA');
+assert(css.includes('mask-image:none!important'),'Illustrations should not be boxed or clipped by radial masks');
 console.log('GuteN8 scene/theme asset checks passed');
