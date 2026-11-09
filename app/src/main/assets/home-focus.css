@@ -200,3 +200,30 @@ html,body{overflow-x:hidden!important}
 @media(prefers-reduced-motion:reduce){
   #home *, .nav *{animation:none!important;transition:none!important}
 }
+/* Final reference alignment pass: flowing artwork edge, active blue house,
+   and controls with the same warm spacing as the source mockup. */
+#home .hero-scene{isolation:isolate!important}
+#home .hero-scene::after{
+  content:''!important;display:block!important;pointer-events:none!important;
+  position:absolute!important;left:0!important;right:0!important;bottom:0!important;
+  height:18px!important;z-index:2!important;
+  background:linear-gradient(180deg,transparent 0%,#e9b76a3d 100%)!important;
+}
+#home .hero .primary{width:calc(100% - 34px)!important}
+#home .home-night,#home .recent-panel{width:calc(100% - 34px)!important}
+#home .home-night{margin-top:1px!important}
+#home .recent-panel{margin-top:1px!important}
+.nav{background:#fff9ed!important}
+.nav button.nav-active:first-child .nav-icon svg path:first-child{
+  fill:#0e55ba!important;stroke:#0e55ba!important;
+}
+.nav button.nav-active:first-child .nav-icon svg path:last-child{
+  fill:#fff9ed!important;stroke:#fff9ed!important;
+}
+.nav button .nav-icon svg{stroke-linecap:round!important;stroke-linejoin:round!important}
+@media(max-height:720px) and (max-width:600px){
+  #home .hero-scene{height:clamp(315px,calc(100dvh - 285px),455px)!important}
+  #home .hero .primary{height:60px!important;min-height:60px!important}
+  #home .home-night{height:49px!important;min-height:49px!important}
+  #home .recent-panel{min-height:71px!important}
+}
