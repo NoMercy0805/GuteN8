@@ -10,7 +10,7 @@ html,body{overflow-x:hidden!important}
   padding:0 0 calc(86px + var(--home-safe-bottom))!important;
   overflow-x:clip!important;
   background:#273950!important;
-  background-image:linear-gradient(180deg,#1d2e4e 0%,#253c56 50%,#465f47 81%,#6d5848 100%)!important;
+  background-image:linear-gradient(180deg,#162c51 0%,#24426c 45%,#e6aa5e 63%,#f6d08b 100%)!important;
 }
 #home.active::before,#home.active::after,
 #home .hero::before,#home .hero::after,
