@@ -37,6 +37,11 @@ assert(!html.includes('class="sleep-scene-img"'),'Settings hero image must be re
 assert((html.match(/class="nav-icon"/g)||[]).length===3,'Footer uses exactly three navigation tabs');
 const nav=html.slice(html.indexOf('<nav class="nav"'),html.indexOf('</nav>'));
 assert(nav.includes('aria-label="Bibliothek" onclick="show(\'home\')"'),'Bibliothek tab must open the illustrated landing screen');
+
+assert(html.includes('class="primary" onclick="show(\'library\')"'),'Discover stories button must still open all stories');
+assert(html.includes("if(active.id==='reader'){show('library');return true}show('home');return true"),'Back gesture must return to story list from reader and home from other pages');
+assert(html.includes("const selected=b.getAttribute('onclick')===\"show('\"+(id==='library'?'home':id)+\"')\""),'Library list and landing page must share active footer selection');
+
 assert(!nav.includes('Lesezeichen'),'Bookmark tab must not exist');
 assert(nav.includes('aria-label="Favoriten" onclick="show(\'favorites\')"'),'Favorites tab must open favorites');
 assert(nav.includes('aria-label="Einstellungen" onclick="show(\'settings\')"'),'Settings tab must open settings');
