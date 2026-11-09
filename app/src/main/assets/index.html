@@ -137,6 +137,33 @@ html{background:#0b245d}body{font-family:system-ui,'Segoe UI',sans-serif}
 .nav button span{font-size:26px;line-height:1}
 button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #ffdc69;outline-offset:2px}
 @media(max-height:700px){#home .hero .art img{max-height:28vh}#favorites .collection-characters,#bookmarks .collection-characters{height:170px}}
+
+/* Final reference-focused layout pass */
+#home .hero{display:flex;flex-direction:column;align-items:center}
+#home .hero .art{position:relative;width:min(92vw,380px);margin:0 auto -8px}
+#home .hero .art:before{content:'✦　✧　★　✦';position:absolute;top:10%;left:0;right:0;text-align:center;color:#ffdf75;text-shadow:0 0 12px #ffd75b;font-size:20px;pointer-events:none}
+#home .hero .art img{max-height:39vh;width:100%;object-fit:contain;mask-image:radial-gradient(ellipse,#000 59%,transparent 80%)}
+#home .home-sign{z-index:2;margin-bottom:-8px}
+#home .home-night{order:0}
+#home .recent-panel{order:0}
+#favorites,#bookmarks{background-image:linear-gradient(#06184a44,#06184a33),url('art/storybook-night.svg')}
+#favorites .collection-characters,#bookmarks .collection-characters{height:min(39vh,320px);max-width:410px;margin:18px auto -15px}
+#favorites .collection-characters img,#bookmarks .collection-characters img{width:100%;height:100%;object-fit:contain}
+#favoriteCards .empty-state,#bookmarkCards .empty-state{max-width:430px;margin-left:auto;margin-right:auto;padding:24px 24px 29px}
+#favoriteCards .empty-state button,#bookmarkCards .empty-state button{border-radius:30px;background:linear-gradient(#1c9aff,#0050b6);box-shadow:0 4px 0 #173c80}
+#settings .sleep-art{max-width:600px;margin-left:auto;margin-right:auto}
+#settings .sleep-art .sleep-animals{height:85%;bottom:0}
+#settings .sleep-art .sleep-animals img{max-height:100%;width:85%;height:100%;object-fit:contain}
+#settings .panel.night{max-width:600px;margin-left:auto;margin-right:auto}
+#settings .setting{line-height:1.35}
+#reader .paper{max-width:700px;margin-left:auto;margin-right:auto}
+#reader .illustration{height:clamp(190px,55vw,330px)}
+#reader .illustration img{width:100%;height:100%;object-fit:cover}
+#reader .controls{max-width:700px;margin-left:auto;margin-right:auto}
+#library .cards{max-width:850px;margin:0 auto}
+#library .story-wrap .story{height:100%}
+#library .story .cover img{object-fit:cover}
+@media(min-width:600px){#home .hero .art img{max-height:420px}#home .hero{max-width:650px;margin:auto}#favorites .collection-characters,#bookmarks .collection-characters{height:320px}}
 </style></head><body>
 <section id="home" class="screen active"><div class="hero"><div class="home-sign"><span>🐾</span><strong>Bobby, Hoppel<br>und Krümel</strong><small>Unsere Gutenachtgeschichten</small></div><div class="art"><img src="art/forest-friends.svg" alt="Bobby, Hoppel und Krümel lesen zusammen im nächtlichen Wald"></div><button class="primary" onclick="show('library')">📖 Geschichten entdecken →</button><button class="surprise-story" onclick="surpriseStory()">✨ Überrasch mich mit einer Geschichte</button></div><button class="panel recent-panel home-action" onclick="resume()">📚 Zuletzt gelesen <div class="small" id="recent">Noch keine Geschichte gelesen</div><div class="recent-progress-track" aria-hidden="true"><div id="recentProgressFill"></div></div></button><button class="panel home-night home-action" onclick="toggleNight()">🌙 Gute-Nacht-Modus <span id="nightLabel">Aus</span></button></section>
 <section id="library" class="screen"><header><h1>📖 Bibliothek</h1><button class="round" aria-label="Suche öffnen" onclick="document.getElementById('search').focus()">⌕</button></header><p class="library-intro">Entdecke Abenteuer für jede Jahreszeit, Halloween, Advent, Weihnachten und mehr.</p><input class="search" id="search" type="search" placeholder="Geschichte suchen..." aria-label="Geschichte suchen" oninput="scheduleLibrarySearch()"><div class="chips" id="chips"></div><div class="library-tools"><label class="unread-option"><input type="checkbox" id="unreadOnly" onchange="visibleStories=40;renderLibrary()"> Nur ungelesene</label><label class="sort-option">Sortieren <select id="librarySort" onchange="visibleStories=40;renderLibrary()"><option value="recommended">Empfohlen</option><option value="az">Titel A–Z</option><option value="short">Kurze Geschichten</option><option value="long">Lange Geschichten</option></select></label></div><p id="libraryCount" class="small" role="status" aria-live="polite" aria-atomic="true" style="padding:0 18px"></p><div class="library-progress" role="progressbar" aria-label="Gelesene Geschichten" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="libraryProgressTrack"><div class="library-progress-track"><div id="libraryProgressFill"></div></div><span id="libraryProgressText">0 von 0 Geschichten gelesen</span></div><div class="cards" id="cards"></div><button id="loadMore" class="load-more" hidden onclick="loadMoreStories()">Weitere Geschichten anzeigen</button></section>
