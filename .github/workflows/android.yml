@@ -37,6 +37,32 @@ jobs:
               git push origin HEAD:main
             fi
           fi
+      - name: Import new Mondlicht-Gloeckchen illustration when available
+        run: |
+          if [ -f GuteN8_Mondlicht_Gloeckchen_Bild.zip ]; then
+            python3 - <<'PY'
+          import hashlib
+          from pathlib import Path
+          from zipfile import ZipFile
+          archive = Path('GuteN8_Mondlicht_Gloeckchen_Bild.zip')
+          name = 'app/src/main/assets/art/mondlicht-gloeckchen.webp'
+          expected = '06cbb9b65e86d83087f7e8975a1eff1016057f7b62853b1268481343eb982069'
+          with ZipFile(archive) as z:
+              raw = z.read(name)
+          assert raw[:4] == b'RIFF' and raw[8:12] == b'WEBP', 'Invalid generated WebP'
+          assert hashlib.sha256(raw).hexdigest() == expected, 'Wrong illustration'
+          dest = Path(name)
+          dest.parent.mkdir(parents=True, exist_ok=True)
+          dest.write_bytes(raw)
+          PY
+            git add app/src/main/assets/art/mondlicht-gloeckchen.webp
+            if ! git diff --cached --quiet; then
+              git config user.name "github-actions[bot]"
+              git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+              git commit -m "Import generated Mondlicht-Gloeckchen illustration"
+              git push origin HEAD:main
+            fi
+          fi
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
