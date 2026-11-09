@@ -90,3 +90,51 @@ body{background-color:var(--storybook-night)!important}
 #settings .sleep-art:before{content:none!important;display:none!important}
 #settings .sleep-scene-img{object-fit:contain!important;filter:drop-shadow(0 9px 12px #091b3977)!important}
 #home .hero-scene:before{background:radial-gradient(ellipse at 50% 55%,#53789c40,transparent 73%)!important}
+
+/* Collection-card repair, based on actual 2026-11-09 Android screenshots:
+   remove the sharp nested white rectangle and join night scene to parchment in one card. */
+#favorites .collection-shell,#bookmarks .collection-shell{
+  background:linear-gradient(180deg,#1c3769 0%,#1a325e 44%,#f5e8ca 46%,#fff7e7 100%)!important;
+  overflow:hidden!important;
+  border-color:#dbb478!important;
+}
+#favorites .collection-shell .collection-characters,#bookmarks .collection-shell .collection-characters{
+  height:clamp(220px,60vw,310px)!important;
+  background:radial-gradient(ellipse at 50% 68%,#547aa344 0%,transparent 78%),linear-gradient(180deg,#1a3768,#234a65)!important;
+}
+#favorites .collection-shell .collection-characters img,#bookmarks .collection-shell .collection-characters img{
+  width:100%!important;height:100%!important;object-fit:contain!important;
+  object-position:center bottom!important;
+}
+#favorites .collection-shell .cards,#bookmarks .collection-shell .cards{
+  padding:0 0 16px!important;margin:-2px 0 0!important;display:block!important;
+  background:transparent!important;
+}
+#favorites .collection-shell .empty-state,#bookmarks .collection-shell .empty-state{
+  width:100%!important;max-width:none!important;min-height:0!important;
+  margin:0!important;padding:16px 20px 22px!important;
+  border:0!important;outline:0!important;border-radius:0!important;
+  background:linear-gradient(180deg,#fff5e1 0%,#fff8e9 100%)!important;
+  box-shadow:none!important;
+  text-align:center!important;
+}
+#favorites .collection-shell .empty-state:before,#bookmarks .collection-shell .empty-state:before{
+  display:none!important;content:none!important;
+}
+#favorites .collection-shell .empty-state button,#bookmarks .collection-shell .empty-state button{
+  font-family:system-ui,'Segoe UI',sans-serif!important;
+  font-size:clamp(15px,4.1vw,19px)!important;
+  text-shadow:0 1px 2px #173664!important;
+}
+#favorites .collection-shell .empty-state p,#bookmarks .collection-shell .empty-state p{
+  margin:15px auto 18px!important;max-width:32ch!important;
+}
+#favorites .collection-shell .empty-state strong,#bookmarks .collection-shell .empty-state strong{
+  display:block;font-size:clamp(21px,5vw,28px)!important;
+}
+#favorites.has-stories .collection-shell,#bookmarks.has-stories .collection-shell{
+  border:0!important;background:transparent!important;overflow:visible!important;
+}
+#favorites.has-stories .collection-shell .cards,#bookmarks.has-stories .collection-shell .cards{
+  display:grid!important;
+}
