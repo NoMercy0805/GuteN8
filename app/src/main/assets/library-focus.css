@@ -1,0 +1,225 @@
+/* GuteN8 – Bibliothek, Sammlungen und Einstellungen
+   Based on the illustrated blue woodland library reference.
+   This file is loaded LAST; existing story data, cover pictures and actions stay unchanged. */
+
+:root{--lib-blue:#2c84d9;--lib-ink:#15284b;--lib-paper:#f8fbff;--lib-gold:#f5deae}
+
+/* One shared backdrop on all four pages, independent of the home design. */
+#library,#favorites,#bookmarks,#settings{
+  background-color:#80c4f2!important;
+  background-image:linear-gradient(180deg,#2079d0aa 0%,#6dc0f195 46%,#bde8ffb0 100%),url('art/library-day-forest.svg')!important;
+  background-position:center top,center top!important;
+  background-size:100% 100%,cover!important;
+  background-repeat:no-repeat,no-repeat!important;
+  min-height:100dvh!important;
+  padding-bottom:calc(105px + env(safe-area-inset-bottom,0px))!important;
+  color:#122c5b!important;
+}
+#library header,#favorites header,#bookmarks header,#settings header{
+  background:transparent!important;box-shadow:none!important;border:0!important;
+  margin:0!important;padding:23px 19px 11px!important;
+  min-height:72px!important;
+  position:relative!important;z-index:3!important;
+}
+#library header h1,#favorites header h1,#bookmarks header h1,#settings header h1{
+  color:#fff!important;font-family:system-ui,'Segoe UI',sans-serif!important;
+  font-size:clamp(24px,7vw,34px)!important;line-height:1.12!important;
+  font-weight:850!important;letter-spacing:-.035em!important;
+  text-shadow:0 2px 4px #144b8e7d!important;
+}
+
+/* Library reference: white hand-drawn book, prominent title and round search. */
+#library .library-header{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important}
+#library .library-header h1{display:flex!important;align-items:center!important;gap:12px!important;min-width:0!important}
+#library .library-title-icon{
+  display:block!important;flex:none!important;width:54px!important;height:48px!important;
+  color:#fff!important;filter:drop-shadow(0 2px 4px #12447680)!important;
+}
+#library .library-search-trigger{
+  display:grid!important;place-items:center!important;flex:none!important;
+  width:53px!important;height:53px!important;min-width:53px!important;
+  border:2px solid #e9f7ff!important;border-radius:50%!important;
+  padding:0!important;margin:0!important;
+  color:#132a57!important;background:linear-gradient(#fff,#e8f2ff)!important;
+  box-shadow:0 5px 12px #145e9c72!important;
+}
+#library .library-search-trigger svg{width:27px!important;height:27px!important}
+#library .library-search-trigger[aria-expanded="true"]{outline:3px solid #ffecb2!important;outline-offset:2px!important}
+#library .library-search-options[hidden]{display:none!important}
+#library .library-search-options:not([hidden]){
+  display:flex!important;flex-direction:column!important;gap:9px!important;
+  margin:2px 16px 14px!important;padding:14px 13px!important;
+  border:1px solid #d4eaff!important;border-radius:22px!important;
+  background:#f8fcfff2!important;box-shadow:0 6px 16px #15538a48!important;
+}
+#library .library-search-options .library-intro{
+  display:block!important;margin:0 0 4px!important;padding:0!important;
+  max-width:none!important;text-align:left!important;
+  font-size:14px!important;color:#315076!important;line-height:1.35!important;
+}
+#library .library-search-options .search{
+  box-sizing:border-box!important;display:block!important;width:100%!important;
+  margin:0!important;background:#fff!important;border:1px solid #b0d4f4!important;
+  border-radius:15px!important;padding:12px 14px!important;box-shadow:none!important;
+  color:#16355f!important;
+}
+#library .library-search-options .library-tools{
+  display:flex!important;justify-content:space-between!important;align-items:center!important;
+  flex-wrap:wrap!important;gap:10px!important;
+  padding:5px 0 0!important;background:none!important;border:0!important;
+  color:#1d3c69!important;font-size:13px!important;
+}
+#library .library-search-options select{
+  border:1px solid #b8d6ec!important;border-radius:13px!important;
+  background:#fff!important;color:#1b3a62!important;
+  font-size:13px!important;max-width:165px!important;
+}
+/* A compact one-line category carousel, as in the mockup. */
+#library .chips{
+  display:flex!important;align-items:center!important;gap:9px!important;
+  width:100%!important;max-width:100%!important;
+  box-sizing:border-box!important;overflow-x:auto!important;overflow-y:hidden!important;
+  padding:8px 16px 20px!important;margin:2px 0 6px!important;
+  scrollbar-width:none!important;-webkit-overflow-scrolling:touch;
+}
+#library .chips::-webkit-scrollbar{display:none!important}
+#library .chips button{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  flex:0 0 auto!important;white-space:nowrap!important;
+  min-height:43px!important;padding:9px 17px!important;
+  border:1.5px solid #e8f5ff!important;border-radius:999px!important;
+  background:linear-gradient(180deg,#f8fcff,#d9ecff)!important;
+  color:#153c72!important;
+  font:700 clamp(13px,3.8vw,16px)/1.1 system-ui,'Segoe UI',sans-serif!important;
+  box-shadow:0 4px 10px #12579646!important;
+}
+#library .chips button.selected{
+  color:white!important;border:2px solid #f6fbff!important;
+  background:linear-gradient(180deg,#2d9bff,#0367db 80%)!important;
+  box-shadow:0 4px 12px #0653ba8c,inset 0 2px 1px #c5e7ff99!important;
+}
+#library .chips button:focus-visible{outline:3px solid #ffdf8b!important;outline-offset:2px!important}
+/* Keep counts and read tracking accessible to JS, but unclutter the picture-led overview. */
+#library #libraryCount,#library .library-progress{display:none!important}
+
+/* Library cards from the reference: white rounded book-cover tiles with large art. */
+#library .cards{
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:13px!important;padding:0 14px 20px!important;
+  width:100%!important;max-width:950px!important;
+  margin:0 auto!important;box-sizing:border-box!important;align-items:stretch!important;
+}
+#library .cards .story-wrap{
+  box-sizing:border-box!important;min-width:0!important;position:relative!important;
+  border-radius:25px!important;filter:none!important;
+  box-shadow:0 6px 13px #2c619a66!important;
+}
+#library .cards .story{
+  box-sizing:border-box!important;display:flex!important;flex-direction:column!important;
+  align-items:stretch!important;justify-content:flex-start!important;
+  min-width:0!important;width:100%!important;height:100%!important;
+  min-height:0!important;overflow:hidden!important;
+  border:3px solid #fff!important;border-radius:25px!important;
+  padding:4px!important;margin:0!important;
+  background:linear-gradient(180deg,#fff 0%,#f4f9ff 100%)!important;
+  color:#152747!important;text-align:left!important;
+  box-shadow:inset 0 0 0 1px #d5e9fa!important;
+}
+#library .cards .story .cover{
+  display:block!important;position:relative!important;flex:0 0 auto!important;
+  width:100%!important;height:auto!important;aspect-ratio:1.02!important;
+  padding:0!important;margin:0!important;
+  overflow:hidden!important;border:0!important;border-radius:19px!important;
+  background:#28528b url('art/story-card-night.svg') center/cover no-repeat!important;
+  box-shadow:none!important;
+}
+#library .cards .story .cover img{
+  display:block!important;width:100%!important;height:100%!important;
+  max-width:none!important;object-fit:cover!important;object-position:center!important;
+  border-radius:19px!important;
+}
+#library .cards .story .cover::before,#library .cards .story .cover::after{
+  display:none!important;content:none!important;
+}
+#library .cards .story b{
+  box-sizing:border-box!important;
+  display:block!important;flex:1 1 auto!important;
+  min-height:0!important;margin:0!important;padding:9px 9px 10px!important;
+  font:800 clamp(14px,4.05vw,19px)/1.17 system-ui,'Segoe UI',sans-serif!important;
+  letter-spacing:-.015em!important;color:#111f40!important;
+  overflow-wrap:break-word!important;
+}
+#library .cards .story .original-label,
+#library .cards .story .story-duration,
+#library .cards .story .story-progress{
+  display:none!important;
+}
+#library .cards .card-heart{
+  box-sizing:border-box!important;position:absolute!important;z-index:4!important;
+  right:9px!important;top:9px!important;
+  display:grid!important;place-items:center!important;
+  width:42px!important;height:42px!important;min-width:42px!important;
+  margin:0!important;padding:0!important;
+  border:2px solid #d7e3f7!important;border-radius:50%!important;
+  background:linear-gradient(#fff,#f5faff)!important;
+  color:#1b2b53!important;
+  font:500 36px/1 system-ui,sans-serif!important;
+  box-shadow:0 3px 8px #123b6780!important;
+}
+#library .cards .card-heart.is-favorite{color:#f1475a!important}
+#library .cards .card-heart:focus-visible{outline:3px solid #ffcf79!important;outline-offset:2px!important}
+#library .cards .generated-cover-symbol{
+  display:grid!important;place-items:center!important;
+  width:100%!important;height:100%!important;
+  border-radius:18px!important;font-size:56px!important;
+}
+#library .load-more{
+  display:block;margin:12px auto 22px!important;padding:12px 22px!important;
+  border:2px solid #fff!important;border-radius:22px!important;
+  background:linear-gradient(#278ee3,#0759ac)!important;color:#fff!important;
+  font-weight:750!important;
+}
+#library .load-more[hidden]{display:none!important}
+/* Collections: keep existing items, controls and illustrations; use the very same sky. */
+#favorites .collection-shell,#bookmarks .collection-shell{
+  max-width:930px!important;margin:15px auto 18px!important;
+}
+#favorites .collection-characters,#bookmarks .collection-characters{
+  background-color:#76bdec!important;
+}
+#favorites .collection-shell .cards,#bookmarks .collection-shell .cards{
+  color:#17325c!important;
+}
+#favorites.has-stories .collection-shell .cards,
+#bookmarks.has-stories .collection-shell .cards{
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:13px!important;padding:0 14px 18px!important;
+}
+#favorites .cards .story,#bookmarks .cards .story{
+  border-color:#fff!important;background:#f7fbff!important;
+  box-shadow:0 5px 11px #3170a364!important;
+}
+#favorites .cards .story b,#bookmarks .cards .story b{color:#203659!important}
+/* Settings uses the same blue sky; keep its controls readable above the background. */
+#settings .sleep-art{border-color:#d7eeff!important}
+#settings .panel.night{
+  background:linear-gradient(170deg,#26569bcf,#173871ed)!important;
+  border:2px solid #b3d7f7!important;box-shadow:0 7px 16px #26619d61!important;
+}
+#settings .sleep-subtitle{color:#fff!important;text-shadow:0 2px 5px #1d4a78a6!important}
+
+/* Phone and tablet sizing, without altering the Startseite. */
+@media(max-width:365px){
+  #library .cards{gap:10px!important;padding:0 10px 15px!important}
+  #library .cards .story b{font-size:13px!important;padding:8px 6px!important}
+  #library .cards .card-heart{width:37px!important;height:37px!important;font-size:31px!important;right:6px!important;top:6px!important}
+  #library .chips{padding-inline:11px!important;gap:7px!important}
+  #library .chips button{padding:8px 12px!important;font-size:13px!important}
+}
+@media(min-width:720px){
+  #library .cards{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:18px!important}
+  #library .cards .story .cover{aspect-ratio:1.07!important}
+}
+@media(prefers-reduced-motion:reduce){
+  #library .cards .story,#library .cards .card-heart,#library .chips button{transition:none!important;animation:none!important}
+}
