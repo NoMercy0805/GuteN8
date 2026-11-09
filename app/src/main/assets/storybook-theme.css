@@ -138,3 +138,65 @@ body{background-color:var(--storybook-night)!important}
 #favorites.has-stories .collection-shell .cards,#bookmarks.has-stories .collection-shell .cards{
   display:grid!important;
 }
+
+/* Consolidated visual adjustments: remove the inset-sheet look from empty collections. */
+#favorites:not(.has-stories) .collection-shell,
+#bookmarks:not(.has-stories) .collection-shell{
+  width:calc(100% - 28px);max-width:590px;
+  margin:12px auto 24px;
+  background:linear-gradient(180deg,#102754 0%,#193965 53%,#f4ddae 54%,#fff7e4 100%)!important;
+  border:3px solid #e5c284!important;border-radius:30px!important;
+  overflow:hidden!important;box-shadow:0 12px 26px #06162d85!important;
+}
+#favorites:not(.has-stories) .collection-characters,
+#bookmarks:not(.has-stories) .collection-characters{
+  position:relative;z-index:1;
+  height:clamp(220px,62vw,320px)!important;
+  padding:2px 15px 0!important;
+  background:radial-gradient(ellipse at 50% 66%,#5d85a247,transparent 68%),url('art/enchanted-forest.svg') center 43%/cover no-repeat!important;
+}
+#favorites:not(.has-stories) .collection-characters img,
+#bookmarks:not(.has-stories) .collection-characters img{
+  object-fit:contain!important;object-position:center bottom!important;
+  width:100%!important;height:100%!important;filter:drop-shadow(0 7px 8px #071d3677)!important;
+}
+#favorites:not(.has-stories) .collection-shell .cards,
+#bookmarks:not(.has-stories) .collection-shell .cards{
+  display:block!important;margin:-3px 0 0!important;padding:0!important;
+  background:transparent!important;
+}
+#favorites:not(.has-stories) .collection-shell .empty-state,
+#bookmarks:not(.has-stories) .collection-shell .empty-state{
+  box-sizing:border-box;width:100%!important;
+  max-width:none!important;min-height:0!important;
+  border:none!important;outline:0!important;border-radius:0!important;
+  margin:0!important;padding:18px 20px 23px!important;
+  background:linear-gradient(180deg,#fff8e7,#fff4e4)!important;
+  box-shadow:none!important;filter:none!important;
+}
+#favorites:not(.has-stories) .collection-shell .empty-state::after,
+#bookmarks:not(.has-stories) .collection-shell .empty-state::after{display:none!important;content:none!important}
+#favorites:not(.has-stories) .collection-shell .empty-state>span,
+#bookmarks:not(.has-stories) .collection-shell .empty-state>span{
+  display:block;margin:0 auto 7px!important;font-size:40px!important;
+  color:#815e35!important;text-shadow:none!important;
+}
+#favorites:not(.has-stories) .collection-shell .empty-state strong,
+#bookmarks:not(.has-stories) .collection-shell .empty-state strong{
+  font-family:Georgia,serif!important;color:#39476a!important;
+  font-size:clamp(22px,5.5vw,30px)!important;
+}
+#favorites:not(.has-stories) .collection-shell .empty-state button,
+#bookmarks:not(.has-stories) .collection-shell .empty-state button{
+  margin:18px auto 4px!important;max-width:380px!important;
+  min-height:55px!important;
+}
+#favorites.has-stories .collection-shell .collection-characters,
+#bookmarks.has-stories .collection-shell .collection-characters{display:none!important}
+#favorites.has-stories .collection-shell,
+#bookmarks.has-stories .collection-shell{width:100%!important;max-width:980px!important;margin:15px auto!important}
+#favorites.has-stories .collection-shell .cards,
+#bookmarks.has-stories .collection-shell .cards{
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:12px!important;padding:0 14px!important;
+}
