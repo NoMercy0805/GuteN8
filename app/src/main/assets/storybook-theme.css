@@ -14,7 +14,7 @@ body{background-color:var(--storybook-night)!important}
 #home .hero-scene .art{position:relative!important;width:min(100%,440px)!important;max-width:440px!important;aspect-ratio:1!important;margin:0 auto!important;padding:0!important;border:0!important;border-radius:0!important;overflow:visible!important;background:transparent!important;box-shadow:none!important;filter:drop-shadow(0 9px 12px #06142b85)!important}
 #home .hero-scene .art:before,#home .hero-scene .art:after{display:none!important;content:none!important}
 #home .hero-scene .art img{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;border:0!important;border-radius:0!important;mask-image:radial-gradient(ellipse 68% 73% at 50% 50%,black 72%,transparent 99%);-webkit-mask-image:radial-gradient(ellipse 68% 73% at 50% 50%,black 72%,transparent 99%)}
-#home .hero .primary,#favorites .empty-state button,#bookmarks .empty-state button{position:relative;z-index:2;background:linear-gradient(174deg,#f9e3ab 0%,#e6bd7a 42%,#bf8243 96%)!important;border:3px solid #694522!important;border-radius:18px!important;color:#50331e!important;font-family:Georgia,serif!important;font-size:clamp(16px,4.3vw,21px)!important;font-weight:700!important;text-shadow:0 1px #fff3d2!important;min-height:63px!important;box-shadow:inset 0 2px 0 #fff3d0,inset 0 -4px 0 #926236,0 7px 14px #06142c88!important;padding:13px 16px!important}
+#home .hero .primary,#favorites .empty-state button,#bookmarks .empty-state button{position:relative;z-index:2;background:linear-gradient(180deg,#518be0 0%,#2c63bc 46%,#193d85 100%)!important;border:2px solid #a8cfff!important;border-radius:22px!important;color:#fff5d8!important;font-family:Georgia,serif!important;font-size:clamp(16px,4.3vw,21px)!important;font-weight:700!important;text-shadow:0 2px 2px #0a255a!important;min-height:63px!important;box-shadow:inset 0 2px 0 #c2e0ff99,inset 0 -3px 0 #102c62,0 7px 14px #06142c88!important;padding:13px 16px!important}
 #home .hero .primary{display:block;width:min(94%,420px)!important;margin:6px auto 3px!important;letter-spacing:0!important}
 #home .hero .surprise-story{width:min(94%,420px)!important;margin:9px auto 6px!important}
 #home .recent-panel,#home .home-night{margin-left:16px!important;margin-right:16px!important;border-radius:23px!important}
@@ -76,3 +76,8 @@ body{background-color:var(--storybook-night)!important}
 #home .hero-scene{z-index:1}
 #home .hero-scene .art{background:none!important}
 @media(min-width:650px){#home.active,#library,#favorites,#bookmarks,#settings{background-size:cover,100% auto!important}}
+
+/* The selected reference uses blue call-to-action buttons, not wooden button art. */
+#home .hero .primary,#favorites .empty-state button,#bookmarks .empty-state button{background-image:linear-gradient(180deg,#5991e4,#2d65b9 50%,#183a80)!important;background-color:#2859a5!important}
+#home .hero .primary:active,#favorites .empty-state button:active,#bookmarks .empty-state button:active{transform:translateY(2px);box-shadow:inset 0 2px 5px #071d4f,0 3px 8px #06142c99!important}
+#settings .panel.night button.primary{background:linear-gradient(180deg,#5188d5,#2b5eac)!important;color:#fff3d3!important;border:2px solid #a5c3ee!important;text-shadow:0 1px 2px #0b234e!important}
