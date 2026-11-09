@@ -308,3 +308,33 @@
 #favorites .collection-shell .empty-state>span,#bookmarks .collection-shell .empty-state>span{
  color:#1a4c9a!important;text-shadow:none!important;
 }
+
+/* Read status: badge is deliberately distinct from the favorite heart.
+   Only stories in the explicit 'completed' list receive this badge. */
+#library .cards .story-wrap.is-read .story,
+#favorites .cards .story-wrap.is-read .story {
+ border-color:#b8d8bf!important;
+}
+#library .cards .story-wrap .read-badge,
+#favorites .cards .story-wrap .read-badge {
+ position:absolute!important;left:10px!important;top:10px!important;z-index:5!important;
+ display:inline-flex!important;align-items:center!important;gap:5px!important;
+ width:max-content!important;max-width:calc(100% - 65px)!important;
+ padding:7px 10px!important;border:2px solid #e5ffe8!important;
+ border-radius:18px!important;background:#196b3f!important;color:white!important;
+ box-shadow:0 3px 9px #071e1680!important;
+ font:800 clamp(11px,3vw,13px)/1.1 system-ui,'Segoe UI',sans-serif!important;
+ text-align:center!important;letter-spacing:0!important;white-space:nowrap!important;
+ pointer-events:none!important;
+}
+#library .cards .story-wrap .read-badge span,
+#favorites .cards .story-wrap .read-badge span {
+ font:900 15px/1 system-ui,'Segoe UI',sans-serif!important;
+}
+@media(max-width:355px){
+ #library .cards .story-wrap .read-badge,
+ #favorites .cards .story-wrap .read-badge {
+  left:6px!important;top:6px!important;padding:5px 7px!important;
+  font-size:10px!important;
+ }
+}
