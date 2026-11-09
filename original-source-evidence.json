@@ -50,5 +50,11 @@
     "source_recovered": true,
     "word_for_word_reviewed": false,
     "review_note": "Vollständige Erzählung aus Original-Unterhaltung wiederhergestellt; abschließender zeichenweiser Abgleich mit dem Screenshot steht noch aus."
+  },
+  "luftballon": {
+    "text_source": "Screenshot_20261109_003815_ChatGPT.jpg",
+    "text_sha256": "4d0da115958b22f8c420a28e535c671c160c086d4349c52ba0776e427d66a3a8",
+    "word_for_word_reviewed": true,
+    "review_note": "Vollständiger visueller Abgleich des Original-Screenshots in vier vergrößerten Abschnitten; Windstoß-Emoji und Schlusswortlaut korrigiert; Original-Screenshot noch nicht im Repository archiviert."
   }
 }
