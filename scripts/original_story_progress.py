@@ -40,7 +40,11 @@ for story in stories:
     )
     if text_ok and image_ok:
         done += 1
-    text_state = "VERIFIZIERT" if text_ok else ("PLATZHALTER" if len(text.strip()) < 100 else "ABGLEICH OFFEN")
+    known_status = story.get("originalTextStatus")
+    text_state = ("VERIFIZIERT" if text_ok else
+                  "PLATZHALTER" if known_status == "platzhalter" or len(text.strip()) < 100 else
+                  "FALSCHER ORIGINALTEXT" if known_status == "abweichend" else
+                  "ABGLEICH OFFEN")
     image_state = "VERIFIZIERT" if image_ok else "ORIGINAL OFFEN"
     print(f"{sid}: Text {text_state}; Bild {image_state}")
 
