@@ -50,9 +50,9 @@
     "original_message": "2026-11-04T18:41:35Z",
     "source_recovered": true,
     "word_for_word_reviewed": false,
-    "review_note": "Vollständige Erzählung aus Original-Unterhaltung wiederhergestellt; abschließender zeichenweiser Abgleich mit dem Screenshot steht noch aus.",
-    "text_sha256": "711c7aa370f56e83767d39bbf6192af8e969b37e407a80cd8236e3954450e080",
-    "current_text_snapshot": "2026-11-09; integrity baseline only, not proof of verbatim transcription"
+    "review_note": "Source screenshot re-inspected on 2026-11-09; several legible source discrepancies corrected together. Full independent character-for-character verification remains open.",
+    "text_sha256": "c5e49456215966abb885c22c588f02861b07da05ea62ba30be39d90de642f090",
+    "current_text_snapshot": "2026-11-09 reviewed but not fully verified"
   },
   "sternschnuppe": {
     "text_source": "Originale ChatGPT-Geschichte aus früherer Unterhaltung",
@@ -74,9 +74,9 @@
   "riesenrad": {
     "text_source": "Screenshot_20261109_003851_ChatGPT.jpg",
     "word_for_word_reviewed": false,
-    "review_note": "Original-Screenshot an Anfang, Mittelteil und Schluss mit der App-Fassung gesichtet; vollständig unabhängige Zeichenprüfung weiter offen.",
-    "text_sha256": "8aafcdbab7beaf2dc9468e11621a7b7df4d896b7d1a85bffb21ea4c7d37cbc12",
-    "current_text_snapshot": "2026-11-09; integrity baseline only, not proof of verbatim transcription"
+    "review_note": "Source screenshot re-inspected on 2026-11-09; several legible source discrepancies corrected together. Full independent character-for-character verification remains open.",
+    "text_sha256": "01dec856a9f00ec11b1011bc430321995ce5bf23149cd326df99702e988e29ae",
+    "current_text_snapshot": "2026-11-09 reviewed but not fully verified"
   },
   "schatztruhe": {
     "text_source": "Screenshot_20261109_003634_ChatGPT.jpg",
