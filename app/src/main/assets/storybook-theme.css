@@ -1,0 +1,34 @@
+/* GuteN8: cohesive visual finishing layer, independent of story assets.
+   Keep the original characters, stories and cover illustrations unchanged. */
+:root{--storybook-ink:#49331f;--storybook-gold:#ebc584;--storybook-night:#102653;--storybook-paper:#fff4df}
+body{background-color:#102653!important}
+#home .hero .art{align-self:center!important}
+#home .hero .art img{border-radius:0!important}
+#home .home-sign{transform:none!important}
+#home .home-sign strong{font-size:clamp(23px,6.2vw,34px)!important;line-height:1.05!important}
+#home .home-sign small{margin-top:6px!important;font-weight:700!important;opacity:.95}
+#home .hero .primary,.empty-state button,#bookmarks .empty-state button{background:linear-gradient(170deg,#f4d89c,#e1ba77 38%,#b47b40 100%)!important;border:3px solid #764925!important;border-radius:20px!important;box-shadow:inset 0 2px 0 #fff0c6,inset 0 -3px 0 #88562a,0 9px 16px #07142e80!important;text-shadow:0 1px 0 #ffedc7!important;color:#4c321c!important}
+#home .hero .primary:focus-visible,.empty-state button:focus-visible{outline:3px solid #ffe2a4!important;outline-offset:3px}
+#home .home-night,#home .recent-panel{margin-left:16px!important;margin-right:16px!important;border-radius:22px!important}
+#library .cards .story,#favorites .cards .story,#bookmarks .cards .story{border:3px solid #f2d5a3!important;border-radius:23px!important;background:linear-gradient(180deg,#fff9ed 0%,#f3ebdd 65%,#e3eafa 100%)!important;box-shadow:0 7px 0 #8f693b,0 12px 24px #07152d8a!important;color:#243a60!important;overflow:hidden}
+#library .cards .story .cover,#favorites .cards .story .cover,#bookmarks .cards .story .cover{height:clamp(145px,38vw,245px)!important;border-radius:18px 18px 8px 8px!important;overflow:hidden!important;background-color:#1d3463!important;box-shadow:inset 0 -9px 12px #06132b3d}
+#library .cards .story .cover img,#favorites .cards .story .cover img,#bookmarks .cards .story .cover img{width:100%!important;height:100%!important;display:block;object-fit:cover!important}
+#library .cards .story .cover:after,#favorites .cards .story .cover:after,#bookmarks .cards .story .cover:after{inset:6px!important;border:2px solid #fff3cfaa!important;border-radius:13px!important;box-shadow:inset 0 0 0 1px #7b582a77!important}
+#library .cards .story b,#favorites .cards .story b,#bookmarks .cards .story b{font-family:Georgia,'Times New Roman',serif;font-weight:700!important;line-height:1.2!important;letter-spacing:-.01em}
+#library .cards .story-duration,#favorites .cards .story-duration,#bookmarks .cards .story-duration{color:#5c5c67!important}
+#library .cards .story-progress,#favorites .cards .story-progress,#bookmarks .cards .story-progress{font-weight:700!important;color:#2e5074!important}
+#library .card-heart,#favorites .card-heart,#bookmarks .card-heart{background:linear-gradient(#fff9df,#e5c991)!important;border:2px solid #fff4d7!important;box-shadow:0 3px 8px #08163076!important;color:#314775!important}
+#favorites .collection-characters,#bookmarks .collection-characters{background:transparent!important;border:0!important;box-shadow:none!important}
+#favorites .empty-state,#bookmarks .empty-state{border:4px solid #e3c389!important;border-radius:28px!important;background:linear-gradient(160deg,#fff8eb,#f5eff0 67%,#e8eeff)!important;box-shadow:0 7px 0 #a78246,0 15px 30px #07142d7a!important}
+#favorites .empty-state strong,#bookmarks .empty-state strong{font-family:Georgia,serif;color:#314477!important}
+#reader .paper{background:#fff1d7 url('art/parchment.svg') center/100% 100% no-repeat!important;border:4px solid #d1ac73!important;border-radius:22px!important;box-shadow:0 9px 0 #835c32,0 15px 29px #07132d7b!important}
+#reader .paper h2{font-family:Georgia,'Times New Roman',serif!important;font-weight:700!important;color:#553821!important}
+#reader .paper p{color:#443322!important;line-height:1.78!important}
+#settings .panel.night{border:2px solid #8ea8d4b3!important;border-radius:28px!important;background:linear-gradient(165deg,#243f74f7,#142b58f8)!important}
+#settings .sleep-art{border-radius:28px!important}
+.nav{background:linear-gradient(180deg,#29477d 0%,#142b5e 95%)!important;border:2px solid #94aedf90!important;box-shadow:0 -5px 25px #05143188!important}
+.nav button{border-radius:15px!important}
+.nav button.nav-active{background:linear-gradient(180deg,#456da385,#274b7a80)!important;color:#ffe5ad!important}
+@media(min-width:720px){#library .cards{grid-template-columns:repeat(3,minmax(0,1fr))!important}#home .hero .art{max-width:420px!important}}
+@media(max-width:390px){#library .cards .story b{font-size:14px!important}#library .cards .story .cover{height:150px!important}#home .home-sign strong{font-size:22px!important}}
+@media(prefers-reduced-motion:reduce){.story,.card-heart,.nav button{transition:none!important;animation:none!important}}
