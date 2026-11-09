@@ -48,7 +48,7 @@ scenes = {
         "RUMPEL! POLTER! KRAWUMMS!",
         "Ein kleines Eichhörnchen",
         "Halloween-Überraschung",
-        "ein riesiger Heuhaufen",
+        "einen großen Heuhaufen",
         "mit langen Hasenohren",
         "Träumt von lustigen Kürbissen",
     ),
