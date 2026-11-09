@@ -495,3 +495,47 @@
  #home .home-night{min-height:50px!important;height:50px!important}
  #home .recent-panel{min-height:70px!important}
 }
+
+/* Match the reference button's book / two-line title / chevron composition. */
+#home .hero .primary{
+ display:grid!important;grid-template-columns:63px minmax(0,1fr) 34px!important;
+ align-items:center!important;justify-items:center!important;
+ min-height:74px!important;max-height:80px!important;
+ padding:5px 12px!important;gap:4px!important;
+ font-family:system-ui,'Segoe UI',sans-serif!important;
+}
+#home .hero .primary .home-cta-book{
+ display:grid!important;place-items:center!important;
+ font-size:37px!important;line-height:1!important;
+ width:52px!important;max-width:52px!important;
+ filter:drop-shadow(0 1px 2px #082b70)!important;
+}
+#home .hero .primary .home-cta-text{
+ display:block!important;text-align:left!important;
+ width:100%!important;color:white!important;
+ font:850 clamp(16px,4.7vw,21px)/1.06 system-ui,'Segoe UI',sans-serif!important;
+ letter-spacing:-.02em!important;white-space:nowrap!important;
+ text-shadow:0 2px 2px #052b67a8!important;
+}
+#home .hero .primary .home-cta-chevron{
+ display:block!important;font:700 36px/1 system-ui,'Segoe UI',sans-serif!important;
+ color:#fff9e3!important;
+}
+#home .recent-panel .recent-heading{
+ display:flex!important;align-items:center!important;gap:9px!important;
+ color:#182e61!important;font-size:15px!important;
+}
+#home .recent-panel .recent-heading svg{
+ display:block!important;flex:none!important;color:#172d72!important;
+}
+#home .recent-panel .recent-heading strong{font-weight:800!important}
+@media(max-height:860px) and (max-width:600px){
+ #home .hero-scene .hero-reference{width:min(82vw,297px)!important;max-width:297px!important}
+ #home .hero .primary{min-height:67px!important}
+ #home .home-night{min-height:51px!important;height:51px!important}
+ #home .recent-panel{min-height:74px!important}
+}
+@media(max-height:735px) and (max-width:600px){
+ #home .hero-scene .hero-reference{width:min(78vw,261px)!important;max-width:261px!important}
+ #home .hero .primary{min-height:64px!important}
+}
