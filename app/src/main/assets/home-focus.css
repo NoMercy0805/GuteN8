@@ -20,32 +20,6 @@ body.home-screen-active{
 }
 #home.active::before,#home.active::after,
 #home .hero::before,#home .hero::after,
-#home .hero-scene::before{
-  content:none!important;display:none!important;
-}
-#home .hero{
-  box-sizing:border-box!important;
-  display:flex!important;flex:1 1 0!important;flex-direction:column!important;
-  align-items:center!important;justify-content:flex-start!important;
-  width:100%!important;max-width:none!important;
-  min-height:0!important;max-height:none!important;
-  margin:0!important;padding:0!important;gap:0!important;
-  overflow:hidden!important;background:transparent!important;
-}
-#home .hero-scene{
-  box-sizing:border-box!important;display:block!important;flex:1 1 0!important;
-  position:relative!important;isolation:isolate!important;
-  width:100%!important;max-width:none!important;height:auto!important;
-  min-height:0!important;max-height:none!important;
-  margin:0!important;padding:0!important;overflow:hidden!important;
-  background:transparent!important;border:0!important;
-}
-#home .hero-scene::before{
-  content:''!important;display:block!important;pointer-events:none!important;
-  position:absolute!important;inset:-16px!important;z-index:-1!important;
-  background:url('art/reference-home.svg') center center/100% 100% no-repeat!important;
-  filter:blur(24px) saturate(.94)!important;opacity:.87!important;
-}
 #home .hero-scene::after{
   content:''!important;display:block!important;pointer-events:none!important;
   position:absolute!important;bottom:0!important;left:0!important;right:0!important;
@@ -57,7 +31,7 @@ body.home-screen-active{
   width:100%!important;max-width:none!important;
   height:100%!important;max-height:none!important;
   margin:0!important;padding:0!important;border:0!important;
-  aspect-ratio:auto!important;object-fit:fill!important;
+  aspect-ratio:auto!important;object-fit:cover!important;
   object-position:top center!important;border-radius:0!important;
   box-shadow:none!important;filter:none!important;
   mask-image:linear-gradient(to bottom,#000 0%,#000 89%,transparent 100%)!important;
