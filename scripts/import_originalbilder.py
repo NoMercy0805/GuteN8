@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Import verified original illustrations from the prepared GuteN8 ZIP.
+"""Import the seven matching illustrations from the prepared GuteN8 archive.
 
-Usage: python3 scripts/import_originalbilder.py /path/to/GuteN8_Originalbilder_App_optimiert.zip
+Run: python3 scripts/import_originalbilder.py GuteN8_6_passende_Originalbilder.zip
 """
 import json
 import pathlib
@@ -12,51 +12,38 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 ART = ROOT / "app/src/main/assets/art"
 STORIES = ROOT / "app/src/main/assets/stories.json"
 EXPECTED = {
-    "berg", "fliegender-kuchen", "kuschelkissen", "luftballon",
-    "riesenrad", "schatztruhe", "seifenkiste", "sternschnuppe",
-    "verschwundene-kuerbisse",
+    "fliegender-kuchen", "luftballon", "riesenrad", "schatztruhe",
+    "seifenkiste", "sternschnuppe", "verschwundene-kuerbisse",
 }
 
 def main():
     if len(sys.argv) != 2:
-        raise SystemExit("Usage: python3 scripts/import_originalbilder.py <optimized-original-images.zip>")
-    archive = pathlib.Path(sys.argv[1])
-    with zipfile.ZipFile(archive) as z:
+        raise SystemExit("Usage: python3 scripts/import_originalbilder.py <seven-images.zip>")
+    with zipfile.ZipFile(sys.argv[1]) as archive:
         found = {
             pathlib.PurePosixPath(name).stem: name
-            for name in z.namelist()
+            for name in archive.namelist()
             if name.startswith("app/src/main/assets/art/") and name.endswith(".webp")
         }
         if set(found) != EXPECTED:
-            raise SystemExit(f"Unexpected image list: missing={EXPECTED - set(found)}, extra={set(found) - EXPECTED}")
-        ART.mkdir(parents=True, exist_ok=True)
+            raise SystemExit(f"Image mismatch: missing={EXPECTED - set(found)}, extra={set(found) - EXPECTED}")
+        stories = json.loads(STORIES.read_text(encoding="utf-8"))
+        by_id = {story["id"]: story for story in stories}
+        if len(stories) != 14 or len(by_id) != 14 or not EXPECTED <= set(by_id):
+            raise SystemExit("Expected exactly 14 distinct original stories including all image IDs")
+        payloads = {}
         for story_id, name in found.items():
-            payload = z.read(name)
+            payload = archive.read(name)
             if not payload.startswith(b"RIFF") or payload[8:12] != b"WEBP":
                 raise SystemExit(f"Invalid WebP: {name}")
-            (ART / f"{story_id}.webp").write_bytes(payload)
-    stories = json.loads(STORIES.read_text(encoding="utf-8"))
-    if len(stories) != 14 or len({story["id"] for story in stories}) != 14:
-        raise SystemExit("Expected exactly 14 distinct original stories")
-    by_id = {story["id"]: story for story in stories}
-    imported = 0
-    for story_id in EXPECTED:
-        if story_id == "kuschelkissen":
-            # The archive file shows a treasure chest, not the missing pillow.\n            # Keep it out of the story until the correct original illustration is available.\n            continue
-        if story_id not in by_id:
-            # 'berg' may not be part of the current 14-story lineup.
-            if story_id == "berg":
-                continue
-            raise SystemExit(f"Missing story: {story_id}")
+            payloads[story_id] = payload
+    ART.mkdir(parents=True, exist_ok=True)
+    for story_id, payload in payloads.items():
+        (ART / f"{story_id}.webp").write_bytes(payload)
         by_id[story_id]["image"] = f"art/{story_id}.webp"
-        imported += 1
-        # Do not mark as verified: verify exact original image visually first.
         by_id[story_id]["originalImageVerified"] = False
     STORIES.write_text(json.dumps(stories, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"Imported {len(EXPECTED)} WebP files; linked {imported} to current stories.")
-    if "berg" not in by_id:
-        print("WARNING: berg.webp has no matching original story. Zauberpilz still needs its own illustration.")
-    print("WARNING: kuschelkissen.webp depicts a treasure chest; intentionally not assigned.")
+    print(f"Imported and linked {len(payloads)} images. Original-image verification still required.")
 
 if __name__ == "__main__":
     main()
