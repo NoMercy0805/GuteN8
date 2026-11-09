@@ -20,6 +20,16 @@ import java.io.InputStreamReader;
 public class MainActivity extends Activity {
  WebView web;
  @Override public void onCreate(Bundle b) { super.onCreate(b);
+  // Reserve a solid, undecorated area for Android system status/navigation bars.
+  getWindow().setStatusBarColor(android.graphics.Color.rgb(13,29,66));
+  getWindow().setNavigationBarColor(android.graphics.Color.rgb(13,29,66));
+  getWindow().getDecorView().setSystemUiVisibility(0);
+  if (Build.VERSION.SDK_INT >= 30) {
+   getWindow().setDecorFitsSystemWindows(true);
+   getWindow().getInsetsController().setSystemBarsAppearance(0,
+    android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS |
+    android.view.WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS);
+  }
   web=new WebView(this); web.getSettings().setJavaScriptEnabled(true); web.getSettings().setDomStorageEnabled(true);
   web.getSettings().setAllowFileAccess(true); web.getSettings().setAllowFileAccessFromFileURLs(false); web.getSettings().setAllowUniversalAccessFromFileURLs(false); web.setWebChromeClient(new WebChromeClient());
   web.setWebViewClient(new WebViewClient(){ @Override public boolean shouldOverrideUrlLoading(WebView v,String url){ return handleUrl(url); } @Override public boolean shouldOverrideUrlLoading(WebView v, WebResourceRequest request){return handleUrl(request.getUrl().toString());} });
