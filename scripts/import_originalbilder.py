@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
-"""Import the seven matching illustrations from the prepared GuteN8 archive.
+"""Import seven matching original illustrations from a supplied GuteN8 ZIP.
 
-Run: python3 scripts/import_originalbilder.py GuteN8_6_passende_Originalbilder.zip
+Run: python3 scripts/import_originalbilder.py GuteN8_7_Originalbilder_importbereit.zip
+
+This intentionally does not mark illustrations verified: image assets must be
+checked visually against the original source before completing the audit.
 """
 import json
 import pathlib
