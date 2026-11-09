@@ -75,3 +75,13 @@ Diese Prüfung trennt drei Dinge: **Eintrag vorhanden**, **Sichtvergleich mit Or
 **Ergebnis:** Alle 14 Datensätze vorhanden, 13 mit längeren Geschichten-Texten, einer mit Platzhalter. Vier dokumentierte Problemfälle: `seifenkiste`, `sternschnuppe`, `verschwundene-kuerbisse`, `zauberpilz`. Keine ungesicherten Textänderungen. Vollständig reproduzierbare 1:1-Belege weiterhin 0/14.
 
 **Quellenhinweis:** Alle 14 Vorlagen wurden laut Nutzer schon hochgeladen; dies ist keine Aufforderung, sie erneut hochzuladen. Der lokale Zugriff auf die drei zuletzt genannten Original-Screenshots ist in diesem Prüfzugriff nicht vorhanden. Ein älterer Assistentenvermerk ersetzt keinen überprüfbaren Originalvergleich.
+
+## Wesentlicher Nachtrag – vollständige Wiederherstellung der vier Problemtexte (09.11.2026)
+**Dieser Nachtrag ersetzt die früheren Statusangaben „falscher Text“ oder „Platzhalter“ für die vier folgenden Geschichten.**
+
+- `zauberpilz`: vollständige Originalgeschichte von 27.10.2026 aus der früheren Unterhaltung übernommen; kein Platzhalter mehr.
+- `verschwundene-kuerbisse`: falsche Igelgeschichte durch die vollständig wiedergefundene Eichhörnchen-/Kürbisfeld-Geschichte vom 19.10.2026 ersetzt.
+- `seifenkiste`: die zerstückelte und teilweise inhaltlich falsche Fassung durch die vollständige ursprüngliche Geschichte vom 04.11.2026 ersetzt (Heu landet auf **Bobbys** Kopf).
+- `sternschnuppe`: komplette ursprüngliche Geschichte vom 03.11.2026 ersetzt die abweichende Fassung.
+
+**Bestandsprüfung:** 14 unterschiedliche Story-Datensätze, 14 mit vollständigem Geschichteinhalt (alle > 500 Zeichen), 0 Platzhalter. Die vier wiederhergestellten Texte sind als `abgleich_offen` markiert, bis der letzte Zeichen-/Absatzabgleich bestätigt ist. Vier weitere Geschichten haben bereits einen eigenen dokumentierten Text-Prüfnachweis. Originalbilder sind noch nicht im Repository als `image` referenziert. Quellenmetadaten in `original-source-evidence.json`.
