@@ -50,3 +50,28 @@ Die folgenden **11 Screenshot-Vorlagen** wurden im Chat erneut vom Nutzer bereit
 - **sternschnuppe** (Screenshot `003718`): **Nicht 1:1 originalgetreu**. Der Screenshot schildert eine anders aufgebaute Sternschnuppen-/Wunschnacht als die im Repository enthaltene Kurzfassung mit Schokoladenkeksen und Eichhörnchen. Eine freie Ersetzung ist verboten. Die Originalfassung ist erneut anhand der Vorlage zu übertragen.
 - **schatztruhe** (Screenshot `003634`): Die lesbaren Episoden um Schlüssel, Holztür, Bärenstöpsel, Glöckchen und Honighunger sind in der gespeicherten Fassung vorhanden. Zeichengetreuer Schlussabgleich (besonders kleine Schrift und Satzzeichen) weiter offen.
 - Insgesamt **10/14 Geschichten vorläufig gesichtet**, davon bekannte Abweichungen bei **seifenkiste, sternschnuppe, verschwundene-kuerbisse, zauberpilz**. Die übrigen Sichtprüfungen beweisen noch keine durchgehend exakte Zeichenfolge.
+
+## Abschluss der Bestandsprüfung aller 14 Text-Einträge (09.11.2026)
+
+Diese Prüfung trennt drei Dinge: **Eintrag vorhanden**, **Sichtvergleich mit Original**, **reproduzierbar zeichengetreu belegt**. Die drei Stufen dürfen nicht verwechselt werden.
+
+| ID | App-Text | Sichtabgleich | Verifizierungsstatus |
+|---|---|---|---|
+| riesenrad | vorhanden | lesbare Stellen unauffällig | zeichengetreu offen |
+| seifenkiste | vorhanden | inhaltlich abweichend | **Original erforderlich** |
+| luftballon | vorhanden | lesbare Stellen unauffällig | zeichengetreu offen |
+| decke | vorhanden | lesbare Stellen unauffällig | zeichengetreu offen |
+| sternschnuppe | vorhanden | inhaltlich abweichend | **Original erforderlich** |
+| blume | vorhanden | frühere Prüfung in Unterhaltung behauptet; Quelle hier nicht zugänglich | unabhängig offen |
+| zauberpilz | **nur Platzhalter** | Screenshot vorhanden, wegen geringer Breite nicht sicher vollständig transkribierbar | **Originaltext fehlt** |
+| picknick | vorhanden, zwei belegte Korrekturen bereits gespeichert | weitere Prüfung erforderlich | zeichengetreu offen |
+| fliegender-kuchen | vorhanden | lesbare Stellen unauffällig | zeichengetreu offen |
+| verschwundene-kuerbisse | vorhanden | andere Handlung als Original | **Original erforderlich** |
+| schatztruhe | vorhanden | lesbare Stellen unauffällig | zeichengetreu offen |
+| baumhaus | vorhanden | Original-Screenshot in dieser Arbeitsansicht nicht zugänglich | offen |
+| kuschelkissen | vorhanden | lesbare Stellen unauffällig | zeichengetreu offen |
+| regenbogenbruecke | vorhanden | frühere Prüfung in Unterhaltung behauptet; Quelle hier nicht zugänglich | unabhängig offen |
+
+**Ergebnis:** Alle 14 Datensätze vorhanden, 13 mit längeren Geschichten-Texten, einer mit Platzhalter. Vier dokumentierte Problemfälle: `seifenkiste`, `sternschnuppe`, `verschwundene-kuerbisse`, `zauberpilz`. Keine ungesicherten Textänderungen. Vollständig reproduzierbare 1:1-Belege weiterhin 0/14.
+
+**Quellenhinweis:** Alle 14 Vorlagen wurden laut Nutzer schon hochgeladen; dies ist keine Aufforderung, sie erneut hochzuladen. Der lokale Zugriff auf die drei zuletzt genannten Original-Screenshots ist in diesem Prüfzugriff nicht vorhanden. Ein älterer Assistentenvermerk ersetzt keinen überprüfbaren Originalvergleich.
