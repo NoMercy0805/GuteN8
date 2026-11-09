@@ -672,7 +672,7 @@ function renderLibrary(){let q=$('search').value.trim().toLocaleLowerCase('de');
 function resetLibraryFilters(){clearTimeout(searchDelay);category='Alle';visibleStories=40;$('search').value='';$('unreadOnly').checked=false;$('librarySort').value='recommended';renderLibrary()}
 function renderFavorites(){const list=sortLibraryStories(stories.filter(s=>favorites.includes(s.id)));cardsInto($('favoriteCards'),list);$('favorites').classList.toggle('has-stories',list.length>0);if(!list.length)$('favoriteCards').innerHTML='<div class="empty-state"><span>♡</span><strong>Noch keine Favoriten</strong><p>Tippe bei einer Geschichte auf das Herz, um sie hier wiederzufinden.</p><button onclick="show(\'library\')">Geschichten entdecken</button></div>'}
 function renderBookmarks(){const list=sortLibraryStories(stories.filter(s=>bookmarks.includes(s.id)));cardsInto($('bookmarkCards'),list);$('bookmarks').classList.toggle('has-stories',list.length>0);if(!list.length)$('bookmarkCards').innerHTML='<div class="empty-state"><span>🔖</span><strong>Noch keine Lesezeichen</strong><p>Setze beim Lesen ein Lesezeichen, um die Geschichte später schnell wiederzufinden.</p><button onclick="show(\'library\')">Geschichten entdecken</button></div>'}
-function openStory(id){$('readerNotice').textContent='';if(sleepTimer){clearTimeout(sleepTimer);sleepTimer=null}current=stories.find(s=>s.id===id);if(!current)return;const savedPage=Number(progress[id]);page=Number.isInteger(savedPage)&&savedPage>=0?Math.min(savedPage,chunks(current).length-1):0;put('last',id);renderPage();show('reader');updateReaderFavorite();updateReaderBookmark();requestAnimationFrame(()=>{const max=Math.max(0,document.documentElement.scrollHeight-innerHeight);const savedPercent=Number(readPercent[current.id]);const fraction=Number.isFinite(savedPercent)&&savedPercent>=0&&savedPercent<=100?savedPercent/100:page/Math.max(1,chunks(current).length-1);window.scrollTo(0,Math.round(fraction*max));refreshReaderScroll()})}
+function openStory(id){$('readerNotice').textContent='';if(sleepTimer){clearTimeout(sleepTimer);sleepTimer=null}current=stories.find(s=>s.id===id);if(!current)return;const savedPage=Number(progress[id]);page=Number.isInteger(savedPage)&&savedPage>=0?Math.min(savedPage,chunks(current).length-1):0;put('last',id);const savedPercent=Number(readPercent[id]);const restoreFraction=Number.isFinite(savedPercent)&&savedPercent>=0&&savedPercent<=100?savedPercent/100:page/Math.max(1,chunks(current).length-1);restoringReaderScroll=true;renderPage();show('reader');updateReaderFavorite();updateReaderBookmark();requestAnimationFrame(()=>{const max=Math.max(0,document.documentElement.scrollHeight-innerHeight);window.scrollTo(0,Math.round(restoreFraction*max));requestAnimationFrame(()=>{restoringReaderScroll=false;refreshReaderScroll()})})}
 const storyPageCache=new Map(),storyRemainingWordsCache=new Map();
 function remainingWords(s,index){if(!storyRemainingWordsCache.has(s.id)){const pages=chunks(s),counts=pages.map(p=>p.trim().split(/\s+/).filter(Boolean).length),totals=new Array(counts.length);let sum=0;for(let i=counts.length-1;i>=0;i--){sum+=counts[i];totals[i]=sum}storyRemainingWordsCache.set(s.id,totals)}return storyRemainingWordsCache.get(s.id)[index]||0}
 function chunks(s){
@@ -722,8 +722,9 @@ function renderPage(){
  $('finishStory').hidden=completed.includes(current.id);
  updateReaderScrollProgress();
 }
+let restoringReaderScroll=false;
 function updateReaderScrollProgress(){
- if(!current||!$('reader').classList.contains('active'))return;
+ if(restoringReaderScroll||!current||!$('reader').classList.contains('active'))return;
  const max=Math.max(0,document.documentElement.scrollHeight-innerHeight);
  const fraction=max>0?Math.min(1,Math.max(0,scrollY/max)):1;
  const pct=Math.round(fraction*100);
