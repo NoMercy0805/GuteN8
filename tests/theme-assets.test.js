@@ -40,11 +40,12 @@ const homeCss=fs.readFileSync(root+'home-focus.css','utf8');
 assert(homeCss.includes('transform:none!important'),'Bottom nav must override historic -50% shift');
 assert(homeCss.includes('grid-template-columns:repeat(4,minmax(0,1fr))'),'Footer must have four equal columns');
 assert(homeCss.includes('.hero-scene .hero-reference'),'Homepage must size original illustration responsively');
-assert(homeCss.includes("height:min(63dvh,545px)"),'Home scene must adapt to phone height');
-assert(homeCss.includes("filter:blur(23px)"),'Reference image must blend with edge background');
+assert(homeCss.includes('height:clamp(415px,calc(100dvh - 300px),635px)'),'Home scene must adapt to phone height and fit controls');
+assert(homeCss.includes('object-fit:fill!important'),'Full-width reference must not leave poster-like side rails');
+assert(homeCss.includes('width:100%!important;max-width:none!important'),'Hero must extend to phone edges');
 assert(html.includes('class="home-cta-text"'),'Discovery CTA must have reference two-line title');
 assert(html.includes('class="recent-heading"'),'Recent-story card needs open-book heading');
-assert(homeCss.includes('background:linear-gradient(180deg,#fffefb 0%,#fff8ef 100%)'),'Navigation must use ivory reference palette');
+assert(homeCss.includes('background:linear-gradient(180deg,#fffdfa,#fff8ed)'),'Navigation must use ivory reference palette');
 
 assert(!css.includes("url('art/wooden-button.svg')"),'Avoid overlaid duplicate wood plaques');
 for(const art of ['bedtime-friends.svg','sleeping-friends.svg']){
