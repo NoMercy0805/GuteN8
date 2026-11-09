@@ -291,3 +291,99 @@ body{background-color:var(--storybook-night)!important}
 #settings .panel.night .setting{min-height:52px!important;gap:12px!important}
 #settings .panel.night .setting select{width:53%!important;max-width:53%!important}
 #settings .panel.night button.primary{border-radius:18px!important;min-height:57px!important}
+
+/* Visual layout pass, based on the current Samsung screenshots.
+   Content is kept BELOW Android's opaque system bar by the native Activity. */
+html,body{background-color:#0d1d42!important}
+header{position:relative;z-index:2;background:linear-gradient(180deg,#142b55ed,#152e5cc9)!important;border-bottom:1px solid #91a9ce2e!important;min-height:64px}
+header h1{line-height:1.1!important;letter-spacing:-.02em!important;text-shadow:0 2px 7px #061634aa}
+.screen{padding-bottom:calc(116px + env(safe-area-inset-bottom,0px))!important}
+#home.active,#library,#favorites,#bookmarks,#settings{
+ background-image:linear-gradient(180deg,#0d1d4270,#142e5370 60%,#081b34ad),url('art/enchanted-forest.svg')!important;
+ background-position:center top,center top!important;
+ background-size:cover,cover!important;
+}
+#home .hero{padding:5px 14px 9px!important}
+#home .hero-scene{position:relative!important;isolation:isolate;width:100%!important;max-width:480px!important;margin:0 auto 0!important}
+#home .hero-scene:before{
+ content:''!important;display:block!important;z-index:-1!important;
+ position:absolute!important;inset:60px 0 -8px!important;
+ background:url('art/hero-glade.svg') center/100% 100% no-repeat!important;
+ opacity:.88!important;filter:none!important;
+}
+#home .home-sign{max-width:410px!important;min-height:132px!important;margin:0 auto -31px!important;z-index:3!important}
+#home .home-sign strong{font-size:clamp(22px,5.5vw,31px)!important;line-height:1.03!important}
+#home .home-sign small{font-size:clamp(10px,2.45vw,12px)!important;white-space:normal!important}
+#home .hero-scene .art{
+ width:min(89vw,370px)!important;max-width:370px!important;
+ margin:0 auto -2px!important;aspect-ratio:1!important;
+ transform:none!important;
+}
+#home .hero-scene .art img{object-fit:contain!important;filter:drop-shadow(0 8px 7px #09172d66)!important}
+#home .hero .primary{margin-top:10px!important;border-radius:19px!important;min-height:55px!important}
+#home .hero .surprise-story{margin:7px auto 6px!important;min-height:46px!important}
+#home .home-night{margin:7px auto!important;max-width:570px!important}
+#home .recent-panel{margin:9px auto 20px!important;max-width:570px!important}
+#home .recent-panel .small{white-space:normal!important;line-height:1.4!important}
+#home .recent-progress-track{margin-top:9px!important}
+#favorites:not(.has-stories) .collection-shell,
+#bookmarks:not(.has-stories) .collection-shell{
+ max-width:540px!important;border-radius:28px!important;
+ border:3px solid #d8b57e!important;
+ box-shadow:0 10px 25px #06152c88!important;
+}
+#favorites:not(.has-stories) .collection-characters,
+#bookmarks:not(.has-stories) .collection-characters{
+ height:clamp(200px,53vw,285px)!important;
+ background:linear-gradient(0deg,#193e5699,transparent 47%),url('art/hero-glade.svg') center/cover no-repeat!important;
+}
+#favorites:not(.has-stories) .collection-shell .empty-state,
+#bookmarks:not(.has-stories) .collection-shell .empty-state{
+ padding:12px 18px 20px!important;
+ background:linear-gradient(160deg,#fff8e7 0%,#f8ecd5 100%)!important;
+}
+#favorites:not(.has-stories) .collection-shell .empty-state>span,
+#bookmarks:not(.has-stories) .collection-shell .empty-state>span{
+ font-size:34px!important;margin-bottom:4px!important
+}
+#favorites:not(.has-stories) .collection-shell .empty-state strong,
+#bookmarks:not(.has-stories) .collection-shell .empty-state strong{
+ font-size:clamp(22px,5vw,27px)!important;line-height:1.15!important
+}
+#favorites:not(.has-stories) .collection-shell .empty-state p,
+#bookmarks:not(.has-stories) .collection-shell .empty-state p{
+ font-size:clamp(14px,3.5vw,17px)!important;line-height:1.4!important;margin:12px auto 15px!important
+}
+#favorites:not(.has-stories) .collection-shell .empty-state button,
+#bookmarks:not(.has-stories) .collection-shell .empty-state button{
+ min-height:52px!important;max-width:350px!important
+}
+#settings .sleep-art{
+ max-width:500px!important;
+ aspect-ratio:1.72!important;border-radius:24px!important;
+ background:linear-gradient(#132b5088,#132b5088),url('art/hero-glade.svg') center/cover no-repeat!important;
+}
+#settings .sleep-scene-img{object-fit:contain!important;object-position:center 52%!important}
+#settings .sleep-subtitle{font-family:system-ui,'Segoe UI',sans-serif!important;font-size:clamp(17px,4.2vw,20px)!important;font-weight:700!important}
+#settings .panel.night{padding:16px 18px 22px!important}
+#settings .panel.night h2{font-family:system-ui,'Segoe UI',sans-serif!important;font-size:clamp(20px,4.8vw,24px)!important}
+#settings .panel.night .setting{font-size:clamp(13px,3.4vw,17px)!important;min-height:50px!important;gap:12px}
+#settings .panel.night .setting select{width:51%!important;max-width:51%!important;font-size:14px!important;min-width:0!important}
+#library .library-intro{font-size:clamp(15px,3.6vw,18px)!important;line-height:1.45!important}
+#library .cards .story b{font-family:system-ui,'Segoe UI',sans-serif!important;font-size:clamp(14px,3.55vw,17px)!important;line-height:1.27!important;min-height:0!important;letter-spacing:0!important}
+#library .cards .story .cover{height:clamp(145px,37vw,210px)!important}
+#library .cards .story .story-duration,#library .cards .story .story-progress{font-size:clamp(11px,2.9vw,13px)!important}
+#library .cards .story .original-label{font-size:clamp(11px,2.8vw,13px)!important}
+.nav{z-index:50!important;background:linear-gradient(180deg,#263f73,#172c59)!important}
+.nav button.nav-active{box-shadow:0 0 14px #122d6180 inset!important}
+@media(max-width:390px){
+ #home .hero-scene .art{width:min(89vw,330px)!important}
+ #home .home-sign{min-height:120px!important;margin-bottom:-26px!important}
+ #favorites:not(.has-stories) .collection-characters,#bookmarks:not(.has-stories) .collection-characters{height:235px!important}
+ #library .cards{gap:11px!important}
+ #library .cards .story .cover{height:145px!important}
+}
+@media(min-width:720px){
+ #home .hero-scene .art{width:390px!important}
+ #library .cards{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+}
