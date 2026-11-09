@@ -210,6 +210,25 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid 
 #home .home-night #nightLabel{float:right}
 #home .surprise-story{background:#fff0d6;color:#263e78}
 @media(max-height:760px){#home .home-sign{margin-top:8px}#home .hero .art img{max-height:33vh}#home .hero .primary{min-height:48px}}
+
+/* Finish mobile visual alignment and robust interaction targets */
+#home .hero .art{pointer-events:none}
+#home .home-sign{pointer-events:none}
+#home .hero .primary,#home .surprise-story{position:relative;z-index:2}
+#home .home-night,#home .recent-panel{position:relative;z-index:2}
+#library .library-intro{font-size:14px;line-height:1.55;color:#f1f7ff;text-shadow:0 1px 3px #071d4d}
+#library .search{border:2px solid #dceeff;border-radius:20px;box-shadow:0 5px 15px #081d5670}
+#library .story-wrap .card-heart{border:2px solid #fff;box-shadow:0 2px 8px #0b23565c}
+#favorites .cards,#bookmarks .cards{max-width:850px;margin:0 auto}
+#favorites .empty-state,#bookmarks .empty-state{isolation:isolate}
+#settings .setting input[type=checkbox]{cursor:pointer}
+#settings .setting input[type=range]{cursor:pointer}
+#settings .setting select{min-height:40px}
+#reader .paper{overflow:hidden}
+#reader .page-dots button{min-width:15px;min-height:15px;cursor:pointer}
+.nav button{position:relative;min-height:50px}
+.nav button.nav-active:after{content:'';position:absolute;bottom:0;left:25%;right:25%;height:3px;background:#187ff4;border-radius:10px}
+@media(max-width:350px){.nav button{font-size:9px}.nav button span{font-size:23px}#home .home-sign{width:90vw}#home .home-sign strong{font-size:23px}}
 </style></head><body>
 <section id="home" class="screen active"><div class="hero"><div class="home-sign"><span>🐾</span><strong>Bobby, Hoppel<br>und Krümel</strong><small>Unsere Gutenachtgeschichten</small></div><div class="art"><img src="art/forest-friends.svg" alt="Bobby, Hoppel und Krümel lesen zusammen im nächtlichen Wald"></div><button class="primary" onclick="show('library')">📖 Geschichten entdecken →</button><button class="surprise-story" onclick="surpriseStory()">✨ Überrasch mich mit einer Geschichte</button></div><button class="panel recent-panel home-action" onclick="resume()">📚 Zuletzt gelesen <div class="small" id="recent">Noch keine Geschichte gelesen</div><div class="recent-progress-track" aria-hidden="true"><div id="recentProgressFill"></div></div></button><button class="panel home-night home-action" onclick="toggleNight()">🌙 Gute-Nacht-Modus <span id="nightLabel">Aus</span></button></section>
 <section id="library" class="screen"><header><h1>📖 Bibliothek</h1><button class="round" aria-label="Suche öffnen" onclick="document.getElementById('search').focus()">⌕</button></header><p class="library-intro">Entdecke Abenteuer für jede Jahreszeit, Halloween, Advent, Weihnachten und mehr.</p><input class="search" id="search" type="search" placeholder="Geschichte suchen..." aria-label="Geschichte suchen" oninput="scheduleLibrarySearch()"><div class="chips" id="chips"></div><div class="library-tools"><label class="unread-option"><input type="checkbox" id="unreadOnly" onchange="visibleStories=40;renderLibrary()"> Nur ungelesene</label><label class="sort-option">Sortieren <select id="librarySort" onchange="visibleStories=40;renderLibrary()"><option value="recommended">Empfohlen</option><option value="az">Titel A–Z</option><option value="short">Kurze Geschichten</option><option value="long">Lange Geschichten</option></select></label></div><p id="libraryCount" class="small" role="status" aria-live="polite" aria-atomic="true" style="padding:0 18px"></p><div class="library-progress" role="progressbar" aria-label="Gelesene Geschichten" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="libraryProgressTrack"><div class="library-progress-track"><div id="libraryProgressFill"></div></div><span id="libraryProgressText">0 von 0 Geschichten gelesen</span></div><div class="cards" id="cards"></div><button id="loadMore" class="load-more" hidden onclick="loadMoreStories()">Weitere Geschichten anzeigen</button></section>
@@ -221,7 +240,7 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid 
 <script>
 let stories=[],current=null,page=0,category='Alle',speaking=false,updateOffer=null,visibleStories=40,libraryMatches=[],searchDelay=null;const $=id=>document.getElementById(id),get=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},put=(k,v)=>localStorage.setItem(k,JSON.stringify(v));let favorites=get('favorites',[]),progress=get('progress',{}),completed=get('completed',[]),bookmarks=get('bookmarks',[]),night=get('night',false),font=get('font',19),brightness=get('brightness',100),sleepAction=get('sleepAction','none'),sleepTimer=null;
 favorites=Array.isArray(favorites)?favorites.filter(id=>typeof id==='string'):[];completed=Array.isArray(completed)?completed.filter(id=>typeof id==='string'):[];bookmarks=Array.isArray(bookmarks)?bookmarks.filter(id=>typeof id==='string'):[];progress=progress&&typeof progress==='object'&&!Array.isArray(progress)?progress:{};
-function show(id){touchStart=null;document.querySelectorAll('.screen').forEach(e=>e.classList.toggle('active',e.id===id));if(id==='favorites')renderFavorites();if(id==='bookmarks')renderBookmarks();if(id==='library')renderLibrary();document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('nav-active',b.getAttribute('onclick')==="show('"+id+"')"));window.scrollTo(0,0)}
+function show(id){touchStart=null;document.querySelectorAll('.screen').forEach(e=>e.classList.toggle('active',e.id===id));if(id==='favorites')renderFavorites();if(id==='bookmarks')renderBookmarks();if(id==='library')renderLibrary();document.querySelectorAll('.nav button').forEach(b=>{const selected=b.getAttribute('onclick')==="show('"+id+"')";b.classList.toggle('nav-active',selected);if(selected)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});window.scrollTo(0,0)}
 window.guten8Back=()=>{const active=document.querySelector('.screen.active');if(!active||active.id==='home')return false;if(active.id==='reader'){show('library');return true}show('home');return true};
 function surpriseStory(){if(!stories.length){show('library');return}const month=new Date().getMonth();const seasonal=['Winter','Winter','Frühling','Frühling','Frühling','Sommer','Sommer','Sommer','Herbst','Halloween','Advent','Weihnachten'][month];const candidates=stories.filter(s=>!completed.includes(s.id));const pool=candidates.length?candidates:stories;const themed=pool.filter(s=>s.category===seasonal);const originals=pool.filter(s=>s.artTheme===undefined);const choices=themed.length&&Math.random()<.65?themed:originals.length&&Math.random()<.6?originals:pool;openStory(choices[Math.floor(Math.random()*choices.length)].id)}
 const storySearchCache=new Map();
