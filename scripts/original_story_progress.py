@@ -28,6 +28,15 @@ for story in stories:
     evidence = proof.get(sid, {})
     exists = len(content.strip()) > 500 and "Originaltext wird noch" not in content
     digest = hashlib.sha256(content.encode("utf-8")).hexdigest()
+    # A snapshot hash only tracks an unverified revision; it never proves fidelity.
+    # Prevent accidental edits from silently invalidating a pending comparison.
+    pending_snapshot_changed = bool(
+        evidence.get("text_sha256")
+        and evidence.get("word_for_word_reviewed") is not True
+        and evidence["text_sha256"] != digest
+    )
+    if pending_snapshot_changed:
+        problems.append(f"{sid}: unverified text changed since saved source snapshot; update evidence deliberately")
     text_ok = bool(
         exists
         and evidence.get("text_source")
