@@ -81,7 +81,7 @@ for(const screen of ['#library','#favorites','#bookmarks','#settings']){
 assert(libraryCss.includes("url('art/library-day-forest.svg')"),'Shared daytime forest SVG must be used');
 assert(fs.existsSync(root+'art/library-day-forest.svg'),'Daytime forest background file must exist');
 assert(html.includes('class="library-title-icon"'),'Library must have book title icon');
-assert(html.includes('class="library-search-trigger"'),'Library must have round search trigger');
+assert(/class="[^"]*\blibrary-search-trigger\b[^"]*"/.test(html),'Library must have round search trigger');
 assert(html.includes('id="librarySearchOptions"'),'Advanced library filters must remain accessible');
 assert(html.includes('function toggleLibrarySearch(force)'),'Library search drawer must open and close');
 assert(libraryCss.includes('grid-template-columns:repeat(2,minmax(0,1fr))'),'Library needs two cover columns on phones');
