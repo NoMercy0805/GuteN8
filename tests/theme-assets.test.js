@@ -20,7 +20,7 @@ assert(!html.includes('id="readerSpeak"'),'Narration button must stay removed');
 assert(!html.includes('id="settingsSpeak"'),'Narration settings must stay removed');
 assert(html.includes('class="hero-scene"'),'Hero must be a single illustrated scene');
 assert((html.match(/class="collection-shell"/g)||[]).length===2,'Favorites and bookmarks must use unified illustration cards');
-assert(html.includes('class="sleep-scene-img"'),'Bedtime uses one image without duplicated moon decoration');
+assert(!html.includes('class="sleep-scene-img"'),'Settings hero image must be removed on request');
 assert((html.match(/class="nav-icon"/g)||[]).length===4,'Reference layout uses exactly four matching navigation tabs');
 const nav=html.slice(html.indexOf('<nav class="nav"'),html.indexOf('</nav>'));
 assert(nav.includes('aria-label="Bibliothek" onclick="show(\'library\')"'),'Bibliothek tab must open story library');
@@ -92,9 +92,21 @@ for(const type of ['bookmark','heart','moon']){
 }
 assert(libraryCss.includes('#favorites:not(.has-stories) .collection-characters'),'Favorites must use illustrated scene');
 assert(libraryCss.includes('#bookmarks:not(.has-stories) .collection-characters'),'Bookmarks must use illustrated scene');
-assert(libraryCss.includes('#settings .sleep-art .sleep-scene-img{display:none!important}'),'Settings must hide mismatched flat art');
-assert(libraryCss.includes("url('art/reference-home.svg')"),'Collection scenes must reuse detailed Bobby/Hoppel/Krümel reference');
-assert(libraryCss.includes('.collection-characters img{')&&libraryCss.includes('display:none!important'),'Collection scenes must hide flat vector animals');
+
+
+
+
+
+const polish=fs.readFileSync(root+'ui-polish.css','utf8');
+assert(html.includes('href="ui-polish.css"'),'Polished collection and settings styles must be loaded');
+assert(html.indexOf('href="ui-polish.css"')>html.indexOf('href="reader-focus.css"'),'Polish styles must load last');
+assert(polish.includes('#settings .sleep-art,#settings .sleep-subtitle{display:none!important}'),'Settings hero must be hidden');
+assert(polish.includes('#favorites:not(.has-stories) .collection-characters'),'Favorites duplicate poster must be hidden');
+assert(polish.includes('#bookmarks:not(.has-stories) .collection-characters'),'Bookmarks duplicate poster must be hidden');
+assert(html.includes('id="nightToggle" type="checkbox" role="switch"'),'Night mode control needs an accessible switch');
+assert(polish.includes('#nightToggle:checked::before'),'Night mode switch needs a moving thumb');
+assert(html.includes('class="favorite-heart-icon"'),'Story heart must use a consistent SVG icon');
+assert(polish.includes('.card-heart.is-favorite .favorite-heart-icon'),'Saved hearts should be filled');
 
 assert(html.includes('id="unreadOnly"')&&html.includes('id="librarySort"'),'Unread and sorting must remain functional');
 
