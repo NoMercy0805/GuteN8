@@ -40,10 +40,17 @@ body.home-screen-active{
   margin:0!important;padding:0!important;overflow:hidden!important;
   background:transparent!important;border:0!important;
 }
+#home .hero-scene::before{
+  content:''!important;display:block!important;pointer-events:none!important;
+  position:absolute!important;inset:-16px!important;z-index:-1!important;
+  background:url('art/reference-home.svg') center center/100% 100% no-repeat!important;
+  filter:blur(24px) saturate(.94)!important;opacity:.87!important;
+}
 #home .hero-scene::after{
   content:''!important;display:block!important;pointer-events:none!important;
   position:absolute!important;bottom:0!important;left:0!important;right:0!important;
-  height:8px!important;background:linear-gradient(transparent,#e9b76a44)!important;
+  height:34px!important;z-index:2!important;
+  background:linear-gradient(180deg,transparent 0%,#e7b56836 60%,#edbd7975 100%)!important;
 }
 #home .hero-scene .hero-reference{
   box-sizing:border-box!important;display:block!important;
@@ -53,7 +60,8 @@ body.home-screen-active{
   aspect-ratio:auto!important;object-fit:fill!important;
   object-position:top center!important;border-radius:0!important;
   box-shadow:none!important;filter:none!important;
-  mask-image:none!important;-webkit-mask-image:none!important;
+  mask-image:linear-gradient(to bottom,#000 0%,#000 89%,transparent 100%)!important;
+  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 89%,transparent 100%)!important;
 }
 #home .home-sign,#home .hero-scene .art{display:none!important}
 #home .hero .primary{
