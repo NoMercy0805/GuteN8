@@ -81,3 +81,12 @@ body{background-color:var(--storybook-night)!important}
 #home .hero .primary,#favorites .empty-state button,#bookmarks .empty-state button{background-image:linear-gradient(180deg,#5991e4,#2d65b9 50%,#183a80)!important;background-color:#2859a5!important}
 #home .hero .primary:active,#favorites .empty-state button:active,#bookmarks .empty-state button:active{transform:translateY(2px);box-shadow:inset 0 2px 5px #071d4f,0 3px 8px #06142c99!important}
 #settings .panel.night button.primary{background:linear-gradient(180deg,#5188d5,#2b5eac)!important;color:#fff3d3!important;border:2px solid #a5c3ee!important;text-shadow:0 1px 2px #0b234e!important}
+
+/* Character illustrations now have transparent skies: use one shared forest behind them. */
+#home .hero-scene .art img{mask-image:none!important;-webkit-mask-image:none!important;filter:drop-shadow(0 10px 13px #061a2c86)!important}
+#favorites .collection-characters,#bookmarks .collection-characters{background:radial-gradient(ellipse at 50% 83%,#45687555,transparent 74%),url('art/enchanted-forest.svg') center 35%/cover no-repeat!important}
+#favorites .collection-characters img,#bookmarks .collection-characters img{mask-image:none!important;-webkit-mask-image:none!important;object-fit:contain!important;object-position:center bottom!important;filter:drop-shadow(0 8px 9px #051b3280)!important}
+#settings .sleep-art{background:linear-gradient(#12295750,#12295750),url('art/enchanted-forest.svg') center 38%/cover no-repeat!important}
+#settings .sleep-art:before{content:none!important;display:none!important}
+#settings .sleep-scene-img{object-fit:contain!important;filter:drop-shadow(0 9px 12px #091b3977)!important}
+#home .hero-scene:before{background:radial-gradient(ellipse at 50% 55%,#53789c40,transparent 73%)!important}
