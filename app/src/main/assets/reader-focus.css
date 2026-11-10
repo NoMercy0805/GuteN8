@@ -112,7 +112,8 @@ body.night-reading #reader .paper h2{color:#ffe4b6!important}
 #reader #readerArt img{
  display:block!important;width:100%!important;height:100%!important;
  max-height:none!important;aspect-ratio:3/2!important;
- object-fit:contain!important;object-position:center!important;
+ object-fit:cover!important;object-position:center center!important;
+ border-radius:17px!important;
 }
 #reader #readerArt:focus-visible{outline:3px solid #438bdd!important;outline-offset:3px!important}
 .story-image-overlay[hidden]{display:none!important}
