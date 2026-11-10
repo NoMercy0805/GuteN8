@@ -152,3 +152,11 @@ assert(html.includes("story-wrap '+(completed.includes(s.id)?'is-read':'')"),'Co
 const readBadgeCss=fs.readFileSync(root+'library-focus.css','utf8');
 assert(readBadgeCss.includes('.story-wrap .read-badge'),'Read badges must be styled for the library and favorites');
 assert(readBadgeCss.includes('background:#196b3f!important'),'Read badge must be visibly colored');
+
+
+// All reader illustration sources, including 16:9 files, must fill the same
+// rounded 3:2 frame instead of letterboxing with large empty areas.
+const readerLayoutCss=fs.readFileSync(root+'reader-focus.css','utf8');
+assert(readerLayoutCss.includes('aspect-ratio:3/2!important'),'Reader illustrations must use the uniform 3:2 card format');
+assert(readerLayoutCss.includes('object-fit:cover!important;object-position:center center!important'),'Reader images must fill the card without letterboxing');
+assert(readerLayoutCss.includes('border-radius:17px!important'),'Reader image must match the rounded Sternenlaterne card');
