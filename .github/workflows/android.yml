@@ -136,6 +136,19 @@ jobs:
               git push origin HEAD:main
             fi
           fi
+      - name: Import Advent 11-26 and holiday images when ZIPs are present
+        run: |
+          if [ -f GuteN8_Advent_11_bis_20_Bilder.zip ] || [ -f GuteN8_Advent_21_bis_26_Sondergeschichten_Bilder.zip ]; then
+            python3 scripts/import_advent_remaining_images.py
+            git add app/src/main/assets/art/
+            if ! git diff --cached --quiet; then
+              git config user.name "github-actions[bot]"
+              git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+              git commit -m "Import additional GuteN8 Advent and holiday artwork"
+              git pull --rebase origin main
+              git push origin HEAD:main
+            fi
+          fi
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
