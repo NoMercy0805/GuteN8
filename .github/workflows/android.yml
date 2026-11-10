@@ -138,7 +138,7 @@ jobs:
           fi
       - name: Import Advent 11-26 and holiday images when ZIPs are present
         run: |
-          if [ -f GuteN8_Advent_11_bis_20_Bilder.zip ] || [ -f GuteN8_Advent_21_bis_26_Sondergeschichten_Bilder.zip ]; then
+          if [ -f GuteN8_Advent_11_bis_20_GEPRUEFT.zip ] || [ -f GuteN8_Advent_21_bis_26_Sondergeschichten_GEPRUEFT.zip ]; then
             python3 scripts/import_advent_remaining_images.py
             git add app/src/main/assets/art/
             if ! git diff --cached --quiet; then
