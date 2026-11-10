@@ -136,7 +136,11 @@ assert(!html.includes('function toggleNight('),'Night mode behavior must be remo
 assert(html.includes('class="favorite-heart-icon"'),'Story heart must use a consistent SVG icon');
 assert(polish.includes('.card-heart.is-favorite .favorite-heart-icon'),'Saved hearts should be filled');
 
-assert(html.includes('id="unreadOnly"')&&html.includes('id="librarySort"'),'Unread and sorting must remain functional');
+assert(html.includes("let cats=['Alle','Gelesen','Ungelesen'];"),'Library must expose only the three requested read-state filters');
+assert(!html.includes('id="unreadOnly"')&&html.includes('id="librarySort"'),'Remove duplicate unread checkbox while preserving sorting');
+assert(html.includes("(category==='Gelesen'&&completed.includes(s.id))")&&html.includes("(category==='Ungelesen'&&!completed.includes(s.id))"),'Read/unread chips must use explicit completion state');
+assert(html.includes('id="readerFloatingProgress"')&&html.includes('id="readerFloatingProgressFill"'),'Reader must show a persistent minimal progress indicator');
+assert(html.includes("readerFloatingProgressFill').style.width=pct+'%'"),'Floating progress must update during scroll');
 
 assert(css.includes("url('art/enchanted-forest.svg')"),'Forest background must remain integrated');
 console.log('GuteN8 scene/theme asset checks passed');
