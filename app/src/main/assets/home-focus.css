@@ -274,3 +274,33 @@ body.home-screen-active{
   rgba(234,184,119,.86) 83%,
   #eab877 100%)!important;
 }
+
+
+/* One continuous warm base behind BOTH illustration and CTA.
+   Previous scene ended amber while the CTA inherited a dark brown viewport
+   stop, creating the straight horizontal seam visible on Android. */
+#home.active{
+ background-color:#eab877!important;
+ background-image:linear-gradient(180deg,
+  #1a3155 0%,#344760 42%,#a07f64 60%,
+  #e0ad70 70%,#eab877 78%,#eab877 91%,#f3c889 100%)!important;
+}
+#home .hero{
+ background:transparent!important;
+}
+#home .hero-scene{
+ background:linear-gradient(180deg,
+  #1a3155 0%,#344760 45%,#a07f64 67%,
+  #e0ad70 82%,#eab877 100%)!important;
+}
+#home .hero-scene::after{
+ height:clamp(150px,25vh,260px)!important;
+ bottom:-1px!important;
+ background:linear-gradient(180deg,
+  rgba(234,184,119,0) 0%,
+  rgba(234,184,119,.07) 18%,
+  rgba(234,184,119,.24) 38%,
+  rgba(234,184,119,.56) 60%,
+  rgba(234,184,119,.84) 80%,
+  #eab877 100%)!important;
+}
