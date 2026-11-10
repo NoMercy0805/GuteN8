@@ -149,3 +149,32 @@
  width:37px!important;height:37px!important;min-width:37px!important;
  }
 }
+
+
+/* Favorites + Settings: one cohesive illustrated twilight forest rather than
+   the flat blue daytime strip. The background extends all the way to the nav. */
+#favorites,#settings{
+ background-color:#17365d!important;
+ background-image:
+  radial-gradient(ellipse 95% 42% at 47% 42%,rgba(85,109,161,.20),transparent 85%),
+  linear-gradient(180deg,rgba(12,28,63,.15) 0%,rgba(21,52,87,.07) 42%,rgba(20,51,70,.11) 75%,rgba(7,29,43,.18) 100%),
+  url('art/enchanted-forest.svg')!important;
+ background-position:center center,center center,center center!important;
+ background-size:100% 100%,100% 100%,cover!important;
+ background-repeat:no-repeat,no-repeat,no-repeat!important;
+ background-attachment:scroll!important;
+ min-height:100dvh!important;
+}
+#favorites header,#settings header{
+ background:linear-gradient(180deg,rgba(12,31,66,.26),transparent)!important;
+}
+#favorites:not(.has-stories) .collection-shell{
+ margin-top:clamp(18px,4vh,42px)!important;
+ box-shadow:0 14px 32px rgba(7,24,49,.44),0 0 0 1px rgba(255,241,208,.35)!important;
+}
+#favorites:not(.has-stories) .collection-shell .empty-state{
+ background:linear-gradient(165deg,#fffdfa,#fff2df)!important;
+}
+#settings .panel.night{
+ box-shadow:0 13px 30px rgba(7,24,49,.40)!important;
+}
