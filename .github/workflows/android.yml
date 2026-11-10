@@ -221,7 +221,7 @@ jobs:
           assert "readingMinutes(current)*(1-fraction)" in html, 'Continuous reader must calculate remaining time from scroll progress'
           assert 'aria-pressed=' in html and 'favorites.includes(s.id)' in html, 'Accessible selection states missing'
           assert 'const seasonal=' in html and 'const themed=pool.filter' in html, 'Seasonal recommendations missing'
-          assert "'Originale'" in html and 'original-label' in html, 'Written stories need a dedicated filter and label'
+          assert 'original-label' in html and "let cats=['Alle','Gelesen','Ungelesen'];" in html, 'Original story labels and simplified read-state filters must remain'
           assert 'extra-stories.js' in html and 'function loadMoreStories()' in html, 'Extra story loading or pagination missing'
           for classic in ('fliegender-kuchen','verschwundene-kuerbisse','schatztruhe'):
               assert classic in ids, f'Missing classic story: {classic}'
