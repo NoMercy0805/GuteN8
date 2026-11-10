@@ -6,10 +6,10 @@ from zipfile import ZipFile
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-ZIP = ROOT / "GuteN8_Silvester_Ostern_QUERFORMAT_KORRIGIERT.zip"
+ZIP = ROOT / "GuteN8_Silvester_Ostern_16zu9_FINAL.zip"
 CHECKS = {
-    "app/src/main/assets/art/silvester-wunschlicht.webp": "11f1cd08ad259cf1f75494425fc324f6b4fd7de82bc5a2eafe48060d9e2d8231",
-    "app/src/main/assets/art/ostern-regenbogen-ei.webp": "5d007c5702493e86c2a3997fd52f2e53e393f7cfd84de4519752b10ba800e3c6",
+    "app/src/main/assets/art/silvester-wunschlicht.webp": "1c380eb633fe12b0bbb20a582c3961f3a8ead131a0b1d3a25ae6495324af8b52",
+    "app/src/main/assets/art/ostern-regenbogen-ei.webp": "e62ce71295c95d645dbb63918d198b9815f4a3d48eed6e015e35dcb002da8f95",
 }
 
 def main():
