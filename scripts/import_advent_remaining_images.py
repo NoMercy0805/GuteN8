@@ -10,10 +10,10 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 PREFIX = "app/src/main/assets/art/"
 PACKS = {
-    "GuteN8_Advent_11_bis_20_Bilder.zip": [
+    "GuteN8_Advent_11_bis_20_GEPRUEFT.zip": [
         f"advent-2026-{i:02d}" for i in range(11, 21)
     ],
-    "GuteN8_Advent_21_bis_26_Sondergeschichten_Bilder.zip": [
+    "GuteN8_Advent_21_bis_26_Sondergeschichten_GEPRUEFT.zip": [
         *[f"advent-2026-{i:02d}" for i in range(21, 27)],
         "st-martin-2026", "erster-advent-2026",
     ],
