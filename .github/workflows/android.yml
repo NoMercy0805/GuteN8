@@ -151,7 +151,7 @@ jobs:
           fi
       - name: Import Silvester and Easter illustration ZIP
         run: |
-          if [ -f GuteN8_Silvester_Ostern_QUERFORMAT_KORRIGIERT.zip ]; then
+          if [ -f GuteN8_Silvester_Ostern_16zu9_FINAL.zip ]; then
             python3 scripts/import_seasonal_images.py
             git add app/src/main/assets/art/silvester-wunschlicht.webp app/src/main/assets/art/ostern-regenbogen-ei.webp
             if ! git diff --cached --quiet; then
