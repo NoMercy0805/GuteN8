@@ -252,3 +252,25 @@ body.home-screen-active{
  -webkit-mask-image:linear-gradient(to right,transparent 0%,#000 6%,#000 94%,transparent 100%)!important;
  mask-image:linear-gradient(to right,transparent 0%,#000 6%,#000 94%,transparent 100%)!important;
 }
+
+
+/* Cozy bridge from the original sharp cover into the golden story actions.
+   The art remains centered and its blur is confined to the side extensions. */
+#home.active{
+ background-image:linear-gradient(180deg,#1a3155 0%,#304963 52%,#b28c66 76%,#edbe7e 100%)!important;
+}
+#home .hero-scene{
+ background:linear-gradient(180deg,#1b3252 0%,#3d5370 63%,#99795c 82%,#edbd7a 100%)!important;
+}
+#home .hero-scene::after{
+ content:''!important;display:block!important;
+ height:clamp(78px,14vh,144px)!important;
+ bottom:-1px!important;left:0!important;right:0!important;
+ z-index:2!important;pointer-events:none!important;
+ background:linear-gradient(180deg,
+  rgba(234,182,115,0) 0%,
+  rgba(229,176,109,.10) 25%,
+  rgba(229,176,109,.42) 53%,
+  rgba(234,184,119,.86) 83%,
+  #eab877 100%)!important;
+}
