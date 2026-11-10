@@ -149,6 +149,19 @@ jobs:
               git push origin HEAD:main
             fi
           fi
+      - name: Import Silvester and Easter illustration ZIP
+        run: |
+          if [ -f GuteN8_Silvester_Ostern_Bilder.zip ]; then
+            python3 scripts/import_seasonal_images.py
+            git add app/src/main/assets/art/silvester-wunschlicht.webp app/src/main/assets/art/ostern-regenbogen-ei.webp
+            if ! git diff --cached --quiet; then
+              git config user.name "github-actions[bot]"
+              git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+              git commit -m "Import Silvester and Easter story artwork"
+              git pull --rebase origin main
+              git push origin HEAD:main
+            fi
+          fi
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
