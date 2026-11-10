@@ -31,20 +31,24 @@
 #reader .paper::before,#reader .paper::after{
  content:none!important;display:none!important;
 }
+/* Story artwork: true 16:9 edge-to-edge image, without a fake white frame
+   or contain-letterboxing. The illustration's outer card remains rounded. */
 #reader #readerArt{
- position:relative!important;display:flex!important;justify-content:center!important;
- box-sizing:border-box!important;align-items:center!important;
+ position:relative!important;display:block!important;
+ box-sizing:border-box!important;
  width:100%!important;max-width:100%!important;
- height:auto!important;max-height:230px!important;min-height:0!important;
- margin:0 auto 15px!important;padding:5px!important;
- border:2px solid #fff!important;border-radius:17px!important;overflow:hidden!important;
- background:#dbeeff!important;box-shadow:0 3px 9px #446f9b35!important;
+ height:auto!important;max-height:none!important;min-height:0!important;
+ aspect-ratio:16/9!important;
+ margin:0 auto 15px!important;padding:0!important;
+ border:0!important;border-radius:17px!important;overflow:hidden!important;
+ background:transparent!important;box-shadow:none!important;
 }
 #reader #readerArt img{
- display:block!important;width:100%!important;height:auto!important;
- max-height:216px!important;max-width:100%!important;
- object-fit:contain!important;object-position:center!important;
- border:0!important;border-radius:12px!important;filter:none!important;
+ display:block!important;width:100%!important;height:100%!important;
+ max-height:none!important;max-width:100%!important;
+ aspect-ratio:16/9!important;
+ object-fit:cover!important;object-position:center!important;
+ border:0!important;border-radius:0!important;filter:none!important;
  box-shadow:none!important;
 }
 #reader .paper h2{
