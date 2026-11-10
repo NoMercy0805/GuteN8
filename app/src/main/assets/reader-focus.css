@@ -48,7 +48,7 @@
  max-height:none!important;max-width:100%!important;
  aspect-ratio:16/9!important;
  object-fit:cover!important;object-position:center!important;
- border:0!important;border-radius:0!important;filter:none!important;
+ border:0!important;border-radius:17px!important;filter:none!important;
  box-shadow:none!important;
 }
 #reader .paper h2{
