@@ -25,6 +25,41 @@ jobs:
               git push origin HEAD:main
             fi
           fi
+      - name: Import five new story images from uploaded ZIP
+        run: |
+          if [ -f GuteN8_5_neue_Geschichtenbilder.zip ]; then
+            python3 - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile
+          import struct
+          archive = Path('GuteN8_5_neue_Geschichtenbilder.zip')
+          names = (
+              'das-fluesternde-moos',
+              'die-wolkenpost',
+              'der-kleine-lichterpfad',
+              'das-geheimnis-der-blauen-feder',
+              'der-tanz-der-regentropfen',
+          )
+          destination = Path('app/src/main/assets/art')
+          destination.mkdir(parents=True, exist_ok=True)
+          with ZipFile(archive) as z:
+              for name in names:
+                  data = z.read(name + '.png')
+                  assert data[:8] == b'\\x89PNG\\r\\n\\x1a\\n', name + ' is not PNG'
+                  width, height = struct.unpack('>II', data[16:24])
+                  assert (width, height) == (1536, 1024), f'{name}: wrong image dimensions'
+                  (destination / (name + '.png')).write_bytes(data)
+          print('Imported five 3:2 GuteN8 story images')
+          PY
+            git add app/src/main/assets/art/
+            if ! git diff --cached --quiet; then
+              git config user.name "github-actions[bot]"
+              git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+              git commit -m "Import five newly uploaded GuteN8 illustration PNGs"
+              git pull --rebase origin main
+              git push origin HEAD:main
+            fi
+          fi
       - name: Import original story illustrations when archive is present
         run: |
           if [ -f GuteN8_9_Originalbilder_importbereit.zip ]; then
