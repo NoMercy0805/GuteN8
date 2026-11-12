@@ -197,6 +197,34 @@ jobs:
               git push origin HEAD:main
             fi
           fi
+      - name: Apply clean Wolkenpost and blue feather replacement pictures
+        run: |
+          if [ -f GuteN8_Wolkenpost_Blaue_Feder_Korrektur.zip ]; then
+            python3 - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile
+          from struct import unpack
+          archive = 'GuteN8_Wolkenpost_Blaue_Feder_Korrektur.zip'
+          names = ('die-wolkenpost.png', 'das-geheimnis-der-blauen-feder.png')
+          art = Path('app/src/main/assets/art')
+          art.mkdir(parents=True, exist_ok=True)
+          with ZipFile(archive) as z:
+              for name in names:
+                  data = z.read(name)
+                  assert data[:8] == bytes.fromhex('89504e470d0a1a0a'), f'Invalid PNG: {name}'
+                  assert unpack('>II', data[16:24]) == (1536, 1024), f'Wrong dimensions: {name}'
+                  (art / name).write_bytes(data)
+          print('Validated and imported two replacement illustrations')
+          PY
+            git add app/src/main/assets/art/die-wolkenpost.png app/src/main/assets/art/das-geheimnis-der-blauen-feder.png
+            if ! git diff --cached --quiet; then
+              git config user.name "github-actions[bot]"
+              git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+              git commit -m "Replace Wolkenpost and blue feather illustrations with clean artwork"
+              git pull --rebase origin main
+              git push origin HEAD:main
+            fi
+          fi
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
