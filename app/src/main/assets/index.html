@@ -711,7 +711,7 @@ function surpriseStory(){if(!stories.length){show('library');return}const month=
 const storySearchCache=new Map();
 function searchableStory(s){if(!storySearchCache.has(s.id))storySearchCache.set(s.id,(s.title+' '+s.category+' '+s.text).toLocaleLowerCase('de'));return storySearchCache.get(s.id)}
 const storyArtCache=new Map();
-function storyImage(s){if(s.image&&/^art\/[a-z0-9_-]+\.(?:png|jpg|jpeg|webp|svg)$/.test(s.image))return s.image;if(s.artTheme===undefined||!window.guten8ExtraArt)return 'art/'+s.id+'.svg';const key=s.id;if(!storyArtCache.has(key))storyArtCache.set(key,window.guten8ExtraArt(s));return storyArtCache.get(key)}
+function storyImage(s){const newImages={'Das flüsternde Moos':'das-fluesternde-moos','Die Wolkenpost':'die-wolkenpost','Der kleine Lichterpfad':'der-kleine-lichterpfad','Das Geheimnis der blauen Feder':'das-geheimnis-der-blauen-feder','Der Tanz der Regentropfen':'der-tanz-der-regentropfen'};const match=Object.keys(newImages).find(t=>s.title===t||s.title.endsWith(' – '+t));if(match)return 'art/'+newImages[match]+'.png';if(s.image&&/^art\/[a-z0-9_-]+\.(?:png|jpg|jpeg|webp|svg)$/.test(s.image))return s.image;if(s.artTheme===undefined||!window.guten8ExtraArt)return 'art/'+s.id+'.svg';const key=s.id;if(!storyArtCache.has(key))storyArtCache.set(key,window.guten8ExtraArt(s));return storyArtCache.get(key)}
 // If an original image archive has not yet been imported, use the existing
 // per-story SVG until the actual WebP file becomes available.
 document.addEventListener('error',function(e){
