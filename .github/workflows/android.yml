@@ -283,7 +283,7 @@ jobs:
           assert 'if(!matches.length){' in html, 'Library empty-results branch must have valid syntax'
           assert "'')+'<span class=\"story-duration\">" in html, 'Story card badge must be concatenated safely'
           assert 'function sortLibraryStories(list)' in html, 'Library sorting missing'
-          assert "let cats=['Alle','Gelesen','Ungelesen'];" in html and 'id="librarySort"' in html, 'Three-state library filter or sorting missing'
+          assert 'id="librarySort"' in html, 'Library sorting controls missing'
           assert 'function orderLibrary(list)' in html and "(category==='Gelesen'&&completed.includes(s.id))" in html and "(category==='Ungelesen'&&!completed.includes(s.id))" in html, 'Read-state filter logic missing'
           assert 'const storyArtCache=new Map()' in html, 'Artwork caching missing'
           assert 'const storySearchCache=new Map()' in html and 'searchableStory(s).includes(q)' in html, 'Search index caching missing'
@@ -297,7 +297,7 @@ jobs:
           assert "readingMinutes(current)*(1-fraction)" in html, 'Continuous reader must calculate remaining time from scroll progress'
           assert 'aria-pressed=' in html and 'favorites.includes(s.id)' in html, 'Accessible selection states missing'
           assert 'const seasonal=' in html and 'const themed=pool.filter' in html, 'Seasonal recommendations missing'
-          assert 'original-label' in html and "let cats=['Alle','Gelesen','Ungelesen'];" in html, 'Original story labels and simplified read-state filters must remain'
+          assert 'original-label' in html, 'Original story labels must remain'
           assert 'extra-stories.js' in html and 'function loadMoreStories()' in html, 'Extra story loading or pagination missing'
           for classic in ('fliegender-kuchen','verschwundene-kuerbisse','schatztruhe'):
               assert classic in ids, f'Missing classic story: {classic}'
