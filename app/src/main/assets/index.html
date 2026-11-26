@@ -672,13 +672,16 @@ body{padding-bottom:env(safe-area-inset-bottom,0px)}
  <button type="button" class="advent-chip" aria-pressed="false" data-category="Adventskalender">Adventskalender</button>
 </div>
 <section id="adventCalendar" aria-labelledby="adventHeading" hidden>
- <div class="advent-banner">
-  <div class="advent-banner-copy">
-   <h2 id="adventHeading">Advents<wbr>kalender</h2>
-   <p>1.–26. Dezember<br><small>2026</small></p>
-  </div>
- </div>
- <div class="advent-doors" id="adventDoors"></div>
+ <details class="advent-disclosure">
+  <summary class="advent-banner">
+   <span class="advent-banner-copy">
+    <span class="advent-banner-title" id="adventHeading">Advents<wbr>kalender</span>
+    <span class="advent-banner-date">1.–26. Dezember<br><small>2026</small></span>
+   </span>
+   <span class="advent-banner-chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="advent-doors" id="adventDoors"></div>
+ </details>
 </section><p id="libraryCount" class="small" role="status" aria-live="polite" aria-atomic="true" style="padding:0 18px"></p><div class="library-progress" role="progressbar" aria-label="Gelesene Geschichten" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="libraryProgressTrack"><div class="library-progress-track"><div id="libraryProgressFill"></div></div><span id="libraryProgressText">0 von 0 Geschichten gelesen</span></div><div class="cards" id="cards"></div><button id="loadMore" class="load-more" hidden onclick="loadMoreStories()">Weitere Geschichten anzeigen</button></section>
 <section id="reader" class="screen"><header class="reader-header"><button class="round" aria-label="Zur Geschichtenübersicht" onclick="show(readerReturnList)">‹</button><div class="reader-heading" id="readerHeading">Geschichte</div><div class="toolbar"><button id="readerFavorite" aria-label="Zu Favoriten hinzufügen" onclick="favorite()">♡</button><button aria-label="Schriftgröße ändern" onclick="changeFont()">Aa</button></div></header><article class="paper" id="readingPaper"><div id="readerArt" class="illustration" role="button" tabindex="0" aria-label="Geschichtenillustration vergrößern" title="Bild antippen zum Vergrößern" onclick="openStoryImage()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openStoryImage()}"></div><h2 id="readerTitle"></h2><p id="readerText"></p></article><div class="controls"><button id="prevPage" class="round" aria-label="Vorherige Seite" onclick="pageMove(-1)">‹</button><div class="page-indicator"><span id="pageNum"></span><span id="remainingTime" class="remaining-time"></span><div class="reader-progress-track" role="progressbar" aria-label="Lesefortschritt" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="readerProgressTrack"><div id="readerProgressFill"></div></div><div id="pageDots" class="page-dots"></div></div><button id="nextPage" class="round" aria-label="Nächste Seite" onclick="pageMove(1)">›</button></div><p class="reader-swipe-tip">↓ Zum Lesen nach unten scrollen ↓</p><p id="readerNotice" class="reader-notice" role="status" aria-live="polite"></p><button id="finishStory" class="finish-story" hidden onclick="finishReading()">✓ Geschichte als gelesen markieren</button><div class="reader-floating-progress" aria-label="Aktueller Lesefortschritt" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="readerFloatingProgress"><div class="reader-floating-progress-track"><div id="readerFloatingProgressFill"></div></div><span id="readerFloatingProgressText">0 %</span></div></section>
 <section id="favorites" class="screen"><header class="section-heading"><h1><svg class="section-title-icon section-title-icon-heart" viewBox="0 0 44 44" width="38" height="38" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 37 5.5 21.5a10 10 0 0 1 14-14L21 9l1.5-1.5a10 10 0 0 1 14 14Z"/></svg><span>Favoriten</span></h1></header><div class="collection-shell"><div class="collection-characters"><img src="art/bedtime-friends.svg" alt="Bobby, Hoppel und Krümel im Sternenwald"></div><div class="cards" id="favoriteCards"></div></div></section>

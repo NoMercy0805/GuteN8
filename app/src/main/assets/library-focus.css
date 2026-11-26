@@ -378,7 +378,10 @@
   color:#fff5dc;
 }
 .advent-banner {
+  position:relative;
   display:flex;
+  cursor:pointer;
+  list-style:none;
   align-items:center;
   min-height:clamp(136px,37vw,212px);
   padding:clamp(14px,4vw,32px);
@@ -389,16 +392,51 @@
     #122740 url('art/advent-2026-01.webp') 64% 45% / cover;
   box-shadow:0 8px 20px #041c4160,inset 0 0 0 3px #fff1cb30;
 }
+.advent-banner::-webkit-details-marker {
+  display:none;
+}
+.advent-banner:focus-visible {
+  outline:3px solid #fff2bf;
+  outline-offset:3px;
+}
+.advent-banner-chevron {
+  position:absolute;
+  right:12px;
+  bottom:12px;
+  display:grid;
+  place-items:center;
+  width:27px;
+  height:27px;
+  border:1px solid #e9c27b;
+  border-radius:50%;
+  background:#122740e8;
+  color:#fff1ca;
+}
+.advent-banner-chevron::before {
+  content:"";
+  width:7px;
+  height:7px;
+  border:solid currentColor;
+  border-width:0 2px 2px 0;
+  transform:translateY(-2px) rotate(45deg);
+}
+.advent-disclosure[open] .advent-banner-chevron::before {
+  transform:translateY(2px) rotate(225deg);
+}
+.advent-disclosure:not([open]) > .advent-doors {
+  display:none;
+}
 .advent-banner-copy {
   max-width:66%;
 }
-.advent-banner h2 {
-  margin:0;
+.advent-banner-title {
+  display:block;
   font:750 clamp(27px,7.1vw,48px)/.98 Georgia,serif;
   letter-spacing:-.035em;
   text-shadow:0 2px 4px #071a26;
 }
-.advent-banner p {
+.advent-banner-date {
+  display:block;
   margin:9px 0 0;
   color:#ffdf9c;
   font-size:clamp(12px,3.7vw,16px);
