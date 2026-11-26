@@ -780,6 +780,12 @@ function renderPage(){
  $('readingPaper').setAttribute('aria-label','Geschichte: '+current.title+', vollständiger Text');
  $('readerTitle').textContent=current.title;
  $('readerText').textContent=current.text;
+ const readerArt=$('readerArt');
+ if(current.imageAtEnd===true){
+  $('readerText').after(readerArt);
+ }else{
+  $('readerTitle').before(readerArt);
+ }
  $('pageNum').textContent='Lesefortschritt';
  $('remainingTime').textContent='ca. '+readingMinutes(current)+' Min. Lesezeit';
  $('pageDots').innerHTML='';
